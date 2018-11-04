@@ -1,0 +1,34 @@
+{
+    "name": "chess/laravel-form-maker",
+    "description": "Simple form maker module for Laravel",
+    "keywords": ["laravel", "form maker", "form builder", "form generator"],
+    "type": "library",
+    "support": {
+        "issues": "https://github.com/pascalboucher/laravel-form-maker/issues",
+        "source": "https://github.com/pascalboucher/laravel-form-maker"
+    },
+    "require": {
+        "php": ">=7.2.0",
+        "ext-fileinfo": "*",
+        "laravel/framework": "5.5.*|5.6.*|5.7.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pascal Boucher",
+            "email": "pascalboocher@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Chess\\FormMaker\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Chess\\FormMaker\\FormMakerServiceProvider"
+            ]
+        }
+    }
+}
