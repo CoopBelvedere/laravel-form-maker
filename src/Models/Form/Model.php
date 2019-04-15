@@ -77,6 +77,13 @@ abstract class Model extends Eloquent
     }
 
     /**
+     * Remove sensible attributes from the model.
+     *
+     * @return \Illuminate\Http\Resources\Json\JsonResource
+     */
+    abstract protected function sanitised();
+
+    /**
      * Set the model html properties.
      *
      * @param  array $properties

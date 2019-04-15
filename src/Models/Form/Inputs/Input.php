@@ -2,6 +2,7 @@
 
 namespace Chess\FormMaker\Models\Form\Inputs;
 
+use Chess\FormMaker\Http\Resources\InputResource;
 use Chess\FormMaker\Listeners\{
     AddInRanking,
     AssignProperties,
@@ -70,6 +71,16 @@ abstract class Input extends Model
             $this->assignToInput('properties', $property, null);
         }
         return $this;
+    }
+
+    /**
+     * Remove sensible attributes from the input.
+     *
+     * @return \Chess\FormMaker\Http\Resources\InputResource
+     */
+    public function sanitised(): InputResource
+    {
+        return new InputResource($this);
     }
 
     /**

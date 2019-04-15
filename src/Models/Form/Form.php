@@ -2,6 +2,7 @@
 
 namespace Chess\FormMaker\Models\Form;
 
+use Chess\FormMaker\Http\Resources\FormResource;
 use Chess\FormMaker\Listeners\ValidateProperties;
 use Chess\FormMaker\Traits\{
     HasInputs,
@@ -76,5 +77,15 @@ class Form extends Model
         return $this->inputs()->mapWithKeys(function ($input) {
             return [$input->html_properties['name'] => implode('|', $input->rules)];
         })->all();
+    }
+
+    /**
+     * Remove sensible attributes from the form.
+     *
+     * @return \Chess\FormMaker\Http\Resources\FormResource
+     */
+    public function sanitised(): FormResource
+    {
+        return new FormResource($this);
     }
 }
