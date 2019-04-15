@@ -47,6 +47,24 @@ trait HasInputs
     }
 
     /**
+     * Add an input before an other input.
+     *
+     * @param string $beforeInputName
+     * @param string $type
+     * @param string|null $name
+     * @return mixed
+     * @throws \Exception
+     */
+    public function addBefore(string $beforeInputName, string $type, ?string $name = null)
+    {
+        $input = $this->add($type, $name);
+
+        $this->ranking->move($input)->toRank($this->getInput($beforeInputName)->rank);
+
+        return $input;
+    }
+
+    /**
      * Get the model inputs.
      *
      * @return \Illuminate\Support\Collection
