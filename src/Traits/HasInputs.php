@@ -64,6 +64,18 @@ trait HasInputs
         return $inputs;
     }
 
+    /**
+     * Get the input with the specified name property.
+     *
+     * @param  string $name
+     * @return mixed|bool
+     * @throws \Exception
+     */
+    public function getInput(string $name): ?string
+    {
+        return $this->inputs()
+            ->firstWhere('html_properties.name', $name);
+    }
 
     /**
      * Get the class input full path.
