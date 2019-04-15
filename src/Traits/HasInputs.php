@@ -3,6 +3,7 @@
 namespace Chess\FormMaker\Traits;
 
 use Chess\FormMaker\Listeners\DeleteInputs;
+use Chess\FormMaker\Models\Form\Inputs\Input;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
@@ -67,11 +68,11 @@ trait HasInputs
     /**
      * Get the input with the specified name property.
      *
-     * @param  string $name
-     * @return mixed|bool
+     * @param string $name
+     * @return Input|null
      * @throws \Exception
      */
-    public function getInput(string $name): ?string
+    public function getInput(string $name): ?Input
     {
         return $this->inputs()
             ->firstWhere('html_properties.name', $name);
