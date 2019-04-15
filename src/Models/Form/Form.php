@@ -80,11 +80,11 @@ class Form extends Model
     }
 
     /**
-     * Remove sensible attributes from the form.
+     * Serialise the form to an api friendly format.
      *
      * @return \Chess\FormMaker\Http\Resources\FormResource
      */
-    public function sanitised(): FormResource
+    public function toApi(): FormResource
     {
         return new FormResource($this);
     }

@@ -77,13 +77,6 @@ abstract class Model extends Eloquent
     }
 
     /**
-     * Remove sensible attributes from the model.
-     *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
-     */
-    abstract protected function sanitised();
-
-    /**
      * Set the model html properties.
      *
      * @param  array $properties
@@ -98,6 +91,13 @@ abstract class Model extends Eloquent
         }
         $this->attributes['html_properties'] = json_encode($properties);
     }
+
+    /**
+     * Serialise the model to an api friendly format.
+     *
+     * @return \Illuminate\Http\Resources\Json\JsonResource
+     */
+    abstract protected function toApi();
 
     /**
      * Mass assign html properties to a model.

@@ -74,16 +74,6 @@ abstract class Input extends Model
     }
 
     /**
-     * Remove sensible attributes from the input.
-     *
-     * @return \Chess\FormMaker\Http\Resources\InputResource
-     */
-    public function sanitised(): InputResource
-    {
-        return new InputResource($this);
-    }
-
-    /**
      * Set the model rules.
      *
      * @param  array $rules
@@ -99,6 +89,15 @@ abstract class Input extends Model
         $this->attributes['rules'] = json_encode($rules);
     }
 
+    /**
+     * Serialise the input to an api friendly format.
+     *
+     * @return \Chess\FormMaker\Http\Resources\InputResource
+     */
+    public function toApi(): InputResource
+    {
+        return new InputResource($this);
+    }
 
     /**
      * Mass assign backend rules from an input.
