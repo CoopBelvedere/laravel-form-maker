@@ -114,7 +114,7 @@ trait HasInputs
         return $inputs->map(function ($input) {
             $input->rank = $this->ranking->rank($input->id);
             return $input;
-        });
+        })->sortBy('rank');
     }
 
     /**

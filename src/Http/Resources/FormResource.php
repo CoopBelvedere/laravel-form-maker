@@ -14,7 +14,7 @@ class FormResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $inputs = new InputCollection($this->inputs()->sortBy('rank'));
+        $inputs = new InputCollection($this->inputs());
 
         return [
             'id' => $this->id,

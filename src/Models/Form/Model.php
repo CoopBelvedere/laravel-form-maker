@@ -33,6 +33,13 @@ abstract class Model extends Eloquent
     ];
 
     /**
+     * The model position in the ranking.
+     *
+     * @var int
+     */
+    public $rank = 0;
+
+    /**
      * Assign the rule or html property to the input.
      *
      * @param string $type

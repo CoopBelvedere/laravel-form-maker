@@ -15,7 +15,7 @@ class InputResource extends JsonResource
     public function toArray($request): array
     {
         if ($inputs = method_exists($this->resource, 'inputs')) {
-            $inputs = new InputCollection($this->inputs()->sortBy('rank'));
+            $inputs = new InputCollection($this->inputs());
         }
 
         return [
