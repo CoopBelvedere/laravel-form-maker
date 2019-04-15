@@ -56,6 +56,6 @@ class Select extends Input
      */
     public function options(): MorphMany
     {
-        return $this->morphMany('Chess\FormMaker\Models\Inputs\Option', 'inputable');
+        return $this->morphMany('Chess\FormMaker\Models\Form\Inputs\Option', 'inputable');
     }
 }

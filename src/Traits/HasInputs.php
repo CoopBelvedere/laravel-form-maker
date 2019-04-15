@@ -47,21 +47,6 @@ trait HasInputs
     }
 
     /**
-     * Add multiple input to the parent model.
-     *
-     * @param string $type
-     * @param array $values
-     * @return void
-     * @throws \Exception
-     */
-    public function addMultiple(string $type, array $values): void
-    {
-        foreach ($values as $input) {
-            $this->add(...[$type, $input]);
-        }
-    }
-
-    /**
      * Get the model inputs.
      *
      * @return \Illuminate\Support\Collection
