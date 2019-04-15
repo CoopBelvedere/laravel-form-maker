@@ -61,7 +61,7 @@ abstract class Model extends Eloquent
      * @param array $properties
      * @return self
      */
-    public function removeProperties(array $properties): self
+    public function removeHtmlProperties(array $properties): self
     {
         foreach ($properties as $property) {
             $this->assignToInput('properties', $property, null);
@@ -91,7 +91,7 @@ abstract class Model extends Eloquent
      * @param array $properties
      * @return self
      */
-    public function withProperties(array $properties): self
+    public function withHtmlProperties(array $properties): self
     {
         foreach ($properties as $name => $arguments) {
             $this->assignToInput('properties', $name, $arguments);

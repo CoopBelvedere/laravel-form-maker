@@ -46,6 +46,25 @@ class Select extends Input
         parent::boot();
     }
 
+    /**
+     * Add options for the select input.
+     *
+     * @param array ...$options
+     * @return Select
+     * @throws \Exception
+     */
+    public function withOptions(array ...$options): self
+    {
+        foreach ($options as $optionValues)
+        {
+            $this->add('option')
+                ->withHtmlProperties($optionValues)
+                ->save();
+        }
+
+        return $this;
+    }
+
     // ELOQUENT RELATIONSHIPS
     // ==============================================================
 

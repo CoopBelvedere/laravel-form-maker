@@ -30,14 +30,14 @@ trait HasInputs
      * @return mixed
      * @throws \Exception
      */
-    public function add(string $type, ?string $name)
+    public function add(string $type, ?string $name = null)
     {
         $inputPath = $this->getInputPath($type);
 
         $input = new $inputPath;
 
         if ($name) {
-            $input->withProperties(['name' => $name]);
+            $input->withHtmlProperties(['name' => $name]);
         }
 
         $this->inputsBuilder($type)->save($input);

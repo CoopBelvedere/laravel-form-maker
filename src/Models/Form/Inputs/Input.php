@@ -55,7 +55,7 @@ abstract class Input extends Model
         'created' => AddInRanking::class,
         'creating' => AssignProperties::class,
         'deleted' => RemoveFromRanking::class,
-        'updated' => ValidateProperties::class,
+        'updating' => ValidateProperties::class,
     ];
 
     /**
