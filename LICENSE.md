@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2018-present Pascal Boucher <pascalboocher@gmail.com>
+Copyright (c) 2018-present Coopérative Belvédère communication
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
