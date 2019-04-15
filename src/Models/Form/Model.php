@@ -33,36 +33,21 @@ abstract class Model extends Eloquent
     ];
 
     /**
-     * Mass assign rules to a property.
+     * Assign the rule or html property to the input.
      *
-     * @param string $property
-     * @param array $rules
-     * @return self
-     */
-    public function assign(string $property, array $rules): self
-    {
-        foreach ($rules as $rule => $arguments) {
-            $this->assignToElement($property, $rule, $arguments);
-        }
-        return $this;
-    }
-
-    /**
-     * Assign the rule to the property.
-     *
-     * @param string $property
-     * @param string $rule
+     * @param string $type
+     * @param string $assignment
      * @param mixed $arguments
      * @return void
      */
-    protected function assignToElement(string $property, string $rule, $arguments): void
+    protected function assignToInput(string $type, string $assignment, $arguments): void
     {
-        $method = camel_case(sprintf('%s_%s', str_singular($property), $rule));
+        $method = camel_case(sprintf('%s_%s', str_singular($type), $assignment));
 
         if (method_exists($this, $method)) {
             if (is_null($arguments)) {
                 $this->$method(null);
-            } else if ($arguments === $rule) {
+            } else if ($arguments === $assignment) {
                 $this->$method();
             } else {
                 $this->$method(...array_wrap($arguments));
@@ -71,16 +56,15 @@ abstract class Model extends Eloquent
     }
 
     /**
-     * Mass removal of assign rules to a property.
+     * Mass removal of html properties to a model.
      *
-     * @param string $property
-     * @param array $rules
+     * @param array $properties
      * @return self
      */
-    public function remove(string $property, array $rules): self
+    public function removeProperties(array $properties): self
     {
-        foreach ($rules as $rule) {
-            $this->assignToElement($property, $rule, null);
+        foreach ($properties as $property) {
+            $this->assignToInput('properties', $property, null);
         }
         return $this;
     }
@@ -99,6 +83,20 @@ abstract class Model extends Eloquent
             );
         }
         $this->attributes['html_properties'] = json_encode($properties);
+    }
+
+    /**
+     * Mass assign html properties to a model.
+     *
+     * @param array $properties
+     * @return self
+     */
+    public function withProperties(array $properties): self
+    {
+        foreach ($properties as $name => $arguments) {
+            $this->assignToInput('properties', $name, $arguments);
+        }
+        return $this;
     }
 
     // HELPERS

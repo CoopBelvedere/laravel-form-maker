@@ -55,8 +55,22 @@ abstract class Input extends Model
         'created' => AddInRanking::class,
         'creating' => AssignProperties::class,
         'deleted' => RemoveFromRanking::class,
-        'saving' => ValidateProperties::class,
+        'updated' => ValidateProperties::class,
     ];
+
+    /**
+     * Mass removal of backend rules from an input.
+     *
+     * @param array $properties
+     * @return self
+     */
+    public function removeRules(array $properties): self
+    {
+        foreach ($properties as $property) {
+            $this->assignToInput('properties', $property, null);
+        }
+        return $this;
+    }
 
     /**
      * Set the model rules.
@@ -72,6 +86,21 @@ abstract class Input extends Model
             );
         }
         $this->attributes['rules'] = json_encode($rules);
+    }
+
+
+    /**
+     * Mass assign backend rules from an input.
+     *
+     * @param array $rules
+     * @return self
+     */
+    public function withRules(array $rules): self
+    {
+        foreach ($rules as $name => $arguments) {
+            $this->assignToInput('rules', $name, $arguments);
+        }
+        return $this;
     }
 
     // ELOQUENT RELATIONSHIPS

@@ -26,20 +26,19 @@ trait HasInputs
      * Add an input to the parent model.
      *
      * @param string $type
-     * @param array $properties
-     * @param array $rules
+     * @param string|null $name
      * @return mixed
      * @throws \Exception
      */
-    public function add(string $type, array $properties = [], array $rules = [])
+    public function add(string $type, ?string $name)
     {
         $inputPath = $this->getInputPath($type);
 
         $input = new $inputPath;
 
-        $input->assign('properties', $properties);
-
-        $input->assign('rules', $rules);
+        if ($name) {
+            $input->withProperties(['name' => $name]);
+        }
 
         $this->inputsBuilder($type)->save($input);
 
