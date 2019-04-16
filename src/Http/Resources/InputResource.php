@@ -21,7 +21,7 @@ class InputResource extends JsonResource
         return [
             'id' => $this->id,
             $this->mergeWhen($inputs && $inputs->collection->isNotEmpty(), [
-                'inputs' => $inputs,
+                'children' => $inputs,
             ]),
             $this->mergeWhen($this->html_properties, [
                 'properties' => $this->html_properties,
