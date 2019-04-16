@@ -75,7 +75,10 @@ class Form extends Model
     public function rules(): array
     {
         return $this->inputs()->mapWithKeys(function ($input) {
-            return [$input->html_properties['name'] => implode('|', $input->rules)];
+            if ($input->rules) {
+                return [$input->html_properties['name'] => implode('|', $input->rules)];
+            }
+            return [];
         })->all();
     }
 
