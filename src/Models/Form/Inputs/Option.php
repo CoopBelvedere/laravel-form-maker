@@ -14,16 +14,6 @@ class Option extends Input
     use HasReadonly, HasRequired;
 
     /**
-     * Additional rules for this input.
-     *
-     * @var array
-     */
-    public $additionalRules = [
-        'html_properties.title' => 'required',
-        'html_properties.value' => 'required',
-    ];
-
-    /**
      * The properties automatically assigned on creation.
      *
      * @var array

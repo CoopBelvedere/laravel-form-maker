@@ -19,15 +19,6 @@ class Select extends Input
         HasSize;
 
     /**
-     * Additional rules for this input.
-     *
-     * @var array
-     */
-    public $additionalRules = [
-        'html_properties.title' => 'required',
-    ];
-
-    /**
      * The relations to eager load on every query.
      *
      * @var array

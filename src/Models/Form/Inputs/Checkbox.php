@@ -13,16 +13,6 @@ class Checkbox extends Input
     use HasChecked, HasRequired;
 
     /**
-     * Additional rules for this input.
-     *
-     * @var array
-     */
-    public $additionalRules = [
-        'html_properties.title' => 'required',
-        'html_properties.value' => 'required',
-    ];
-
-    /**
      * Apply the type scope.
      *
      * @return void

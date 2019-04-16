@@ -10,16 +10,6 @@ class Image extends Input
     use HasReadonly;
 
     /**
-     * Additional rules for this input.
-     *
-     * @var array
-     */
-    public $additionalRules = [
-        'html_properties.alt' => 'required',
-        'html_properties.src' => 'required',
-    ];
-
-    /**
      * Apply the type scope.
      *
      * @return void

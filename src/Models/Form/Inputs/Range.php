@@ -14,16 +14,6 @@ class Range extends Input
     use HasAutocomplete, HasMinMax, HasRequired;
 
     /**
-     * Additional rules for this input.
-     *
-     * @var array
-     */
-    public $additionalRules = [
-        'html_properties.max' => 'required',
-        'html_properties.min' => 'required',
-    ];
-
-    /**
      * Apply the type scope.
      *
      * @return void

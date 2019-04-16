@@ -13,15 +13,6 @@ class Color extends Input
     use HasAutocomplete, HasRequired;
 
     /**
-     * Additional rules for this input.
-     *
-     * @var array
-     */
-    public $additionalRules = [
-        'html_properties.value' => 'required',
-    ];
-
-    /**
      * Apply the type scope.
      *
      * @return void

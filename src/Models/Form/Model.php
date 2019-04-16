@@ -10,18 +10,18 @@ abstract class Model extends Eloquent
     use GlobalProperties;
 
     /**
-     * Additional rules for the model.
-     *
-     * @var array
-     */
-    public $additionalRules = [];
-
-    /**
      * The default properties automatically assigned on creation.
      *
      * @var array
      */
     public $assignedProperties = [];
+
+    /**
+     * Additional validation to be applied on the model attributes on update.
+     *
+     * @var array
+     */
+    public $attributesRules = [];
 
     /**
      * The attributes that should be cast to native types.
