@@ -43,6 +43,48 @@ trait HasInputs
 
         $this->inputsBuilder($type)->save($input);
 
+        $this->ranking->add($input);
+
+        return $input;
+    }
+
+    /**
+     * Add an input after an other input.
+     *
+     * @param string $beforeInputName
+     * @param string $type
+     * @param string|null $name
+     * @return mixed
+     * @throws \Exception
+     */
+    public function addAfter(string $afterInputName, string $type, ?string $name = null)
+    {
+        $input = $this->add($type, $name);
+
+        $afterInput = $this->getInput($afterInputName);
+
+        if ($afterInput && $this->ranking->inRanking($afterInput)) {
+            $this->ranking->move($input)->toRank($afterInput->rank + 1);
+        }
+
+        return $input;
+    }
+
+    /**
+     * Add an input at a specific rank in the ranking.
+     *
+     * @param int $rank
+     * @param string $type
+     * @param string|null $name
+     * @return mixed
+     * @throws \Exception
+     */
+    public function addAtRank(int $rank, string $type, ?string $name = null)
+    {
+        $input = $this->add($type, $name);
+
+        $this->ranking->move($input)->toRank($rank);
+
         return $input;
     }
 
@@ -59,7 +101,11 @@ trait HasInputs
     {
         $input = $this->add($type, $name);
 
-        $this->ranking->move($input)->toRank($this->getInput($beforeInputName)->rank);
+        $beforeInput = $this->getInput($beforeInputName);
+
+        if ($beforeInput && $this->ranking->inRanking($beforeInput)) {
+            $this->ranking->move($input)->toRank($beforeInput->rank - 1);
+        }
 
         return $input;
     }

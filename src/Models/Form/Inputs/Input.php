@@ -4,7 +4,6 @@ namespace Chess\FormMaker\Models\Form\Inputs;
 
 use Chess\FormMaker\Http\Resources\InputResource;
 use Chess\FormMaker\Listeners\{
-    AddInRanking,
     AssignProperties,
     RemoveFromRanking,
     ValidateProperties
@@ -53,7 +52,6 @@ abstract class Input extends Model
      * @var array
      */
     protected $dispatchesEvents = [
-        'created' => AddInRanking::class,
         'creating' => AssignProperties::class,
         'deleted' => RemoveFromRanking::class,
         'updating' => ValidateProperties::class,
