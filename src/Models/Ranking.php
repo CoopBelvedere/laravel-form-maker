@@ -23,9 +23,11 @@ class Ranking extends Eloquent
     ];
 
     /**
-     * The current element to reorder.
+     * The current element id to reorder.
+     *
+     * @var mixed
      */
-    protected $element = false;
+    protected $elementId;
 
     /**
      * Set the ranks.
@@ -45,18 +47,17 @@ class Ranking extends Eloquent
      * Add an element in the rankings.
      * Return the rank of the new element.
      *
-     * @param  \Illuminate\Database\Eloquent\Model $element
+     * @param mixed $element
      * @return int
+     * @throws \Exception
      */
     public function add($element): int
     {
-        $elementId = $element->getKey();
-
-        $rank = $this->rank($elementId);
+        $rank = $this->rank($element);
 
         if ($rank === -1) {
             $ranks = $this->ranks;
-            $ranks[] = $elementId;
+            $ranks[] = $this->getElementId($element);
             $this->commit($ranks);
 
             return count($ranks);
@@ -73,11 +74,11 @@ class Ranking extends Eloquent
      */
     public function ahead(): int
     {
-        if ($this->hasElement()) {
-            if ($this->element !== head($this->ranks)) {
+        if ($this->hasElementId()) {
+            if ($this->elementId !== head($this->ranks)) {
                 $ranks = $this->ranks;
-                $ranks = array_diff($ranks, [$this->element]);
-                $this->commit(array_merge([$this->element], $ranks));
+                $ranks = array_diff($ranks, [$this->elementId]);
+                $this->commit(array_merge([$this->elementId], $ranks));
             }
 
             return 1;
@@ -106,10 +107,10 @@ class Ranking extends Eloquent
      */
     public function down(): int
     {
-        if ($this->hasElement()) {
-            if ($this->element !== last($this->ranks)) {
-                $key = array_search($this->element, $this->ranks);
-                return $this->toggle($this->element, $this->ranks[$key + 1]);
+        if ($this->hasElementId()) {
+            if ($this->elementId !== last($this->ranks)) {
+                $key = array_search($this->elementId, $this->ranks);
+                return $this->toggle($this->elementId, $this->ranks[$key + 1]);
             }
 
             return count($this->ranks);
@@ -117,18 +118,46 @@ class Ranking extends Eloquent
     }
 
     /**
-     * Check that the element attribute is set.
+     * Get the ranking primary key from the element.
+     *
+     * @param mixed $element
+     * @return mixed
+     */
+    protected function getElementId($element)
+    {
+        if (is_object($element) && method_exists($element, 'getKey')) {
+            return $element->getKey();
+        }
+
+        return $element;
+    }
+
+    /**
+     * Check that the elementId attribute is set.
      *
      * @return bool
      * @throws \Exception
      */
-    protected function hasElement(): bool
+    protected function hasElementId(): bool
     {
-        if ($this->element) {
+        if ($this->elementId) {
             return true;
         }
 
         throw new \Exception('You must set the element with the move method before using this function. See documentation.');
+    }
+
+    /**
+     * Check that the element is in the ranking.
+     *
+     * @param mixed $element
+     * @return bool
+     */
+    public function inRanking($element): bool
+    {
+        $elementId = $this->getElementId($element);
+
+        return in_array($elementId, $this->ranks);
     }
 
     /**
@@ -140,11 +169,11 @@ class Ranking extends Eloquent
      */
     public function last(): int
     {
-        if ($this->hasElement()) {
-            if ($this->element !== last($this->ranks)) {
+        if ($this->hasElementId()) {
+            if ($this->elementId !== last($this->ranks)) {
                 $ranks = $this->ranks;
-                $ranks = array_diff($ranks, [$this->element]);
-                $this->commit(array_merge($ranks, [$this->element]));
+                $ranks = array_diff($ranks, [$this->elementId]);
+                $this->commit(array_merge($ranks, [$this->elementId]));
             }
 
             return count($this->ranks);
@@ -154,16 +183,15 @@ class Ranking extends Eloquent
     /**
      * Set the element id that is to reorder.
      *
-     * @param  \Illuminate\Database\Eloquent\Model $element
+     * @param  mixed $element
      * @return self
      * @throws \Exception
      */
     public function move($element): self
     {
-        $elementId = $element->getKey();
+        if ($this->inRanking($element)) {
+            $this->setElementId($element);
 
-        if (in_array($elementId, $this->ranks)) {
-            $this->element = $elementId;
             return $this;
         }
 
@@ -180,10 +208,10 @@ class Ranking extends Eloquent
      */
     protected function moveTo(int $index): int
     {
-        if ($this->hasElement()) {
+        if ($this->hasElementId()) {
             $ranks = $this->ranks;
-            $ranks = array_diff($ranks, [$this->element]);
-            array_splice($ranks, $index, 0, $this->element);
+            $ranks = array_diff($ranks, [$this->elementId]);
+            array_splice($ranks, $index, 0, $this->elementId);
             $this->commit($ranks);
 
             return $index;
@@ -193,15 +221,13 @@ class Ranking extends Eloquent
     /**
      * Return the rank of the element in the ranking.
      *
-     * @param  \Illuminate\Database\Eloquent\Model $element
+     * @param  mixed $element
      * @return int
      */
     public function rank($element): int
     {
-        $elementId = $element->getKey();
-
-        if (in_array($elementId, $this->ranks)) {
-            return array_search($elementId, $this->ranks) + 1;
+        if ($this->inRanking($element)) {
+            return array_search($this->getElementId($element), $this->ranks) + 1;
         }
 
         return -1;
@@ -210,16 +236,18 @@ class Ranking extends Eloquent
     /**
      * Remove an item in the ranking.
      *
-     * @param  \Illuminate\Database\Eloquent\Model $element
+     * @param  mixed $element
      * @return bool
      */
     public function remove($element): bool
     {
-        $elementId = $element->getKey();
-
-        if (in_array($elementId, $this->ranks)) {
+        if ($this->inRanking($element)) {
             $ranks = $this->ranks;
-            $this->commit(array_values(array_diff($ranks, [$elementId])));
+            $this->commit(
+                array_values(
+                    array_diff($ranks, [$this->getElementId($element)])
+                )
+            );
         }
 
         return true;
@@ -235,6 +263,20 @@ class Ranking extends Eloquent
         $ranks = $this->ranks;
 
         $this->commit(array_values(collect($ranks)->reverse()->all()));
+    }
+
+    /**
+     * Set the element id that is to reorder.
+     *
+     * @param mixed $element
+     * @return void
+     * @throws \Exception
+     */
+    protected function setElementId($element): void
+    {
+        $elementId = $this->getElementId($element);
+
+        $this->elementId = $elementId;
     }
 
     /**
@@ -282,10 +324,10 @@ class Ranking extends Eloquent
      */
     public function toggle($firstElement, $lastElement): int
     {
-        $firstElement = $firstElement->getKey();
-        $lastElement = $lastElement->getKey();
+        $firstElement = $this->getElementId($firstElement);
+        $lastElement = $this->getElementId($lastElement);
 
-        if ($firstElement !== $lastElement && in_array($firstElement, $this->ranks) && in_array($lastElement, $this->ranks)) {
+        if ($firstElement !== $lastElement && $this->inRanking($firstElement) && $this->inRanking($lastElement)) {
             $firstKey = array_search($firstElement, $this->ranks);
             $lastKey = array_search($lastElement, $this->ranks);
             $ranks = $this->ranks;
@@ -326,10 +368,10 @@ class Ranking extends Eloquent
      */
     public function up(): int
     {
-        if ($this->hasElement()) {
-            if ($this->rank($this->element) > 1) {
-                $key = array_search($this->element, $this->ranks);
-                return $this->toggle($this->element, $this->ranks[$key - 1]);
+        if ($this->hasElementId()) {
+            if ($this->rank($this->elementId) > 1) {
+                $key = array_search($this->elementId, $this->ranks);
+                return $this->toggle($this->elementId, $this->ranks[$key - 1]);
             }
 
             return 1;
