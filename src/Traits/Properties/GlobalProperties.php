@@ -5,7 +5,7 @@ namespace Chess\FormMaker\Traits\Properties;
 trait GlobalProperties
 {
     /**
-     * Specifies class attribute for the html element.
+     * Specifies a class attribute for the html element.
      *
      * @param string $class
      * @return self
@@ -18,7 +18,7 @@ trait GlobalProperties
     }
 
     /**
-     * Specifies data attribute for the html element.
+     * Specifies a data attribute for the html element.
      *
      * @param string $data
      * @param mixed $value
@@ -32,7 +32,7 @@ trait GlobalProperties
     }
 
     /**
-     * Specifies id attribute for the html element.
+     * Specifies an id attribute for the html element.
      *
      * @param mixed $id
      * @return self
@@ -53,6 +53,19 @@ trait GlobalProperties
     public function propertyName(?string $name): self
     {
         $this->html_properties = ['name' => $name];
+
+        return $this;
+    }
+
+    /**
+     * Specifies a role attribute for the html element.
+     *
+     * @param string $role
+     * @return self
+     */
+    public function propertyRole(?string $role): self
+    {
+        $this->html_properties = ['role' => $role];
 
         return $this;
     }
