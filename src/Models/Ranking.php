@@ -45,16 +45,18 @@ class Ranking extends Eloquent
      * Add an element in the rankings.
      * Return the rank of the new element.
      *
-     * @param  $element
+     * @param  \Illuminate\Database\Eloquent\Model $element
      * @return int
      */
     public function add($element): int
     {
-        $rank = $this->rank($element);
+        $elementId = $element->getKey();
+
+        $rank = $this->rank($elementId);
 
         if ($rank === -1) {
             $ranks = $this->ranks;
-            $ranks[] = $element;
+            $ranks[] = $elementId;
             $this->commit($ranks);
 
             return count($ranks);
@@ -122,7 +124,7 @@ class Ranking extends Eloquent
      */
     protected function hasElement(): bool
     {
-        if (isset($this->element)) {
+        if ($this->element) {
             return true;
         }
 
@@ -152,14 +154,16 @@ class Ranking extends Eloquent
     /**
      * Set the element id that is to reorder.
      *
-     * @param  $element
+     * @param  \Illuminate\Database\Eloquent\Model $element
      * @return self
      * @throws \Exception
      */
     public function move($element): self
     {
-        if (in_array($element, $this->ranks)) {
-            $this->element = $element;
+        $elementId = $element->getKey();
+
+        if (in_array($elementId, $this->ranks)) {
+            $this->element = $elementId;
             return $this;
         }
 
@@ -189,13 +193,15 @@ class Ranking extends Eloquent
     /**
      * Return the rank of the element in the ranking.
      *
-     * @param  $element
+     * @param  \Illuminate\Database\Eloquent\Model $element
      * @return int
      */
     public function rank($element): int
     {
-        if (in_array($element, $this->ranks)) {
-            return array_search($element, $this->ranks) + 1;
+        $elementId = $element->getKey();
+
+        if (in_array($elementId, $this->ranks)) {
+            return array_search($elementId, $this->ranks) + 1;
         }
 
         return -1;
@@ -204,14 +210,16 @@ class Ranking extends Eloquent
     /**
      * Remove an item in the ranking.
      *
-     * @param  $element
+     * @param  \Illuminate\Database\Eloquent\Model $element
      * @return bool
      */
     public function remove($element): bool
     {
-        if (in_array($element, $this->ranks)) {
+        $elementId = $element->getKey();
+
+        if (in_array($elementId, $this->ranks)) {
             $ranks = $this->ranks;
-            $this->commit(array_values(array_diff($ranks, [$element])));
+            $this->commit(array_values(array_diff($ranks, [$elementId])));
         }
 
         return true;
@@ -268,12 +276,15 @@ class Ranking extends Eloquent
      * Toggle two elements in the ranking.
      * Return the new rank of the first element.
      *
-     * @param  $first
-     * @param  $last
+     * @param  \Illuminate\Database\Eloquent\Model $firstElement
+     * @param  \Illuminate\Database\Eloquent\Model $lastElement
      * @return int
      */
     public function toggle($firstElement, $lastElement): int
     {
+        $firstElement = $firstElement->getKey();
+        $lastElement = $lastElement->getKey();
+
         if ($firstElement !== $lastElement && in_array($firstElement, $this->ranks) && in_array($lastElement, $this->ranks)) {
             $firstKey = array_search($firstElement, $this->ranks);
             $lastKey = array_search($lastElement, $this->ranks);
