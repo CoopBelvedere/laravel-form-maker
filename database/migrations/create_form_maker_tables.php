@@ -10,7 +10,7 @@ class CreateFormMakerTables extends Migration
     {
         Schema::create('forms', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('name');
             $table->string('description')->nullable();
             $table->json('html_attributes')->nullable();
             $table->timestamps();
