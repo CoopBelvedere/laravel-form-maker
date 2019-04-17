@@ -25,6 +25,7 @@ class ValidatorService
         'html_attributes.cols' => 'integer|min:0',
         'html_attributes.enctype' => 'string|in:application/x-www-form-urlencoded,multipart/form-data,text/plain',
         'html_attributes.height' => 'integer|min:0',
+        'html_attributes.method' => 'string|in:get,post',
         'html_attributes.rows' => 'integer|min:0',
         'html_attributes.width' => 'integer|min:0',
     ];

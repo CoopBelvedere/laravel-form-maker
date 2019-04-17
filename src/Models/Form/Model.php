@@ -4,6 +4,7 @@ namespace Belvedere\FormMaker\Models\Form;
 
 use Belvedere\FormMaker\Traits\Properties\GlobalHtmlAttributes;
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Support\Str;
 
 abstract class Model extends Eloquent
 {
@@ -49,7 +50,7 @@ abstract class Model extends Eloquent
      */
     protected function assignToInput(string $type, string $assignment, $arguments): void
     {
-        $method = sprintf('%s%s', $type, ucfirst($assignment));
+        $method = Str::camel(sprintf('%s_%s', $type, $assignment));
 
         if (method_exists($this, $method)) {
             if (is_null($arguments)) {

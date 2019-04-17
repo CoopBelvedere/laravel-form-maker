@@ -52,7 +52,7 @@ trait FormHtmlAttributes
      * @param string $blank
      * @return self
      */
-    public function htmlResultsInNewWindow(?string $blank = '_blank'): self
+    public function htmlTarget(?string $blank = '_blank'): self
     {
         $this->html_attributes = ['target' => $blank];
 
