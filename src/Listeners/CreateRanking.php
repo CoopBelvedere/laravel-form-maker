@@ -1,8 +1,8 @@
 <?php
 
-namespace Chess\FormMaker\Listeners;
+namespace Belvedere\FormMaker\Listeners;
 
-use Chess\FormMaker\Models\Ranking;
+use Belvedere\FormMaker\Models\Ranking;
 use Illuminate\Database\Eloquent\Model;
 
 class CreateRanking

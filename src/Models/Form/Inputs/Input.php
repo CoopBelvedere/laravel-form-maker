@@ -1,15 +1,15 @@
 <?php
 
-namespace Chess\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Form\Inputs;
 
-use Chess\FormMaker\Http\Resources\InputResource;
-use Chess\FormMaker\Listeners\{
+use Belvedere\FormMaker\Http\Resources\InputResource;
+use Belvedere\FormMaker\Listeners\{
     AssignProperties,
     RemoveFromRanking,
     ValidateProperties
 };
-use Chess\FormMaker\Models\Form\Model;
-use Chess\FormMaker\Traits\{
+use Belvedere\FormMaker\Models\Form\Model;
+use Belvedere\FormMaker\Traits\{
     InputRules,
     Properties\InputProperties
 };
@@ -90,7 +90,7 @@ abstract class Input extends Model
     /**
      * Serialise the input to an api friendly format.
      *
-     * @return \Chess\FormMaker\Http\Resources\InputResource
+     * @return \Belvedere\FormMaker\Http\Resources\InputResource
      */
     public function toApi(): InputResource
     {

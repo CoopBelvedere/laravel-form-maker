@@ -1,6 +1,6 @@
 <?php
 
-namespace Chess\FormMaker\Traits\Properties;
+namespace Belvedere\FormMaker\Traits\Properties;
 
 trait GlobalHtmlAttributes
 {

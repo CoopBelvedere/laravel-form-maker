@@ -1,9 +1,9 @@
 <?php
 
-namespace Chess\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Form\Inputs;
 
-use Chess\FormMaker\Scopes\InputScope;
-use Chess\FormMaker\Traits\{
+use Belvedere\FormMaker\Scopes\InputScope;
+use Belvedere\FormMaker\Traits\{
     HasInputs,
     Properties\HasAutocomplete,
     Properties\HasMultiple,
@@ -66,6 +66,6 @@ class Select extends Input
      */
     public function options(): MorphMany
     {
-        return $this->morphMany('Chess\FormMaker\Models\Form\Inputs\Option', 'inputable');
+        return $this->morphMany('Belvedere\FormMaker\Models\Form\Inputs\Option', 'inputable');
     }
 }

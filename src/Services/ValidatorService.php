@@ -1,6 +1,6 @@
 <?php
 
-namespace Chess\FormMaker\Services;
+namespace Belvedere\FormMaker\Services;
 
 use Validator;
 use Illuminate\Database\Eloquent\Model;

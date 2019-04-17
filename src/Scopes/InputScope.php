@@ -1,6 +1,6 @@
 <?php
 
-namespace Chess\FormMaker\Scopes;
+namespace Belvedere\FormMaker\Scopes;
 
 use Illuminate\Database\Eloquent\{
     Builder,

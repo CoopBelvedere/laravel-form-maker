@@ -1,8 +1,8 @@
 <?php
 
-namespace Chess\FormMaker\Models\Form;
+namespace Belvedere\FormMaker\Models\Form;
 
-use Chess\FormMaker\Traits\Properties\GlobalHtmlAttributes;
+use Belvedere\FormMaker\Traits\Properties\GlobalHtmlAttributes;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 abstract class Model extends Eloquent

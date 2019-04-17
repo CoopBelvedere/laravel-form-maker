@@ -1,9 +1,9 @@
 <?php
 
-namespace Chess\FormMaker\Traits;
+namespace Belvedere\FormMaker\Traits;
 
-use Chess\FormMaker\Listeners\CreateRanking;
-use Chess\FormMaker\Listeners\DeleteRanking;
+use Belvedere\FormMaker\Listeners\CreateRanking;
+use Belvedere\FormMaker\Listeners\DeleteRanking;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
@@ -34,6 +34,6 @@ trait HasRanking
      */
     public function ranking(): MorphOne
     {
-        return $this->morphOne('Chess\FormMaker\Models\Ranking', 'rankable');
+        return $this->morphOne('Belvedere\FormMaker\Models\Ranking', 'rankable');
     }
 }

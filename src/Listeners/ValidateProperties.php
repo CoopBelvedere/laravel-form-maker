@@ -1,8 +1,8 @@
 <?php
 
-namespace Chess\FormMaker\Listeners;
+namespace Belvedere\FormMaker\Listeners;
 
-use Chess\FormMaker\Services\ValidatorService;
+use Belvedere\FormMaker\Services\ValidatorService;
 use Illuminate\Database\Eloquent\Model;
 
 class ValidateProperties
@@ -17,7 +17,7 @@ class ValidateProperties
     /**
      * The validator service class.
      *
-     * @var \Chess\FormMaker\Services\ValidatorService $validator
+     * @var \Belvedere\FormMaker\Services\ValidatorService $validator
      */
     protected $validator;
 

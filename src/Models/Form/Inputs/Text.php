@@ -1,9 +1,9 @@
 <?php
 
-namespace Chess\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Form\Inputs;
 
-use Chess\FormMaker\Scopes\InputScope;
-use Chess\FormMaker\Traits\Properties\{
+use Belvedere\FormMaker\Scopes\InputScope;
+use Belvedere\FormMaker\Traits\Properties\{
     HasAutocomplete,
     HasAutofocus,
     HasMinMaxLength,

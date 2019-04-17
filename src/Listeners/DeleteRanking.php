@@ -1,6 +1,6 @@
 <?php
 
-namespace Chess\FormMaker\Listeners;
+namespace Belvedere\FormMaker\Listeners;
 
 use Illuminate\Database\Eloquent\Model;
 

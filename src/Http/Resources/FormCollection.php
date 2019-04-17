@@ -1,6 +1,6 @@
 <?php
 
-namespace Chess\FormMaker\Http\Resources;
+namespace Belvedere\FormMaker\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 

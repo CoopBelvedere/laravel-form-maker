@@ -1,9 +1,9 @@
 <?php
 
-namespace Chess\FormMaker\Traits;
+namespace Belvedere\FormMaker\Traits;
 
-use Chess\FormMaker\Listeners\DeleteInputs;
-use Chess\FormMaker\Models\Form\Inputs\Input;
+use Belvedere\FormMaker\Listeners\DeleteInputs;
+use Belvedere\FormMaker\Models\Form\Inputs\Input;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
@@ -173,7 +173,7 @@ trait HasInputs
      */
     protected function getInputPath(string $input): string
     {
-        $className = 'Chess\\FormMaker\\Models\\Form\\Inputs\\' . ucfirst($input);
+        $className = 'Belvedere\\FormMaker\\Models\\Form\\Inputs\\' . ucfirst($input);
 
         if (class_exists($className)) {
             return $className;

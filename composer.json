@@ -1,5 +1,5 @@
 {
-    "name": "chess/laravel-form-maker",
+    "name": "coopbelvedere/laravel-form-maker",
     "description": "Simple form maker module for Laravel",
     "keywords": ["laravel", "form maker", "form builder", "form generator"],
     "type": "library",

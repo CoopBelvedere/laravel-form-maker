@@ -1,6 +1,6 @@
 <?php
 
-namespace Chess\FormMaker\Traits;
+namespace Belvedere\FormMaker\Traits;
 
 trait InputRules
 {

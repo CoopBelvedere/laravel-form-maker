@@ -1,6 +1,6 @@
 <?php
 
-namespace Chess\FormMaker\Models;
+namespace Belvedere\FormMaker\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 

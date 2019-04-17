@@ -1,10 +1,10 @@
 <?php
 
-namespace Chess\FormMaker\Models\Form;
+namespace Belvedere\FormMaker\Models\Form;
 
-use Chess\FormMaker\Http\Resources\FormResource;
-use Chess\FormMaker\Listeners\ValidateProperties;
-use Chess\FormMaker\Traits\{
+use Belvedere\FormMaker\Http\Resources\FormResource;
+use Belvedere\FormMaker\Listeners\ValidateProperties;
+use Belvedere\FormMaker\Traits\{
     HasInputs,
     Properties\FormHtmlAttributes,
     Properties\HasAutocomplete
@@ -85,7 +85,7 @@ class Form extends Model
     /**
      * Serialise the form to an api friendly format.
      *
-     * @return \Chess\FormMaker\Http\Resources\FormResource
+     * @return \Belvedere\FormMaker\Http\Resources\FormResource
      */
     public function toApi(): FormResource
     {
