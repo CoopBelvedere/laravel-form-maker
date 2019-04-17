@@ -25,7 +25,7 @@ class FormResource extends JsonResource
                 'inputs' => $inputs,
             ]),
             $this->mergeWhen($this->html_attributes, [
-                'properties' => $this->html_attributes,
+                'attributes' => $this->html_attributes,
             ]),
             'title' => $this->title,
             'created_at' => $this->created_at,
