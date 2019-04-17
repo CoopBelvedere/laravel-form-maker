@@ -49,7 +49,7 @@ class Select extends Input
         foreach ($options as $optionValues)
         {
             $this->add('option')
-                ->withHtmlProperties($optionValues)
+                ->withHtmlAttributes($optionValues)
                 ->save();
         }
 
