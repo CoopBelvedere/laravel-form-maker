@@ -42,7 +42,7 @@ abstract class Input extends Model
      * @var array
      */
     protected $casts = [
-        'html_properties' => 'array',
+        'html_attributes' => 'array',
         'rules' => 'array',
     ];
 
@@ -60,13 +60,13 @@ abstract class Input extends Model
     /**
      * Mass removal of backend rules from an input.
      *
-     * @param array $properties
+     * @param array $rules
      * @return self
      */
-    public function removeRules(array $properties): self
+    public function removeRules(array $rules): self
     {
-        foreach ($properties as $property) {
-            $this->assignToInput('properties', $property, null);
+        foreach ($rules as $rule) {
+            $this->assignToInput('rule', $rule, null);
         }
         return $this;
     }
@@ -106,7 +106,7 @@ abstract class Input extends Model
     public function withRules(array $rules): self
     {
         foreach ($rules as $name => $arguments) {
-            $this->assignToInput('rules', $name, $arguments);
+            $this->assignToInput('rule', $name, $arguments);
         }
         return $this;
     }

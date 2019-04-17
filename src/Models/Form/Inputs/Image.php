@@ -30,9 +30,9 @@ class Image extends Input
      * @param string $alt
      * @return self
      */
-    public function propertyAlt(?string $alt): self
+    public function htmlAlt(?string $alt): self
     {
-        $this->html_properties = ['alt' => $alt];
+        $this->html_attributes = ['alt' => $alt];
 
         return $this;
     }
@@ -43,9 +43,9 @@ class Image extends Input
      * @param int $height
      * @return self
      */
-    public function propertyHeight(?int $height = 0): self
+    public function htmlHeight(?int $height = 0): self
     {
-        $this->html_properties = ['height' => $height];
+        $this->html_attributes = ['height' => $height];
 
         return $this;
     }
@@ -56,9 +56,9 @@ class Image extends Input
      * @param string $src
      * @return self
      */
-    public function propertySrc(?string $src): self
+    public function htmlSrc(?string $src): self
     {
-        $this->html_properties = ['src' => $src];
+        $this->html_attributes = ['src' => $src];
 
         return $this;
     }
@@ -69,9 +69,9 @@ class Image extends Input
      * @param int $width
      * @return self
      */
-    public function propertyWidth(?int $width = 0): self
+    public function htmlWidth(?int $width = 0): self
     {
-        $this->html_properties = ['width' => $width];
+        $this->html_attributes = ['width' => $width];
 
         return $this;
     }

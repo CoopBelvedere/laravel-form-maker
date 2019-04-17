@@ -10,9 +10,9 @@ trait HasAutofocus
      * @param string $autofocus
      * @return self
      */
-    public function propertyAutofocus(?string $autofocus = 'autofocus'): self
+    public function htmlAutofocus(?string $autofocus = 'autofocus'): self
     {
-        $this->html_properties = ['autofocus' => $autofocus];
+        $this->html_attributes = ['autofocus' => $autofocus];
 
         return $this;
     }

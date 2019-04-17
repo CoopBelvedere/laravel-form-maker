@@ -38,7 +38,7 @@ trait HasInputs
         $input = new $inputPath;
 
         if ($name) {
-            $input->withHtmlProperties(['name' => $name]);
+            $input->withHtmlAttributes(['name' => $name]);
         }
 
         $this->inputsBuilder($type)->save($input);
@@ -161,7 +161,7 @@ trait HasInputs
     public function getInput(string $name): ?Input
     {
         return $this->inputs()
-            ->firstWhere('html_properties.name', $name);
+            ->firstWhere('html_attributes.name', $name);
     }
 
     /**
@@ -224,7 +224,7 @@ trait HasInputs
     protected function setInputUsability(?string $disabled = null): void
     {
         foreach ($this->inputs() as $input) {
-            $input->withHtmlProperties(['disabled' => $disabled])->save();
+            $input->withHtmlAttributes(['disabled' => $disabled])->save();
         }
     }
 }

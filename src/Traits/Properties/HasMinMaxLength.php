@@ -10,9 +10,9 @@ trait HasMinMaxLength
      * @param int $maxlength
      * @return self
      */
-    public function propertyMaxlength(?int $maxlength): self
+    public function htmlMaxlength(?int $maxlength): self
     {
-        $this->html_properties = ['maxlength' => $maxlength];
+        $this->html_attributes = ['maxlength' => $maxlength];
 
         return $this;
     }
@@ -23,9 +23,9 @@ trait HasMinMaxLength
      * @param int $minlength
      * @return self
      */
-    public function propertyMinlength(?int $minlength): self
+    public function htmlMinlength(?int $minlength): self
     {
-        $this->html_properties = ['minlength' => $minlength];
+        $this->html_attributes = ['minlength' => $minlength];
 
         return $this;
     }

@@ -33,9 +33,9 @@ class File extends Input
      * @param null|string $accepted
      * @return self
      */
-    public function propertyAccept(?string $accepted): self
+    public function htmlAccept(?string $accepted): self
     {
-        $this->html_properties = ['accept' => $accepted];
+        $this->html_attributes = ['accept' => $accepted];
 
         return $this;
     }
@@ -47,9 +47,9 @@ class File extends Input
      * @param string $capture
      * @return self
      */
-    public function propertyCapture(?string $capture = 'capture'): self
+    public function htmlCapture(?string $capture = 'capture'): self
     {
-        $this->html_properties = ['capture' => $capture];
+        $this->html_attributes = ['capture' => $capture];
 
         return $this;
     }

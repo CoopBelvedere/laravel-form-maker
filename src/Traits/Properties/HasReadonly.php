@@ -10,9 +10,9 @@ trait HasReadonly
      * @param string $readonly
      * @return self
      */
-    public function propertyReadonly(?string $readonly = 'readonly'): self
+    public function htmlReadonly(?string $readonly = 'readonly'): self
     {
-        $this->html_properties = ['readonly' => $readonly];
+        $this->html_attributes = ['readonly' => $readonly];
 
         return $this;
     }

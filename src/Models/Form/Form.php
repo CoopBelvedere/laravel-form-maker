@@ -6,13 +6,13 @@ use Chess\FormMaker\Http\Resources\FormResource;
 use Chess\FormMaker\Listeners\ValidateProperties;
 use Chess\FormMaker\Traits\{
     HasInputs,
-    Properties\FormProperties,
+    Properties\FormHtmlAttributes,
     Properties\HasAutocomplete
 };
 
 class Form extends Model
 {
-    use FormProperties, HasAutocomplete, HasInputs;
+    use FormHtmlAttributes, HasAutocomplete, HasInputs;
 
     /**
      * The table associated with the model.
@@ -48,7 +48,7 @@ class Form extends Model
      */
     public function action(string $action): self
     {
-        $this->html_properties = ['action' => $action];
+        $this->html_attributes = ['action' => $action];
 
         return $this;
     }
@@ -61,7 +61,7 @@ class Form extends Model
      */
     public function method(string $method): self
     {
-        $this->html_properties = ['method' => $method];
+        $this->html_attributes = ['method' => $method];
 
         return $this;
     }
@@ -76,7 +76,7 @@ class Form extends Model
     {
         return $this->inputs()->mapWithKeys(function ($input) {
             if ($input->rules) {
-                return [$input->html_properties['name'] => implode('|', $input->rules)];
+                return [$input->html_attributes['name'] => implode('|', $input->rules)];
             }
             return [];
         })->all();

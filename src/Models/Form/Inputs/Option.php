@@ -41,9 +41,9 @@ class Option extends Input
      * @param string $selected
      * @return self
      */
-    public function propertySelected(?string $selected = 'selected'): self
+    public function htmlSelected(?string $selected = 'selected'): self
     {
-        $this->html_properties = ['selected' => $selected];
+        $this->html_attributes = ['selected' => $selected];
 
         return $this;
     }

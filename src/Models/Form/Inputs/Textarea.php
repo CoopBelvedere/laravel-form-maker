@@ -35,9 +35,9 @@ class Textarea extends Input
      * @param int $cols
      * @return self
      */
-    public function propertyCols(?int $cols = 0): self
+    public function htmlCols(?int $cols = 0): self
     {
-        $this->html_properties = ['cols' => $cols];
+        $this->html_attributes = ['cols' => $cols];
 
         return $this;
     }
@@ -48,9 +48,9 @@ class Textarea extends Input
      * @param int $rows
      * @return self
      */
-    public function propertyRows(?int $rows = 0): self
+    public function htmlRows(?int $rows = 0): self
     {
-        $this->html_properties = ['rows' => $rows];
+        $this->html_attributes = ['rows' => $rows];
 
         return $this;
     }

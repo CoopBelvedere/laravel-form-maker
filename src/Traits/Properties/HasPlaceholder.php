@@ -11,9 +11,9 @@ trait HasPlaceholder
      * @param string $placeholder
      * @return self
      */
-    public function propertyPlaceholder(?string $placeholder): self
+    public function htmlPlaceholder(?string $placeholder): self
     {
-        $this->html_properties = ['placeholder' => $placeholder];
+        $this->html_attributes = ['placeholder' => $placeholder];
 
         return $this;
     }

@@ -11,9 +11,9 @@ trait HasSize
      * @param int $size
      * @return self
      */
-    public function propertySize(?int $size = 20): self
+    public function htmlSize(?int $size = 20): self
     {
-        $this->html_properties = ['size' => $size];
+        $this->html_attributes = ['size' => $size];
 
         return $this;
     }

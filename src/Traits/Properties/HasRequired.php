@@ -10,9 +10,9 @@ trait HasRequired
      * @param string $required
      * @return self
      */
-    public function propertyRequired(?string $required = 'required'): self
+    public function htmlRequired(?string $required = 'required'): self
     {
-        $this->html_properties = ['required' => $required];
+        $this->html_attributes = ['required' => $required];
 
         return $this;
     }

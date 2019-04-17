@@ -36,7 +36,7 @@ class AssignProperties
         $this->model->type = $this->model->getClassName();
 
         foreach ($this->model->assignedProperties as $property) {
-            if (!isset($this->model->html_properties[$property])) {
+            if (!isset($this->model->html_attributes[$property])) {
                 $this->setProperty($property);
             }
         }
@@ -50,6 +50,6 @@ class AssignProperties
      */
     protected function setProperty(string $property): void
     {
-        $this->model->html_properties = [$property => uniqid(sprintf('%s_', $this->model->type))];
+        $this->model->html_attributes = [$property => uniqid(sprintf('%s_', $this->model->type))];
     }
 }

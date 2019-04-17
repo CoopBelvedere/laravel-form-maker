@@ -2,7 +2,7 @@
 
 namespace Chess\FormMaker\Traits\Properties;
 
-trait FormProperties
+trait FormHtmlAttributes
 {
     /**
      * Specifies the charset used in the submitted form.
@@ -11,9 +11,9 @@ trait FormProperties
      * @param string $charset
      * @return self
      */
-    public function propertyCharset(?string $charset): self
+    public function htmlCharset(?string $charset): self
     {
-        $this->html_properties = ['charset' => $charset];
+        $this->html_attributes = ['charset' => $charset];
 
         return $this;
     }
@@ -25,9 +25,9 @@ trait FormProperties
      * @param string $enctype
      * @return self
      */
-    public function propertyEnctype(?string $enctype): self
+    public function htmlEnctype(?string $enctype): self
     {
-        $this->html_properties = ['enctype' => $enctype];
+        $this->html_attributes = ['enctype' => $enctype];
 
         return $this;
     }
@@ -38,9 +38,9 @@ trait FormProperties
      * @param string $novalidate
      * @return self
      */
-    public function propertyNovalidate(?string $novalidate = 'novalidate'): self
+    public function htmlNovalidate(?string $novalidate = 'novalidate'): self
     {
-        $this->html_properties = ['novalidate' => $novalidate];
+        $this->html_attributes = ['novalidate' => $novalidate];
 
         return $this;
     }
@@ -52,9 +52,9 @@ trait FormProperties
      * @param string $blank
      * @return self
      */
-    public function propertyResultsInNewWindow(?string $blank = '_blank'): self
+    public function htmlResultsInNewWindow(?string $blank = '_blank'): self
     {
-        $this->html_properties = ['target' => $blank];
+        $this->html_attributes = ['target' => $blank];
 
         return $this;
     }

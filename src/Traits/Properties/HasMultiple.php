@@ -10,9 +10,9 @@ trait HasMultiple
      * @param string $multiple
      * @return self
      */
-    public function propertyMultiple(?string $multiple = 'multiple'): self
+    public function htmlMultiple(?string $multiple = 'multiple'): self
     {
-        $this->html_properties = ['multiple' => $multiple];
+        $this->html_attributes = ['multiple' => $multiple];
 
         return $this;
     }

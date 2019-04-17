@@ -21,12 +21,12 @@ class ValidatorService
      * @var array
      */
     protected $rules = [
-        'html_properties.autocomplete' => 'string|in:on,off,name,email,username,new-password,current-password,organization-title,organization,street-address,address-level1,address-level2,address-level3,address-level4,country,country-name,postal-code,cc-name,cc-given-name,cc-additional-name,cc-family-name,cc-number,cc-exp,cc-exp-month,cc-exp-year,cc-csc,cc-type,transaction-currency,transaction-amount,language,bday,bday-day,bday-month,bday-year,sex,tel,tel-extension,email,impp,url,photo',
-        'html_properties.cols' => 'integer|min:0',
-        'html_properties.enctype' => 'string|in:application/x-www-form-urlencoded,multipart/form-data,text/plain',
-        'html_properties.height' => 'integer|min:0',
-        'html_properties.rows' => 'integer|min:0',
-        'html_properties.width' => 'integer|min:0',
+        'html_attributes.autocomplete' => 'string|in:on,off,name,email,username,new-password,current-password,organization-title,organization,street-address,address-level1,address-level2,address-level3,address-level4,country,country-name,postal-code,cc-name,cc-given-name,cc-additional-name,cc-family-name,cc-number,cc-exp,cc-exp-month,cc-exp-year,cc-csc,cc-type,transaction-currency,transaction-amount,language,bday,bday-day,bday-month,bday-year,sex,tel,tel-extension,email,impp,url,photo',
+        'html_attributes.cols' => 'integer|min:0',
+        'html_attributes.enctype' => 'string|in:application/x-www-form-urlencoded,multipart/form-data,text/plain',
+        'html_attributes.height' => 'integer|min:0',
+        'html_attributes.rows' => 'integer|min:0',
+        'html_attributes.width' => 'integer|min:0',
     ];
 
     /**
@@ -55,7 +55,7 @@ class ValidatorService
     {
         $attributes = collect($this->model->getAttributes());
 
-        $attributes['html_properties'] = $this->model->html_properties ?? [];
+        $attributes['html_attributes'] = $this->model->html_attributes ?? [];
 
         return $attributes;
     }

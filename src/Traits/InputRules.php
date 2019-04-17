@@ -963,8 +963,8 @@ trait InputRules
     /**
      * The field under validation must be unique in a given database table.
      *
-     * @param null|string ...$values
-     * @return self
+     * @param string|null ...$values
+     * @return InputRules
      */
     public function ruleUnique(?string ...$values): self
     {

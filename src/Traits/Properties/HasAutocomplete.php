@@ -11,9 +11,9 @@ trait HasAutocomplete
      * @param string $autocomplete
      * @return self
      */
-    public function propertyAutocomplete(?string $autocomplete = 'on'): self
+    public function htmlAutocomplete(?string $autocomplete = 'on'): self
     {
-        $this->html_properties = ['autocomplete' => $autocomplete];
+        $this->html_attributes = ['autocomplete' => $autocomplete];
 
         return $this;
     }

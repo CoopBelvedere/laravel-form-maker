@@ -10,9 +10,9 @@ trait InputProperties
      * @param string $disabled
      * @return self
      */
-    public function propertyDisabled(?string $disabled = 'disabled'): self
+    public function htmlDisabled(?string $disabled = 'disabled'): self
     {
-        $this->html_properties = ['disabled' => $disabled];
+        $this->html_attributes = ['disabled' => $disabled];
 
         return $this;
     }
@@ -23,9 +23,9 @@ trait InputProperties
      * @param string $title
      * @return self
      */
-    public function propertyTitle(?string $title): self
+    public function htmlTitle(?string $title): self
     {
-        $this->html_properties = ['title' => $title];
+        $this->html_attributes = ['title' => $title];
 
         return $this;
     }
@@ -36,9 +36,9 @@ trait InputProperties
      * @param string $value
      * @return self
      */
-    public function propertyValue(?string $value): self
+    public function htmlValue(?string $value): self
     {
-        $this->html_properties = ['value' => $value];
+        $this->html_attributes = ['value' => $value];
 
         return $this;
     }

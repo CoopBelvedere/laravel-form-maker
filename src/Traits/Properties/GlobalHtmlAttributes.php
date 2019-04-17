@@ -2,7 +2,7 @@
 
 namespace Chess\FormMaker\Traits\Properties;
 
-trait GlobalProperties
+trait GlobalHtmlAttributes
 {
     /**
      * Specifies a class attribute for the html element.
@@ -10,9 +10,9 @@ trait GlobalProperties
      * @param string $class
      * @return self
      */
-    public function propertyClass(?string $class): self
+    public function htmlClass(?string $class): self
     {
-        $this->html_properties = ['class' => $class];
+        $this->html_attributes = ['class' => $class];
 
         return $this;
     }
@@ -24,9 +24,9 @@ trait GlobalProperties
      * @param mixed $value
      * @return self
      */
-    public function propertyData(string $data, $value = null): self
+    public function htmlData(string $data, $value = null): self
     {
-        $this->html_properties = [$data => $value];
+        $this->html_attributes = [$data => $value];
 
         return $this;
     }
@@ -37,9 +37,9 @@ trait GlobalProperties
      * @param mixed $id
      * @return self
      */
-    public function propertyId($id = null): self
+    public function htmlId($id = null): self
     {
-        $this->html_properties = ['id' => $id];
+        $this->html_attributes = ['id' => $id];
 
         return $this;
     }
@@ -50,9 +50,9 @@ trait GlobalProperties
      * @param string $name
      * @return self
      */
-    public function propertyName(?string $name): self
+    public function htmlName(?string $name): self
     {
-        $this->html_properties = ['name' => $name];
+        $this->html_attributes = ['name' => $name];
 
         return $this;
     }
@@ -63,9 +63,9 @@ trait GlobalProperties
      * @param string $role
      * @return self
      */
-    public function propertyRole(?string $role): self
+    public function htmlRole(?string $role): self
     {
-        $this->html_properties = ['role' => $role];
+        $this->html_attributes = ['role' => $role];
 
         return $this;
     }

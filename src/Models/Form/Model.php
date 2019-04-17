@@ -2,12 +2,12 @@
 
 namespace Chess\FormMaker\Models\Form;
 
-use Chess\FormMaker\Traits\Properties\GlobalProperties;
+use Chess\FormMaker\Traits\Properties\GlobalHtmlAttributes;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 abstract class Model extends Eloquent
 {
-    use GlobalProperties;
+    use GlobalHtmlAttributes;
 
     /**
      * The default properties automatically assigned on creation.
@@ -29,7 +29,7 @@ abstract class Model extends Eloquent
      * @var array
      */
     protected $casts = [
-        'html_properties' => 'array',
+        'html_attributes' => 'array',
     ];
 
     /**
@@ -49,7 +49,7 @@ abstract class Model extends Eloquent
      */
     protected function assignToInput(string $type, string $assignment, $arguments): void
     {
-        $method = camel_case(sprintf('%s_%s', str_singular($type), $assignment));
+        $method = sprintf('%s%s', $type, ucfirst($assignment));
 
         if (method_exists($this, $method)) {
             if (is_null($arguments)) {
@@ -63,33 +63,33 @@ abstract class Model extends Eloquent
     }
 
     /**
-     * Mass removal of html properties to a model.
+     * Mass removal of html attributes to a model.
      *
-     * @param array $properties
+     * @param array $attributes
      * @return self
      */
-    public function removeHtmlProperties(array $properties): self
+    public function removeHtmlAttributes(array $attributes): self
     {
-        foreach ($properties as $property) {
-            $this->assignToInput('properties', $property, null);
+        foreach ($attributes as $attribute) {
+            $this->assignToInput('html', $attribute, null);
         }
         return $this;
     }
 
     /**
-     * Set the model html properties.
+     * Set the model html attributes.
      *
-     * @param  array $properties
+     * @param  array $attributes
      * @return void
      */
-    public function setHtmlPropertiesAttribute(array $properties): void
+    public function setHtmlAttributesAttribute(array $attributes): void
     {
-        if (isset($this->attributes['html_properties'])) {
-            $properties = $this->removeNullValues(
-                array_merge($this->html_properties, $properties)
+        if (isset($this->attributes['html_attributes'])) {
+            $attributes = $this->removeNullValues(
+                array_merge($this->html_attributes, $attributes)
             );
         }
-        $this->attributes['html_properties'] = json_encode($properties);
+        $this->attributes['html_attributes'] = json_encode($attributes);
     }
 
     /**
@@ -100,15 +100,15 @@ abstract class Model extends Eloquent
     abstract protected function toApi();
 
     /**
-     * Mass assign html properties to a model.
+     * Mass assign html attributes to a model.
      *
-     * @param array $properties
+     * @param array $attributes
      * @return self
      */
-    public function withHtmlProperties(array $properties): self
+    public function withHtmlAttributes(array $attributes): self
     {
-        foreach ($properties as $name => $arguments) {
-            $this->assignToInput('properties', $name, $arguments);
+        foreach ($attributes as $name => $arguments) {
+            $this->assignToInput('html', $name, $arguments);
         }
         return $this;
     }

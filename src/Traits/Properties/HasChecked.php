@@ -10,9 +10,9 @@ trait HasChecked
      * @param string $checked
      * @return self
      */
-    public function propertyChecked(?string $checked = 'checked'): self
+    public function htmlChecked(?string $checked = 'checked'): self
     {
-        $this->html_properties = ['checked' => $checked];
+        $this->html_attributes = ['checked' => $checked];
 
         return $this;
     }

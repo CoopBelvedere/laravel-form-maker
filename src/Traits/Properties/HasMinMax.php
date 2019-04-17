@@ -10,9 +10,9 @@ trait HasMinMax
      * @param mixed $max
      * @return self
      */
-    public function propertyMax($max = null): self
+    public function htmlMax($max = null): self
     {
-        $this->html_properties = ['max' => $max];
+        $this->html_attributes = ['max' => $max];
 
         return $this;
     }
@@ -23,9 +23,9 @@ trait HasMinMax
      * @param mixed $min
      * @return self
      */
-    public function propertyMin($min = null): self
+    public function htmlMin($min = null): self
     {
-        $this->html_properties = ['min' => $min];
+        $this->html_attributes = ['min' => $min];
 
         return $this;
     }
@@ -40,7 +40,7 @@ trait HasMinMax
      */
     public function htmlStep($step = null): self
     {
-        $this->html_properties = ['step' => $step];
+        $this->html_attributes = ['step' => $step];
 
         return $this;
     }

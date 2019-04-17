@@ -10,9 +10,9 @@ trait HasPattern
      * @param string $pattern
      * @return self
      */
-    public function propertyPattern(?string $pattern): self
+    public function htmlPattern(?string $pattern): self
     {
-        $this->html_properties = ['pattern' => $pattern];
+        $this->html_attributes = ['pattern' => $pattern];
 
         return $this;
     }

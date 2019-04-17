@@ -11,9 +11,9 @@ trait HasSpellcheck
      * @param bool $spellcheck
      * @return self
      */
-    public function propertySpellcheck(?bool $spellcheck = true): self
+    public function htmlSpellcheck(?bool $spellcheck = true): self
     {
-        $this->html_properties = ['spellcheck' => $spellcheck];
+        $this->html_attributes = ['spellcheck' => $spellcheck];
 
         return $this;
     }
