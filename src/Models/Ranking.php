@@ -292,29 +292,6 @@ class Ranking extends Eloquent
     }
 
     /**
-     * Move the element to a specific rank.
-     * Return the new rank of the element.
-     *
-     * @param  int $rank
-     * @return int
-     * @throws \Exception
-     */
-    public function toRank(int $rank): int
-    {
-        if ($rank < 1) {
-            $rank = 1;
-        }
-
-        if ($rank > count($this->ranks)) {
-            $rank = count($this->ranks);
-        }
-
-        $this->moveTo($rank - 1);
-
-        return $rank;
-    }
-
-    /**
      * Toggle two elements in the ranking.
      * Return the new rank of the first element.
      *
@@ -357,6 +334,29 @@ class Ranking extends Eloquent
         }
 
         return $this->moveTo($index);
+    }
+
+    /**
+     * Move the element to a specific rank.
+     * Return the new rank of the element.
+     *
+     * @param  int $rank
+     * @return int
+     * @throws \Exception
+     */
+    public function toRank(int $rank): int
+    {
+        if ($rank < 1) {
+            $rank = 1;
+        }
+
+        if ($rank > count($this->ranks)) {
+            $rank = count($this->ranks);
+        }
+
+        $this->moveTo($rank - 1);
+
+        return $rank;
     }
 
     /**

@@ -4,13 +4,13 @@
     "keywords": ["laravel", "form maker", "form builder", "form generator"],
     "type": "library",
     "support": {
-        "issues": "https://github.com/pascalboucher/laravel-form-maker/issues",
-        "source": "https://github.com/pascalboucher/laravel-form-maker"
+        "issues": "https://github.com/CoopBelvedere/laravel-form-maker/issues",
+        "source": "https://github.com/CoopBelvedere/laravel-form-maker"
     },
     "require": {
         "php": ">=7.2.0",
         "ext-fileinfo": "*",
-        "laravel/framework": "5.5.*|5.6.*|5.7.*"
+        "laravel/framework": "5.5.*|5.6.*|5.7.*|5.8.*"
     },
     "license": "MIT",
     "authors": [
@@ -21,13 +21,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "Chess\\FormMaker\\": "src/"
+            "Belvedere\\FormMaker\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Chess\\FormMaker\\FormMakerServiceProvider"
+                "Belvedere\\FormMaker\\FormMakerServiceProvider"
             ]
         }
     }

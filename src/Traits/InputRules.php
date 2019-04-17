@@ -308,7 +308,7 @@ trait InputRules
     /**
      * The field under validation must have a length between the given min and max.
      *
-     * @param int $interval
+     * @param int|null ...$interval
      * @return self
      */
     public function ruleDigitsBetween(?int ...$interval): self
