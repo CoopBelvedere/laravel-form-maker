@@ -4,15 +4,7 @@ Simple package to generate laravel form easily.
 
 ## Installation
 
-Requires php >=7.2.0 and laravel 5.5+
-
-```
-composer require chess/laravel-form-maker
-
-php artisan vendor:publish --provider="Chess\FormMaker\FormMakerServiceProvider"
-```
-
-This is all there is to do.
+To do.
 
 ## Documentation
 
