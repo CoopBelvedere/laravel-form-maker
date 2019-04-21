@@ -83,7 +83,7 @@ class Form extends Model
     }
 
     /**
-     * Serialise the form to an api friendly format.
+     * Transform the form to JSON.
      *
      * @return \Belvedere\FormMaker\Http\Resources\FormResource
      */

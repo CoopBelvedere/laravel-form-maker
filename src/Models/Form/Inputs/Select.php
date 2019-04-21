@@ -41,7 +41,7 @@ class Select extends Input
      * Add options for the select input.
      *
      * @param array ...$options
-     * @return Select
+     * @return self
      * @throws \Exception
      */
     public function withOptions(array ...$options): self

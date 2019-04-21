@@ -88,7 +88,7 @@ abstract class Input extends Model
     }
 
     /**
-     * Serialise the input to an api friendly format.
+     * Transform the input to JSON.
      *
      * @return \Belvedere\FormMaker\Http\Resources\InputResource
      */

@@ -28,10 +28,10 @@ trait HasInputs
      *
      * @param string $type
      * @param string|null $name
-     * @return mixed
+     * @return Input
      * @throws \Exception
      */
-    public function add(string $type, ?string $name = null)
+    public function add(string $type, ?string $name = null): Input
     {
         $inputPath = $this->getInputPath($type);
 
@@ -51,13 +51,13 @@ trait HasInputs
     /**
      * Add an input after an other input.
      *
-     * @param string $beforeInputName
+     * @param string $afterInputName
      * @param string $type
      * @param string|null $name
-     * @return mixed
+     * @return Input
      * @throws \Exception
      */
-    public function addAfter(string $afterInputName, string $type, ?string $name = null)
+    public function addAfter(string $afterInputName, string $type, ?string $name = null): Input
     {
         $input = $this->add($type, $name);
 
@@ -76,10 +76,10 @@ trait HasInputs
      * @param int $rank
      * @param string $type
      * @param string|null $name
-     * @return mixed
+     * @return Input
      * @throws \Exception
      */
-    public function addAtRank(int $rank, string $type, ?string $name = null)
+    public function addAtRank(int $rank, string $type, ?string $name = null): Input
     {
         $input = $this->add($type, $name);
 
@@ -94,10 +94,10 @@ trait HasInputs
      * @param string $beforeInputName
      * @param string $type
      * @param string|null $name
-     * @return mixed
+     * @return Input
      * @throws \Exception
      */
-    public function addBefore(string $beforeInputName, string $type, ?string $name = null)
+    public function addBefore(string $beforeInputName, string $type, ?string $name = null): Input
     {
         $input = $this->add($type, $name);
 
@@ -183,7 +183,7 @@ trait HasInputs
     }
 
     /**
-     * Get the model inputs with their rank.
+     * Get the model inputs sorted by their position in the ranking.
      *
      * @param string $type
      * @return \Illuminate\Support\Collection

@@ -13,7 +13,7 @@ trait FormHtmlAttributes
      */
     public function htmlCharset(?string $charset): self
     {
-        $this->html_attributes = ['charset' => $charset];
+        $this->html_attributes = ['accept-charset' => $charset];
 
         return $this;
     }
