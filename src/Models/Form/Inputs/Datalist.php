@@ -13,11 +13,11 @@ class Datalist extends Input
     use HasReadonly, HasRequired;
 
     /**
-     * The properties automatically assigned on creation.
+     * The attributes automatically assigned on creation.
      *
      * @var array
      */
-    public $assignedProperties = [
+    public $assignedAttributes = [
         'id'
     ];
 

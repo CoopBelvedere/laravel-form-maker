@@ -4,10 +4,10 @@ namespace Belvedere\FormMaker\Listeners;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AssignProperties
+class AssignAttributes
 {
     /**
-     * The model with assigned properties.
+     * The model with assigned attributes.
      *
      * @var \Illuminate\Database\Eloquent\Model $model
      */
@@ -35,21 +35,21 @@ class AssignProperties
     {
         $this->model->type = $this->model->getClassName();
 
-        foreach ($this->model->assignedProperties as $property) {
-            if (!isset($this->model->html_attributes[$property])) {
-                $this->setProperty($property);
+        foreach ($this->model->assignedAttributes as $attribute) {
+            if (!isset($this->model->html_attributes[$attribute])) {
+                $this->setAttribute($attribute);
             }
         }
     }
 
     /**
-     * Set the assigned property.
+     * Set the assigned attribute.
      *
-     * @param string $property
+     * @param string $attribute
      * @return void
      */
-    protected function setProperty(string $property): void
+    protected function setAttribute(string $attribute): void
     {
-        $this->model->html_attributes = [$property => uniqid(sprintf('%s_', $this->model->type))];
+        $this->model->html_attributes = [$attribute => uniqid(sprintf('%s_', $this->model->type))];
     }
 }

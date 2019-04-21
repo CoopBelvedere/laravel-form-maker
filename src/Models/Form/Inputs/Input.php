@@ -4,7 +4,7 @@ namespace Belvedere\FormMaker\Models\Form\Inputs;
 
 use Belvedere\FormMaker\Http\Resources\InputResource;
 use Belvedere\FormMaker\Listeners\{
-    AssignProperties,
+    AssignAttributes,
     RemoveFromRanking,
     ValidateProperties
 };
@@ -27,12 +27,11 @@ abstract class Input extends Model
     protected $table = 'inputs';
 
     /**
-     * The default properties automatically assigned on creation.
+     * The default attributes automatically assigned on creation.
      *
      * @var array
      */
-    public $assignedProperties = [
-        'id',
+    public $assignedAttributes = [
         'name'
     ];
 
@@ -52,7 +51,7 @@ abstract class Input extends Model
      * @var array
      */
     protected $dispatchesEvents = [
-        'creating' => AssignProperties::class,
+        'creating' => AssignAttributes::class,
         'deleted' => RemoveFromRanking::class,
         'updating' => ValidateProperties::class,
     ];

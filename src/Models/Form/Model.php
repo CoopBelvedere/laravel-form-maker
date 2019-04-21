@@ -11,11 +11,11 @@ abstract class Model extends Eloquent
     use GlobalHtmlAttributes;
 
     /**
-     * The default properties automatically assigned on creation.
+     * The default attributes automatically assigned on creation.
      *
      * @var array
      */
-    public $assignedProperties = [];
+    public $assignedAttributes = [];
 
     /**
      * Additional validation to be applied on the model attributes on update.
