@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Form\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
-use Belvedere\FormMaker\Traits\Properties\{
+use Belvedere\FormMaker\Traits\Attributes\{
     HasAutocomplete,
     HasAutofocus,
     HasMinMaxLength,

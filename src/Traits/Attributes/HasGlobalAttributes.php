@@ -1,8 +1,8 @@
 <?php
 
-namespace Belvedere\FormMaker\Traits\Properties;
+namespace Belvedere\FormMaker\Traits\Attributes;
 
-trait GlobalHtmlAttributes
+trait HasGlobalAttributes
 {
     /**
      * Specifies a class attribute for the html element.

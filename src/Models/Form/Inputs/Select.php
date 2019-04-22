@@ -5,11 +5,11 @@ namespace Belvedere\FormMaker\Models\Form\Inputs;
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\{
     HasOptions,
-    Properties\HasAutocomplete,
-    Properties\HasMultiple,
-    Properties\HasReadonly,
-    Properties\HasRequired,
-    Properties\HasSize
+    Attributes\HasAutocomplete,
+    Attributes\HasMultiple,
+    Attributes\HasReadonly,
+    Attributes\HasRequired,
+    Attributes\HasSize
 };
 
 class Select extends Input

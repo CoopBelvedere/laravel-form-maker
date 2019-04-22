@@ -6,13 +6,13 @@ use Belvedere\FormMaker\Http\Resources\FormResource;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
 use Belvedere\FormMaker\Traits\{
     HasInputs,
-    Properties\FormHtmlAttributes,
-    Properties\HasAutocomplete
+    Attributes\HasFormAttributes,
+    Attributes\HasAutocomplete
 };
 
 class Form extends Model
 {
-    use FormHtmlAttributes, HasAutocomplete, HasInputs;
+    use HasFormAttributes, HasAutocomplete, HasInputs;
 
     /**
      * The table associated with the model.

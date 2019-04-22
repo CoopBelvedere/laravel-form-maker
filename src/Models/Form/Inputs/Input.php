@@ -10,14 +10,14 @@ use Belvedere\FormMaker\Listeners\{
 };
 use Belvedere\FormMaker\Models\Form\Model;
 use Belvedere\FormMaker\Traits\{
-    InputRules,
-    Properties\InputProperties
+    HasRules,
+    Attributes\HasInputAttributes
 };
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 abstract class Input extends Model
 {
-    use InputProperties, InputRules;
+    use HasInputAttributes, HasRules;
 
     /**
      * The table associated with the model.

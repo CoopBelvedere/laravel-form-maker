@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Traits;
 
-trait InputRules
+trait HasRules
 {
     /**
      * The field under validation must be yes, on, 1, or true.
@@ -964,7 +964,7 @@ trait InputRules
      * The field under validation must be unique in a given database table.
      *
      * @param string|null ...$values
-     * @return InputRules
+     * @return HasRules
      */
     public function ruleUnique(?string ...$values): self
     {

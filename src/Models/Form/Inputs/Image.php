@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Form\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
-use Belvedere\FormMaker\Traits\Properties\HasReadonly;
+use Belvedere\FormMaker\Traits\Attributes\HasReadonly;
 
 class Image extends Input
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Traits\Properties;
+namespace Belvedere\FormMaker\Traits\Attributes;
 
 trait HasMinMax
 {

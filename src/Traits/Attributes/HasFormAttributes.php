@@ -1,8 +1,8 @@
 <?php
 
-namespace Belvedere\FormMaker\Traits\Properties;
+namespace Belvedere\FormMaker\Traits\Attributes;
 
-trait FormHtmlAttributes
+trait HasFormAttributes
 {
     /**
      * Specifies the charset used in the submitted form.

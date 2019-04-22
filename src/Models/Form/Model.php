@@ -2,13 +2,13 @@
 
 namespace Belvedere\FormMaker\Models\Form;
 
-use Belvedere\FormMaker\Traits\Properties\GlobalHtmlAttributes;
+use Belvedere\FormMaker\Traits\Attributes\HasGlobalAttributes;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Support\Str;
 
 abstract class Model extends Eloquent
 {
-    use GlobalHtmlAttributes;
+    use HasGlobalAttributes;
 
     /**
      * The default attributes automatically assigned on creation.

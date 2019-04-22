@@ -1,8 +1,8 @@
 <?php
 
-namespace Belvedere\FormMaker\Traits\Properties;
+namespace Belvedere\FormMaker\Traits\Attributes;
 
-trait InputProperties
+trait HasInputAttributes
 {
     /**
      * Specifies that the input field is disabled.
