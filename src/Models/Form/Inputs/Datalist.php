@@ -3,14 +3,13 @@
 namespace Belvedere\FormMaker\Models\Form\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
-use Belvedere\FormMaker\Traits\Properties\{
-    HasReadonly,
-    HasRequired
+use Belvedere\FormMaker\Traits\{
+    HasOptions,
 };
 
 class Datalist extends Input
 {
-    use HasReadonly, HasRequired;
+    use HasOptions;
 
     /**
      * The attributes automatically assigned on creation.

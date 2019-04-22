@@ -57,7 +57,7 @@ abstract class Input extends Model
     ];
 
     /**
-     * Mass removal of backend rules from an input.
+     * Mass removal of validation rules from an input.
      *
      * @param array $rules
      * @return self
@@ -97,7 +97,7 @@ abstract class Input extends Model
     }
 
     /**
-     * Mass assign backend rules from an input.
+     * Mass assign validation rules from an input.
      *
      * @param array $rules
      * @return self
