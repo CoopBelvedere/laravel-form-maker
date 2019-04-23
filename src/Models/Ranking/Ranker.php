@@ -1,12 +1,12 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Sorting;
+namespace Belvedere\FormMaker\Models\Ranking;
 
 use Belvedere\FormMaker\Contracts\Ranking\RankingContract;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-class Ranking extends Eloquent implements RankingContract
+class Ranker extends Eloquent implements RankingContract
 {
     /**
      * The table associated with the model.

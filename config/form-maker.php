@@ -11,7 +11,7 @@ return [
      |
      */
 
-    'ranking' => '\Belvedere\FormMaker\Models\Sorting\RankingContract',
+    'ranking' => '\Belvedere\FormMaker\Models\Ranking\Ranker',
 
     'inputs' => [
         'text' => '',

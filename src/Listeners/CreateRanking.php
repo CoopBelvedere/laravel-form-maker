@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Listeners;
 
-use Belvedere\FormMaker\Models\Sorting\RankingContract;
+use Belvedere\FormMaker\Models\Ranking\RankingContract;
 use Illuminate\Database\Eloquent\Model;
 
 class CreateRanking
