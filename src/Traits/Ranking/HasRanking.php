@@ -5,7 +5,6 @@ namespace Belvedere\FormMaker\Traits;
 use Belvedere\FormMaker\Listeners\CreateRanking;
 use Belvedere\FormMaker\Listeners\DeleteRanking;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasRanking
 {
@@ -30,10 +29,10 @@ trait HasRanking
     /**
      * Get the model ranking.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     * @return mixed
      */
-    public function ranking(): MorphOne
+    public function ranking()
     {
-        return $this->morphOne('Belvedere\FormMaker\Models\Ranking', 'rankable');
+        return $this->rankingProvider->getEloquentRelation();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Http\Resources\InputResource;
 use Belvedere\FormMaker\Listeners\{
@@ -8,14 +8,14 @@ use Belvedere\FormMaker\Listeners\{
     RemoveFromRanking,
     ValidateProperties
 };
-use Belvedere\FormMaker\Models\Form\Model;
+use Belvedere\FormMaker\Models\Form\AbstractModel;
 use Belvedere\FormMaker\Traits\{
     HasRules,
     Attributes\HasInputAttributes
 };
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-abstract class Input extends Model
+abstract class AbstractInput extends AbstractModel
 {
     use HasInputAttributes, HasRules;
 

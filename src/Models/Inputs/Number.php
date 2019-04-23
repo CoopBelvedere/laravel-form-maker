@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\Attributes\{
@@ -9,7 +9,7 @@ use Belvedere\FormMaker\Traits\Attributes\{
     HasRequired
 };
 
-class Date extends Input
+class Number extends AbstractInput
 {
     use HasMinMax, HasReadonly, HasRequired;
 
@@ -22,6 +22,6 @@ class Date extends Input
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('date'));
+        static::addGlobalScope(new InputScope('number'));
     }
 }

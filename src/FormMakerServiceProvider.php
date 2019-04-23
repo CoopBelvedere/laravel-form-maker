@@ -16,6 +16,8 @@ class FormMakerServiceProvider extends ServiceProvider
     {
         $this->publishMigration();
 
+        $this->publishConfig();
+
         Resource::withoutWrapping();
     }
 
@@ -30,6 +32,18 @@ class FormMakerServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../database/migrations/create_form_maker_tables.php' => database_path('migrations/' . $timestamp . '_create_form_maker_tables.php'),
-        ], 'migrations');
+        ], 'form-migrations');
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    protected function publishConfig()
+    {
+        $this->publishes([
+            __DIR__.'/../config/chatkit.php' => config_path('chatkit.php'),
+        ]);
     }
 }

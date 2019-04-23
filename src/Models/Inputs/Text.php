@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\Attributes\{
@@ -15,7 +15,7 @@ use Belvedere\FormMaker\Traits\Attributes\{
     HasSpellcheck
 };
 
-class Text extends Input
+class Text extends AbstractInput
 {
     use HasAutocomplete, HasAutofocus, HasMinMaxLength, HasPattern,
         HasPlaceholder, HasReadonly, HasRequired, HasSize, HasSpellcheck;

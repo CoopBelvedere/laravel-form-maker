@@ -24,18 +24,10 @@ class CreateFormMakerTables extends Migration
             $table->json('rules')->nullable();
             $table->timestamps();
         });
-
-        Schema::create('rankings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->morphs('rankable');
-            $table->json('ranks');
-            $table->timestamps();
-        });
     }
 
     public function down()
     {
-        Schema::drop('rankings');
         Schema::drop('inputs');
         Schema::drop('forms');
     }

@@ -1,16 +1,17 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\Attributes\{
-    HasChecked,
+    HasMinMax,
+    HasReadonly,
     HasRequired
 };
 
-class Checkbox extends Input
+class Month extends AbstractInput
 {
-    use HasChecked, HasRequired;
+    use HasMinMax, HasReadonly, HasRequired;
 
     /**
      * Apply the type scope.
@@ -21,6 +22,6 @@ class Checkbox extends Input
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('checkbox'));
+        static::addGlobalScope(new InputScope('month'));
     }
 }

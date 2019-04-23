@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\Attributes\{
@@ -10,14 +10,13 @@ use Belvedere\FormMaker\Traits\Attributes\{
     HasPlaceholder,
     HasReadonly,
     HasRequired,
-    HasSize,
-    HasSpellcheck
+    HasSize
 };
 
-class Search extends Input
+class Url extends AbstractInput
 {
     use HasAutocomplete, HasMinMaxLength, HasPattern, HasPlaceholder,
-        HasReadonly, HasRequired, HasSize, HasSpellcheck;
+        HasReadonly, HasRequired, HasSize;
 
     /**
      * Apply the type scope.
@@ -28,6 +27,6 @@ class Search extends Input
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('search'));
+        static::addGlobalScope(new InputScope('url'));
     }
 }

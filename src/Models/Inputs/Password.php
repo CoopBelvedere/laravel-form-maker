@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\Attributes\{
@@ -13,7 +13,7 @@ use Belvedere\FormMaker\Traits\Attributes\{
     HasSize
 };
 
-class Tel extends Input
+class Password extends AbstractInput
 {
     use HasAutocomplete, HasMinMaxLength, HasPattern, HasPlaceholder,
         HasReadonly, HasRequired, HasSize;
@@ -27,6 +27,6 @@ class Tel extends Input
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('tel'));
+        static::addGlobalScope(new InputScope('password'));
     }
 }

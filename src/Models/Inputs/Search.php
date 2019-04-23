@@ -1,23 +1,23 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\Attributes\{
     HasAutocomplete,
     HasMinMaxLength,
-    HasMultiple,
     HasPattern,
     HasPlaceholder,
     HasReadonly,
     HasRequired,
-    HasSize
+    HasSize,
+    HasSpellcheck
 };
 
-class Email extends Input
+class Search extends AbstractInput
 {
-    use HasAutocomplete, HasMinMaxLength, HasMultiple, HasPattern,
-        HasPlaceholder, HasReadonly, HasRequired, HasSize;
+    use HasAutocomplete, HasMinMaxLength, HasPattern, HasPlaceholder,
+        HasReadonly, HasRequired, HasSize, HasSpellcheck;
 
     /**
      * Apply the type scope.
@@ -28,6 +28,6 @@ class Email extends Input
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('email'));
+        static::addGlobalScope(new InputScope('search'));
     }
 }

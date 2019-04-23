@@ -1,16 +1,17 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\Attributes\{
-    HasChecked,
+    HasAutocomplete,
+    HasMinMax,
     HasRequired
 };
 
-class Radio extends Input
+class Range extends AbstractInput
 {
-    use HasChecked, HasRequired;
+    use HasAutocomplete, HasMinMax, HasRequired;
 
     /**
      * Apply the type scope.
@@ -21,6 +22,6 @@ class Radio extends Input
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('radio'));
+        static::addGlobalScope(new InputScope('range'));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\{
@@ -12,7 +12,7 @@ use Belvedere\FormMaker\Traits\{
     Attributes\HasSize
 };
 
-class Select extends Input
+class Select extends AbstractInput
 {
     use HasAutocomplete, HasMultiple, HasOptions, HasReadonly,
         HasRequired, HasSize;

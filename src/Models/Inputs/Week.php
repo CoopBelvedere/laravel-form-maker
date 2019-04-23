@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\Attributes\{
@@ -9,7 +9,7 @@ use Belvedere\FormMaker\Traits\Attributes\{
     HasRequired
 };
 
-class Week extends Input
+class Week extends AbstractInput
 {
     use HasMinMax, HasReadonly, HasRequired;
 

@@ -1,17 +1,16 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form\Inputs;
+namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Scopes\InputScope;
 use Belvedere\FormMaker\Traits\Attributes\{
-    HasMinMax,
-    HasReadonly,
+    HasAutocomplete,
     HasRequired
 };
 
-class Time extends Input
+class Color extends AbstractInput
 {
-    use HasMinMax, HasReadonly, HasRequired;
+    use HasAutocomplete, HasRequired;
 
     /**
      * Apply the type scope.
@@ -22,6 +21,6 @@ class Time extends Input
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('time'));
+        static::addGlobalScope(new InputScope('color'));
     }
 }

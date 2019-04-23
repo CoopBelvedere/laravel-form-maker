@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Form;
 
+use Belvedere\FormMaker\Contracts\Ranking\RankingContract;
 use Belvedere\FormMaker\Http\Resources\FormResource;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
 use Belvedere\FormMaker\Traits\{
@@ -10,7 +11,7 @@ use Belvedere\FormMaker\Traits\{
     Attributes\HasAutocomplete
 };
 
-class Form extends Model
+class Form extends AbstractModel
 {
     use HasFormAttributes, HasAutocomplete, HasInputs;
 
@@ -20,6 +21,13 @@ class Form extends Model
      * @var string
      */
     protected $table = 'forms';
+
+    /**
+     * The current implementation of the RankingContract
+     *
+     * @var mixed
+     */
+    protected $rankingProvider;
 
     /**
      * The event map for the model.
@@ -39,6 +47,20 @@ class Form extends Model
         'description',
         'name',
     ];
+
+    /**
+     * Form constructor.
+     *
+     * @param RankingContract $rankingProvider
+     */
+    public function __construct(RankingContract $rankingProvider)
+    {
+        parent::__construct([]);
+
+        $this->rankingProvider = $rankingProvider;
+
+        dd($rankingProvider);
+    }
 
     /**
      * Specifies the form url action.

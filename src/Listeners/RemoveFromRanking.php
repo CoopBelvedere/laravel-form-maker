@@ -34,7 +34,7 @@ class RemoveFromRanking
     protected function handle(): void
     {
         if ($inputable = $this->model->inputable) {
-            $inputable->rankings->remove($this->model->id);
+            $inputable->ranking->remove($this->model->id);
         }
     }
 }
