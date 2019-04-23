@@ -43,7 +43,7 @@ class FormMakerServiceProvider extends ServiceProvider
     protected function publishConfig()
     {
         $this->publishes([
-            __DIR__.'/../config/chatkit.php' => config_path('chatkit.php'),
+            __DIR__ . '/../config/form-maker.php' => config_path('form-maker.php'),
         ]);
     }
 }
