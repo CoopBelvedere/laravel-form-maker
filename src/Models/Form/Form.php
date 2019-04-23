@@ -50,16 +50,14 @@ class Form extends AbstractModel
 
     /**
      * Form constructor.
-     *
-     * @param RankingContract $rankingProvider
      */
-    public function __construct(RankingContract $rankingProvider)
+    public function __construct()
     {
         parent::__construct([]);
 
-        $this->rankingProvider = $rankingProvider;
+        $this->rankingProvider = resolve(RankingContract::class);
 
-        dd($rankingProvider);
+        dd($this->rankingProvider);
     }
 
     /**
