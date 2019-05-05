@@ -32,22 +32,6 @@ class Option extends AbstractInput
         static::addGlobalScope(new InputScope('option'));
     }
 
-    // HTML PROPERTIES METHODS
-    // ==============================================================
-
-    /**
-     * Specifies the selected attribute to the option.
-     *
-     * @param string $selected
-     * @return self
-     */
-    public function htmlSelected(?string $selected = 'selected'): self
-    {
-        $this->html_attributes = ['selected' => $selected];
-
-        return $this;
-    }
-
     // ELOQUENT RELATIONSHIPS
     // ==============================================================
 

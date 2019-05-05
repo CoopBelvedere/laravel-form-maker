@@ -5,6 +5,22 @@ namespace Belvedere\FormMaker\Contracts\HtmlAttributes;
 interface HtmlAttributerContract
 {
     /**
+     * Indicates the types of files that the server accepts.
+     *
+     * @param null|string $accepted
+     * @return array
+     */
+    public function accept(?string $accepted): array;
+
+    /**
+     * Specifies the alt of the input field image element.
+     *
+     * @param string $alt
+     * @return array
+     */
+    public function alt(?string $alt): array;
+
+    /**
      * Specifies if the browser should autocomplete the form.
      * default: on
      *
@@ -22,6 +38,15 @@ interface HtmlAttributerContract
     public function autofocus(?string $autofocus = 'autofocus'): array;
 
     /**
+     * Indicates that capture of media directly from the device's sensors
+     * using a media capture mechanism is preferred, such as a webcam or microphone.
+     *
+     * @param string $capture
+     * @return array
+     */
+    public function capture(?string $capture = 'capture'): array;
+
+    /**
      * Specifies the charset used in the submitted form.
      * default: the page charset
      *
@@ -37,6 +62,14 @@ interface HtmlAttributerContract
      * @return array
      */
     public function checked(?string $checked = 'checked'): array;
+
+    /**
+     * Specifies the visible width of a text area.
+     *
+     * @param int $cols
+     * @return array
+     */
+    public function cols(?int $cols = 0): array;
 
     /**
      * Specifies a data attribute for the html element.
@@ -63,6 +96,14 @@ interface HtmlAttributerContract
      * @return array
      */
     public function enctype(?string $enctype): array;
+
+    /**
+     * Specifies the height of the input field image element.
+     *
+     * @param int $height
+     * @return array
+     */
+    public function height(?int $height = 0): array;
 
     /**
      * Specifies an id attribute for the html element.
@@ -178,6 +219,22 @@ interface HtmlAttributerContract
     public function role(?string $role): array;
 
     /**
+     * Specifies the visible number of lines in a text area.
+     *
+     * @param int $rows
+     * @return array
+     */
+    public function rows(?int $rows = 0): array;
+
+    /**
+     * Specifies the selected attribute to the option.
+     *
+     * @param string $selected
+     * @return array
+     */
+    public function selected(?string $selected = 'selected'): array;
+
+    /**
      * Specifies the size (in characters) for the input field.
      * The default value is 20.
      *
@@ -194,6 +251,14 @@ interface HtmlAttributerContract
      * @return array
      */
     public function spellcheck(?bool $spellcheck = true): array;
+
+    /**
+     * Specifies the src of the input field image element.
+     *
+     * @param string $src
+     * @return array
+     */
+    public function src(?string $src): array;
 
     /**
      * Specifies the legal number intervals for an input field.
@@ -229,4 +294,12 @@ interface HtmlAttributerContract
      * @return array
      */
     public function value(?string $value): array;
+
+    /**
+     * Specifies the width of the input field image element.
+     *
+     * @param int $width
+     * @return array
+     */
+    public function width(?int $width = 0): array;
 }

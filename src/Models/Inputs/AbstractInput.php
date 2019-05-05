@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Inputs;
 
+use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
 use Belvedere\FormMaker\Http\Resources\InputResource;
 use Belvedere\FormMaker\Listeners\{
     AssignAttributes,
@@ -9,15 +10,12 @@ use Belvedere\FormMaker\Listeners\{
     ValidateProperties
 };
 use Belvedere\FormMaker\Models\Form\AbstractNode;
-use Belvedere\FormMaker\Traits\{
-    HasRules,
-    Attributes\HasInputAttributes
-};
+use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-abstract class AbstractInput extends AbstractNode
+abstract class AbstractInput extends AbstractNode implements HasRulesContract
 {
-    use HasInputAttributes, HasRules;
+    use HasRules;
 
     /**
      * The table associated with the model.
@@ -32,6 +30,7 @@ abstract class AbstractInput extends AbstractNode
      * @var array
      */
     public $assignedAttributes = [
+        'id',
         'name'
     ];
 
@@ -57,36 +56,6 @@ abstract class AbstractInput extends AbstractNode
     ];
 
     /**
-     * Mass removal of validation rules from an input.
-     *
-     * @param array $rules
-     * @return self
-     */
-    public function removeRules(array $rules): self
-    {
-        foreach ($rules as $rule) {
-            $this->assignToInput('rule', $rule, null);
-        }
-        return $this;
-    }
-
-    /**
-     * Set the model rules.
-     *
-     * @param  array $rules
-     * @return void
-     */
-    public function setRulesAttribute(array $rules): void
-    {
-        if (isset($this->attributes['rules'])) {
-            $rules = $this->removeNullValues(
-                array_merge($this->rules, $rules)
-            );
-        }
-        $this->attributes['rules'] = json_encode($rules);
-    }
-
-    /**
      * Transform the input to JSON.
      *
      * @return \Belvedere\FormMaker\Http\Resources\InputResource
@@ -94,20 +63,6 @@ abstract class AbstractInput extends AbstractNode
     public function toApi(): InputResource
     {
         return new InputResource($this);
-    }
-
-    /**
-     * Mass assign validation rules from an input.
-     *
-     * @param array $rules
-     * @return self
-     */
-    public function withRules(array $rules): self
-    {
-        foreach ($rules as $name => $arguments) {
-            $this->assignToInput('rule', $name, $arguments);
-        }
-        return $this;
     }
 
     // ELOQUENT RELATIONSHIPS
@@ -129,7 +84,7 @@ abstract class AbstractInput extends AbstractNode
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function inputable(): MorphTo
+    protected function inputable(): MorphTo
     {
         return $this->morphTo();
     }
