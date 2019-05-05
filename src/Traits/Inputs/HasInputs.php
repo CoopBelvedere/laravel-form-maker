@@ -31,15 +31,13 @@ trait HasInputs
      */
     public function add(string $type, ?string $name = null): AbstractInput
     {
-        $inputPath = $this->getInputPath($type);
-
-        $input = new $inputPath;
+        $input = resolve(sprintf('form_maker.%s', $type));
 
         if ($name) {
             $input->withHtmlAttributes(['name' => $name]);
         }
 
-        $this->inputsBuilder($type)->save($input);
+        $this->inputsQueryBuilder($type)->save($input);
 
         $this->ranking->add($input);
 
@@ -142,7 +140,7 @@ trait HasInputs
         $rawInputs = DB::table('inputs')->get()->groupBy('type')->toArray();
 
         foreach (array_keys($rawInputs) as $type) {
-            $subset = $this->inputsBuilder($type)->get();
+            $subset = $this->inputsQueryBuilder($type)->get();
             $inputs = $inputs->merge($subset);
         }
 
@@ -163,24 +161,6 @@ trait HasInputs
     }
 
     /**
-     * Get the class input full path.
-     *
-     * @param  string $input
-     * @return string
-     * @throws \Exception
-     */
-    protected function getInputPath(string $input): string
-    {
-        $className = 'Belvedere\\FormMaker\\Models\\Form\\Inputs\\' . ucfirst($input);
-
-        if (class_exists($className)) {
-            return $className;
-        }
-
-        throw new \Exception('This input is not supported');
-    }
-
-    /**
      * Get the model inputs sorted by their position in the ranking.
      *
      * @param string $type
@@ -190,7 +170,7 @@ trait HasInputs
     public function inputs(string $type = ''): Collection
     {
         if ($type) {
-            $inputs = $this->inputsBuilder($type)->get();
+            $inputs = $this->inputsQueryBuilder($type)->get();
         } else {
             $inputs = $this->getAllInputs();
         }
@@ -208,9 +188,11 @@ trait HasInputs
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      * @throws \Exception
      */
-    protected function inputsBuilder(string $type): MorphMany
+    protected function inputsQueryBuilder(string $type): MorphMany
     {
-        return $this->morphMany($this->getInputPath($type), 'inputable');
+        $input = new \ReflectionClass(resolve(sprintf('form_maker.%s', $type)));
+
+        return $this->morphMany($input->getName(), 'inputable');
     }
 
     /**

@@ -2,18 +2,15 @@
 
 namespace Belvedere\FormMaker\Models\Form;
 
-use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
+use Belvedere\FormMaker\Contracts\Inputs\HasInputsContract;
 use Belvedere\FormMaker\Http\Resources\FormResource;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
-use Belvedere\FormMaker\Traits\{
-    Inputs\HasInputs,
-    Attributes\HasFormAttributes,
-    Attributes\HasAutocomplete
-};
+use Belvedere\FormMaker\Traits\HasRanking;
+use Belvedere\FormMaker\Traits\Inputs\HasInputs;
 
-class Form extends AbstractNode
+class Form extends AbstractModel implements HasInputsContract
 {
-    use HasFormAttributes, HasAutocomplete, HasInputs;
+    use HasInputs, HasRanking;
 
     /**
      * The table associated with the model.
@@ -21,13 +18,6 @@ class Form extends AbstractNode
      * @var string
      */
     protected $table = 'forms';
-
-    /**
-     * The current implementation of the RankingContract
-     *
-     * @var mixed
-     */
-    protected $rankingProvider;
 
     /**
      * The event map for the model.
@@ -49,39 +39,20 @@ class Form extends AbstractNode
     ];
 
     /**
+     * The current implementation of the RankingContract
+     *
+     * @var mixed
+     */
+    protected $rankingProvider;
+
+    /**
      * Form constructor.
      */
     public function __construct()
     {
         parent::__construct([]);
 
-        $this->rankingProvider = resolve(RankerContract::class);
-    }
-
-    /**
-     * Specifies the form url action.
-     *
-     * @param string $action
-     * @return self
-     */
-    public function action(string $action): self
-    {
-        $this->html_attributes = ['action' => $action];
-
-        return $this;
-    }
-
-    /**
-     * Specifies the form http method.
-     *
-     * @param string $method
-     * @return self
-     */
-    public function method(string $method): self
-    {
-        $this->html_attributes = ['method' => $method];
-
-        return $this;
+        $this->setRankingProvider();
     }
 
     /**

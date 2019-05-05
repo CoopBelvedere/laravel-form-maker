@@ -15,7 +15,7 @@ class HtmlAttributeServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(HtmlAttributerContract::class, function ($app) {
-            return $app->config->get('form-maker.html_attributes', new HtmlAttributer());
+            return $app->config->get('form-maker.services.html_attributes', new HtmlAttributer());
         });
 
         $this->app->alias(HtmlAttributerContract::class, 'form-maker.html_attributes');

@@ -15,7 +15,7 @@ class RuleServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(RulerContract::class, function ($app) {
-            return $app->config->get('form-maker.rules', new Ruler());
+            return $app->config->get('form-maker.services.rules', new Ruler());
         });
 
         $this->app->alias(RulerContract::class, 'form-maker.rules');

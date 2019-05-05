@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Inputs;
 
+use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
 use Belvedere\FormMaker\Http\Resources\InputResource;
 use Belvedere\FormMaker\Listeners\{
@@ -9,11 +10,11 @@ use Belvedere\FormMaker\Listeners\{
     RemoveFromRanking,
     ValidateProperties
 };
-use Belvedere\FormMaker\Models\Form\AbstractNode;
+use Belvedere\FormMaker\Models\Form\AbstractModel;
 use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-abstract class AbstractInput extends AbstractNode implements HasRulesContract
+abstract class AbstractInput extends AbstractModel implements HasRulesContract, InputContract
 {
     use HasRules;
 
@@ -54,6 +55,29 @@ abstract class AbstractInput extends AbstractNode implements HasRulesContract
         'deleted' => RemoveFromRanking::class,
         'updating' => ValidateProperties::class,
     ];
+
+    /**
+     * The input position in the ranking.
+     *
+     * @var int
+     */
+    public $rank = 0;
+
+    /**
+     * AbstractInput constructor.
+     *
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->attributesAvailable = array_merge($this->attributesAvailable, [
+            'disabled',
+            'title',
+            'value'
+        ]);
+    }
 
     /**
      * Transform the input to JSON.

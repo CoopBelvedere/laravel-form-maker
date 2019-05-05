@@ -10,4 +10,11 @@ interface HasRankingContract
      * @return mixed
      */
     public function ranking();
+
+    /**
+     * Set the ranking provider used by the model.
+     *
+     * @return void
+     */
+    public function setRankingProvider(): void;
 }

@@ -13,6 +13,14 @@ interface HtmlAttributerContract
     public function accept(?string $accepted): array;
 
     /**
+     * Specifies the form url action.
+     *
+     * @param string $action
+     * @return array
+     */
+    public function action(string $action): array;
+
+    /**
      * Specifies the alt of the input field image element.
      *
      * @param string $alt
@@ -136,6 +144,14 @@ interface HtmlAttributerContract
      * @return array
      */
     public function maxlength(?int $maxlength): array;
+
+    /**
+     * Specifies the form http method.
+     *
+     * @param string $method
+     * @return array
+     */
+    public function method(string $method): array;
 
     /**
      * Specifies the minimum value for an input field.

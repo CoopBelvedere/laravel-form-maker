@@ -11,8 +11,15 @@ return [
      |
      */
 
-    'nodes' => [
+    'html' => [
+        'elements' => [
+            'label' => ''
+        ],
+
+        'form' => '',
+
         'inputs' => [
+            'checkbox' => 'Belvedere\FormMaker\Models\Inputs\Checkbox\Checkboxer',
             'text' => '',
         ],
     ],
@@ -27,4 +34,19 @@ return [
      */
 
     'ranking' => 'Belvedere\FormMaker\Models\Ranking\Ranker',
+
+    /*
+     |--------------------------------------------------------------------------
+     |
+     |--------------------------------------------------------------------------
+     |
+     |
+     |
+     */
+
+    'services' => [
+        'html_attributes' => '',
+
+        'rules' => ''
+    ],
 ];
