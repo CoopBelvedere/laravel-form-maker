@@ -6,7 +6,7 @@ use Belvedere\FormMaker\Traits\Attributes\HasGlobalAttributes;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Support\Str;
 
-abstract class AbstractModel extends Eloquent
+abstract class AbstractNode extends Eloquent
 {
     use HasGlobalAttributes;
 

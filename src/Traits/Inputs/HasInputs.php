@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Traits;
+namespace Belvedere\FormMaker\Traits\Inputs;
 
 use Belvedere\FormMaker\Listeners\DeleteInputs;
 use Belvedere\FormMaker\Models\Inputs\AbstractInput;
@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 trait HasInputs
 {
-    use HasRanking;
-
     /**
      * Boot the listener.
      */

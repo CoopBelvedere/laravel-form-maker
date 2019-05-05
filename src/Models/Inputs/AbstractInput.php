@@ -8,14 +8,14 @@ use Belvedere\FormMaker\Listeners\{
     RemoveFromRanking,
     ValidateProperties
 };
-use Belvedere\FormMaker\Models\Form\AbstractModel;
+use Belvedere\FormMaker\Models\Form\AbstractNode;
 use Belvedere\FormMaker\Traits\{
     HasRules,
     Attributes\HasInputAttributes
 };
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-abstract class AbstractInput extends AbstractModel
+abstract class AbstractInput extends AbstractNode
 {
     use HasInputAttributes, HasRules;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Traits;
+namespace Belvedere\FormMaker\Traits\Inputs;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;

@@ -2,16 +2,16 @@
 
 namespace Belvedere\FormMaker\Models\Form;
 
-use Belvedere\FormMaker\Contracts\Ranking\RankingContract;
+use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
 use Belvedere\FormMaker\Http\Resources\FormResource;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
 use Belvedere\FormMaker\Traits\{
-    HasInputs,
+    Inputs\HasInputs,
     Attributes\HasFormAttributes,
     Attributes\HasAutocomplete
 };
 
-class Form extends AbstractModel
+class Form extends AbstractNode
 {
     use HasFormAttributes, HasAutocomplete, HasInputs;
 
@@ -55,9 +55,7 @@ class Form extends AbstractModel
     {
         parent::__construct([]);
 
-        $this->rankingProvider = resolve(RankingContract::class);
-
-        dd($this->rankingProvider);
+        $this->rankingProvider = resolve(RankerContract::class);
     }
 
     /**

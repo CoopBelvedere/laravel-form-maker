@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Ranking;
 
-use Belvedere\FormMaker\Contracts\Ranking\RankingContract;
+use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
 use Illuminate\Support\ServiceProvider;
 
 class RankingServiceProvider extends ServiceProvider
@@ -24,9 +24,11 @@ class RankingServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(RankingContract::class, function ($app) {
+        $this->app->singleton(RankerContract::class, function ($app) {
             return $app->config->get('form-maker.ranking', new Ranker());
         });
+
+        $this->app->alias(RankerContract::class, 'form-maker.ranking');
     }
 
     /**

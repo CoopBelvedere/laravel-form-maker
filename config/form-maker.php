@@ -11,9 +11,20 @@ return [
      |
      */
 
-    'ranking' => 'Belvedere\FormMaker\Models\Ranking\Ranker',
+    'nodes' => [
+        'inputs' => [
+            'text' => '',
+        ],
+    ],
 
-    'inputs' => [
-        'text' => '',
-    ]
+    /*
+     |--------------------------------------------------------------------------
+     |
+     |--------------------------------------------------------------------------
+     |
+     |
+     |
+     */
+
+    'ranking' => 'Belvedere\FormMaker\Models\Ranking\Ranker',
 ];

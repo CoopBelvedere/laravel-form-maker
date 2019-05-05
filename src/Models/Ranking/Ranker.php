@@ -2,11 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Ranking;
 
-use Belvedere\FormMaker\Contracts\Ranking\RankingContract;
+use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-class Ranker extends Eloquent implements RankingContract
+class Ranker extends Eloquent implements RankerContract
 {
     /**
      * The table associated with the model.

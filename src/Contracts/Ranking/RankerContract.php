@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Contracts\Ranking;
 
-interface RankingContract
+interface RankerContract
 {
     /**
      * Add an element in the rankings.
