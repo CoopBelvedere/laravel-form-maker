@@ -1,12 +1,12 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Inputs\Number;
+namespace Belvedere\FormMaker\Models\Inputs\Week;
 
-use Belvedere\FormMaker\Contracts\Inputs\Number\NumberContract;
+use Belvedere\FormMaker\Contracts\Inputs\Week\WeekerContract;
 use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\InputScope;
 
-class Number extends AbstractInput implements NumberContract
+class Weeker extends AbstractInput implements WeekerContract
 {
     /**
      * Apply the type scope.
@@ -17,11 +17,11 @@ class Number extends AbstractInput implements NumberContract
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('number'));
+        static::addGlobalScope(new InputScope('week'));
     }
 
     /**
-     * Number constructor.
+     * Weeker constructor.
      *
      * @param array $attributes
      */

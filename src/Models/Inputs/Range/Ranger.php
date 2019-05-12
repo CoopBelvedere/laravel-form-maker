@@ -1,12 +1,12 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Inputs\Number;
+namespace Belvedere\FormMaker\Models\Inputs\Range;
 
-use Belvedere\FormMaker\Contracts\Inputs\Number\NumberContract;
+use Belvedere\FormMaker\Contracts\Inputs\Range\RangerContract;
 use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\InputScope;
 
-class Number extends AbstractInput implements NumberContract
+class Ranger extends AbstractInput implements RangerContract
 {
     /**
      * Apply the type scope.
@@ -17,11 +17,11 @@ class Number extends AbstractInput implements NumberContract
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('number'));
+        static::addGlobalScope(new InputScope('range'));
     }
 
     /**
-     * Number constructor.
+     * Ranger constructor.
      *
      * @param array $attributes
      */
@@ -30,9 +30,9 @@ class Number extends AbstractInput implements NumberContract
         parent::__construct($attributes);
 
         $this->attributesAvailable = array_merge($this->attributesAvailable, [
+            'autocomplete',
             'max',
             'min',
-            'readonly',
             'required',
             'step',
         ]);

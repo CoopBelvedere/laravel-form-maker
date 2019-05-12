@@ -1,11 +1,8 @@
 <?php
 
-
 namespace Belvedere\FormMaker\Models\Inputs\Color;
 
-use Belvedere\FormMaker\Contracts\HtmlAttributes\HtmlAttributerContract;
-use Belvedere\FormMaker\Contracts\Inputs\Checkbox\CheckboxerContract;
-use Belvedere\FormMaker\Models\Inputs\Checkbox\Checkboxer;
+use Belvedere\FormMaker\Contracts\Inputs\Color\ColorerContract;
 
 class ColorServiceProvider
 {
@@ -16,10 +13,10 @@ class ColorServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(CheckboxerContract::class, function ($app) {
-            return $app->config->get('form-maker.html.inputs.checkbox', new Checkboxer());
+        $this->app->singleton(ColorerContract::class, function ($app) {
+            return $app->config->get('form-maker.nodes.inputs.color', new Colorer());
         });
 
-        $this->app->alias(HtmlAttributerContract::class, 'form-maker.checkbox');
+        $this->app->alias(ColorerContract::class, 'form-maker.color');
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Inputs\Number;
+namespace Belvedere\FormMaker\Models\Inputs\Image;
 
-use Belvedere\FormMaker\Contracts\Inputs\Number\NumberContract;
+use Belvedere\FormMaker\Contracts\Inputs\Image\ImagerContract;
 use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\InputScope;
 
-class Number extends AbstractInput implements NumberContract
+class Imager extends AbstractInput implements ImagerContract
 {
     /**
      * Apply the type scope.
@@ -15,13 +15,13 @@ class Number extends AbstractInput implements NumberContract
      */
     protected static function boot()
     {
-        parent::boot();
+        static::addGlobalScope(new InputScope('image'));
 
-        static::addGlobalScope(new InputScope('number'));
+        parent::boot();
     }
 
     /**
-     * Number constructor.
+     * Imager constructor.
      *
      * @param array $attributes
      */
@@ -30,11 +30,11 @@ class Number extends AbstractInput implements NumberContract
         parent::__construct($attributes);
 
         $this->attributesAvailable = array_merge($this->attributesAvailable, [
-            'max',
-            'min',
+            'alt',
+            'height',
             'readonly',
-            'required',
-            'step',
+            'src',
+            'width',
         ]);
     }
 }

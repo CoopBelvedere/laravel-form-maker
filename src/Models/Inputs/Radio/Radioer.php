@@ -1,12 +1,12 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Inputs\Number;
+namespace Belvedere\FormMaker\Models\Inputs\Radio;
 
-use Belvedere\FormMaker\Contracts\Inputs\Number\NumberContract;
+use Belvedere\FormMaker\Contracts\Inputs\Radio\RadioerContract;
 use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\InputScope;
 
-class Number extends AbstractInput implements NumberContract
+class Radioer extends AbstractInput implements RadioerContract
 {
     /**
      * Apply the type scope.
@@ -17,11 +17,11 @@ class Number extends AbstractInput implements NumberContract
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('number'));
+        static::addGlobalScope(new InputScope('radio'));
     }
 
     /**
-     * Number constructor.
+     * Radioer constructor.
      *
      * @param array $attributes
      */
@@ -30,11 +30,8 @@ class Number extends AbstractInput implements NumberContract
         parent::__construct($attributes);
 
         $this->attributesAvailable = array_merge($this->attributesAvailable, [
-            'max',
-            'min',
-            'readonly',
-            'required',
-            'step',
+            'checked',
+            'required'
         ]);
     }
 }

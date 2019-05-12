@@ -1,12 +1,12 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Inputs\Number;
+namespace Belvedere\FormMaker\Models\Inputs\File;
 
-use Belvedere\FormMaker\Contracts\Inputs\Number\NumberContract;
+use Belvedere\FormMaker\Contracts\Inputs\File\FilerContract;
 use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\InputScope;
 
-class Number extends AbstractInput implements NumberContract
+class Filer extends AbstractInput implements FilerContract
 {
     /**
      * Apply the type scope.
@@ -17,11 +17,11 @@ class Number extends AbstractInput implements NumberContract
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('number'));
+        static::addGlobalScope(new InputScope('file'));
     }
 
     /**
-     * Number constructor.
+     * Filer constructor.
      *
      * @param array $attributes
      */
@@ -30,11 +30,10 @@ class Number extends AbstractInput implements NumberContract
         parent::__construct($attributes);
 
         $this->attributesAvailable = array_merge($this->attributesAvailable, [
-            'max',
-            'min',
-            'readonly',
+            'accept',
+            'capture',
+            'multiple',
             'required',
-            'step',
         ]);
     }
 }
