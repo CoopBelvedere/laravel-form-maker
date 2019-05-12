@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Services;
 
+use Illuminate\Support\Arr;
 use Validator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
@@ -70,7 +71,7 @@ class ValidatorService
     protected function getBasicRules(Collection $attributes): Collection
     {
         return collect($this->rules)->intersectByKeys(
-            array_dot($attributes->all())
+            Arr::dot($attributes->all())
         );
     }
 

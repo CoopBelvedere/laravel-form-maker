@@ -13,13 +13,6 @@ class Form extends AbstractModel implements HasInputsContract
     use HasInputs, HasRanking;
 
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'forms';
-
-    /**
      * The event map for the model.
      *
      * @var array
@@ -47,10 +40,20 @@ class Form extends AbstractModel implements HasInputsContract
 
     /**
      * Form constructor.
+     *
+     * @param array $attributes
      */
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
-        parent::__construct([]);
+        parent::__construct($attributes);
+
+        $this->table = config('form-maker.database.forms_table');
+
+        $this->attributesAvailable = array_merge($this->attributesAvailable, [
+            'action',
+            'method',
+            'name',
+        ]);
 
         $this->setRankingProvider();
     }

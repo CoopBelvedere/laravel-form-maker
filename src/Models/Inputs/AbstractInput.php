@@ -17,14 +17,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 abstract class AbstractInput extends AbstractModel implements HasRulesContract, InputContract
 {
     use HasRules;
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'inputs';
-
+    
     /**
      * The default attributes automatically assigned on creation.
      *
@@ -72,10 +65,13 @@ abstract class AbstractInput extends AbstractModel implements HasRulesContract, 
     {
         parent::__construct($attributes);
 
+        $this->table = config('form-maker.database.inputs_table');
+
         $this->attributesAvailable = array_merge($this->attributesAvailable, [
             'disabled',
+            'name',
             'title',
-            'value'
+            'value',
         ]);
     }
 

@@ -26,8 +26,7 @@ abstract class AbstractModel extends Eloquent implements HasHtmlAttributesContra
         'class',
         'data',
         'id',
-        'name',
-        'role'
+        'role',
     ];
 
     /**
