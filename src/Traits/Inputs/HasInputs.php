@@ -190,9 +190,18 @@ trait HasInputs
      */
     protected function inputsQueryBuilder(string $type): MorphMany
     {
-        $input = new \ReflectionClass(resolve(sprintf('form_maker.%s', $type)));
+        return $this->morphMany($this->instantiateInput($type), 'inputable');
+    }
 
-        return $this->morphMany($input->getName(), 'inputable');
+    /**
+     * Resolve the input type out of the service container.
+     *
+     * @param string $type
+     * @return AbstractInput
+     */
+    protected function instantiateInput(string $type): AbstractInput
+    {
+        return resolve(sprintf('form-maker.%s', $type));
     }
 
     /**
