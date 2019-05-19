@@ -8,7 +8,7 @@ class CreateFormMakerTables extends Migration
 {
     public function up()
     {
-        Schema::create(config('form-maker.database.forms_table'), function (Blueprint $table) {
+        Schema::create(config('form-maker.database.forms_table', 'forms'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('description')->nullable();
@@ -16,7 +16,7 @@ class CreateFormMakerTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create(config('form-maker.database.inputs_table'), function (Blueprint $table) {
+        Schema::create(config('form-maker.database.inputs_table', 'inputs'), function (Blueprint $table) {
             $table->increments('id');
             $table->morphs('inputable');
             $table->string('type');
@@ -25,11 +25,19 @@ class CreateFormMakerTables extends Migration
             $table->string('text')->nullable();
             $table->timestamps();
         });
+
+        Schema::create(config('form-maker.database.rankings_table', 'rankings'), function (Blueprint $table) {
+            $table->increments('id');
+            $table->morphs('rankable');
+            $table->json('ranks');
+            $table->timestamps();
+        });
     }
 
     public function down()
     {
-        Schema::drop('inputs');
-        Schema::drop('forms');
+        Schema::drop(config('form-maker.database.rankings_table', 'rankings'));
+        Schema::drop(config('form-maker.database.inputs_table', 'inputs'));
+        Schema::drop(config('form-maker.database.forms_table', 'forms'));
     }
 }
