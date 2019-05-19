@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Url;
 
 use Belvedere\FormMaker\Contracts\Inputs\Url\UrlerContract;
+use Illuminate\Support\ServiceProvider;
 
-class UrlServiceProvider
+class UrlServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

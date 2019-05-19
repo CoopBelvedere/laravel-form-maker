@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Email;
 
 use Belvedere\FormMaker\Contracts\Inputs\Email\EmailerContract;
+use Illuminate\Support\ServiceProvider;
 
-class EmailServiceProvider
+class EmailServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

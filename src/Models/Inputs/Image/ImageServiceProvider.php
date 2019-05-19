@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Image;
 
 use Belvedere\FormMaker\Contracts\Inputs\Image\ImagerContract;
+use Illuminate\Support\ServiceProvider;
 
-class ImageServiceProvider
+class ImageServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

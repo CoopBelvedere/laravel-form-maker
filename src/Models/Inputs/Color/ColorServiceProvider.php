@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Color;
 
 use Belvedere\FormMaker\Contracts\Inputs\Color\ColorerContract;
+use Illuminate\Support\ServiceProvider;
 
-class ColorServiceProvider
+class ColorServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Date;
 
 use Belvedere\FormMaker\Contracts\Inputs\Date\DaterContract;
+use Illuminate\Support\ServiceProvider;
 
-class DateServiceProvider
+class DateServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

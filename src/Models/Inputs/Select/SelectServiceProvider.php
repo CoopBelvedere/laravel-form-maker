@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Select;
 
 use Belvedere\FormMaker\Contracts\Inputs\Select\SelecterContract;
+use Illuminate\Support\ServiceProvider;
 
-class SelectServiceProvider
+class SelectServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

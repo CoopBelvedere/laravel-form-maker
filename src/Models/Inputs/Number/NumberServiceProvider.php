@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Number;
 
 use Belvedere\FormMaker\Contracts\Inputs\Number\NumberContract;
+use Illuminate\Support\ServiceProvider;
 
-class NumberServiceProvider
+class NumberServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

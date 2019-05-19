@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Password;
 
 use Belvedere\FormMaker\Contracts\Inputs\Password\PassworderContract;
+use Illuminate\Support\ServiceProvider;
 
-class PasswordServiceProvider
+class PasswordServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

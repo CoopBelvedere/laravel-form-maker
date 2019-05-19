@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Tel;
 
 use Belvedere\FormMaker\Contracts\Inputs\Tel\TelerContract;
+use Illuminate\Support\ServiceProvider;
 
-class TelServiceProvider
+class TelServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

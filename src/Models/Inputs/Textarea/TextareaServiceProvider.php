@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Textarea;
 
 use Belvedere\FormMaker\Contracts\Inputs\Textarea\TextareaerContract;
+use Illuminate\Support\ServiceProvider;
 
-class TextareaServiceProvider
+class TextareaServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

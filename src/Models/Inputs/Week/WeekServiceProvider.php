@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Week;
 
 use Belvedere\FormMaker\Contracts\Inputs\Week\WeekerContract;
+use Illuminate\Support\ServiceProvider;
 
-class WeekServiceProvider
+class WeekServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

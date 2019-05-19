@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Month;
 
 use Belvedere\FormMaker\Contracts\Inputs\Month\MontherContract;
+use Illuminate\Support\ServiceProvider;
 
-class MonthServiceProvider
+class MonthServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

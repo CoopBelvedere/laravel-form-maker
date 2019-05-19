@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Datalist;
 
 use Belvedere\FormMaker\Contracts\Inputs\Datalist\DatalisterContract;
+use Illuminate\Support\ServiceProvider;
 
-class DatalistServiceProvider
+class DatalistServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

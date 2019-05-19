@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Time;
 
 use Belvedere\FormMaker\Contracts\Inputs\Time\TimerContract;
+use Illuminate\Support\ServiceProvider;
 
-class TimeServiceProvider
+class TimeServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

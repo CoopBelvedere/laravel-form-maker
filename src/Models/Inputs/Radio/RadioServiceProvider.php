@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Radio;
 
 use Belvedere\FormMaker\Contracts\Inputs\Radio\RadioerContract;
+use Illuminate\Support\ServiceProvider;
 
-class RadioServiceProvider
+class RadioServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

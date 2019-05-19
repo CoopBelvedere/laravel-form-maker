@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\File;
 
 use Belvedere\FormMaker\Contracts\Inputs\File\FilerContract;
+use Illuminate\Support\ServiceProvider;
 
-class FileServiceProvider
+class FileServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.

@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Inputs\Search;
 
 use Belvedere\FormMaker\Contracts\Inputs\Search\SearcherContract;
+use Illuminate\Support\ServiceProvider;
 
-class SearchServiceProvider
+class SearchServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.
