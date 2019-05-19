@@ -14,8 +14,12 @@ class MonthServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(MontherContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.month', new Monther());
+        $this->app->bind(MontherContract::class, function ($app) {
+            $monther = $app->config->get('form-maker.nodes.inputs.month', new Monther());
+            if (is_string($monther)) {
+                return new $monther();
+            }
+            return $monther;
         });
 
         $this->app->alias(MontherContract::class, 'form-maker.month');

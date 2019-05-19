@@ -14,8 +14,12 @@ class RankingServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(RankerContract::class, function ($app) {
-            return $app->config->get('form-maker.ranking', new Ranker());
+        $this->app->bind(RankerContract::class, function ($app) {
+            $ranker = $app->config->get('form-maker.ranking', new Ranker());
+            if (is_string($ranker)) {
+                return new $ranker();
+            }
+            return $ranker;
         });
 
         $this->app->alias(RankerContract::class, 'form-maker.ranking');

@@ -14,8 +14,12 @@ class OptionServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(OptionerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.option', new Optioner());
+        $this->app->bind(OptionerContract::class, function ($app) {
+            $optioner = $app->config->get('form-maker.nodes.inputs.option', new Optioner());
+            if (is_string($optioner)) {
+                return new $optioner();
+            }
+            return $optioner;
         });
 
         $this->app->alias(OptionerContract::class, 'form-maker.option');

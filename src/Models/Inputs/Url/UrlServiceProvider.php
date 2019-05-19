@@ -14,8 +14,12 @@ class UrlServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(UrlerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.url', new Urler());
+        $this->app->bind(UrlerContract::class, function ($app) {
+            $urler = $app->config->get('form-maker.nodes.inputs.url', new Urler());
+            if (is_string($urler)) {
+                return new $urler();
+            }
+            return $urler;
         });
 
         $this->app->alias(UrlerContract::class, 'form-maker.url');

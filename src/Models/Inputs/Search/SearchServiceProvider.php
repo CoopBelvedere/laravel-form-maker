@@ -14,8 +14,12 @@ class SearchServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(SearcherContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.search', new Searcher());
+        $this->app->bind(SearcherContract::class, function ($app) {
+            $searcher = $app->config->get('form-maker.nodes.inputs.search', new Searcher());
+            if (is_string($searcher)) {
+                return new $searcher();
+            }
+            return $searcher;
         });
 
         $this->app->alias(SearcherContract::class, 'form-maker.search');

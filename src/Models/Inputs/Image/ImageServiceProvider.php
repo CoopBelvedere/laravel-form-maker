@@ -14,8 +14,12 @@ class ImageServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(ImagerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.image', new Imager());
+        $this->app->bind(ImagerContract::class, function ($app) {
+            $imager = $app->config->get('form-maker.nodes.inputs.image', new Imager());
+            if (is_string($imager)) {
+                return new $imager();
+            }
+            return $imager;
         });
 
         $this->app->alias(ImagerContract::class, 'form-maker.image');

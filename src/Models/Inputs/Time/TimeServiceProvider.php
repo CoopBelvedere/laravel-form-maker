@@ -14,8 +14,12 @@ class TimeServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(TimerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.time', new Timer());
+        $this->app->bind(TimerContract::class, function ($app) {
+            $timer = $app->config->get('form-maker.nodes.inputs.time', new Timer());
+            if (is_string($timer)) {
+                return new $timer();
+            }
+            return $timer;
         });
 
         $this->app->alias(TimerContract::class, 'form-maker.time');

@@ -14,8 +14,12 @@ class WeekServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(WeekerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.week', new Weeker());
+        $this->app->bind(WeekerContract::class, function ($app) {
+            $weeker = $app->config->get('form-maker.nodes.inputs.week', new Weeker());
+            if (is_string($weeker)) {
+                return new $weeker();
+            }
+            return $weeker;
         });
 
         $this->app->alias(WeekerContract::class, 'form-maker.week');

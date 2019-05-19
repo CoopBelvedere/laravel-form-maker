@@ -14,8 +14,12 @@ class TelServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(TelerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.tel', new Teler());
+        $this->app->bind(TelerContract::class, function ($app) {
+            $teler = $app->config->get('form-maker.nodes.inputs.tel', new Teler());
+            if (is_string($teler)) {
+                return new $teler();
+            }
+            return $teler;
         });
 
         $this->app->alias(TelerContract::class, 'form-maker.tel');

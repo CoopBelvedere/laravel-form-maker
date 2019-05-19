@@ -14,8 +14,12 @@ class EmailServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(EmailerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.email', new Emailer());
+        $this->app->bind(EmailerContract::class, function ($app) {
+            $emailer = $app->config->get('form-maker.nodes.inputs.email', new Emailer());
+            if (is_string($emailer)) {
+                return new $emailer();
+            }
+            return $emailer;
         });
 
         $this->app->alias(EmailerContract::class, 'form-maker.email');

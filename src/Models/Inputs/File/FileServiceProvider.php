@@ -14,8 +14,12 @@ class FileServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(FilerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.file', new Filer());
+        $this->app->bind(FilerContract::class, function ($app) {
+            $filer = $app->config->get('form-maker.nodes.inputs.file', new Filer());
+            if (is_string($filer)) {
+                return new $filer();
+            }
+            return $filer;
         });
 
         $this->app->alias(FilerContract::class, 'form-maker.file');

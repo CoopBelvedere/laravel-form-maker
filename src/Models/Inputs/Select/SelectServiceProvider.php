@@ -14,8 +14,12 @@ class SelectServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(SelecterContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.select', new Selecter());
+        $this->app->bind(SelecterContract::class, function ($app) {
+            $selecter = $app->config->get('form-maker.nodes.inputs.select', new Selecter());
+            if (is_string($selecter)) {
+                return new $selecter();
+            }
+            return $selecter;
         });
 
         $this->app->alias(SelecterContract::class, 'form-maker.select');

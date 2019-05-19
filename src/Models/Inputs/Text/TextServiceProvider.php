@@ -14,8 +14,12 @@ class TextServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(TexterContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.text', new Texter());
+        $this->app->bind(TexterContract::class, function ($app) {
+            $texter = $app->config->get('form-maker.nodes.inputs.text', new Texter());
+            if (is_string($texter)) {
+                return new $texter();
+            }
+            return $texter;
         });
 
         $this->app->alias(TexterContract::class, 'form-maker.text');

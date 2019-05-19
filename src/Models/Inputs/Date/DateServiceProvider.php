@@ -14,8 +14,12 @@ class DateServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(DaterContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.date', new Dater());
+        $this->app->bind(DaterContract::class, function ($app) {
+            $dater = $app->config->get('form-maker.nodes.inputs.date', new Dater());
+            if (is_string($dater)) {
+                return new $dater();
+            }
+            return $dater;
         });
 
         $this->app->alias(DaterContract::class, 'form-maker.date');

@@ -14,8 +14,12 @@ class ColorServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(ColorerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.color', new Colorer());
+        $this->app->bind(ColorerContract::class, function ($app) {
+            $colorer = $app->config->get('form-maker.nodes.inputs.color', new Colorer());
+            if (is_string($colorer)) {
+                return new $colorer();
+            }
+            return $colorer;
         });
 
         $this->app->alias(ColorerContract::class, 'form-maker.color');

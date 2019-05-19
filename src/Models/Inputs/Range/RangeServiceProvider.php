@@ -14,8 +14,12 @@ class RangeServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(RangerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.range', new Ranger());
+        $this->app->bind(RangerContract::class, function ($app) {
+            $ranger = $app->config->get('form-maker.nodes.inputs.range', new Ranger());
+            if (is_string($ranger)) {
+                return new $ranger();
+            }
+            return $ranger;
         });
 
         $this->app->alias(RangerContract::class, 'form-maker.range');

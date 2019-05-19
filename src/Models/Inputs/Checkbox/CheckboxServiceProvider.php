@@ -14,8 +14,12 @@ class CheckboxServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(CheckboxerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.checkbox', new Checkboxer());
+        $this->app->bind(CheckboxerContract::class, function ($app) {
+            $checkboxer = $app->config->get('form-maker.nodes.inputs.checkbox', new Checkboxer());
+            if (is_string($checkboxer)) {
+                return new $checkboxer();
+            }
+            return $checkboxer;
         });
 
         $this->app->alias(CheckboxerContract::class, 'form-maker.checkbox');

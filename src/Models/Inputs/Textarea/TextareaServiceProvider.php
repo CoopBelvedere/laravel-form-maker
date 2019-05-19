@@ -14,8 +14,12 @@ class TextareaServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(TextareaerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.textarea', new Textareaer());
+        $this->app->bind(TextareaerContract::class, function ($app) {
+            $textareaer = $app->config->get('form-maker.nodes.inputs.textarea', new Textareaer());
+            if (is_string($textareaer)) {
+                return new $textareaer();
+            }
+            return $textareaer;
         });
 
         $this->app->alias(TextareaerContract::class, 'form-maker.textarea');

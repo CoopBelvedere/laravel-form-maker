@@ -14,8 +14,12 @@ class DatalistServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(DatalisterContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.datalist', new Datalister());
+        $this->app->bind(DatalisterContract::class, function ($app) {
+            $datalister = $app->config->get('form-maker.nodes.inputs.datalist', new Datalister());
+            if (is_string($datalister)) {
+                return new $datalister();
+            }
+            return $datalister;
         });
 
         $this->app->alias(DatalisterContract::class, 'form-maker.datalist');

@@ -14,8 +14,12 @@ class NumberServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(NumberContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.number', new Number());
+        $this->app->bind(NumberContract::class, function ($app) {
+            $number = $app->config->get('form-maker.nodes.inputs.number', new Number());
+            if (is_string($number)) {
+                return new $number();
+            }
+            return $number;
         });
 
         $this->app->alias(NumberContract::class, 'form-maker.number');

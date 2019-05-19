@@ -14,8 +14,12 @@ class RadioServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(RadioerContract::class, function ($app) {
-            return $app->config->get('form-maker.nodes.inputs.radio', new Radioer());
+        $this->app->bind(RadioerContract::class, function ($app) {
+            $radioer = $app->config->get('form-maker.nodes.inputs.radio', new Radioer());
+            if (is_string($radioer)) {
+                return new $radioer();
+            }
+            return $radioer;
         });
 
         $this->app->alias(RadioerContract::class, 'form-maker.radio');
