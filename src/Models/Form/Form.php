@@ -50,8 +50,7 @@ class Form extends AbstractModel implements HasInputsContract
         $this->table = config('form-maker.database.forms_table');
 
         $this->attributesAvailable = array_merge($this->attributesAvailable, [
-            'action',
-            'method',
+            'charset',
             'name',
         ]);
 
@@ -59,6 +58,33 @@ class Form extends AbstractModel implements HasInputsContract
 
         $this->setRankingProvider();
     }
+
+    /**
+     * Specifies the form url action.
+     *
+     * @param string $action
+     * @return self
+     */
+    public function action(string $action): self
+    {
+        $this->html_attributes = ['action' => $action];
+
+        return $this;
+    }
+
+    /**
+     * Specifies the form http method.
+     *
+     * @param string $method
+     * @return self
+     */
+    public function method(string $method): self
+    {
+        $this->html_attributes = ['method' => $method];
+
+        return $this;
+    }
+
 
     /**
      * Return the form inputs rules in a form request format.

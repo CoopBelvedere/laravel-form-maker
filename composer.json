@@ -29,7 +29,28 @@
             "providers": [
                 "Belvedere\\FormMaker\\FormMakerServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Ranking\\RankingServiceProvider",
-                "Belvedere\\FormMaker\\Models\\HtmlAttributes\\HtmlAttributeServiceProvider"
+                "Belvedere\\FormMaker\\Models\\HtmlAttributes\\HtmlAttributeServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Rules\\RuleServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Checkbox\\CheckboxServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Color\\ColorServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Datalist\\DatalistServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Date\\DateServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Email\\EmailServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\File\\FileServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Image\\ImageServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Month\\MonthServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Number\\NumberServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Option\\OptionServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Password\\PasswordServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Radio\\RadioServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Range\\RangeServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Search\\SearchServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Select\\SelectServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Text\\TextServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Textarea\\TextareaServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Time\\TimeServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Url\\UrlServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Inputs\\Week\\WeekServiceProvider"
             ]
         }
     }

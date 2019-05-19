@@ -16,8 +16,8 @@ trait HasHtmlAttributes
     public function removeHtmlAttributes(array $attributes): self
     {
         foreach ($attributes as $method => $arguments) {
-            if (method_exists($this, $method)) {
-                $this->$method(null);
+            if (method_exists($this->htmlAttributesProvider, $method)) {
+                $this->html_attributes = $this->htmlAttributesProvider->$method(null);
             }
         }
         return $this;
@@ -58,11 +58,11 @@ trait HasHtmlAttributes
     public function withHtmlAttributes(array $attributes): self
     {
         foreach ($attributes as $method => $arguments) {
-            if (method_exists($this, $method)) {
+            if (method_exists($this->htmlAttributesProvider, $method)) {
                 if ($method === $arguments) {
-                    $this->$method();
+                    $this->html_attributes = $this->htmlAttributesProvider->$method();
                 } else {
-                    $this->$method(...Arr::wrap($arguments));
+                    $this->html_attributes = $this->htmlAttributesProvider->$method(...Arr::wrap($arguments));
                 }
             }
         }

@@ -18,17 +18,6 @@ class HtmlAttributer implements HtmlAttributerContract
     }
 
     /**
-     * Specifies the form url action.
-     *
-     * @param string $action
-     * @return array
-     */
-    public function action(string $action): array
-    {
-        return ['action' => $action];
-    }
-
-    /**
      * Specifies the alt of the input field image element.
      *
      * @param string $alt
@@ -196,17 +185,6 @@ class HtmlAttributer implements HtmlAttributerContract
     public function maxlength(?int $maxlength): array
     {
         return ['maxlength' => $maxlength];
-    }
-
-    /**
-     * Specifies the form http method.
-     *
-     * @param string $method
-     * @return array
-     */
-    public function method(string $method): array
-    {
-        return ['method' => $method];
     }
 
     /**
