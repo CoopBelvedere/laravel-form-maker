@@ -15,9 +15,9 @@ trait HasRules
      */
     public function removeRules(array $rules): self
     {
-        foreach ($rules as $method => $arguments) {
-            if (method_exists($this->rulesProvider, $method)) {
-                $this->rules = $this->rulesProvider->$method(null);
+        foreach ($rules as $rule => $arguments) {
+            if ($this->isValidRule($rule)) {
+                $this->rules = $this->rulesProvider->$rule(null);
             }
         }
         return $this;
@@ -57,15 +57,26 @@ trait HasRules
      */
     public function withRules(array $rules): self
     {
-        foreach ($rules as $method => $arguments) {
-            if (method_exists($this->rulesProvider, $method)) {
-                if ($method === $arguments) {
-                    $this->rules = $this->rulesProvider->$method();
+        foreach ($rules as $rule => $arguments) {
+            if ($this->isValidRule($rule)) {
+                if ($rule === $arguments) {
+                    $this->rules = $this->rulesProvider->$rule();
                 } else {
-                    $this->rules = $this->rulesProvider->$method(...Arr::wrap($arguments));
+                    $this->rules = $this->rulesProvider->$rule(...Arr::wrap($arguments));
                 }
             }
         }
         return $this;
+    }
+
+    /**
+     * Check if the rule exist.
+     *
+     * @param string $rule
+     * @return bool
+     */
+    protected function isValidRule(string $rule): bool
+    {
+        return method_exists($this->rulesProvider, $rule);
     }
 }
