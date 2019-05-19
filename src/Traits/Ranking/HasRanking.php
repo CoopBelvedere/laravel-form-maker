@@ -34,7 +34,7 @@ trait HasRanking
      */
     public function ranking()
     {
-        return $this->rankingProvider->getEloquentRelation();
+        return $this->rankingProvider->getEloquentRelation($this);
     }
 
     /**

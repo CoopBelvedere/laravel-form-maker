@@ -32,11 +32,12 @@ interface RankerContract
     public function down(): int;
 
     /**
-     * Get the model ranking.
+     * Get the model eloquent relation to the ranking.
      *
+     * @param mixed $rankable
      * @return mixed
      */
-    public function getEloquentRelation();
+    public function getEloquentRelation($rankable);
 
     /**
      * Check that the element is in the ranking.

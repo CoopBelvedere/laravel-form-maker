@@ -135,13 +135,14 @@ class Ranker extends Eloquent implements RankerContract
     }
 
     /**
-     * Get the model ranking.
+     * Get the model eloquent relation to the ranking.
      *
+     * @param mixed $rankable
      * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function getEloquentRelation(): MorphOne
+    public function getEloquentRelation($rankable): MorphOne
     {
-        return $this->morphOne('Belvedere\FormMaker\Models\Sorting\RankingContract', 'rankable');
+        return $rankable->morphOne($this, 'rankable');
     }
 
     /**
