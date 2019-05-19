@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Traits\Rules;
 
+use Belvedere\FormMaker\Contracts\Rules\RulerContract;
 use Illuminate\Support\Arr;
 
 trait HasRules
@@ -36,6 +37,16 @@ trait HasRules
             });
         }
         $this->attributes['rules'] = json_encode($rules);
+    }
+
+    /**
+     * Set the rules provider used by the model.
+     *
+     * @return void
+     */
+    public function setRulesProvider(): void
+    {
+        $this->rulesProvider = resolve(RulerContract::class);
     }
 
     /**

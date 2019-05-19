@@ -57,6 +57,13 @@ abstract class AbstractInput extends AbstractModel implements HasRulesContract, 
     public $rank = 0;
 
     /**
+     * The current implementation of the RulerContract.
+     *
+     * @var mixed
+     */
+    protected $rulesProvider;
+
+    /**
      * AbstractInput constructor.
      *
      * @param array $attributes
@@ -73,6 +80,10 @@ abstract class AbstractInput extends AbstractModel implements HasRulesContract, 
             'title',
             'value',
         ]);
+
+        $this->setHtmlAttributesProvider();
+
+        $this->setRulesProvider();
     }
 
     /**
