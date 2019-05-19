@@ -6,7 +6,7 @@ use Belvedere\FormMaker\Contracts\HtmlAttributes\HtmlAttributerContract;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class HtmlAttributeServiceProvider extends ServiceProvider implements DeferrableProvider
+class HtmlAttributeServiceProvider extends ServiceProvider // implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -22,13 +22,13 @@ class HtmlAttributeServiceProvider extends ServiceProvider implements Deferrable
         $this->app->alias(HtmlAttributerContract::class, 'form-maker.html_attributes');
     }
 
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides(): array
-    {
-        return [config('form-maker.services.html_attributes', new HtmlAttributer())];
-    }
+//    /**
+//     * Get the services provided by the provider.
+//     *
+//     * @return array
+//     */
+//    public function provides(): array
+//    {
+//        return [config('form-maker.services.html_attributes', new HtmlAttributer())];
+//    }
 }
