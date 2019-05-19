@@ -15,9 +15,9 @@ trait HasHtmlAttributes
      */
     public function removeHtmlAttributes(array $attributes): self
     {
-        foreach ($attributes as $method => $arguments) {
-            if (method_exists($this->htmlAttributesProvider, $method)) {
-                $this->html_attributes = $this->htmlAttributesProvider->$method(null);
+        foreach ($attributes as $attribute => $arguments) {
+            if ($this->isValidAttribute($attribute)) {
+                $this->html_attributes = $this->htmlAttributesProvider->$attribute(null);
             }
         }
         return $this;
@@ -57,15 +57,27 @@ trait HasHtmlAttributes
      */
     public function withHtmlAttributes(array $attributes): self
     {
-        foreach ($attributes as $method => $arguments) {
-            if (method_exists($this->htmlAttributesProvider, $method)) {
-                if ($method === $arguments) {
-                    $this->html_attributes = $this->htmlAttributesProvider->$method();
+        foreach ($attributes as $attribute => $arguments) {
+            if ($this->isValidAttribute($attribute)) {
+                if ($attribute === $arguments) {
+                    $this->html_attributes = $this->htmlAttributesProvider->$attribute();
                 } else {
-                    $this->html_attributes = $this->htmlAttributesProvider->$method(...Arr::wrap($arguments));
+                    $this->html_attributes = $this->htmlAttributesProvider->$attribute(...Arr::wrap($arguments));
                 }
             }
         }
         return $this;
+    }
+
+    /**
+     * Check if the attribute is valid for the model.
+     *
+     * @param string $attribute
+     * @return bool
+     */
+    protected function isValidAttribute(string $attribute): bool
+    {
+        return in_array($attribute, $this->attributesAvailable)
+            && method_exists($this->htmlAttributesProvider, $attribute);
     }
 }

@@ -31,7 +31,7 @@ trait HasInputs
      */
     public function add(string $type, ?string $name = null): AbstractInput
     {
-        $input = resolve(sprintf('form-maker.%s', $type));
+        $input = $this->instantiateInput($type);
 
         $input->type = $type;
 
