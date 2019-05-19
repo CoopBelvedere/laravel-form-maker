@@ -33,8 +33,6 @@ class AssignAttributes
      */
     protected function handle(): void
     {
-        $this->model->type = $this->model->getClassName();
-
         foreach ($this->model->assignedAttributes as $attribute) {
             if (!isset($this->model->html_attributes[$attribute])) {
                 $this->setAttribute($attribute);

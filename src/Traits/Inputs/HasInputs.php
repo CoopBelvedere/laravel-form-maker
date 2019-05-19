@@ -33,6 +33,8 @@ trait HasInputs
     {
         $input = resolve(sprintf('form-maker.%s', $type));
 
+        $input->type = $type;
+
         if ($name) {
             $input->withHtmlAttributes(['name' => $name]);
         }
