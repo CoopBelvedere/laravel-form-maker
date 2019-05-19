@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 abstract class AbstractInput extends AbstractModel implements HasRulesContract, InputContract
 {
     use HasRules;
-    
+
     /**
      * The default attributes automatically assigned on creation.
      *

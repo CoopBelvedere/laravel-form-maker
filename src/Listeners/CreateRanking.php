@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Listeners;
 
-use Belvedere\FormMaker\Models\Ranking\RankingContract;
+use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
 use Illuminate\Database\Eloquent\Model;
 
 class CreateRanking
@@ -34,7 +34,7 @@ class CreateRanking
      */
     protected function handle(): void
     {
-        $ranking = new RankingContract();
+        $ranking = resolve(RankerContract::class);
 
         $ranking->ranks = [];
 
