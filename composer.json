@@ -27,7 +27,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Belvedere\\FormMaker\\FormMakerServiceProvider"
+                "Belvedere\\FormMaker\\FormMakerServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Ranking\\RankingServiceProvider"
             ]
         }
     }
