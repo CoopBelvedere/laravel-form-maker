@@ -31,7 +31,7 @@ trait HasInputs
      */
     public function add(string $type, ?string $name = null): AbstractInput
     {
-        $input = resolve(sprintf('form_maker.%s', $type));
+        $input = resolve(sprintf('form-maker.%s', $type));
 
         if ($name) {
             $input->withHtmlAttributes(['name' => $name]);
