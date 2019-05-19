@@ -16,8 +16,8 @@ trait HasRules
     public function removeRules(array $rules): self
     {
         foreach ($rules as $method => $arguments) {
-            if (method_exists($this, $method)) {
-                $this->$method(null);
+            if (method_exists($this->rulesProvider, $method)) {
+                $this->rules = $this->rulesProvider->$method(null);
             }
         }
         return $this;
@@ -58,11 +58,11 @@ trait HasRules
     public function withRules(array $rules): self
     {
         foreach ($rules as $method => $arguments) {
-            if (method_exists($this, $method)) {
+            if (method_exists($this->rulesProvider, $method)) {
                 if ($method === $arguments) {
-                    $this->$method();
+                    $this->rules = $this->rulesProvider->$method();
                 } else {
-                    $this->$method(...Arr::wrap($arguments));
+                    $this->rules = $this->rulesProvider->$method(...Arr::wrap($arguments));
                 }
             }
         }
