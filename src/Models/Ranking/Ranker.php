@@ -9,13 +9,6 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 class Ranker extends Eloquent implements RankerContract
 {
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'rankings';
-
-    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -30,6 +23,18 @@ class Ranker extends Eloquent implements RankerContract
      * @var mixed
      */
     protected $elementId;
+
+    /**
+     * Ranker constructor.
+     *
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->table = config('form-maker.database.rankings_table', 'rankings');
+    }
 
     /**
      * Set the ranks.

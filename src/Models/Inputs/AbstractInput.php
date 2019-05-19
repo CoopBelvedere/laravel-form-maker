@@ -65,7 +65,7 @@ abstract class AbstractInput extends AbstractModel implements HasRulesContract, 
     {
         parent::__construct($attributes);
 
-        $this->table = config('form-maker.database.inputs_table');
+        $this->table = config('form-maker.database.inputs_table', 'inputs');
 
         $this->attributesAvailable = array_merge($this->attributesAvailable, [
             'disabled',

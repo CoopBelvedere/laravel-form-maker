@@ -47,7 +47,7 @@ class Form extends AbstractModel implements HasInputsContract
     {
         parent::__construct($attributes);
 
-        $this->table = config('form-maker.database.forms_table');
+        $this->table = config('form-maker.database.forms_table', 'forms');
 
         $this->attributesAvailable = array_merge($this->attributesAvailable, [
             'charset',

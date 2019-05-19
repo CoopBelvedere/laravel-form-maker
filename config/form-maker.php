@@ -4,25 +4,26 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     |
+     |  Database Tables Name.
      |--------------------------------------------------------------------------
      |
-     |
-     |
+     | The name of the different tables registered in your migrations.
+     | You may customize them to fit your specific needs.
      */
 
     'database' => [
         'forms_table' => 'forms',
         'inputs_table' => 'inputs',
+        'rankings_table' => 'rankings',
     ],
 
     /*
      |--------------------------------------------------------------------------
-     |
+     | Form Nodes
      |--------------------------------------------------------------------------
      |
-     |
-     |
+     | The different classes used by the form api.
+     | You may swap any of the default implementations with your own.
      */
 
     'nodes' => [
@@ -57,22 +58,22 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     |
+     | Ranking
      |--------------------------------------------------------------------------
      |
-     |
-     |
+     | The ranking service used to order the form nodes.
+     | You may swap the default implementation with your own.
      */
 
     'ranking' => \Belvedere\FormMaker\Models\Ranking\Ranker::class,
 
     /*
      |--------------------------------------------------------------------------
-     |
+     | Model Services
      |--------------------------------------------------------------------------
      |
-     |
-     |
+     | The different services used by the models.
+     | You may swap any of the default implementations with your own.
      */
 
     'services' => [

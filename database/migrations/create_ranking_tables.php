@@ -8,7 +8,7 @@ class CreateRankingTables extends Migration
 {
     public function up()
     {
-        Schema::create('rankings', function (Blueprint $table) {
+        Schema::create(config('form-maker.database.rankings_table'), function (Blueprint $table) {
             $table->increments('id');
             $table->morphs('rankable');
             $table->json('ranks');
