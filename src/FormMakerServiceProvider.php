@@ -33,6 +33,10 @@ class FormMakerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../database/migrations/create_form_maker_tables.php' => database_path('migrations/' . $timestamp . '_create_form_maker_tables.php'),
         ], 'form-migrations');
+
+        $this->publishes([
+            __DIR__ . '/../../../database/migrations/create_ranking_tables.php' => database_path('migrations/' . $timestamp . '_create_ranking_tables.php'),
+        ], 'ranking-migrations');
     }
 
     /**

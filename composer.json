@@ -1,6 +1,6 @@
 {
     "name": "coopbelvedere/laravel-form-maker",
-    "description": "Simple form maker module for Laravel",
+    "description": "Modular api for creating forms in Laravel",
     "keywords": ["laravel", "form maker", "form builder", "form generator"],
     "type": "library",
     "support": {
@@ -27,8 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Belvedere\\FormMaker\\FormMakerServiceProvider",
-                "Belvedere\\FormMaker\\Models\\Ranking\\RankingServiceProvider"
+                "Belvedere\\FormMaker\\FormMakerServiceProvider"
             ]
         }
     }
