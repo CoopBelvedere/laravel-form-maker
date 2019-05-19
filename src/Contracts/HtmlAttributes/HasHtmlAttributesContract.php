@@ -13,6 +13,13 @@ interface HasHtmlAttributesContract
     public function removeHtmlAttributes(array $attributes);
 
     /**
+     * Set the html attributes provider used by the model.
+     *
+     * @return void
+     */
+    public function setHtmlAttributesProvider(): void;
+
+    /**
      * Mass assign html attributes to a model.
      *
      * @param array $attributes

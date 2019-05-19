@@ -55,6 +55,8 @@ class Form extends AbstractModel implements HasInputsContract
             'name',
         ]);
 
+        $this->setHtmlAttributesProvider();
+
         $this->setRankingProvider();
     }
 

@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Traits\HtmlAttributes;
 
+use Belvedere\FormMaker\Contracts\HtmlAttributes\HtmlAttributerContract;
 use Illuminate\Support\Arr;
 
 trait HasHtmlAttributes
@@ -36,6 +37,16 @@ trait HasHtmlAttributes
             });
         }
         $this->attributes['html_attributes'] = json_encode($attributes);
+    }
+
+    /**
+     * Set the html attributes provider used by the model.
+     *
+     * @return void
+     */
+    public function setHtmlAttributesProvider(): void
+    {
+        $this->htmlAttributesProvider = resolve(HtmlAttributerContract::class);
     }
 
     /**

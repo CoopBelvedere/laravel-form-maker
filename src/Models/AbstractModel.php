@@ -44,4 +44,11 @@ abstract class AbstractModel extends Eloquent implements HasHtmlAttributesContra
     protected $casts = [
         'html_attributes' => 'array',
     ];
+
+    /**
+     * The current implementation of the HtmlAttributerContract
+     *
+     * @var mixed
+     */
+    protected $htmlAttributesProvider;
 }

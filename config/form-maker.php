@@ -64,7 +64,7 @@ return [
      |
      */
 
-    'ranking' => '\Belvedere\FormMaker\Models\Ranking\Ranker',
+    'ranking' => \Belvedere\FormMaker\Models\Ranking\Ranker::class,
 
     /*
      |--------------------------------------------------------------------------
