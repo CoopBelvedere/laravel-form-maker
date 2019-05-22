@@ -21,7 +21,5 @@ class HtmlAttributeServiceProvider extends ServiceProvider
             }
             return $htmlAttributer;
         });
-
-        $this->app->alias(HtmlAttributerContract::class, 'form-maker.html_attributes');
     }
 }

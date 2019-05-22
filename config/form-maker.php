@@ -69,6 +69,20 @@ return [
 
     /*
      |--------------------------------------------------------------------------
+     | API Resources
+     |--------------------------------------------------------------------------
+     |
+     | The different classes used to transform the models to JSON.
+     | You may swap any of the default implementations with your own.
+     */
+
+    'resources' => [
+        'inputs' => \Belvedere\FormMaker\Http\Resources\InputResourcer::class,
+        'html_elements' => '',
+    ],
+
+    /*
+     |--------------------------------------------------------------------------
      | Model Services
      |--------------------------------------------------------------------------
      |

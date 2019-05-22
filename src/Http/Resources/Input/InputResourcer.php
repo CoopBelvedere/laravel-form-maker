@@ -4,7 +4,7 @@ namespace Belvedere\FormMaker\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class InputResource extends JsonResource
+class InputResourcer extends JsonResource
 {
     /**
      * Transform the resource into an array.

@@ -3,8 +3,8 @@
 namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Contracts\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
 use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
-use Belvedere\FormMaker\Http\Resources\InputResource;
 use Belvedere\FormMaker\Listeners\{
     AssignAttributes,
     RemoveFromRanking,
@@ -13,6 +13,7 @@ use Belvedere\FormMaker\Listeners\{
 use Belvedere\FormMaker\Models\Form\AbstractModel;
 use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 abstract class AbstractInput extends AbstractModel implements HasRulesContract, InputContract
 {
@@ -89,11 +90,11 @@ abstract class AbstractInput extends AbstractModel implements HasRulesContract, 
     /**
      * Transform the input to JSON.
      *
-     * @return \Belvedere\FormMaker\Http\Resources\InputResource
+     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
-    public function toApi(): InputResource
+    public function toApi(): JsonResource
     {
-        return new InputResource($this);
+        return resolve(InputResourcerContract::class, ['input' => $this]);
     }
 
     // ELOQUENT RELATIONSHIPS

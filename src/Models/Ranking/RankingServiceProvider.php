@@ -21,7 +21,5 @@ class RankingServiceProvider extends ServiceProvider
             }
             return $ranker;
         });
-
-        $this->app->alias(RankerContract::class, 'form-maker.ranking');
     }
 }

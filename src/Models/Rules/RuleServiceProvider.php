@@ -21,7 +21,5 @@ class RuleServiceProvider extends ServiceProvider
             }
             return $ruler;
         });
-
-        $this->app->alias(RulerContract::class, 'form-maker.rules');
     }
 }

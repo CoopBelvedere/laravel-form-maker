@@ -15,7 +15,7 @@ interface InputContract
     /**
      * Transform the input to JSON.
      *
-     * @return mixed
+     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function toApi();
 }
