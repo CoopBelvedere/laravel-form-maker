@@ -3,9 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Text;
 
 use Belvedere\FormMaker\Contracts\Inputs\Text\TexterContract;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class TextServiceProvider extends ServiceProvider
+class TextServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -23,5 +24,15 @@ class TextServiceProvider extends ServiceProvider
         });
 
         $this->app->alias(TexterContract::class, 'form-maker.text');
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [Texter::class];
     }
 }
