@@ -15,7 +15,7 @@ class InputCollection extends ResourceCollection
     public function toArray($request): array
     {
         return $this->collection->transform(function ($input) {
-            return new InputResource($input);
+            return $input->toApi();
         })->toArray();
     }
 }

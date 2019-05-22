@@ -15,7 +15,7 @@ class FormCollection extends ResourceCollection
     public function toArray($request): array
     {
         return $this->collection->transform(function ($form) {
-            return new FormResource($form);
+            return $form->toApi();
         })->toArray();
     }
 }
