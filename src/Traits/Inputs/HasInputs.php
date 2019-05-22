@@ -139,10 +139,13 @@ trait HasInputs
     protected function getAllInputs(): Collection
     {
         $inputs = collect([]);
-        $rawInputs = DB::table('inputs')->get()->groupBy('type')->toArray();
 
-        foreach (array_keys($rawInputs) as $type) {
-            $subset = $this->inputsQueryBuilder($type)->get();
+        foreach (DB::table(config('form-maker.database.inputs_table', 'inputs'))
+                     ->select('type')
+                     ->distinct()
+                     ->cursor() as $input)
+        {
+            $subset = $this->inputsQueryBuilder($input->type)->get();
             $inputs = $inputs->merge($subset);
         }
 
