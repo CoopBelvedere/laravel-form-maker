@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Traits\Inputs;
 
-use Belvedere\FormMaker\Listeners\DeleteInputs;
+use Belvedere\FormMaker\Listeners\DeleteChildren;
 use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -17,7 +17,7 @@ trait HasInputs
     protected static function bootHasInputs()
     {
         static::deleted(function (Model $model) {
-            event(new DeleteInputs($model));
+            event(new DeleteChildren($model));
         });
     }
 
@@ -31,7 +31,7 @@ trait HasInputs
      */
     public function add(string $type, ?string $name = null): AbstractInput
     {
-        $input = $this->instantiateInput($type);
+        $input = $this->resolve($type);
 
         $input->type = $type;
 
@@ -195,18 +195,18 @@ trait HasInputs
      */
     protected function inputsQueryBuilder(string $type): MorphMany
     {
-        return $this->morphMany($this->instantiateInput($type), 'inputable');
+        return $this->morphMany($this->resolve($type), 'inputable');
     }
 
     /**
-     * Resolve the input type out of the service container.
+     * Resolve the input out of the service container.
      *
-     * @param string $type
+     * @param string $input
      * @return AbstractInput
      */
-    protected function instantiateInput(string $type): AbstractInput
+    protected function resolve(string $input): AbstractInput
     {
-        return resolve(sprintf('form-maker.%s', $type));
+        return resolve(sprintf('form-maker.%s', $input));
     }
 
     /**

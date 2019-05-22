@@ -16,6 +16,8 @@ class InputResource extends JsonResource
     {
         if ($inputs = method_exists($this->resource, 'inputs')) {
             $inputs = new InputCollection($this->inputs());
+        } else if ($inputs = method_exists($this->resource, 'options')) {
+            $inputs = new InputCollection($this->options()->get());
         }
 
         return [

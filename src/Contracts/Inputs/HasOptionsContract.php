@@ -2,7 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs;
 
-interface HasOptionsContract extends HasInputsContract
+use Belvedere\FormMaker\Contracts\Ranking\HasRankingContract;
+
+interface HasOptionsContract extends HasRankingContract
 {
     /**
      * Get the options that belongs to the input.

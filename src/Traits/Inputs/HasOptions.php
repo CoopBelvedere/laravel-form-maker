@@ -2,13 +2,13 @@
 
 namespace Belvedere\FormMaker\Traits\Inputs;
 
+use Belvedere\FormMaker\Listeners\DeleteChildren;
+use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait HasOptions
 {
-    use HasInputs;
-
     /**
      * Boot the listener.
      */
@@ -17,6 +17,40 @@ trait HasOptions
         static::retrieved(function (Model $model) {
             $model->load('options');
         });
+
+        static::deleted(function (Model $model) {
+            event(new DeleteChildren($model));
+        });
+    }
+
+    /**
+     * Add a option input to the parent model.
+     *
+     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInput
+     * @throws \Exception
+     */
+    protected function add(): AbstractInput
+    {
+        $option = $this->resolve('option');
+
+        $option->type = 'option';
+
+        $this->options()->save($option);
+
+        $this->ranking->add($option);
+
+        return $option;
+    }
+
+    /**
+     * Resolve the input out of the service container.
+     *
+     * @param string $input
+     * @return AbstractInput
+     */
+    protected function resolve(string $input): AbstractInput
+    {
+        return resolve(sprintf('form-maker.%s', $input));
     }
 
     /**
@@ -30,9 +64,14 @@ trait HasOptions
     {
         foreach ($options as $optionValues)
         {
-            $this->add('option')
-                ->withHtmlAttributes($optionValues)
-                ->save();
+            $option = $this->add()
+                        ->withHtmlAttributes($optionValues);
+
+            if (array_key_exists('text', $optionValues) && method_exists($option, 'withText')) {
+                $option->withText($optionValues['text']);
+            }
+
+            $option->save();
         }
 
         return $this;
@@ -48,6 +87,6 @@ trait HasOptions
      */
     public function options(): MorphMany
     {
-        return $this->morphMany('Belvedere\FormMaker\Models\Form\Inputs\Option', 'inputable');
+        return $this->morphMany($this->resolve('option'), 'inputable');
     }
 }

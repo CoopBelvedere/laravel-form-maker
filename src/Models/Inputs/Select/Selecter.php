@@ -14,6 +14,13 @@ class Selecter extends AbstractInput implements HasOptionsContract, SelecterCont
     use HasOptions, HasRanking;
 
     /**
+     * The current implementation of the RankingContract
+     *
+     * @var mixed
+     */
+    protected $rankingProvider;
+
+    /**
      * Apply the type scope.
      *
      * @return void
@@ -41,5 +48,7 @@ class Selecter extends AbstractInput implements HasOptionsContract, SelecterCont
             'required',
             'size'
         ]);
+
+        $this->setRankingProvider();
     }
 }
