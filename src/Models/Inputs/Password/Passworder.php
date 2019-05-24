@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Password;
 
 use Belvedere\FormMaker\Contracts\Inputs\Password\PassworderContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Passworder extends AbstractInputs implements PassworderContract
+class Passworder extends AbstractInput implements PassworderContract
 {
     /**
      * Apply the type scope.

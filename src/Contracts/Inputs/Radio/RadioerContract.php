@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Radio;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 
-interface RadioerContract extends InputsContract
+interface RadioerContract extends InputContract
 {
     //
 }

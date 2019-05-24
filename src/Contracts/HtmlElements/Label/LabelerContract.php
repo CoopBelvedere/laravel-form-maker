@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\HtmlElements\Label;
 
-use Belvedere\FormMaker\Contracts\HtmlElements\ElementsContract;
+use Belvedere\FormMaker\Contracts\HtmlElements\ElementContract;
 
-interface LabelerContract extends ElementsContract
+interface LabelerContract extends ElementContract
 {
     //
 }

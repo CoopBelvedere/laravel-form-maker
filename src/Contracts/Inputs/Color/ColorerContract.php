@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Color;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 
-interface ColorerContract extends InputsContract
+interface ColorerContract extends InputContract
 {
     //
 }

@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Date;
 
 use Belvedere\FormMaker\Contracts\Inputs\Date\DaterContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Dater extends AbstractInputs implements DaterContract
+class Dater extends AbstractInput implements DaterContract
 {
     /**
      * Apply the type scope.

@@ -2,17 +2,17 @@
 
 namespace Belvedere\FormMaker\Contracts\HtmlElements;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 
-interface ElementsContract
+interface ElementContract
 {
     /**
      * Get the input who owns this element.
      * Alias of elementable.
      *
-     * @return \Belvedere\FormMaker\Contracts\Inputs\InputsContract
+     * @return \Belvedere\FormMaker\Contracts\Inputs\InputContract
      */
-    public function input(): InputsContract;
+    public function input(): InputContract;
 
     /**
      * Transform the input to JSON.

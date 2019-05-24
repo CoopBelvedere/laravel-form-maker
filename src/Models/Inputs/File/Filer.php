@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\File;
 
 use Belvedere\FormMaker\Contracts\Inputs\File\FilerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Filer extends AbstractInputs implements FilerContract
+class Filer extends AbstractInput implements FilerContract
 {
     /**
      * Apply the type scope.

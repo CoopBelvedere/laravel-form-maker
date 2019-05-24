@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Checkbox;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 
-interface CheckboxerContract extends InputsContract
+interface CheckboxerContract extends InputContract
 {
     //
 }

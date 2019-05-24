@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Option;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 
-interface OptionerContract extends InputsContract
+interface OptionerContract extends InputContract
 {
     /**
      * Get the parent owning this option.

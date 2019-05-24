@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Datalist;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 
-interface DatalisterContract extends InputsContract
+interface DatalisterContract extends InputContract
 {
     //
 }

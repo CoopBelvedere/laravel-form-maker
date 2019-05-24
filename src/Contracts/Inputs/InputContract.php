@@ -4,7 +4,7 @@ namespace Belvedere\FormMaker\Contracts\Inputs;
 
 use Belvedere\FormMaker\Contracts\Form\FormContract;
 
-interface InputsContract
+interface InputContract
 {
     /**
      * Get the form who owns this input.

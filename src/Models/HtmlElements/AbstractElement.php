@@ -2,16 +2,19 @@
 
 namespace Belvedere\FormMaker\Models\HtmlElements;
 
-use Belvedere\FormMaker\Contracts\HtmlElements\ElementsContract;
-use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
+use Belvedere\FormMaker\Contracts\HtmlElements\ElementContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 use Belvedere\FormMaker\Contracts\Resources\ElementResourcerContract;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
 use Belvedere\FormMaker\Models\Form\AbstractModel;
+use Belvedere\FormMaker\Traits\Ranking\InRanking;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-abstract class AbstractElement extends AbstractModel implements ElementsContract
+abstract class AbstractElement extends AbstractModel implements ElementContract
 {
+    use InRanking;
+
     /**
      * The event map for the model.
      *
@@ -52,9 +55,9 @@ abstract class AbstractElement extends AbstractModel implements ElementsContract
      * Get the input who owns this element.
      * Alias of elementable.
      *
-     * @return \Belvedere\FormMaker\Contracts\Inputs\InputsContract
+     * @return \Belvedere\FormMaker\Contracts\Inputs\InputContract
      */
-    public function input(): InputsContract
+    public function input(): InputContract
     {
         return $this->elementable;
     }

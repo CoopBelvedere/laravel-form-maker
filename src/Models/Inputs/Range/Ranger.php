@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Range;
 
 use Belvedere\FormMaker\Contracts\Inputs\Range\RangerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Ranger extends AbstractInputs implements RangerContract
+class Ranger extends AbstractInput implements RangerContract
 {
     /**
      * Apply the type scope.

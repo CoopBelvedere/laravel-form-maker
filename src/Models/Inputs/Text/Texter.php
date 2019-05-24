@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Text;
 
 use Belvedere\FormMaker\Contracts\Inputs\Text\TexterContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Texter extends AbstractInputs implements TexterContract
+class Texter extends AbstractInput implements TexterContract
 {
     /**
      * Apply the type scope.

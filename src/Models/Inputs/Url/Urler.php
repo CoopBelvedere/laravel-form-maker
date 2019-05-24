@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Url;
 
 use Belvedere\FormMaker\Contracts\Inputs\Url\UrlerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Urler extends AbstractInputs implements UrlerContract
+class Urler extends AbstractInput implements UrlerContract
 {
     /**
      * Apply the type scope.

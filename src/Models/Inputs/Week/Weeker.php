@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Week;
 
 use Belvedere\FormMaker\Contracts\Inputs\Week\WeekerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Weeker extends AbstractInputs implements WeekerContract
+class Weeker extends AbstractInput implements WeekerContract
 {
     /**
      * Apply the type scope.

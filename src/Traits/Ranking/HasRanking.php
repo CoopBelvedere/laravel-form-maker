@@ -30,11 +30,11 @@ trait HasRanking
     /**
      * Get the model ranking.
      *
-     * @return mixed
+     * @return \Belvedere\FormMaker\Models\Ranking\Ranker
      */
-    public function ranking()
+    public function ranking(): RankerContract
     {
-        return $this->rankingProvider->getEloquentRelation($this);
+        return $this->rankingProvider->getEloquentRelation($this)->first();
     }
 
     /**

@@ -3,22 +3,22 @@
 namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Contracts\Form\FormContract;
-use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
 use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
 use Belvedere\FormMaker\Listeners\{
     AssignAttributes,
-    RemoveFromRanking,
     ValidateProperties
 };
 use Belvedere\FormMaker\Models\Form\AbstractModel;
+use Belvedere\FormMaker\Traits\Ranking\InRanking;
 use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-abstract class AbstractInputs extends AbstractModel implements HasRulesContract, InputsContract
+abstract class AbstractInput extends AbstractModel implements HasRulesContract, InputContract
 {
-    use HasRules;
+    use HasRules, InRanking;
 
     /**
      * The default attributes automatically assigned on creation.
@@ -47,16 +47,8 @@ abstract class AbstractInputs extends AbstractModel implements HasRulesContract,
      */
     protected $dispatchesEvents = [
         'creating' => AssignAttributes::class,
-        'deleted' => RemoveFromRanking::class,
         'updating' => ValidateProperties::class,
     ];
-
-    /**
-     * The input position in the ranking.
-     *
-     * @var int
-     */
-    public $rank = 0;
 
     /**
      * The current implementation of the RulerContract.
@@ -105,7 +97,7 @@ abstract class AbstractInputs extends AbstractModel implements HasRulesContract,
      * Get the form who owns this input.
      * Alias of inputable.
      *
-     * @return \Belvedere\FormMaker\Models\Form\Form
+     * @return \Belvedere\FormMaker\Contracts\Form\FormContract
      */
     public function form(): FormContract
     {

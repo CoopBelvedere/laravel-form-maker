@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Number;
 
 use Belvedere\FormMaker\Contracts\Inputs\Number\NumberContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Models\Inputs\AbstractInput;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Number extends AbstractInputs implements NumberContract
+class Number extends AbstractInput implements NumberContract
 {
     /**
      * Apply the type scope.
