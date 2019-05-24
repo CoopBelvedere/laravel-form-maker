@@ -3,9 +3,10 @@
 namespace Belvedere\FormMaker\Models\HtmlAttributes;
 
 use Belvedere\FormMaker\Contracts\HtmlAttributes\HtmlAttributerContract;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class HtmlAttributeServiceProvider extends ServiceProvider
+class HtmlAttributeServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,5 +22,15 @@ class HtmlAttributeServiceProvider extends ServiceProvider
             }
             return $htmlAttributer;
         });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [HtmlAttributerContract::class];
     }
 }

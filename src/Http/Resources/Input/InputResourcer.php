@@ -16,8 +16,10 @@ class InputResourcer extends JsonResource
     {
         if ($inputs = method_exists($this->resource, 'inputs')) {
             $inputs = new InputCollection($this->inputs());
-        } else if ($inputs = method_exists($this->resource, 'options')) {
-            $inputs = new InputCollection($this->options()->get());
+        }
+
+        if ($options = method_exists($this->resource, 'options')) {
+            $options = new InputCollection($this->options()->get());
         }
 
         return [
@@ -30,7 +32,10 @@ class InputResourcer extends JsonResource
                 'attributes' => $this->html_attributes,
             ]),
             $this->mergeWhen($inputs && $inputs->collection->isNotEmpty(), [
-                'children' => $inputs,
+                'inputs' => $inputs,
+            ]),
+            $this->mergeWhen($options && $options->collection->isNotEmpty(), [
+                'options' => $options,
             ]),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
