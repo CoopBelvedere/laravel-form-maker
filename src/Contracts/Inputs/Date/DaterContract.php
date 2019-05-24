@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Date;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
 
-interface DaterContract extends InputContract
+interface DaterContract extends InputsContract
 {
     //
 }

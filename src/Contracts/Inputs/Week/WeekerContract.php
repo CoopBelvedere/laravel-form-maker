@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Week;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
 
-interface WeekerContract extends InputContract
+interface WeekerContract extends InputsContract
 {
     //
 }

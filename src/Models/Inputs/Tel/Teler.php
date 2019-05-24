@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Tel;
 
 use Belvedere\FormMaker\Contracts\Inputs\Tel\TelerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
-use Belvedere\FormMaker\Scopes\InputScope;
+use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Teler extends AbstractInput implements TelerContract
+class Teler extends AbstractInputs implements TelerContract
 {
     /**
      * Apply the type scope.
@@ -17,7 +17,7 @@ class Teler extends AbstractInput implements TelerContract
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('tel'));
+        static::addGlobalScope(new ModelScope('tel'));
     }
 
     /**

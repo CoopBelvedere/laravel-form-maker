@@ -71,11 +71,4 @@ abstract class AbstractModel extends Eloquent implements HasHtmlAttributesContra
     {
         return $this->htmlAttributesRules;
     }
-
-    /**
-     * Transform the model to JSON.
-     *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
-     */
-    abstract public function toApi();
 }

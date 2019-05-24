@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Month;
 
 use Belvedere\FormMaker\Contracts\Inputs\Month\MontherContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
-use Belvedere\FormMaker\Scopes\InputScope;
+use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Monther extends AbstractInput implements MontherContract
+class Monther extends AbstractInputs implements MontherContract
 {
     /**
      * Apply the type scope.
@@ -17,7 +17,7 @@ class Monther extends AbstractInput implements MontherContract
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('month'));
+        static::addGlobalScope(new ModelScope('month'));
     }
 
     /**

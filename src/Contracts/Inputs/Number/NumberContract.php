@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Number;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
 
-interface NumberContract extends InputContract
+interface NumberContract extends InputsContract
 {
     //
 }

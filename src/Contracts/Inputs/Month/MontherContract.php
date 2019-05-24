@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Month;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
 
-interface MontherContract extends InputContract
+interface MontherContract extends InputsContract
 {
     //
 }

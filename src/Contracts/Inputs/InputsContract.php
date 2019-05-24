@@ -2,7 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs;
 
-interface InputContract
+use Belvedere\FormMaker\Contracts\Form\FormContract;
+
+interface InputsContract
 {
     /**
      * Get the form who owns this input.
@@ -10,7 +12,7 @@ interface InputContract
      *
      * @return mixed
      */
-    public function form();
+    public function form(): FormContract;
 
     /**
      * Transform the input to JSON.

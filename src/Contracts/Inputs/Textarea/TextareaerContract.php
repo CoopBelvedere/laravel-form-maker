@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Textarea;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
 
-interface TextareaerContract extends InputContract
+interface TextareaerContract extends InputsContract
 {
     //
 }

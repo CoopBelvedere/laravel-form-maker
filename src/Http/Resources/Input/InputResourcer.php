@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Http\Resources;
+namespace Belvedere\FormMaker\Http\Resources\Input;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

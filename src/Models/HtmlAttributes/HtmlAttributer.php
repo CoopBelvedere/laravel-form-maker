@@ -133,6 +133,28 @@ class HtmlAttributer implements HtmlAttributerContract
     }
 
     /**
+     * Specifies the id of a labelable form-related element.
+     *
+     * @param mixed $for
+     * @return array
+     */
+    public function isFor(?$for): array
+    {
+        return ['for' => $for];
+    }
+
+    /**
+     * Specifies the form element with which the label is associated (its form owner).
+     *
+     * @param mixed $form
+     * @return array
+     */
+    public function form(?$form): array
+    {
+        return ['form' => $form];
+    }
+
+    /**
      * Specifies the height of the input field image element.
      *
      * @param int $height

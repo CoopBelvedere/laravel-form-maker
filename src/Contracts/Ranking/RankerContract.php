@@ -63,7 +63,7 @@ interface RankerContract
      * @return self
      * @throws \Exception
      */
-    public function move($element);
+    public function move($element): RankerContract;
 
     /**
      * Return the rank of the element in the ranking.

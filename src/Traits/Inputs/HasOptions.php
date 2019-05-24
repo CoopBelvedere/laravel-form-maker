@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Traits\Inputs;
 
 use Belvedere\FormMaker\Listeners\DeleteChildren;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
@@ -26,10 +26,10 @@ trait HasOptions
     /**
      * Add a option input to the parent model.
      *
-     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInput
+     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInputs
      * @throws \Exception
      */
-    protected function add(): AbstractInput
+    protected function add(): AbstractInputs
     {
         $option = $this->resolve('option');
 
@@ -46,9 +46,9 @@ trait HasOptions
      * Resolve the input out of the service container.
      *
      * @param string $input
-     * @return AbstractInput
+     * @return AbstractInputs
      */
-    protected function resolve(string $input): AbstractInput
+    protected function resolve(string $input): AbstractInputs
     {
         return resolve(sprintf('form-maker.%s', $input));
     }

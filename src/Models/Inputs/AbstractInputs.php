@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Inputs;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
 use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
 use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
 use Belvedere\FormMaker\Listeners\{
@@ -15,7 +15,7 @@ use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-abstract class AbstractInput extends AbstractModel implements HasRulesContract, InputContract
+abstract class AbstractInputs extends AbstractModel implements HasRulesContract, InputsContract
 {
     use HasRules;
 
@@ -104,11 +104,11 @@ abstract class AbstractInput extends AbstractModel implements HasRulesContract, 
      * Get the form who owns this input.
      * Alias of inputable.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     * @return \Belvedere\FormMaker\Models\Form\Form
      */
-    public function form(): MorphTo
+    public function form()
     {
-        return $this->inputable();
+        return $this->inputable;
     }
 
     /**

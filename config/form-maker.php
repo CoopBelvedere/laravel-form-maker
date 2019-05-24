@@ -13,6 +13,7 @@ return [
 
     'database' => [
         'forms_table' => 'forms',
+        'html_elements_table' => 'html_elements',
         'inputs_table' => 'inputs',
         'rankings_table' => 'rankings',
     ],
@@ -27,8 +28,8 @@ return [
      */
 
     'nodes' => [
-        'elements' => [
-            'label' => ''
+        'html_elements' => [
+            'label' => \Belvedere\FormMaker\Models\HtmlElements\Label\Labeler::class,
         ],
 
         'inputs' => [
@@ -77,8 +78,8 @@ return [
      */
 
     'resources' => [
-        'inputs' => \Belvedere\FormMaker\Http\Resources\InputResourcer::class,
-        'html_elements' => '',
+        'input' => \Belvedere\FormMaker\Http\Resources\Input\InputResourcer::class,
+        'html_element' => \Belvedere\FormMaker\Http\Resources\HtmlElement\ElementResourcer::class,
     ],
 
     /*

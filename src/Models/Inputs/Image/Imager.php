@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Image;
 
 use Belvedere\FormMaker\Contracts\Inputs\Image\ImagerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
-use Belvedere\FormMaker\Scopes\InputScope;
+use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Imager extends AbstractInput implements ImagerContract
+class Imager extends AbstractInputs implements ImagerContract
 {
     /**
      * Apply the type scope.
@@ -15,7 +15,7 @@ class Imager extends AbstractInput implements ImagerContract
      */
     protected static function boot()
     {
-        static::addGlobalScope(new InputScope('image'));
+        static::addGlobalScope(new ModelScope('image'));
 
         parent::boot();
     }

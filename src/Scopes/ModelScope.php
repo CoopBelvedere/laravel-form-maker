@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\{
     Scope
 };
 
-class InputScope implements Scope
+class ModelScope implements Scope
 {
     /**
      * The input type that get scoped.

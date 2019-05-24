@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Traits\Inputs;
 
 use Belvedere\FormMaker\Listeners\DeleteChildren;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
@@ -26,10 +26,10 @@ trait HasInputs
      *
      * @param string $type
      * @param string|null $name
-     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInput
+     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInputs
      * @throws \Exception
      */
-    public function add(string $type, ?string $name = null): AbstractInput
+    public function add(string $type, ?string $name = null): AbstractInputs
     {
         $input = $this->resolve($type);
 
@@ -52,10 +52,10 @@ trait HasInputs
      * @param string $afterInputName
      * @param string $type
      * @param string|null $name
-     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInput
+     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInputs
      * @throws \Exception
      */
-    public function addAfter(string $afterInputName, string $type, ?string $name = null): AbstractInput
+    public function addAfter(string $afterInputName, string $type, ?string $name = null): AbstractInputs
     {
         $input = $this->add($type, $name);
 
@@ -74,10 +74,10 @@ trait HasInputs
      * @param int $rank
      * @param string $type
      * @param string|null $name
-     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInput
+     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInputs
      * @throws \Exception
      */
-    public function addAtRank(int $rank, string $type, ?string $name = null): AbstractInput
+    public function addAtRank(int $rank, string $type, ?string $name = null): AbstractInputs
     {
         $input = $this->add($type, $name);
 
@@ -92,10 +92,10 @@ trait HasInputs
      * @param string $beforeInputName
      * @param string $type
      * @param string|null $name
-     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInput
+     * @return \Belvedere\FormMaker\Models\Inputs\AbstractInputs
      * @throws \Exception
      */
-    public function addBefore(string $beforeInputName, string $type, ?string $name = null): AbstractInput
+    public function addBefore(string $beforeInputName, string $type, ?string $name = null): AbstractInputs
     {
         $input = $this->add($type, $name);
 
@@ -156,10 +156,10 @@ trait HasInputs
      * Get the input with the specified name property.
      *
      * @param string $name
-     * @return AbstractInput|null
+     * @return AbstractInputs|null
      * @throws \Exception
      */
-    public function getInput(string $name): ?AbstractInput
+    public function getInput(string $name): ?AbstractInputs
     {
         return $this->inputs()
             ->firstWhere('html_attributes.name', $name);
@@ -202,9 +202,9 @@ trait HasInputs
      * Resolve the input out of the service container.
      *
      * @param string $input
-     * @return AbstractInput
+     * @return AbstractInputs
      */
-    protected function resolve(string $input): AbstractInput
+    protected function resolve(string $input): AbstractInputs
     {
         return resolve(sprintf('form-maker.%s', $input));
     }

@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Radio;
 
 use Belvedere\FormMaker\Contracts\Inputs\Radio\RadioerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
-use Belvedere\FormMaker\Scopes\InputScope;
+use Belvedere\FormMaker\Models\Inputs\AbstractInputs;
+use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Radioer extends AbstractInput implements RadioerContract
+class Radioer extends AbstractInputs implements RadioerContract
 {
     /**
      * Apply the type scope.
@@ -17,7 +17,7 @@ class Radioer extends AbstractInput implements RadioerContract
     {
         parent::boot();
 
-        static::addGlobalScope(new InputScope('radio'));
+        static::addGlobalScope(new ModelScope('radio'));
     }
 
     /**

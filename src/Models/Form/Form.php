@@ -2,13 +2,14 @@
 
 namespace Belvedere\FormMaker\Models\Form;
 
+use Belvedere\FormMaker\Contracts\Form\FormContract;
 use Belvedere\FormMaker\Contracts\Inputs\HasInputsContract;
-use Belvedere\FormMaker\Http\Resources\FormResource;
+use Belvedere\FormMaker\Http\Resources\Form\FormResource;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
 use Belvedere\FormMaker\Traits\HasRanking;
 use Belvedere\FormMaker\Traits\Inputs\HasInputs;
 
-class Form extends AbstractModel implements HasInputsContract
+class Form extends AbstractModel implements FormContract, HasInputsContract
 {
     use HasInputs, HasRanking;
 
@@ -105,7 +106,7 @@ class Form extends AbstractModel implements HasInputsContract
     /**
      * Transform the form to JSON.
      *
-     * @return \Belvedere\FormMaker\Http\Resources\FormResource
+     * @return \Belvedere\FormMaker\Http\Resources\Form\FormResource
      */
     public function toApi(): FormResource
     {
