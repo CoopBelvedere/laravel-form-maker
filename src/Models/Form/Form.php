@@ -66,7 +66,7 @@ class Form extends AbstractModel implements FormContract, HasInputsContract
      * @param string $action
      * @return self
      */
-    public function action(string $action): self
+    public function action(string $action): FormContract
     {
         $this->html_attributes = ['action' => $action];
 
@@ -79,7 +79,7 @@ class Form extends AbstractModel implements FormContract, HasInputsContract
      * @param string $method
      * @return self
      */
-    public function method(string $method): self
+    public function method(string $method): FormContract
     {
         $this->html_attributes = ['method' => $method];
 
