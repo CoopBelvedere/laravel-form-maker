@@ -18,7 +18,7 @@ class Datalister extends AbstractInput implements DatalisterContract, HasOptions
      *
      * @var array
      */
-    public $assignedAttributes = [
+    protected $htmlAttributesAssigned = [
         'id'
     ];
 

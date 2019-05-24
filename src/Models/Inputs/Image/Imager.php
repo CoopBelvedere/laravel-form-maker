@@ -29,7 +29,7 @@ class Imager extends AbstractInput implements ImagerContract
     {
         parent::__construct($attributes);
 
-        $this->attributesAvailable = array_merge($this->attributesAvailable, [
+        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'alt',
             'height',
             'readonly',

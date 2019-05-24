@@ -33,7 +33,7 @@ class AssignAttributes
      */
     protected function handle(): void
     {
-        foreach ($this->model->assignedAttributes as $attribute) {
+        foreach ($this->model->getHtmlAttributesAssigned() as $attribute) {
             if (!isset($this->model->html_attributes[$attribute])) {
                 $this->setAttribute($attribute);
             }

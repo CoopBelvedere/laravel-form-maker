@@ -77,7 +77,7 @@ trait HasHtmlAttributes
      */
     protected function isValidAttribute(string $attribute): bool
     {
-        return in_array($attribute, $this->attributesAvailable)
+        return in_array($attribute, $this->htmlAttributesAvailable)
             && method_exists($this->htmlAttributesProvider, $attribute);
     }
 }

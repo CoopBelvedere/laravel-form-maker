@@ -29,7 +29,7 @@ class Colorer extends AbstractInput implements ColorerContract
     {
         parent::__construct($attributes);
 
-        $this->attributesAvailable = array_merge($this->attributesAvailable, [
+        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'autocomplete',
             'required',
         ]);

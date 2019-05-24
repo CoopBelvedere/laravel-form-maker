@@ -49,7 +49,7 @@ class Form extends AbstractModel implements HasInputsContract
 
         $this->table = config('form-maker.database.forms_table', 'forms');
 
-        $this->attributesAvailable = array_merge($this->attributesAvailable, [
+        $this->htmlhtmlAttributesAvailable = array_merge($this->htmlhtmlAttributesAvailable, [
             'charset',
             'name',
         ]);

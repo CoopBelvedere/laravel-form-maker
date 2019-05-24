@@ -96,11 +96,9 @@ class ValidatorService
      */
     protected function mergeAdditionalRules(Collection $rules): Collection
     {
-        $attributesRules = $this->model->attributesRules ?? [];
-
-        foreach ($attributesRules as $attribute => $attributeRule) {
+        foreach ($this->model->getHtmlAttributesRules() as $attribute => $rule) {
             $initialRules = $rules[$attribute] ?? '';
-            $rules[$attribute] = sprintf('%s|%s', $initialRules, $attributeRule);
+            $rules[$attribute] = sprintf('%s|%s', $initialRules, $rule);
         }
 
         return $rules;

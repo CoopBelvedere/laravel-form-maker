@@ -29,7 +29,7 @@ class Teler extends AbstractInput implements TelerContract
     {
         parent::__construct($attributes);
 
-        $this->attributesAvailable = array_merge($this->attributesAvailable, [
+        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'autocomplete',
             'maxlength',
             'minlength',

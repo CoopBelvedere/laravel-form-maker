@@ -29,7 +29,7 @@ class Monther extends AbstractInput implements MontherContract
     {
         parent::__construct($attributes);
 
-        $this->attributesAvailable = array_merge($this->attributesAvailable, [
+        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'max',
             'min',
             'readonly',

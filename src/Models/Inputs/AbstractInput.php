@@ -24,7 +24,7 @@ abstract class AbstractInput extends AbstractModel implements HasRulesContract, 
      *
      * @var array
      */
-    public $assignedAttributes = [
+    protected $htmlAttributesAssigned = [
         'id',
         'name'
     ];
@@ -75,7 +75,7 @@ abstract class AbstractInput extends AbstractModel implements HasRulesContract, 
 
         $this->table = config('form-maker.database.inputs_table', 'inputs');
 
-        $this->attributesAvailable = array_merge($this->attributesAvailable, [
+        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'disabled',
             'name',
             'title',

@@ -29,7 +29,7 @@ class Textareaer extends AbstractInput implements TextareaerContract
     {
         parent::__construct($attributes);
 
-        $this->attributesAvailable = array_merge($this->attributesAvailable, [
+        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'autofocus',
             'cols',
             'readonly',

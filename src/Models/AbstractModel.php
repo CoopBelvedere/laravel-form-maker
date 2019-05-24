@@ -15,14 +15,14 @@ abstract class AbstractModel extends Eloquent implements HasHtmlAttributesContra
      *
      * @var array
      */
-    public $assignedAttributes = [];
+    protected $htmlAttributesAssigned = [];
 
     /**
      * The list of html attributes available for the model.
      *
      * @var array
      */
-    protected $attributesAvailable = [
+    protected $htmlAttributesAvailable = [
         'class',
         'data',
         'id',
@@ -34,7 +34,7 @@ abstract class AbstractModel extends Eloquent implements HasHtmlAttributesContra
      *
      * @var array
      */
-    public $attributesRules = [];
+    protected $htmlAttributesRules = [];
 
     /**
      * The attributes that should be cast to native types.
@@ -51,6 +51,26 @@ abstract class AbstractModel extends Eloquent implements HasHtmlAttributesContra
      * @var mixed
      */
     protected $htmlAttributesProvider;
+
+    /**
+     * Return the list of the default html attributes automatically assigned on creation.
+     *
+     * @return array
+     */
+    public function getHtmlAttributesAssigned(): array
+    {
+        return $this->htmlAttributesAssigned;
+    }
+
+    /**
+     * Return the list of additional validation to be applied on the model attributes on update.
+     *
+     * @return array
+     */
+    public function getHtmlAttributesRules(): array
+    {
+        return $this->htmlAttributesRules;
+    }
 
     /**
      * Transform the model to JSON.
