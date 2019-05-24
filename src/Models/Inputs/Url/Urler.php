@@ -29,7 +29,7 @@ class Urler extends AbstractInput implements UrlerContract
     {
         parent::__construct($attributes);
 
-        $this->htmlhtmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
+        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'autocomplete',
             'maxlength',
             'minlength',

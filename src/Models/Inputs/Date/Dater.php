@@ -29,7 +29,7 @@ class Dater extends AbstractInput implements DaterContract
     {
         parent::__construct($attributes);
 
-        $this->htmlhtmlAttributesAvailable = array_merge($this->htmlhtmlAttributesAvailable, [
+        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'max',
             'min',
             'readonly',
