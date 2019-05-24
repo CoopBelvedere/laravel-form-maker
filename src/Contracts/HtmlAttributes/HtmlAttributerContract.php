@@ -103,7 +103,7 @@ interface HtmlAttributerContract
      * @param mixed $for
      * @return array
      */
-    public function isFor(?$for): array;
+    public function isFor($for): array;
 
     /**
      * Specifies the form element with which the label is associated (its form owner).
@@ -111,7 +111,7 @@ interface HtmlAttributerContract
      * @param mixed $form
      * @return array
      */
-    public function form(?$form): array;
+    public function form($form): array;
 
     /**
      * Specifies the height of the input field image element.

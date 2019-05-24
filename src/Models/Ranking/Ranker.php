@@ -205,7 +205,7 @@ class Ranker extends Eloquent implements RankerContract
      * @return self
      * @throws \Exception
      */
-    public function move($element): self
+    public function move($element): RankerContract
     {
         if ($this->inRanking($element)) {
             $this->setElementId($element);
