@@ -3,9 +3,10 @@
 namespace Belvedere\FormMaker\Models\Rules;
 
 use Belvedere\FormMaker\Contracts\Rules\RulerContract;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class RuleServiceProvider extends ServiceProvider
+class RuleServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,5 +22,15 @@ class RuleServiceProvider extends ServiceProvider
             }
             return $ruler;
         });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [RulerContract::class];
     }
 }

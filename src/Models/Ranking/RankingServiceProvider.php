@@ -3,9 +3,10 @@
 namespace Belvedere\FormMaker\Models\Ranking;
 
 use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class RankingServiceProvider extends ServiceProvider
+class RankingServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,5 +22,15 @@ class RankingServiceProvider extends ServiceProvider
             }
             return $ranker;
         });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [RankerContract::class];
     }
 }

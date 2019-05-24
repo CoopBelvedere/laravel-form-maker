@@ -4,9 +4,10 @@ namespace Belvedere\FormMaker\Http\Resources\Input;
 
 use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
 use Belvedere\FormMaker\Http\Resources\InputResourcer;
-use Carbon\Laravel\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\ServiceProvider;
 
-class InputResourceServiceProvider extends ServiceProvider
+class InputResourceServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -22,5 +23,15 @@ class InputResourceServiceProvider extends ServiceProvider
             }
             return $resource;
         });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [InputResourcerContract::class];
     }
 }
