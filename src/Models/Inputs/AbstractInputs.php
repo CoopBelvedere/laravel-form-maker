@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Inputs;
 
+use Belvedere\FormMaker\Contracts\Form\FormContract;
 use Belvedere\FormMaker\Contracts\Inputs\InputsContract;
 use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
 use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
@@ -106,7 +107,7 @@ abstract class AbstractInputs extends AbstractModel implements HasRulesContract,
      *
      * @return \Belvedere\FormMaker\Models\Form\Form
      */
-    public function form()
+    public function form(): FormContract
     {
         return $this->inputable;
     }
