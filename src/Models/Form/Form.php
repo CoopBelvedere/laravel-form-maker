@@ -3,16 +3,13 @@
 namespace Belvedere\FormMaker\Models\Form;
 
 use Belvedere\FormMaker\Contracts\Form\FormContract;
-use Belvedere\FormMaker\Contracts\Inputs\HasInputsContract;
 use Belvedere\FormMaker\Http\Resources\Form\FormResource;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
 use Belvedere\FormMaker\Traits\HasRanking;
-use Belvedere\FormMaker\Traits\Nodes\HasHtmlElements;
-use Belvedere\FormMaker\Traits\Nodes\HasInputs;
 
-class Form extends Model implements FormContract, HasInputsContract
+class Form extends Model implements FormContract
 {
-    use HasInputs, HasRanking, HasHtmlElements;
+    use HasRanking;
 
     /**
      * The event map for the model.
