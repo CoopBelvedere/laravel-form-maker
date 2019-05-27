@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Checkbox;
 
 use Belvedere\FormMaker\Contracts\Inputs\Checkbox\CheckboxerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Checkboxer extends AbstractInput implements CheckboxerContract
+class Checkboxer extends Input implements CheckboxerContract
 {
     /**
      * Apply the type scope.

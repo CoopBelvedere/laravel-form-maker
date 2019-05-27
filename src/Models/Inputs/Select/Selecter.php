@@ -4,12 +4,12 @@ namespace Belvedere\FormMaker\Models\Inputs\Select;
 
 use Belvedere\FormMaker\Contracts\Inputs\HasOptionsContract;
 use Belvedere\FormMaker\Contracts\Inputs\Select\SelecterContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
 use Belvedere\FormMaker\Traits\HasRanking;
-use Belvedere\FormMaker\Traits\Inputs\HasOptions;
+use Belvedere\FormMaker\Traits\Nodes\HasOptions;
 
-class Selecter extends AbstractInput implements HasOptionsContract, SelecterContract
+class Selecter extends Input implements HasOptionsContract, SelecterContract
 {
     use HasOptions, HasRanking;
 

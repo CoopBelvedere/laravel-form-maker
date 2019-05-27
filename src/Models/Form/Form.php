@@ -7,11 +7,12 @@ use Belvedere\FormMaker\Contracts\Inputs\HasInputsContract;
 use Belvedere\FormMaker\Http\Resources\Form\FormResource;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
 use Belvedere\FormMaker\Traits\HasRanking;
-use Belvedere\FormMaker\Traits\Inputs\HasInputs;
+use Belvedere\FormMaker\Traits\Nodes\HasHtmlElements;
+use Belvedere\FormMaker\Traits\Nodes\HasInputs;
 
-class Form extends AbstractModel implements FormContract, HasInputsContract
+class Form extends Model implements FormContract, HasInputsContract
 {
-    use HasInputs, HasRanking;
+    use HasInputs, HasRanking, HasHtmlElements;
 
     /**
      * The event map for the model.

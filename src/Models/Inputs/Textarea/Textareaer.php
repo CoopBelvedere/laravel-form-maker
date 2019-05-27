@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Textarea;
 
 use Belvedere\FormMaker\Contracts\Inputs\Textarea\TextareaerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Textareaer extends AbstractInput implements TextareaerContract
+class Textareaer extends Input implements TextareaerContract
 {
     /**
      * Apply the type scope.

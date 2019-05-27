@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Email;
 
 use Belvedere\FormMaker\Contracts\Inputs\Email\EmailerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Emailer extends AbstractInput implements EmailerContract
+class Emailer extends Input implements EmailerContract
 {
     /**
      * Apply the type scope.

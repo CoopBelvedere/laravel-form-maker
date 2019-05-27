@@ -4,12 +4,12 @@ namespace Belvedere\FormMaker\Models\Inputs\Datalist;
 
 use Belvedere\FormMaker\Contracts\Inputs\Datalist\DatalisterContract;
 use Belvedere\FormMaker\Contracts\Inputs\HasOptionsContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
 use Belvedere\FormMaker\Traits\HasRanking;
-use Belvedere\FormMaker\Traits\Inputs\HasOptions;
+use Belvedere\FormMaker\Traits\Nodes\HasOptions;
 
-class Datalister extends AbstractInput implements DatalisterContract, HasOptionsContract
+class Datalister extends Input implements DatalisterContract, HasOptionsContract
 {
     use HasOptions, HasRanking;
 

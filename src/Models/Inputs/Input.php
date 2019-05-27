@@ -9,13 +9,13 @@ use Belvedere\FormMaker\Listeners\{
     AssignAttributes,
     ValidateProperties
 };
-use Belvedere\FormMaker\Models\Form\AbstractModel;
+use Belvedere\FormMaker\Models\Form\Model;
 use Belvedere\FormMaker\Traits\Ranking\InRanking;
 use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-abstract class AbstractInput extends AbstractModel implements HasRulesContract, InputContract
+class Input extends Model implements HasRulesContract, InputContract
 {
     use HasRules, InRanking;
 

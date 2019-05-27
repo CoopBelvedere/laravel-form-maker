@@ -6,7 +6,7 @@ use Belvedere\FormMaker\Contracts\HtmlAttributes\HasHtmlAttributesContract;
 use Belvedere\FormMaker\Traits\HtmlAttributes\HasHtmlAttributes;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-abstract class AbstractModel extends Eloquent implements HasHtmlAttributesContract
+class Model extends Eloquent implements HasHtmlAttributesContract
 {
     use HasHtmlAttributes;
 

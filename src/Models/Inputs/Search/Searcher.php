@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Search;
 
 use Belvedere\FormMaker\Contracts\Inputs\Search\SearcherContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Searcher extends AbstractInput implements SearcherContract
+class Searcher extends Input implements SearcherContract
 {
     /**
      * Apply the type scope.

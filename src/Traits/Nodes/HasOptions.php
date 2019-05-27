@@ -1,14 +1,16 @@
 <?php
 
-namespace Belvedere\FormMaker\Traits\Inputs;
 
-use Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract;
-use Belvedere\FormMaker\Listeners\DeleteChildren;
+namespace Belvedere\FormMaker\Traits\Nodes;
+
+use Belvedere\FormMaker\Listeners\DeleteNodes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait HasOptions
 {
+    use HasNodes;
+
     /**
      * Boot the listener.
      */
@@ -19,38 +21,20 @@ trait HasOptions
         });
 
         static::deleted(function (Model $model) {
-            event(new DeleteChildren($model));
+            event(new DeleteNodes($model, 'options'));
         });
     }
 
     /**
-     * Add a option input to the parent model.
+     * Get the input query builder.
      *
-     * @return \Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract
+     * @param string $node
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      * @throws \Exception
      */
-    protected function add(): OptionerContract
+    protected function nodeQueryBuilder(string $node): MorphMany
     {
-        $option = $this->resolve('option');
-
-        $option->type = 'option';
-
-        $this->options()->save($option);
-
-        $this->ranking->add($option);
-
-        return $option;
-    }
-
-    /**
-     * Resolve the input out of the service container.
-     *
-     * @param string $input
-     * @return \Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract
-     */
-    protected function resolve(string $input): OptionerContract
-    {
-        return resolve(sprintf('form-maker.%s', $input));
+        return $this->options();
     }
 
     /**
@@ -64,8 +48,8 @@ trait HasOptions
     {
         foreach ($options as $optionValues)
         {
-            $option = $this->add()
-                        ->withHtmlAttributes($optionValues);
+            $option = $this->add('option')
+                ->withHtmlAttributes($optionValues);
 
             if (array_key_exists('text', $optionValues) && method_exists($option, 'withText')) {
                 $option->withText($optionValues['text']);

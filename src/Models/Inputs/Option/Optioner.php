@@ -4,12 +4,12 @@ namespace Belvedere\FormMaker\Models\Inputs\Option;
 
 use Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract;
 use Belvedere\FormMaker\Contracts\Text\HasTextContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
 use Belvedere\FormMaker\Traits\Text\HasText;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Optioner extends AbstractInput implements HasTextContract, OptionerContract
+class Optioner extends Input implements HasTextContract, OptionerContract
 {
     use HasText;
 

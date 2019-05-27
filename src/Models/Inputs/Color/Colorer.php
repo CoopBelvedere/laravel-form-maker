@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Color;
 
 use Belvedere\FormMaker\Contracts\Inputs\Color\ColorerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Colorer extends AbstractInput implements ColorerContract
+class Colorer extends Input implements ColorerContract
 {
     /**
      * Apply the type scope.

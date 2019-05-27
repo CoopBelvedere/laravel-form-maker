@@ -3,15 +3,14 @@
 namespace Belvedere\FormMaker\Models\HtmlElements;
 
 use Belvedere\FormMaker\Contracts\HtmlElements\ElementContract;
-use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 use Belvedere\FormMaker\Contracts\Resources\ElementResourcerContract;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
-use Belvedere\FormMaker\Models\Form\AbstractModel;
+use Belvedere\FormMaker\Models\Form\Model;
 use Belvedere\FormMaker\Traits\Ranking\InRanking;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-abstract class AbstractElement extends AbstractModel implements ElementContract
+class Element extends Model implements ElementContract
 {
     use InRanking;
 
@@ -55,11 +54,11 @@ abstract class AbstractElement extends AbstractModel implements ElementContract
      * Get the input who owns this element.
      * Alias of elementable.
      *
-     * @return \Belvedere\FormMaker\Contracts\Inputs\InputContract
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function input(): InputContract
+    public function input(): MorphTo
     {
-        return $this->elementable;
+        return $this->elementable();
     }
 
     /**

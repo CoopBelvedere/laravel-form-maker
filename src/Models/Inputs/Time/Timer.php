@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Inputs\Time;
 
 use Belvedere\FormMaker\Contracts\Inputs\Time\TimerContract;
-use Belvedere\FormMaker\Models\Inputs\AbstractInput;
+use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
 
-class Timer extends AbstractInput implements TimerContract
+class Timer extends Input implements TimerContract
 {
     /**
      * Apply the type scope.
