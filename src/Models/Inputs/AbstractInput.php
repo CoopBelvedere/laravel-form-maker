@@ -2,7 +2,6 @@
 
 namespace Belvedere\FormMaker\Models\Inputs;
 
-use Belvedere\FormMaker\Contracts\Form\FormContract;
 use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
 use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
@@ -51,13 +50,6 @@ abstract class AbstractInput extends AbstractModel implements HasRulesContract, 
     ];
 
     /**
-     * The current implementation of the RulerContract.
-     *
-     * @var mixed
-     */
-    protected $rulesProvider;
-
-    /**
      * AbstractInput constructor.
      *
      * @param array $attributes
@@ -97,11 +89,11 @@ abstract class AbstractInput extends AbstractModel implements HasRulesContract, 
      * Get the form who owns this input.
      * Alias of inputable.
      *
-     * @return \Belvedere\FormMaker\Contracts\Form\FormContract
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function form(): FormContract
+    public function form(): MorphTo
     {
-        return $this->inputable;
+        return $this->inputable();
     }
 
     /**

@@ -8,6 +8,13 @@ use Illuminate\Support\Arr;
 trait HasRules
 {
     /**
+     * The current implementation of the RulerContract.
+     *
+     * @var mixed
+     */
+    protected $rulesProvider;
+
+    /**
      * Mass removal of validation rules from an input.
      *
      * @param array $rules

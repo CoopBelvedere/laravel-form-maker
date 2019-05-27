@@ -46,13 +46,6 @@ abstract class AbstractModel extends Eloquent implements HasHtmlAttributesContra
     ];
 
     /**
-     * The current implementation of the HtmlAttributerContract
-     *
-     * @var mixed
-     */
-    protected $htmlAttributesProvider;
-
-    /**
      * Return the list of the default html attributes automatically assigned on creation.
      *
      * @return array

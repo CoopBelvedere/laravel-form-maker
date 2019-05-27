@@ -33,13 +33,6 @@ class Form extends AbstractModel implements FormContract, HasInputsContract
     ];
 
     /**
-     * The current implementation of the RankingContract
-     *
-     * @var mixed
-     */
-    protected $rankingProvider;
-
-    /**
      * Form constructor.
      *
      * @param array $attributes

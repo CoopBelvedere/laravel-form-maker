@@ -8,6 +8,13 @@ use Illuminate\Support\Arr;
 trait HasHtmlAttributes
 {
     /**
+     * The current implementation of the HtmlAttributerContract
+     *
+     * @var mixed
+     */
+    protected $htmlAttributesProvider;
+
+    /**
      * Mass removal of html attributes to a model.
      *
      * @param array $attributes

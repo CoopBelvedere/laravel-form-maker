@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs;
 
-use Belvedere\FormMaker\Contracts\Form\FormContract;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 interface InputContract
 {
@@ -12,7 +12,7 @@ interface InputContract
      *
      * @return mixed
      */
-    public function form(): FormContract;
+    public function form(): MorphTo;
 
     /**
      * Transform the input to JSON.

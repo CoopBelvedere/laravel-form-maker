@@ -10,6 +10,13 @@ use Illuminate\Database\Eloquent\Model;
 trait HasRanking
 {
     /**
+     * The current implementation of the RankingContract
+     *
+     * @var mixed
+     */
+    protected $rankingProvider;
+
+    /**
      * Boot the listener.
      */
     protected static function bootHasRanking()
@@ -30,11 +37,11 @@ trait HasRanking
     /**
      * Get the model ranking.
      *
-     * @return \Belvedere\FormMaker\Models\Ranking\Ranker
+     * @return mixed
      */
-    public function ranking(): RankerContract
+    public function ranking()
     {
-        return $this->rankingProvider->getEloquentRelation($this)->first();
+        return $this->rankingProvider->getEloquentRelation($this);
     }
 
     /**
