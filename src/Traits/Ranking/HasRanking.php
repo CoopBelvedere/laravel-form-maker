@@ -19,10 +19,6 @@ trait HasRanking
      */
     protected static function bootHasRanking()
     {
-        static::retrieved(function (Model $model) {
-            $model->load('ranking');
-        });
-
         static::deleted(function (Model $model) {
             event(new DeleteRanking($model));
         });
