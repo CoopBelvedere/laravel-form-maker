@@ -33,6 +33,8 @@ class DeleteRanking
      */
     protected function handle(): void
     {
-        $this->model->ranking->delete();
+        if ($this->model->ranking) {
+            $this->model->ranking->delete();
+        }
     }
 }
