@@ -22,7 +22,7 @@ trait HasHtmlAttributes
      */
     public function removeHtmlAttributes(array $attributes): self
     {
-        foreach ($attributes as $attribute => $arguments) {
+        foreach ($attributes as $attribute) {
             if ($this->isValidAttribute($attribute)) {
                 $this->html_attributes = $this->htmlAttributesProvider->$attribute(null);
             }

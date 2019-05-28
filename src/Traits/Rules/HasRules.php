@@ -22,7 +22,7 @@ trait HasRules
      */
     public function removeRules(array $rules): self
     {
-        foreach ($rules as $rule => $arguments) {
+        foreach ($rules as $rule) {
             if ($this->isValidRule($rule)) {
                 $this->rules = $this->rulesProvider->$rule(null);
             }
