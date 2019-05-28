@@ -30,7 +30,7 @@ abstract class ModelWithNodes extends Model implements HasRankingContract, WithN
 
         $this->nodesQueryBuilder($type)->save($node);
 
-        $this->addInRanking($node);
+        $this->ranking->add($node);
 
         return $node;
     }

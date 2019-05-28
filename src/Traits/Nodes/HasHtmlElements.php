@@ -71,7 +71,7 @@ trait HasHtmlElements
         }
 
         return $elements->map(function ($element) {
-            $element->rank = $this->ranking()->first()->rank($element);
+            $element->rank = $this->ranking->rank($element);
             return $element;
         })->sortBy('rank');
     }

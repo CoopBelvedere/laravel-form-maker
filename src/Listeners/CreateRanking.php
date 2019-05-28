@@ -2,9 +2,10 @@
 
 namespace Belvedere\FormMaker\Listeners;
 
+use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
 use Illuminate\Database\Eloquent\Model;
 
-class DeleteRanking
+class CreateRanking
 {
     /**
      * The model with assigned properties.
@@ -27,12 +28,16 @@ class DeleteRanking
     }
 
     /**
-     * Delete an associated ranking with the model.
+     * Associate a rankings with the model.
      *
      * @return void
      */
     protected function handle(): void
     {
-        $this->model->ranking->delete();
+        $ranking = resolve(RankerContract::class);
+
+        $ranking->ranks = [];
+
+        $this->model->ranking()->save($ranking);
     }
 }

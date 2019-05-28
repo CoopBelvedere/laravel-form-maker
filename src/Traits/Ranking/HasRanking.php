@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Traits;
 
 use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
+use Belvedere\FormMaker\Listeners\CreateRanking;
 use Belvedere\FormMaker\Listeners\DeleteRanking;
-use Belvedere\FormMaker\Models\Model;
+use Illuminate\Database\Eloquent\Model;
 
 trait HasRanking
 {
@@ -20,6 +21,10 @@ trait HasRanking
      */
     protected static function bootHasRanking()
     {
+        static::created(function (Model $model) {
+            event(new CreateRanking($model));
+        });
+
         static::retrieved(function (Model $model) {
             $model->load('ranking');
         });
@@ -27,36 +32,6 @@ trait HasRanking
         static::deleted(function (Model $model) {
             event(new DeleteRanking($model));
         });
-    }
-
-    /**
-     * Add a node in the ranking
-     *
-     * @param \Belvedere\FormMaker\Models\Model $node
-     * @return void
-     * @throws \Exception
-     */
-    protected function addInRanking(Model $node): void
-    {
-        if (is_null($this->ranking()->first())) {
-            $this->createRanking();
-        }
-
-        $this->ranking()->first()->add($node);
-    }
-
-    /**
-     * Create a ranking
-     *
-     * @return void
-     */
-    protected function createRanking(): void
-    {
-        $ranking = resolve(RankerContract::class);
-
-        $ranking->ranks = [];
-
-        $this->ranking()->save($ranking);
     }
 
     /**
