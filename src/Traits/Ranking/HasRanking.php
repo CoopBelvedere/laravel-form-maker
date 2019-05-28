@@ -38,29 +38,25 @@ trait HasRanking
      */
     protected function addInRanking(Model $node): void
     {
-        $ranking = $this->ranking;
-
-        if (is_null($ranking)) {
-            $ranking = $this->createRanking();
+        if (is_null($this->ranking)) {
+            $this->createRanking();
         }
 
-        $ranking->add($node);
+        $this->ranking()->first()->add($node);
     }
 
     /**
      * Create a ranking
      *
-     * @return \Belvedere\FormMaker\Contracts\Ranking\RankerContract
+     * @return void
      */
-    protected function createRanking(): RankerContract
+    protected function createRanking(): void
     {
         $ranking = resolve(RankerContract::class);
 
         $ranking->ranks = [];
 
         $this->ranking()->save($ranking);
-
-        return $ranking;
     }
 
     /**
