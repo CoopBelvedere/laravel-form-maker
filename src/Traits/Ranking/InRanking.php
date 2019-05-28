@@ -18,7 +18,7 @@ trait InRanking
     /**
      * Boot the listener.
      */
-    protected static function bootHasRanking()
+    protected static function bootInRanking()
     {
         static::deleted(function (Model $model) {
             event(new RemoveFromRanking($model));
