@@ -38,7 +38,7 @@ trait HasRanking
      */
     protected function addInRanking(Model $node): void
     {
-        if (is_null($this->ranking)) {
+        if (is_null($this->ranking()->first())) {
             $this->createRanking();
         }
 
