@@ -66,7 +66,9 @@ trait HasRules
     {
         foreach ($rules as $rule => $arguments) {
             if ($this->isValidRule($rule)) {
-                if ($rule === $arguments) {
+                if (is_null($arguments)) {
+                    $this->rules = $this->rulesProvider->$rule(null);
+                } else if ($rule === $arguments) {
                     $this->rules = $this->rulesProvider->$rule();
                 } else {
                     $this->rules = $this->rulesProvider->$rule(...Arr::wrap($arguments));
