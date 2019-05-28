@@ -2,22 +2,10 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
-use Belvedere\FormMaker\Listeners\DeleteNodes;
-use Belvedere\FormMaker\Models\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait HasOptions
 {
-    /**
-     * Boot the listener.
-     */
-    protected static function bootHasOptions()
-    {
-        static::deleted(function (Model $model) {
-            event(new DeleteNodes($model));
-        });
-    }
-
     /**
      * Add options for the input.
      *

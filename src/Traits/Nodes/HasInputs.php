@@ -3,24 +3,12 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
-use Belvedere\FormMaker\Listeners\DeleteNodes;
 use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Models\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 trait HasInputs
 {
-    /**
-     * Boot the listener.
-     */
-    protected static function bootHasInputs()
-    {
-        static::deleted(function (Model $model) {
-            event(new DeleteNodes($model));
-        });
-    }
-
     /**
      * Disable all inputs.
      *

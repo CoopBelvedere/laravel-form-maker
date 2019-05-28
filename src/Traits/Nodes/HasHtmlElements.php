@@ -3,23 +3,11 @@
 namespace Belvedere\FormMaker\Traits\Nodes;
 
 use Belvedere\FormMaker\Contracts\HtmlElements\ElementContract;
-use Belvedere\FormMaker\Listeners\DeleteNodes;
-use Belvedere\FormMaker\Models\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 trait HasHtmlElements
 {
-    /**
-     * Boot the listener.
-     */
-    protected static function bootHasElements()
-    {
-        static::deleted(function (Model $model) {
-            event(new DeleteNodes($model));
-        });
-    }
-
     /**
      * Get the model elements.
      *

@@ -43,16 +43,6 @@ class Input extends ModelWithNodes implements HasHtmlElementsContract, HasRulesC
     ];
 
     /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'creating' => AssignAttributes::class,
-        'updating' => ValidateProperties::class,
-    ];
-
-    /**
      * AbstractInput constructor.
      *
      * @param array $attributes
@@ -69,6 +59,13 @@ class Input extends ModelWithNodes implements HasHtmlElementsContract, HasRulesC
             'title',
             'value',
         ]);
+
+        $this->dispatchesEvents = array_merge($this->dispatchesEvents, [
+            'creating' => AssignAttributes::class,
+            'updating' => ValidateProperties::class,
+        ]);
+
+        dd($this->dispatchesEvents);
 
         $this->setHtmlAttributesProvider();
 

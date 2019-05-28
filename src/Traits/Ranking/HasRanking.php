@@ -1,8 +1,8 @@
 <?php
 
 namespace Belvedere\FormMaker\Traits;
+
 use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
-use Belvedere\FormMaker\Listeners\DeleteRanking;
 use Belvedere\FormMaker\Models\Model;
 
 trait HasRanking
@@ -13,16 +13,6 @@ trait HasRanking
      * @var mixed
      */
     protected $rankingProvider;
-
-    /**
-     * Boot the listener.
-     */
-    protected static function bootHasRanking()
-    {
-        static::deleted(function (Model $model) {
-            event(new DeleteRanking($model));
-        });
-    }
 
     /**
      * Add a node in the ranking

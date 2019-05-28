@@ -4,11 +4,21 @@ namespace Belvedere\FormMaker\Models;
 
 use Belvedere\FormMaker\Contracts\Nodes\WithNodesContract;
 use Belvedere\FormMaker\Contracts\Ranking\HasRankingContract;
+use Belvedere\FormMaker\Listeners\DeleteRelatedModels;
 use Belvedere\FormMaker\Traits\HasRanking;
 
 abstract class ModelWithNodes extends Model implements HasRankingContract, WithNodesContract
 {
     use HasRanking;
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'deleting' => DeleteRelatedModels::class,
+    ];
 
     /**
      * Add a node to the parent model.

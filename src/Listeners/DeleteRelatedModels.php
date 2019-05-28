@@ -1,22 +1,23 @@
 <?php
 
+
 namespace Belvedere\FormMaker\Listeners;
 
-use Illuminate\Database\Eloquent\Model;
+use Belvedere\FormMaker\Models\Model;
 
-class DeleteNodes
+class DeleteRelatedModels
 {
     /**
      * The model with assigned properties.
      *
-     * @var \Illuminate\Database\Eloquent\Model $model
+     * @var \Belvedere\FormMaker\Models\Model $model
      */
     protected $model;
 
     /**
      * Create the event listener.
      *
-     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param \Belvedere\FormMaker\Models\Model $model
      * @return void
      */
     public function __construct(Model $model)
@@ -27,14 +28,12 @@ class DeleteNodes
     }
 
     /**
-     * Delete the model's children.
+     * Delete an associated ranking with the model.
      *
      * @return void
      */
     protected function handle(): void
     {
-        foreach ([] as $node) {
-            $node->delete();
-        }
+        $this->model->ranking->delete();
     }
 }
