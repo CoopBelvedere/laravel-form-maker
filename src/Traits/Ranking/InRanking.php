@@ -9,13 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 trait InRanking
 {
     /**
-     * The model position in the ranking.
-     *
-     * @var int
-     */
-    public $rank = 0;
-
-    /**
      * Boot the listener.
      */
     protected static function bootInRanking()

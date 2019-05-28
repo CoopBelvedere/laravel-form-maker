@@ -58,9 +58,6 @@ trait HasHtmlElements
             $elements = $this->nodesQueryBuilder($type)->get();
         }
 
-        return $elements->map(function ($element) {
-            $element->rank = $this->ranking->rank($element);
-            return $element;
-        })->sortBy('rank');
+        return $this->ranking->sort($elements);
     }
 }

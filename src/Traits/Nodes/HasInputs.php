@@ -81,10 +81,7 @@ trait HasInputs
             $inputs = $this->nodesQueryBuilder($type)->get();
         }
 
-        return $inputs->map(function ($input) {
-            $input->rank = $this->ranking->rank($input->id);
-            return $input;
-        })->sortBy('rank');
+        return $this->ranking->sort($inputs);
     }
 
     /**

@@ -44,8 +44,9 @@ class DeleteRelatedModels
      * Delete all the model nodes.
      *
      * @param array $nodes
+     * @return void
      */
-    protected function deleteNodes()
+    protected function deleteNodes(): void
     {
         $nodes = $this->getNodes();
 

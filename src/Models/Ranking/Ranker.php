@@ -5,6 +5,7 @@ namespace Belvedere\FormMaker\Models\Ranking;
 use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Collection;
 
 class Ranker extends Eloquent implements RankerContract
 {
@@ -307,6 +308,26 @@ class Ranker extends Eloquent implements RankerContract
         $ranks = $this->ranks;
 
         $this->commit(collect($ranks)->shuffle()->all());
+    }
+
+    public function sort($elements)
+    {
+        $sortedList = [];
+
+        if ($isCollection = $elements instanceof Collection) {
+            $elements = $elements->all();
+        }
+
+        foreach ($elements as $element)
+        {
+            $sortedList[array_search($this->getElementId($element), $this->ranks)] = $element;
+        }
+
+        if ($isCollection) {
+            return collect($sortedList);
+        }
+
+        return $sortedList;
     }
 
     /**
