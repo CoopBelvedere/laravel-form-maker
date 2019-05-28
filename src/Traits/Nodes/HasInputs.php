@@ -7,6 +7,7 @@ use Belvedere\FormMaker\Listeners\DeleteNodes;
 use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Models\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 trait HasInputs
 {

@@ -29,7 +29,7 @@ class InputResourcer extends JsonResource
                 'text' => $this->text,
             ]),
             $this->mergeWhen($this->html_attributes, [
-                'attributes' => $this->html_attributes,
+                'html_attributes' => $this->html_attributes,
             ]),
             $this->mergeWhen($inputs && $inputs->collection->isNotEmpty(), [
                 'inputs' => $inputs,

@@ -21,7 +21,7 @@ class ElementResourcer extends JsonResource
                 'text' => $this->text,
             ]),
             $this->mergeWhen($this->html_attributes, [
-                'attributes' => $this->html_attributes,
+                'html_attributes' => $this->html_attributes,
             ]),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
