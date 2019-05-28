@@ -65,8 +65,6 @@ class Input extends ModelWithNodes implements HasHtmlElementsContract, HasRulesC
             'updating' => ValidateProperties::class,
         ]);
 
-        dd($this->dispatchesEvents);
-
         $this->setHtmlAttributesProvider();
 
         $this->setRankingProvider();

@@ -16,15 +16,6 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
     use HasInputs;
 
     /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'saving' => ValidateProperties::class,
-    ];
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -48,6 +39,10 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'charset',
             'name',
+        ]);
+
+        $this->dispatchesEvents = array_merge($this->dispatchesEvents, [
+            'saving' => ValidateProperties::class,
         ]);
 
         $this->setHtmlAttributesProvider();

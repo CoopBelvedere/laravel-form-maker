@@ -34,6 +34,54 @@ class DeleteRelatedModels
      */
     protected function handle(): void
     {
+        $this->deleteNodes();
+
+        $this->deleteRanking();
+    }
+
+    /**
+     * Delete all the model nodes.
+     *
+     * @param array $nodes
+     */
+    protected function deleteNodes()
+    {
+        $nodes = $this->getNodes();
+
+        foreach ($nodes as $node)
+        {
+            $node->delete();
+        }
+    }
+
+    /**
+     * Get all the model nodes.
+     *
+     * @param array $nodes
+     * @return array
+     */
+    protected function getNodes(array $nodes = []): array
+    {
+        if (method_exists($this->model, 'inputs')) {
+            $nodes = $this->model->inputs();
+        } else if (method_exists($this->model, 'options')) {
+            $nodes = $this->model->options();
+        }
+
+        if (method_exists($this->model, 'htmlElements')) {
+            $nodes = array_merge($nodes, $this->model->htmlElements()->toArray());
+        }
+
+        return $nodes;
+    }
+
+    /**
+     * Delete the model rankings.
+     *
+     * @return void
+     */
+    protected function deleteRanking(): void
+    {
         $this->model->ranking->delete();
     }
 }
