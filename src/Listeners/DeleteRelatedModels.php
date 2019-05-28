@@ -4,6 +4,7 @@
 namespace Belvedere\FormMaker\Listeners;
 
 use Belvedere\FormMaker\Models\Model;
+use Illuminate\Support\Collection;
 
 class DeleteRelatedModels
 {
@@ -57,19 +58,20 @@ class DeleteRelatedModels
     /**
      * Get all the model nodes.
      *
-     * @param array $nodes
-     * @return array
+     * @return \Illuminate\Support\Collection
      */
-    protected function getNodes(array $nodes = []): array
+    protected function getNodes(): Collection
     {
+        $nodes = collect([]);
+
         if (method_exists($this->model, 'inputs')) {
             $nodes = $this->model->inputs();
         } else if (method_exists($this->model, 'options')) {
-            $nodes = $this->model->options();
+            $nodes = $this->model->options()->get();
         }
 
         if (method_exists($this->model, 'htmlElements')) {
-            $nodes = array_merge($nodes, $this->model->htmlElements()->toArray());
+            $nodes = $nodes->merge($this->model->htmlElements());
         }
 
         return $nodes;
@@ -82,6 +84,8 @@ class DeleteRelatedModels
      */
     protected function deleteRanking(): void
     {
-        $this->model->ranking->delete();
+        if ($this->model->ranking) {
+            $this->model->ranking->delete();
+        }
     }
 }
