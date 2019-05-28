@@ -37,6 +37,9 @@ class InputResourcer extends JsonResource
             $this->mergeWhen($options && $options->collection->isNotEmpty(), [
                 'options' => $options,
             ]),
+            $this->mergeWhen($this->htmlElements()->isNotEmpty(), [
+                'html_elements' => $this->htmlElements(),
+            ]),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
