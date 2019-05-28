@@ -14,24 +14,14 @@ class DeleteNodes
     protected $model;
 
     /**
-     * The node model type.
-     *
-     * @var string $node
-     */
-    protected $nodeType;
-
-    /**
      * Create the event listener.
      *
      * @param \Illuminate\Database\Eloquent\Model $model
-     * @param string $nodeType
      * @return void
      */
-    public function __construct(Model $model, string $nodeType)
+    public function __construct(Model $model)
     {
         $this->model = $model;
-
-        $this->nodeType = $nodeType;
 
         $this->handle();
     }
@@ -43,17 +33,7 @@ class DeleteNodes
      */
     protected function handle(): void
     {
-        if ($this->nodeType === 'inputs') {
-            $nodes = $this->model->inputs();
-
-        } else if ($this->nodeType === 'options') {
-            $nodes = $this->model->options()->get();
-
-        } else if ($this->nodeType === 'htmlElements') {
-            $nodes = $this->model->htmlElements();
-        }
-
-        foreach ($nodes as $node) {
+        foreach ([] as $node) {
             $node->delete();
         }
     }

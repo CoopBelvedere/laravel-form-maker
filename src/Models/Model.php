@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Form;
+namespace Belvedere\FormMaker\Models;
 
 use Belvedere\FormMaker\Contracts\HtmlAttributes\HasHtmlAttributesContract;
 use Belvedere\FormMaker\Traits\HtmlAttributes\HasHtmlAttributes;

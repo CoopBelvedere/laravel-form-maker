@@ -3,13 +3,17 @@
 namespace Belvedere\FormMaker\Models\Form;
 
 use Belvedere\FormMaker\Contracts\Form\FormContract;
+use Belvedere\FormMaker\Contracts\Nodes\HasInputsContract;
 use Belvedere\FormMaker\Http\Resources\Form\FormResource;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
-use Belvedere\FormMaker\Traits\HasRanking;
+use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\Models\ModelWithNodes;
+use Belvedere\FormMaker\Traits\Nodes\HasInputs;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-class Form extends Model implements FormContract
+class Form extends ModelWithNodes implements HasInputsContract, FormContract
 {
-    use HasRanking;
+    use HasInputs;
 
     /**
      * The event map for the model.
@@ -65,6 +69,18 @@ class Form extends Model implements FormContract
     }
 
     /**
+     * Get the node with the specified key.
+     *
+     * @param string $nodeKey
+     * @return \Belvedere\FormMaker\Models\Model|null
+     * @throws \Exception
+     */
+    protected function getNode(string $nodeKey): ?Model
+    {
+        return $this->inputs()->firstWhere('html_attributes.name', $nodeKey);
+    }
+
+    /**
      * Specifies the form http method.
      *
      * @param string $method
@@ -77,6 +93,17 @@ class Form extends Model implements FormContract
         return $this;
     }
 
+    /**
+     * Get the form nodes query builder.
+     *
+     * @param string $node
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @throws \Exception
+     */
+    protected function nodesQueryBuilder($node): MorphMany
+    {
+        return $this->morphMany($this->resolve($node), 'inputable');
+    }
 
     /**
      * Return the form inputs rules in a form request format.

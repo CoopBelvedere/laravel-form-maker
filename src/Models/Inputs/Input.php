@@ -3,21 +3,24 @@
 namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Contracts\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Nodes\HasHtmlElementsContract;
 use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
 use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
 use Belvedere\FormMaker\Listeners\{
     AssignAttributes,
     ValidateProperties
 };
-use Belvedere\FormMaker\Models\Form\Model;
+use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\Models\ModelWithNodes;
+use Belvedere\FormMaker\Traits\Nodes\HasHtmlElements;
 use Belvedere\FormMaker\Traits\Ranking\InRanking;
 use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Input extends Model implements HasRulesContract, InputContract
+class Input extends ModelWithNodes implements HasHtmlElementsContract, HasRulesContract, InputContract
 {
-    use HasRules, InRanking;
+    use HasHtmlElements, HasRules, InRanking;
 
     /**
      * The default attributes automatically assigned on creation.
@@ -69,7 +72,32 @@ class Input extends Model implements HasRulesContract, InputContract
 
         $this->setHtmlAttributesProvider();
 
+        $this->setRankingProvider();
+
         $this->setRulesProvider();
+    }
+
+    /**
+     * Get the node with the specified key.
+     *
+     * @param string $nodeKey
+     * @return \Belvedere\FormMaker\Models\Model|null
+     * @throws \Exception
+     */
+    protected function getNode(string $nodeKey): ?Model
+    {
+        return $this->htmlElements()->firstWhere('type', $nodeKey);
+    }
+
+    /**
+     * Get the model nodes query builder.
+     *
+     * @param mixed $node
+     * @return mixed
+     */
+    protected function nodesQueryBuilder($node)
+    {
+        return $this->morphMany($this->resolve($node), 'elementable');
     }
 
     /**

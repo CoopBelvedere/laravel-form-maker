@@ -2,23 +2,15 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Select;
 
-use Belvedere\FormMaker\Contracts\Inputs\HasOptionsContract;
 use Belvedere\FormMaker\Contracts\Inputs\Select\SelecterContract;
+use Belvedere\FormMaker\Contracts\Nodes\HasOptionsContract;
 use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
-use Belvedere\FormMaker\Traits\HasRanking;
 use Belvedere\FormMaker\Traits\Nodes\HasOptions;
 
 class Selecter extends Input implements HasOptionsContract, SelecterContract
 {
-    use HasOptions, HasRanking;
-
-    /**
-     * The current implementation of the RankingContract
-     *
-     * @var mixed
-     */
-    protected $rankingProvider;
+    use HasOptions;
 
     /**
      * Apply the type scope.
@@ -48,7 +40,20 @@ class Selecter extends Input implements HasOptionsContract, SelecterContract
             'required',
             'size'
         ]);
+    }
 
-        $this->setRankingProvider();
+    /**
+     * Get the model nodes query builder.
+     *
+     * @param mixed $node
+     * @return mixed
+     */
+    protected function nodesQueryBuilder($node)
+    {
+        if ($node === 'option') {
+            return $this->morphMany($this->resolve($node), 'inputable');
+        }
+
+        return parent::nodesQueryBuilder($node);
     }
 }

@@ -5,7 +5,7 @@ namespace Belvedere\FormMaker\Models\HtmlElements;
 use Belvedere\FormMaker\Contracts\HtmlElements\ElementContract;
 use Belvedere\FormMaker\Contracts\Resources\ElementResourcerContract;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
-use Belvedere\FormMaker\Models\Form\Model;
+use Belvedere\FormMaker\Models\Model;
 use Belvedere\FormMaker\Traits\Ranking\InRanking;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
