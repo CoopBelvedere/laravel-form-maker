@@ -13,10 +13,6 @@ trait HasOptions
      */
     protected static function bootHasOptions()
     {
-        static::retrieved(function (Model $model) {
-            $model->load('options');
-        });
-
         static::deleted(function (Model $model) {
             event(new DeleteNodes($model));
         });

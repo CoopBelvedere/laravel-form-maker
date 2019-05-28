@@ -3,15 +3,14 @@
 namespace Belvedere\FormMaker\Models\Inputs\Datalist;
 
 use Belvedere\FormMaker\Contracts\Inputs\Datalist\DatalisterContract;
-use Belvedere\FormMaker\Contracts\Inputs\HasOptionsContract;
+use Belvedere\FormMaker\Contracts\Nodes\HasOptionsContract;
 use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Scopes\ModelScope;
-use Belvedere\FormMaker\Traits\HasRanking;
 use Belvedere\FormMaker\Traits\Nodes\HasOptions;
 
 class Datalister extends Input implements DatalisterContract, HasOptionsContract
 {
-    use HasOptions, HasRanking;
+    use HasOptions;
 
     /**
      * The attributes automatically assigned on creation.
