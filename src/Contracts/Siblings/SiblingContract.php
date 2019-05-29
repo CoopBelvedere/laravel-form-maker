@@ -5,12 +5,11 @@ namespace Belvedere\FormMaker\Contracts\Siblings;
 interface SiblingContract
 {
     /**
-     * Get the input who owns this element.
-     * Alias of siblingable.
+     * Get the model who owns this sibling.
      *
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function input();
+    public function parent();
 
     /**
      * Transform the input to JSON.

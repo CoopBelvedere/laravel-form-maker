@@ -3,15 +3,15 @@
 namespace Belvedere\FormMaker\Models;
 
 use Belvedere\FormMaker\Contracts\Nodes\WithNodesContract;
-use Belvedere\FormMaker\Contracts\Ranking\HasRankingContract;
+use Belvedere\FormMaker\Contracts\Rankings\HasRankingsContract;
 use Belvedere\FormMaker\Listeners\DeleteRelatedModels;
-use Belvedere\FormMaker\Traits\HasRanking;
+use Belvedere\FormMaker\Traits\HasRankings;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
-abstract class ModelWithNodes extends Model implements HasRankingContract, WithNodesContract
+abstract class ModelWithNodes extends Model implements HasRankingsContract, WithNodesContract
 {
-    use HasRanking;
+    use HasRankings;
 
     /**
      * The event map for the model.

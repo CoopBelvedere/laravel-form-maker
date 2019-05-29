@@ -2,10 +2,10 @@
 
 namespace Belvedere\FormMaker\Contracts\Nodes;
 
-use Belvedere\FormMaker\Contracts\Ranking\HasRankingContract;
+use Belvedere\FormMaker\Contracts\Rankings\HasRankingsContract;
 use Belvedere\FormMaker\Models\Model;
 
-interface WithNodesContract extends HasRankingContract
+interface WithNodesContract extends HasRankingsContract
 {
     /**
      * Add a node to the parent model.

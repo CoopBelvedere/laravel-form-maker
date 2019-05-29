@@ -13,7 +13,7 @@ use Belvedere\FormMaker\Listeners\{
 use Belvedere\FormMaker\Models\Siblings\Sibling;
 use Belvedere\FormMaker\Models\ModelWithNodes;
 use Belvedere\FormMaker\Traits\Nodes\HasSiblings;
-use Belvedere\FormMaker\Traits\Ranking\InRanking;
+use Belvedere\FormMaker\Traits\Rankings\InRanking;
 use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -109,22 +109,11 @@ class Input extends ModelWithNodes implements HasSiblingsContract, HasRulesContr
     // ==============================================================
 
     /**
-     * Get the form who owns this input.
-     * Alias of inputable.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function form(): MorphTo
-    {
-        return $this->inputable();
-    }
-
-    /**
      * Get the model who owns this input.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    protected function inputable(): MorphTo
+    public function parent(): MorphTo
     {
         return $this->morphTo();
     }

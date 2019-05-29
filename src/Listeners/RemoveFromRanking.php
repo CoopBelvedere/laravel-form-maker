@@ -33,8 +33,8 @@ class RemoveFromRanking
      */
     protected function handle(): void
     {
-        if ($inputable = $this->model->inputable) {
-            $inputable->ranking->remove($this->model->id);
+        if ($ranker = $this->model->parent) {
+            $ranker->rankings->remove($this->model->id);
         }
     }
 }

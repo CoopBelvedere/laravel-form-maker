@@ -6,7 +6,7 @@ use Belvedere\FormMaker\Contracts\Siblings\SiblingContract;
 use Belvedere\FormMaker\Contracts\Resources\SiblingResourcerContract;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
 use Belvedere\FormMaker\Models\Model;
-use Belvedere\FormMaker\Traits\Ranking\InRanking;
+use Belvedere\FormMaker\Traits\Rankings\InRanking;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -51,22 +51,11 @@ class Sibling extends Model implements SiblingContract
     // ==============================================================
 
     /**
-     * Get the input who owns this sibling.
-     * Alias of siblingable.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function input(): MorphTo
-    {
-        return $this->siblingable();
-    }
-
-    /**
      * Get the model who owns this sibling.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    protected function siblingable(): MorphTo
+    public function parent(): MorphTo
     {
         return $this->morphTo();
     }

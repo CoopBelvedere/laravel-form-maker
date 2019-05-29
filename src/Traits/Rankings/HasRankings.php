@@ -2,10 +2,10 @@
 
 namespace Belvedere\FormMaker\Traits;
 
-use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
+use Belvedere\FormMaker\Contracts\Rankings\RankerContract;
 use Belvedere\FormMaker\Models\Model;
 
-trait HasRanking
+trait HasRankings
 {
     /**
      * The current implementation of the RankingContract
@@ -23,11 +23,11 @@ trait HasRanking
      */
     protected function addInRanking(Model $node): void
     {
-        if (is_null($this->ranking)) {
+        if (is_null($this->rankings)) {
             $this->createRanking();
         }
 
-        $this->ranking->add($node);
+        $this->rankings->add($node);
     }
 
     /**
@@ -41,17 +41,17 @@ trait HasRanking
 
         $ranking->ranks = [];
 
-        $this->ranking()->save($ranking);
+        $this->rankings()->save($ranking);
 
-        $this->load('ranking');
+        $this->load('rankings');
     }
 
     /**
-     * Get the model ranking.
+     * Get the model rankings.
      *
      * @return mixed
      */
-    public function ranking()
+    public function rankings()
     {
         return $this->rankingProvider->getEloquentRelation($this);
     }

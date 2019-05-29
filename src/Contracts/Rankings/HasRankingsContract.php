@@ -1,15 +1,15 @@
 <?php
 
-namespace Belvedere\FormMaker\Contracts\Ranking;
+namespace Belvedere\FormMaker\Contracts\Rankings;
 
-interface HasRankingContract
+interface HasRankingsContract
 {
     /**
-     * Get the model ranking.
+     * Get the model rankings.
      *
      * @return mixed
      */
-    public function ranking();
+    public function rankings();
 
     /**
      * Set the ranking provider used by the model.

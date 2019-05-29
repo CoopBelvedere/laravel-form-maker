@@ -2,17 +2,14 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs;
 
-use Illuminate\Database\Eloquent\Relations\MorphTo;
-
 interface InputContract
 {
     /**
-     * Get the form who owns this input.
-     * Alias of inputable.
+     * Get the model who owns this input.
      *
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function form(): MorphTo;
+    public function parent();
 
     /**
      * Transform the input to JSON.

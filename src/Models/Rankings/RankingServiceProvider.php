@@ -1,8 +1,8 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Ranking;
+namespace Belvedere\FormMaker\Models\Rankings;
 
-use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
+use Belvedere\FormMaker\Contracts\Rankings\RankerContract;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 

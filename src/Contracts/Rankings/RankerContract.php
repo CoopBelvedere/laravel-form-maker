@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Contracts\Ranking;
+namespace Belvedere\FormMaker\Contracts\Rankings;
 
 use Illuminate\Support\Collection;
 

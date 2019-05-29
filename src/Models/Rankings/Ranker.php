@@ -1,10 +1,10 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Ranking;
+namespace Belvedere\FormMaker\Models\Rankings;
 
-use Belvedere\FormMaker\Contracts\Ranking\RankerContract;
+use Belvedere\FormMaker\Contracts\Rankings\RankerContract;
 use Illuminate\Database\Eloquent\Model as Eloquent;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 
 class Ranker extends Eloquent implements RankerContract
@@ -144,11 +144,11 @@ class Ranker extends Eloquent implements RankerContract
      * Get the model eloquent relation to the ranking.
      *
      * @param mixed $rankable
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function getEloquentRelation($rankable): MorphOne
+    public function getEloquentRelation($rankable): MorphMany
     {
-        return $rankable->morphOne($this, 'rankable');
+        return $rankable->morphMany($this, 'rankable');
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Belvedere\FormMaker\Traits\Ranking;
+namespace Belvedere\FormMaker\Traits\Rankings;
 
 use Belvedere\FormMaker\Listeners\RemoveFromRanking;
 use Illuminate\Database\Eloquent\Model;
@@ -16,5 +16,10 @@ trait InRanking
         static::deleted(function (Model $model) {
             event(new RemoveFromRanking($model));
         });
+    }
+
+    public function getNodeType()
+    {
+        return true; // test
     }
 }
