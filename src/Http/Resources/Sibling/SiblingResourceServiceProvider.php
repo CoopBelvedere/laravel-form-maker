@@ -1,9 +1,8 @@
 <?php
 
-namespace Belvedere\FormMaker\Http\Resources\Input;
+namespace Belvedere\FormMaker\Http\Resources\Sibling;
 
 use Belvedere\FormMaker\Contracts\Resources\SiblingResourcerContract;
-use Belvedere\FormMaker\Http\Resources\Sibling\SiblingResourcer;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
