@@ -17,9 +17,4 @@ trait InRanking
             event(new RemoveFromRanking($model));
         });
     }
-
-    public function getNodeType()
-    {
-        return true; // test
-    }
 }

@@ -24,20 +24,23 @@ trait HasRankings
     protected function addInRanking(Model $node): void
     {
         if (is_null($this->rankings)) {
-            $this->createRanking();
+            $this->createRanking($node);
         }
 
-        $this->rankings->add($node);
+        $this->rankings()->ofType($node->getTable())->first()->add($node);
     }
 
     /**
      * Create a ranking
      *
+     * @param \Belvedere\FormMaker\Models\Model $node
      * @return void
      */
-    protected function createRanking(): void
+    protected function createRanking(Model $node): void
     {
         $ranking = resolve(RankerContract::class);
+
+        $ranking->node_type = $node->getTable();
 
         $ranking->ranks = [];
 
@@ -54,6 +57,18 @@ trait HasRankings
     public function rankings()
     {
         return $this->rankingProvider->getEloquentRelation($this);
+    }
+
+    /**
+     * Scope a query to only include rankings of a given type.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  string  $type
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfType($query, string $type)
+    {
+        return $query->where('node_type', $type);
     }
 
     /**

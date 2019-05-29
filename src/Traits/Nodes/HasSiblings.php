@@ -30,7 +30,7 @@ trait HasSiblings
      */
     public function siblings(?string $type = null): Collection
     {
-        return $this->getNodes('siblings', $type);
+        return $this->getNodes(config('form-maker.database.siblings_table', 'siblings'), $type);
     }
 
     /**

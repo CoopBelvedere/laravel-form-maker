@@ -92,7 +92,7 @@ class Input extends ModelWithNodes implements HasSiblingsContract, HasRulesContr
      */
     protected function nodesQueryBuilder($node)
     {
-        return $this->morphMany($this->resolve($node), 'elementable');
+        return $this->morphMany($this->resolve($node), 'siblingable');
     }
 
     /**

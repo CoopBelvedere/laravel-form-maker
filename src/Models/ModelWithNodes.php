@@ -156,7 +156,11 @@ abstract class ModelWithNodes extends Model implements HasRankingsContract, With
             $nodes = $this->nodesQueryBuilder($type)->get();
         }
 
-        return $this->ranking->sortByRank($nodes);
+        if ($nodes->isEmpty()) {
+            return $nodes;
+        }
+
+        return $this->rankings()->ofType($table)->first()->sortByRank($nodes);
     }
 
     /**

@@ -52,7 +52,7 @@ trait HasInputs
      */
     public function inputs(?string $type = null): Collection
     {
-        return $this->getNodes('inputs', $type);
+        return $this->getNodes(config('form-maker.database.inputs_table', 'inputs'), $type);
     }
 
     /**
