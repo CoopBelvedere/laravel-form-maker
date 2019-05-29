@@ -30,7 +30,7 @@ class LabelResource extends JsonResource
     {
         $this->setForId();
 
-        $this->setFormId();
+        //$this->setFormId();
 
         return [
             'id' => $this->id,
@@ -38,9 +38,9 @@ class LabelResource extends JsonResource
             $this->mergeWhen($this->forId, [
                 'for' => $this->forId,
             ]),
-            $this->mergeWhen($this->formId, [
-                'form' => $this->formId,
-            ]),
+//            $this->mergeWhen($this->formId, [
+//                'form' => $this->formId,
+//            ]),
             $this->mergeWhen($this->text, [
                 'text' => $this->text,
             ]),
@@ -62,8 +62,8 @@ class LabelResource extends JsonResource
         if (isset($this->html_attributes['for'])) {
             $this->forId = $this->html_attributes['for'];
 
-        } else if (isset($this->input()->html_attributes['id'])) {
-            $this->forId = $this->input()->html_attributes['id'];
+        } else if (isset($this->parent->html_attributes['id'])) {
+            $this->forId = $this->parent->html_attributes['id'];
         }
     }
 
@@ -77,8 +77,8 @@ class LabelResource extends JsonResource
         if (isset($this->html_attributes['form'])) {
             $this->formId = $this->html_attributes['form'];
 
-        } else if (isset($this->input()->form()->html_attributes['id'])) {
-            $this->formId = $this->input()->form()->html_attributes['id'];
+        } else if (isset($this->parent->parent->html_attributes['id'])) {
+            $this->formId = $this->parent->parent->html_attributes['id'];
         }
     }
 }

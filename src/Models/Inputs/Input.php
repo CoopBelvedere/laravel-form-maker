@@ -115,6 +115,6 @@ class Input extends ModelWithNodes implements HasSiblingsContract, HasRulesContr
      */
     public function parent(): MorphTo
     {
-        return $this->morphTo();
+        return $this->morphTo('inputable');
     }
 }

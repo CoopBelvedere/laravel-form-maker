@@ -57,6 +57,6 @@ class Sibling extends Model implements SiblingContract
      */
     public function parent(): MorphTo
     {
-        return $this->morphTo();
+        return $this->morphTo('siblingable');
     }
 }
