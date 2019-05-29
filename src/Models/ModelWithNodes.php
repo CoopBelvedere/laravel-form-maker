@@ -62,8 +62,8 @@ abstract class ModelWithNodes extends Model implements HasRankingsContract, With
 
         $afterNode = $this->getNode($afterNodeKey);
 
-        if ($afterNode && $this->ranking->inRanking($afterNode)) {
-            $this->ranking->move($node)->toRank($afterNode->rank + 1);
+        if ($afterNode && $this->rankings->firstWhere('node_type', $node->getTable())->inRanking($afterNode)) {
+            $this->rankings->firstWhere('node_type', $node->getTable())->move($node)->toRank($afterNode->rank + 1);
         }
 
         return $node;
@@ -82,7 +82,7 @@ abstract class ModelWithNodes extends Model implements HasRankingsContract, With
     {
         $node = $this->add($type, $name);
 
-        $this->ranking->move($node)->toRank($rank);
+        $this->rankings->firstWhere('node_type', $node->getTable())->move($node)->toRank($rank);
 
         return $node;
     }
@@ -102,8 +102,8 @@ abstract class ModelWithNodes extends Model implements HasRankingsContract, With
 
         $beforeNode = $this->getNode($beforeNodeKey);
 
-        if ($beforeNode && $this->ranking->inRanking($beforeNode)) {
-            $this->ranking->move($node)->toRank($beforeNode->rank - 1);
+        if ($beforeNode && $this->rankings->firstWhere('node_type', $node->getTable())->inRanking($beforeNode)) {
+            $this->rankings->firstWhere('node_type', $node->getTable())->move($node)->toRank($beforeNode->rank - 1);
         }
 
         return $node;

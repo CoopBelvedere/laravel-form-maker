@@ -34,7 +34,7 @@ class RemoveFromRanking
     protected function handle(): void
     {
         if ($ranker = $this->model->parent) {
-            $ranker->rankings->remove($this->model->id);
+            $ranker->rankings->firstWhere('node_type', $this->model->getTable())->remove($this->model->id);
         }
     }
 }

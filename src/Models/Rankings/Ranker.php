@@ -324,12 +324,9 @@ class Ranker extends Eloquent implements RankerContract
 
             foreach ($elements as $element)
             {
-                if ($key = array_search($this->getElementId($element), $this->ranks)) {
-                    $sortedList[$key] = $element;
-                } else {
-                    Log::warning('The item was not foung in the ranking. Item id : ' . $this->getElementId($element) . ' Ranking id : ' . $this->getKey());
-                }
+                $sortedList[array_search($this->getElementId($element), $this->ranks)] = $element;
             }
+
             return collect($sortedList);
         }
 
