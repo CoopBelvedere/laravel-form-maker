@@ -1,16 +1,16 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\HtmlElements;
+namespace Belvedere\FormMaker\Models\Siblings;
 
-use Belvedere\FormMaker\Contracts\HtmlElements\ElementContract;
-use Belvedere\FormMaker\Contracts\Resources\ElementResourcerContract;
+use Belvedere\FormMaker\Contracts\Siblings\SiblingContract;
+use Belvedere\FormMaker\Contracts\Resources\SiblingResourcerContract;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
 use Belvedere\FormMaker\Models\Model;
 use Belvedere\FormMaker\Traits\Ranking\InRanking;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Element extends Model implements ElementContract
+class Sibling extends Model implements SiblingContract
 {
     use InRanking;
 
@@ -24,7 +24,7 @@ class Element extends Model implements ElementContract
     ];
 
     /**
-     * AbstractElement constructor.
+     * Sibling constructor.
      *
      * @param array $attributes
      */
@@ -32,7 +32,7 @@ class Element extends Model implements ElementContract
     {
         parent::__construct($attributes);
 
-        $this->table = config('form-maker.database.html_elements_table', 'html_elements');
+        $this->table = config('form-maker.database.siblings_table', 'siblings');
 
         $this->setHtmlAttributesProvider();
     }
@@ -44,29 +44,29 @@ class Element extends Model implements ElementContract
      */
     public function toApi(): JsonResource
     {
-        return resolve(ElementResourcerContract::class, ['element' => $this]);
+        return resolve(SiblingResourcerContract::class, ['sibling' => $this]);
     }
 
     // ELOQUENT RELATIONSHIPS
     // ==============================================================
 
     /**
-     * Get the input who owns this element.
-     * Alias of elementable.
+     * Get the input who owns this sibling.
+     * Alias of siblingable.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function input(): MorphTo
     {
-        return $this->elementable();
+        return $this->siblingable();
     }
 
     /**
-     * Get the model who owns this element.
+     * Get the model who owns this sibling.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    protected function elementable(): MorphTo
+    protected function siblingable(): MorphTo
     {
         return $this->morphTo();
     }

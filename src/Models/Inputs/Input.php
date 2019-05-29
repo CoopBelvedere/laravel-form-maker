@@ -3,24 +3,24 @@
 namespace Belvedere\FormMaker\Models\Inputs;
 
 use Belvedere\FormMaker\Contracts\Inputs\InputContract;
-use Belvedere\FormMaker\Contracts\Nodes\HasHtmlElementsContract;
+use Belvedere\FormMaker\Contracts\Nodes\HasSiblingsContract;
 use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
 use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
 use Belvedere\FormMaker\Listeners\{
     AssignAttributes,
     ValidateProperties
 };
-use Belvedere\FormMaker\Models\HtmlElements\Element;
+use Belvedere\FormMaker\Models\Siblings\Sibling;
 use Belvedere\FormMaker\Models\ModelWithNodes;
-use Belvedere\FormMaker\Traits\Nodes\HasHtmlElements;
+use Belvedere\FormMaker\Traits\Nodes\HasSiblings;
 use Belvedere\FormMaker\Traits\Ranking\InRanking;
 use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Input extends ModelWithNodes implements HasHtmlElementsContract, HasRulesContract, InputContract
+class Input extends ModelWithNodes implements HasSiblingsContract, HasRulesContract, InputContract
 {
-    use HasHtmlElements, HasRules, InRanking;
+    use HasSiblings, HasRules, InRanking;
 
     /**
      * The default attributes automatically assigned on creation.
@@ -76,12 +76,12 @@ class Input extends ModelWithNodes implements HasHtmlElementsContract, HasRulesC
      * Get the node with the specified key.
      *
      * @param string $nodeKey
-     * @return \Belvedere\FormMaker\Models\HtmlElements\Element|null
+     * @return \Belvedere\FormMaker\Models\Siblings\Sibling|null
      * @throws \Exception
      */
-    protected function getNode(string $nodeKey): ?Element
+    protected function getNode(string $nodeKey): ?Sibling
     {
-        return $this->htmlElements()->firstWhere('type', $nodeKey);
+        return $this->siblings()->firstWhere('type', $nodeKey);
     }
 
     /**

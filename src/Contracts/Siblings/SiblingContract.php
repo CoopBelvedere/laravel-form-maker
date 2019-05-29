@@ -1,12 +1,12 @@
 <?php
 
-namespace Belvedere\FormMaker\Contracts\HtmlElements;
+namespace Belvedere\FormMaker\Contracts\Siblings;
 
-interface ElementContract
+interface SiblingContract
 {
     /**
      * Get the input who owns this element.
-     * Alias of elementable.
+     * Alias of siblingable.
      *
      * @return mixed
      */

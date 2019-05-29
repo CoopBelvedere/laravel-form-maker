@@ -1,17 +1,17 @@
 <?php
 
 
-namespace Belvedere\FormMaker\Models\HtmlElements\Label;
+namespace Belvedere\FormMaker\Models\Siblings\Label;
 
-use Belvedere\FormMaker\Contracts\HtmlElements\Label\LabelerContract;
+use Belvedere\FormMaker\Contracts\Siblings\Label\LabelerContract;
 use Belvedere\FormMaker\Contracts\Text\HasTextContract;
 use Belvedere\FormMaker\Http\Resources\HtmlElement\Label\LabelResource;
-use Belvedere\FormMaker\Models\HtmlElements\Element;
+use Belvedere\FormMaker\Models\Siblings\Sibling;
 use Belvedere\FormMaker\Scopes\ModelScope;
 use Belvedere\FormMaker\Traits\Text\HasText;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Labeler extends Element implements HasTextContract, LabelerContract
+class Labeler extends Sibling implements HasTextContract, LabelerContract
 {
     use HasText;
 
@@ -28,7 +28,7 @@ class Labeler extends Element implements HasTextContract, LabelerContract
     }
 
     /**
-     * Checkbox constructor.
+     * Labeler constructor.
      *
      * @param array $attributes
      */

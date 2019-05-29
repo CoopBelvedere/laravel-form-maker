@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Contracts\Resources;
 
-interface ElementResourcerContract
+interface SiblingResourcerContract
 {
     /**
      * Transform the resource into an array.

@@ -13,9 +13,9 @@ return [
 
     'database' => [
         'forms_table' => 'forms',
-        'html_elements_table' => 'html_elements',
         'inputs_table' => 'inputs',
         'rankings_table' => 'rankings',
+        'siblings_table' => 'siblings',
     ],
 
     /*
@@ -28,10 +28,6 @@ return [
      */
 
     'nodes' => [
-        'html_elements' => [
-            'label' => \Belvedere\FormMaker\Models\HtmlElements\Label\Labeler::class,
-        ],
-
         'inputs' => [
             'checkbox' => \Belvedere\FormMaker\Models\Inputs\Checkbox\Checkboxer::class,
             'color' => \Belvedere\FormMaker\Models\Inputs\Color\Colorer::class,
@@ -54,6 +50,10 @@ return [
             'time' => \Belvedere\FormMaker\Models\Inputs\Time\Timer::class,
             'url' => \Belvedere\FormMaker\Models\Inputs\Url\Urler::class,
             'week' => \Belvedere\FormMaker\Models\Inputs\Week\Weeker::class,
+        ],
+
+        'siblings' => [
+            'label' => \Belvedere\FormMaker\Models\Siblings\Label\Labeler::class,
         ],
     ],
 
@@ -79,7 +79,7 @@ return [
 
     'resources' => [
         'input' => \Belvedere\FormMaker\Http\Resources\Input\InputResourcer::class,
-        'html_element' => \Belvedere\FormMaker\Http\Resources\HtmlElement\ElementResourcer::class,
+        'sibling' => \Belvedere\FormMaker\Http\Resources\HtmlElement\ElementResourcer::class,
     ],
 
     /*

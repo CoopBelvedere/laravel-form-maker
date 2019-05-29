@@ -1,8 +1,8 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\HtmlElements\Label;
+namespace Belvedere\FormMaker\Models\Siblings\Label;
 
-use Belvedere\FormMaker\Contracts\HtmlElements\Label\LabelerContract;
+use Belvedere\FormMaker\Contracts\Siblings\Label\LabelerContract;
 use Illuminate\Support\ServiceProvider;
 
 class LabelServiceProvider extends ServiceProvider
@@ -15,7 +15,7 @@ class LabelServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(LabelerContract::class, function ($app) {
-            $labeler = $app->config->get('form-maker.nodes.html_elements.label', new Labeler());
+            $labeler = $app->config->get('form-maker.nodes.siblings.label', new Labeler());
             if (is_string($labeler)) {
                 return new $labeler();
             }

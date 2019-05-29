@@ -44,6 +44,7 @@ trait HasInputs
 
     /**
      * Get the model inputs sorted by their position in the ranking.
+     * Alias of getNodes
      *
      * @param string|null $type
      * @return \Illuminate\Support\Collection

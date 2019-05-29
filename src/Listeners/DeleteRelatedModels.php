@@ -71,8 +71,8 @@ class DeleteRelatedModels
             $nodes = $this->model->options()->get();
         }
 
-        if (method_exists($this->model, 'htmlElements')) {
-            $nodes = $nodes->merge($this->model->htmlElements());
+        if (method_exists($this->model, 'siblings')) {
+            $nodes = $nodes->merge($this->model->siblings());
         }
 
         return $nodes;

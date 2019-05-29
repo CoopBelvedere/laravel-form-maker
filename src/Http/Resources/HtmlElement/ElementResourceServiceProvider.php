@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Input;
 
-use Belvedere\FormMaker\Contracts\Resources\ElementResourcerContract;
+use Belvedere\FormMaker\Contracts\Resources\SiblingResourcerContract;
 use Belvedere\FormMaker\Http\Resources\HtmlElement\ElementResourcer;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
@@ -16,7 +16,7 @@ class ElementResourceServiceProvider extends ServiceProvider implements Deferrab
      */
     public function register(): void
     {
-        $this->app->bind(ElementResourcerContract::class, function ($app, $context) {
+        $this->app->bind(SiblingResourcerContract::class, function ($app, $context) {
             $resource = $app->config->get('form-maker.resources.html_element', new ElementResourcer($context['element']));
             if (is_string($resource)) {
                 return new $resource($context['element']);
@@ -32,6 +32,6 @@ class ElementResourceServiceProvider extends ServiceProvider implements Deferrab
      */
     public function provides()
     {
-        return [ElementResourcerContract::class];
+        return [SiblingResourcerContract::class];
     }
 }
