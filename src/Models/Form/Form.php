@@ -6,7 +6,7 @@ use Belvedere\FormMaker\Contracts\Form\FormContract;
 use Belvedere\FormMaker\Contracts\Nodes\HasInputsContract;
 use Belvedere\FormMaker\Http\Resources\Form\FormResource;
 use Belvedere\FormMaker\Listeners\ValidateProperties;
-use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\Models\Inputs\Input;
 use Belvedere\FormMaker\Models\ModelWithNodes;
 use Belvedere\FormMaker\Traits\Nodes\HasInputs;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -67,10 +67,10 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
      * Get the node with the specified key.
      *
      * @param string $nodeKey
-     * @return \Belvedere\FormMaker\Models\Model|null
+     * @return \Belvedere\FormMaker\Models\Inputs\Input|null
      * @throws \Exception
      */
-    protected function getNode(string $nodeKey): ?Model
+    protected function getNode(string $nodeKey): ?Input
     {
         return $this->inputs()->firstWhere('html_attributes.name', $nodeKey);
     }

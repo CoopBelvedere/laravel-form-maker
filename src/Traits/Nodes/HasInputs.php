@@ -5,7 +5,6 @@ namespace Belvedere\FormMaker\Traits\Nodes;
 
 use Belvedere\FormMaker\Models\Inputs\Input;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 
 trait HasInputs
 {
@@ -32,28 +31,6 @@ trait HasInputs
     }
 
     /**
-     * Get the model inputs.
-     *
-     * @return \Illuminate\Support\Collection
-     * @throws \Exception
-     */
-    protected function getAllInputs(): Collection
-    {
-        $inputs = collect([]);
-
-        foreach (DB::table(config('form-maker.database.inputs_table', 'inputs'))
-                     ->select('type')
-                     ->distinct()
-                     ->cursor() as $input)
-        {
-            $subset = $this->nodesQueryBuilder($input->type)->get();
-            $inputs = $inputs->merge($subset);
-        }
-
-        return $inputs;
-    }
-
-    /**
      * Get the input with the specified name property.
      * Alias of getNode
      *
@@ -75,13 +52,7 @@ trait HasInputs
      */
     public function inputs(?string $type = null): Collection
     {
-        if (is_null($type)) {
-            $inputs = $this->getAllInputs();
-        } else {
-            $inputs = $this->nodesQueryBuilder($type)->get();
-        }
-
-        return $this->ranking->sortByRank($inputs);
+        return $this->getNodes('inputs', $type);
     }
 
     /**

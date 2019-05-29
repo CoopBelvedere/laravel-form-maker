@@ -10,7 +10,7 @@ use Belvedere\FormMaker\Listeners\{
     AssignAttributes,
     ValidateProperties
 };
-use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\Models\HtmlElements\Element;
 use Belvedere\FormMaker\Models\ModelWithNodes;
 use Belvedere\FormMaker\Traits\Nodes\HasHtmlElements;
 use Belvedere\FormMaker\Traits\Ranking\InRanking;
@@ -76,10 +76,10 @@ class Input extends ModelWithNodes implements HasHtmlElementsContract, HasRulesC
      * Get the node with the specified key.
      *
      * @param string $nodeKey
-     * @return \Belvedere\FormMaker\Models\Model|null
+     * @return \Belvedere\FormMaker\Models\HtmlElements\Element|null
      * @throws \Exception
      */
-    protected function getNode(string $nodeKey): ?Model
+    protected function getNode(string $nodeKey): ?Element
     {
         return $this->htmlElements()->firstWhere('type', $nodeKey);
     }

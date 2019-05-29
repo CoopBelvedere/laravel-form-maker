@@ -51,7 +51,7 @@ class Selecter extends Input implements HasOptionsContract, SelecterContract
     protected function nodesQueryBuilder($node)
     {
         if ($node === 'option') {
-            return $this->morphMany($this->resolve($node), 'inputable');
+            return $this->morphMany($this->resolve('option'), 'inputable');
         }
 
         return parent::nodesQueryBuilder($node);

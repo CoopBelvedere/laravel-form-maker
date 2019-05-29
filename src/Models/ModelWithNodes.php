@@ -6,6 +6,8 @@ use Belvedere\FormMaker\Contracts\Nodes\WithNodesContract;
 use Belvedere\FormMaker\Contracts\Ranking\HasRankingContract;
 use Belvedere\FormMaker\Listeners\DeleteRelatedModels;
 use Belvedere\FormMaker\Traits\HasRanking;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 abstract class ModelWithNodes extends Model implements HasRankingContract, WithNodesContract
 {
@@ -108,12 +110,54 @@ abstract class ModelWithNodes extends Model implements HasRankingContract, WithN
     }
 
     /**
+     * Get all the model nodes.
+     *
+     * @param string $table
+     * @return \Illuminate\Support\Collection
+     * @throws \Exception
+     */
+    protected function getAllNodes(string $table): Collection
+    {
+        $nodes = collect([]);
+
+        foreach (DB::table(config(sprintf('form-maker.database.%s_table', $table), $table))
+                     ->select('type')
+                     ->distinct()
+                     ->cursor() as $element)
+        {
+            $subset = $this->nodesQueryBuilder($element->type)->get();
+            $nodes = $nodes->merge($subset);
+        }
+
+        return $nodes;
+    }
+
+    /**
      * Get the node with the specified key.
      *
      * @param string $nodeKey
-     * @return \Belvedere\FormMaker\Models\Model|null
+     * @return mixed
      */
-    abstract protected function getNode(string $nodeKey): ?Model;
+    abstract protected function getNode(string $nodeKey);
+
+    /**
+     * Get the model nodes filtered by type or not and sorted by their position in the ranking.
+     *
+     * @param string $table
+     * @param string|null $type
+     * @return \Illuminate\Support\Collection
+     * @throws \Exception
+     */
+    public function getNodes(string $table, ?string $type = null): Collection
+    {
+        if (is_null($type)) {
+            $nodes = $this->getAllNodes($table);
+        } else {
+            $nodes = $this->nodesQueryBuilder($type)->get();
+        }
+
+        return $this->ranking->sortByRank($nodes);
+    }
 
     /**
      * Get the model nodes query builder.
