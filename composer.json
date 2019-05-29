@@ -51,7 +51,8 @@
                 "Belvedere\\FormMaker\\Models\\Inputs\\Textarea\\TextareaServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Inputs\\Time\\TimeServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Inputs\\Url\\UrlServiceProvider",
-                "Belvedere\\FormMaker\\Models\\Inputs\\Week\\WeekServiceProvider"
+                "Belvedere\\FormMaker\\Models\\Inputs\\Week\\WeekServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Siblings\\Label\\LabelServiceProvider"
             ]
         }
     }
