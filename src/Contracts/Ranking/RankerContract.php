@@ -2,6 +2,8 @@
 
 namespace Belvedere\FormMaker\Contracts\Ranking;
 
+use Illuminate\Support\Collection;
+
 interface RankerContract
 {
     /**
@@ -94,6 +96,14 @@ interface RankerContract
      * @return void
      */
     public function shuffle(): void;
+
+    /**
+     * Order the list according to the items position in the ranking.
+     *
+     * @param Collection $elements
+     * @return Collection
+     */
+    public function sortByRank(Collection $elements): Collection;
 
     /**
      * Toggle two elements in the ranking.

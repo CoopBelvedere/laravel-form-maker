@@ -310,24 +310,22 @@ class Ranker extends Eloquent implements RankerContract
         $this->commit(collect($ranks)->shuffle()->all());
     }
 
-    public function sort($elements)
+    /**
+     * Order the list according to the items position in the ranking.
+     *
+     * @param Collection $elements
+     * @return Collection
+     */
+    public function sortByRank(Collection $elements): Collection
     {
-        $sortedList = [];
-
-        if ($isCollection = $elements instanceof Collection) {
-            $elements = $elements->all();
-        }
+        $sortedList = array_pad([], count($elements), false);
 
         foreach ($elements as $element)
         {
             $sortedList[array_search($this->getElementId($element), $this->ranks)] = $element;
         }
 
-        if ($isCollection) {
-            return collect($sortedList);
-        }
-
-        return $sortedList;
+        return collect($sortedList);
     }
 
     /**
