@@ -6,6 +6,7 @@ use Belvedere\FormMaker\Contracts\Rankings\RankerContract;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 
 class Ranker extends Eloquent implements RankerContract
 {
@@ -318,14 +319,23 @@ class Ranker extends Eloquent implements RankerContract
      */
     public function sortByRank(Collection $elements): Collection
     {
-        $sortedList = array_pad([], count($elements), false);
+        if (count($elements) === count($this->ranks)) {
+            $sortedList = array_pad([], count($elements), false);
 
-        foreach ($elements as $element)
-        {
-            $sortedList[array_search($this->getElementId($element), $this->ranks)] = $element;
+            foreach ($elements as $element)
+            {
+                if ($key = array_search($this->getElementId($element), $this->ranks)) {
+                    $sortedList[$key] = $element;
+                } else {
+                    Log::warning('The item was not foung in the ranking. Item id : ' . $this->getElementId($element) . ' Ranking id : ' . $this->getKey());
+                }
+            }
+            return collect($sortedList);
         }
 
-        return collect($sortedList);
+        Log::warning('The number of items in the collection and the number of ids stored in ranking don\'t match for ranking id : ' . $this->getKey());
+
+        return $elements;
     }
 
     /**

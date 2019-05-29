@@ -23,11 +23,11 @@ trait HasRankings
      */
     protected function addInRanking(Model $node): void
     {
-        if (is_null($this->rankings)) {
+        if ($this->rankings->isEmpty()) {
             $this->createRanking($node);
         }
 
-        $this->rankings()->ofType($node->getTable())->first()->add($node);
+        $this->rankings->firstWhere('node_type', $node->getTable())->add($node);
     }
 
     /**
@@ -57,18 +57,6 @@ trait HasRankings
     public function rankings()
     {
         return $this->rankingProvider->getEloquentRelation($this);
-    }
-
-    /**
-     * Scope a query to only include rankings of a given type.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @param  string  $type
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeOfType($query, string $type)
-    {
-        return $query->where('node_type', $type);
     }
 
     /**
