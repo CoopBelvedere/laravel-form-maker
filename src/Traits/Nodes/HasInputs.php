@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Belvedere\FormMaker\Traits\Nodes;
 
 use Belvedere\FormMaker\Models\Inputs\Input;
