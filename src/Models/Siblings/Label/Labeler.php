@@ -5,7 +5,7 @@ namespace Belvedere\FormMaker\Models\Siblings\Label;
 
 use Belvedere\FormMaker\Contracts\Siblings\Label\LabelerContract;
 use Belvedere\FormMaker\Contracts\Text\HasTextContract;
-use Belvedere\FormMaker\Http\Resources\HtmlElement\Label\LabelResource;
+use Belvedere\FormMaker\Http\Resources\Sibling\Label\LabelResource;
 use Belvedere\FormMaker\Models\Siblings\Sibling;
 use Belvedere\FormMaker\Scopes\ModelScope;
 use Belvedere\FormMaker\Traits\Text\HasText;

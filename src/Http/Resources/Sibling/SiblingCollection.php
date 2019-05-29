@@ -4,7 +4,7 @@ namespace Belvedere\FormMaker\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ElementCollection extends ResourceCollection
+class SiblingCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,8 +14,8 @@ class ElementCollection extends ResourceCollection
      */
     public function toArray($request): array
     {
-        return $this->collection->transform(function ($element) {
-            return $element->toApi();
+        return $this->collection->transform(function ($sibling) {
+            return $sibling->toApi();
         })->toArray();
     }
 }

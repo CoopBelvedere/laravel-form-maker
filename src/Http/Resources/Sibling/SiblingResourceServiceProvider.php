@@ -3,11 +3,11 @@
 namespace Belvedere\FormMaker\Http\Resources\Input;
 
 use Belvedere\FormMaker\Contracts\Resources\SiblingResourcerContract;
-use Belvedere\FormMaker\Http\Resources\HtmlElement\ElementResourcer;
+use Belvedere\FormMaker\Http\Resources\Sibling\SiblingResourcer;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class ElementResourceServiceProvider extends ServiceProvider implements DeferrableProvider
+class SiblingResourceServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -17,9 +17,9 @@ class ElementResourceServiceProvider extends ServiceProvider implements Deferrab
     public function register(): void
     {
         $this->app->bind(SiblingResourcerContract::class, function ($app, $context) {
-            $resource = $app->config->get('form-maker.resources.html_element', new ElementResourcer($context['element']));
+            $resource = $app->config->get('form-maker.resources.sibling', new SiblingResourcer($context['sibling']));
             if (is_string($resource)) {
-                return new $resource($context['element']);
+                return new $resource($context['sibling']);
             }
             return $resource;
         });

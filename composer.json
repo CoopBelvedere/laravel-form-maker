@@ -29,6 +29,7 @@
             "providers": [
                 "Belvedere\\FormMaker\\FormMakerServiceProvider",
                 "Belvedere\\FormMaker\\Http\\Resources\\Input\\InputResourceServiceProvider",
+                "Belvedere\\FormMaker\\Http\\Resources\\Sibling\\SiblingResourceServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Rankings\\RankingServiceProvider",
                 "Belvedere\\FormMaker\\Models\\HtmlAttributes\\HtmlAttributeServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Rules\\RuleServiceProvider",

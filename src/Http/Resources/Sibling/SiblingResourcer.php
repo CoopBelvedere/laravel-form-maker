@@ -1,10 +1,11 @@
 <?php
 
-namespace Belvedere\FormMaker\Http\Resources\HtmlElement;
+namespace Belvedere\FormMaker\Http\Resources\Sibling;
 
+use Belvedere\FormMaker\Contracts\Resources\SiblingResourcerContract;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ElementResourcer extends JsonResource
+class SiblingResourcer extends JsonResource implements SiblingResourcerContract
 {
     /**
      * Transform the resource into an array.

@@ -79,7 +79,7 @@ return [
 
     'resources' => [
         'input' => \Belvedere\FormMaker\Http\Resources\Input\InputResourcer::class,
-        'sibling' => \Belvedere\FormMaker\Http\Resources\HtmlElement\ElementResourcer::class,
+        'sibling' => \Belvedere\FormMaker\Http\Resources\Sibling\SiblingResourcer::class,
     ],
 
     /*

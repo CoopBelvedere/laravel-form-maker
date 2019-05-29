@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Http\Resources\HtmlElement\Label;
+namespace Belvedere\FormMaker\Http\Resources\Sibling\Label;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 

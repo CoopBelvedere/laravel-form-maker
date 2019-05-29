@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Input;
 
+use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
+use Belvedere\FormMaker\Http\Resources\SiblingCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class InputResourcer extends JsonResource
+class InputResourcer extends JsonResource implements InputResourcerContract
 {
     /**
      * Transform the resource into an array.
@@ -19,6 +21,8 @@ class InputResourcer extends JsonResource
         } else if ($options = method_exists($this->resource, 'options')) {
             $options = new InputCollection($this->options()->get());
         }
+
+        $siblings = new SiblingCollection($this->siblings());
 
         return [
             'id' => $this->id,
@@ -35,8 +39,8 @@ class InputResourcer extends JsonResource
             $this->mergeWhen($options && $options->collection->isNotEmpty(), [
                 'options' => $options,
             ]),
-            $this->mergeWhen($this->siblings()->isNotEmpty(), [
-                'siblings' => $this->siblings(),
+            $this->mergeWhen($siblings->collection->isNotEmpty(), [
+                'siblings' => $siblings,
             ]),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
