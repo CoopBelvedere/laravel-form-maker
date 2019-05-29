@@ -148,7 +148,7 @@ abstract class ModelWithNodes extends Model implements HasRankingContract, WithN
      * @return \Illuminate\Support\Collection
      * @throws \Exception
      */
-    public function getNodes(string $table, ?string $type = null): Collection
+    protected function getNodes(string $table, ?string $type = null): Collection
     {
         if (is_null($type)) {
             $nodes = $this->getAllNodes($table);

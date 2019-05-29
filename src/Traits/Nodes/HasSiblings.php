@@ -32,4 +32,24 @@ trait HasSiblings
     {
         return $this->getNodes('siblings', $type);
     }
+
+    /**
+     * Add label sibling for the model.
+     *
+     * @param array $attributes
+     * @return self
+     * @throws \Exception
+     */
+    public function withLabel(array $attributes): self
+    {
+        $label = $this->add('label')->withHtmlAttributes($attributes);
+
+        if (array_key_exists('text', $attributes) && method_exists($label, 'withText')) {
+            $label->withText($attributes['text']);
+        }
+
+        $label->save();
+
+        return $this;
+    }
 }

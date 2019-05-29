@@ -29,9 +29,6 @@ trait HasOptions
         return $this;
     }
 
-    // ELOQUENT RELATIONSHIPS
-    // ==============================================================
-
     /**
      * Get the options that belongs to the input.
      *
