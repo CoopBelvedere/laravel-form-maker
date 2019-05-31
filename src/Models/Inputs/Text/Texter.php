@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Text;
 
-use Belvedere\FormMaker\Contracts\Inputs\Text\TexterContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\Text\TexterContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope
+};
 
 class Texter extends Input implements TexterContract
 {

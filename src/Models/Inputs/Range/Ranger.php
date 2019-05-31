@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Range;
 
-use Belvedere\FormMaker\Contracts\Inputs\Range\RangerContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\Range\RangerContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope
+};
 
 class Ranger extends Input implements RangerContract
 {

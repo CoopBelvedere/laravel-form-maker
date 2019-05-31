@@ -3,12 +3,14 @@
 
 namespace Belvedere\FormMaker\Models\Siblings\Label;
 
-use Belvedere\FormMaker\Contracts\Resources\LabelResourcerContract;
-use Belvedere\FormMaker\Contracts\Siblings\Label\LabelerContract;
-use Belvedere\FormMaker\Contracts\Text\HasTextContract;
-use Belvedere\FormMaker\Models\Siblings\Sibling;
-use Belvedere\FormMaker\Scopes\ModelScope;
-use Belvedere\FormMaker\Traits\Text\HasText;
+use Belvedere\FormMaker\{
+    Contracts\Resources\LabelResourcerContract,
+    Contracts\Siblings\Label\LabelerContract,
+    Contracts\Text\HasTextContract,
+    Models\Siblings\Sibling,
+    Scopes\ModelScope,
+    Traits\Text\HasText
+};
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Labeler extends Sibling implements HasTextContract, LabelerContract

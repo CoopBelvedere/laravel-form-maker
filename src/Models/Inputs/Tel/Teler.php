@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Tel;
 
-use Belvedere\FormMaker\Contracts\Inputs\Tel\TelerContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\Tel\TelerContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope
+};
 
 class Teler extends Input implements TelerContract
 {

@@ -2,13 +2,17 @@
 
 namespace Belvedere\FormMaker\Models\Siblings;
 
-use Belvedere\FormMaker\Contracts\Siblings\SiblingContract;
-use Belvedere\FormMaker\Contracts\Resources\SiblingResourcerContract;
-use Belvedere\FormMaker\Listeners\ValidateProperties;
-use Belvedere\FormMaker\Models\Model;
-use Belvedere\FormMaker\Traits\Rankings\InRanking;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Belvedere\FormMaker\{
+    Contracts\Siblings\SiblingContract,
+    Contracts\Resources\SiblingResourcerContract,
+    Listeners\ValidateProperties,
+    Models\Model,
+    Traits\Rankings\InRanking
+};
+use Illuminate\{
+    Database\Eloquent\Relations\MorphTo,
+    Http\Resources\Json\JsonResource
+};
 
 class Sibling extends Model implements SiblingContract
 {

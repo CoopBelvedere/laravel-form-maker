@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Url;
 
-use Belvedere\FormMaker\Contracts\Inputs\Url\UrlerContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\Url\UrlerContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope
+};
 
 class Urler extends Input implements UrlerContract
 {

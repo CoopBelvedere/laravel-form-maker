@@ -2,8 +2,10 @@
 
 namespace Belvedere\FormMaker\Contracts\Form;
 
-use Belvedere\FormMaker\Contracts\ModelContract;
-use Belvedere\FormMaker\Contracts\Nodes\HasInputsContract;
+use Belvedere\FormMaker\Contracts\{
+    ModelContract,
+    Nodes\HasInputsContract
+};
 
 interface FormContract extends HasInputsContract, ModelContract
 {

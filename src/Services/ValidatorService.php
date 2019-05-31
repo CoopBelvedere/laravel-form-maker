@@ -2,10 +2,12 @@
 
 namespace Belvedere\FormMaker\Services;
 
-use Illuminate\Support\Arr;
+use Illuminate\{
+    Support\Arr,
+    Database\Eloquent\Model,
+    Support\Collection
+};
 use Validator;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 
 class ValidatorService
 {

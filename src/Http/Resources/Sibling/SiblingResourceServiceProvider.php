@@ -3,8 +3,10 @@
 namespace Belvedere\FormMaker\Http\Resources\Sibling;
 
 use Belvedere\FormMaker\Contracts\Resources\SiblingResourcerContract;
-use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
 class SiblingResourceServiceProvider extends ServiceProvider implements DeferrableProvider
 {

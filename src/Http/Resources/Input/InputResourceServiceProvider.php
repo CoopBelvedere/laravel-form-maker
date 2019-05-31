@@ -3,8 +3,10 @@
 namespace Belvedere\FormMaker\Http\Resources\Input;
 
 use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
-use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
 class InputResourceServiceProvider extends ServiceProvider implements DeferrableProvider
 {

@@ -2,11 +2,13 @@
 
 namespace Belvedere\FormMaker\Models\Siblings\Paragraph;
 
-use Belvedere\FormMaker\Contracts\Siblings\Paragraph\ParagrapherContract;
-use Belvedere\FormMaker\Contracts\Text\HasTextContract;
-use Belvedere\FormMaker\Models\Siblings\Sibling;
-use Belvedere\FormMaker\Scopes\ModelScope;
-use Belvedere\FormMaker\Traits\Text\HasText;
+use Belvedere\FormMaker\{
+    Contracts\Siblings\Paragraph\ParagrapherContract,
+    Contracts\Text\HasTextContract,
+    Models\Siblings\Sibling,
+    Scopes\ModelScope,
+    Traits\Text\HasText
+};
 
 class Paragrapher extends Sibling implements HasTextContract, ParagrapherContract
 {

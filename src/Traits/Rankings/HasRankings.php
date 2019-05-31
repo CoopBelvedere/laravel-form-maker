@@ -2,8 +2,10 @@
 
 namespace Belvedere\FormMaker\Traits;
 
-use Belvedere\FormMaker\Contracts\Rankings\RankerContract;
-use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\{
+    Contracts\Rankings\RankerContract,
+    Models\Model
+};
 
 trait HasRankings
 {

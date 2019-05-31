@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Textarea;
 
-use Belvedere\FormMaker\Contracts\Inputs\Textarea\TextareaerContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\Textarea\TextareaerContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope
+};
 
 class Textareaer extends Input implements TextareaerContract
 {

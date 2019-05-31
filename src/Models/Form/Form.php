@@ -2,13 +2,15 @@
 
 namespace Belvedere\FormMaker\Models\Form;
 
-use Belvedere\FormMaker\Contracts\Form\FormContract;
-use Belvedere\FormMaker\Contracts\Nodes\HasInputsContract;
-use Belvedere\FormMaker\Http\Resources\Form\FormResource;
-use Belvedere\FormMaker\Listeners\ValidateProperties;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Models\ModelWithNodes;
-use Belvedere\FormMaker\Traits\Nodes\HasInputs;
+use Belvedere\FormMaker\{
+    Contracts\Form\FormContract,
+    Contracts\Nodes\HasInputsContract,
+    Http\Resources\Form\FormResource,
+    Listeners\ValidateProperties,
+    Models\Inputs\Input,
+    Models\ModelWithNodes,
+    Traits\Nodes\HasInputs
+};
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Form extends ModelWithNodes implements HasInputsContract, FormContract

@@ -2,8 +2,10 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Input;
 
-use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
-use Belvedere\FormMaker\Http\Resources\Sibling\SiblingCollection;
+use Belvedere\FormMaker\{
+    Contracts\Resources\InputResourcerContract,
+    Http\Resources\Sibling\SiblingCollection
+};
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class InputResourcer extends JsonResource implements InputResourcerContract

@@ -2,12 +2,16 @@
 
 namespace Belvedere\FormMaker\Models;
 
-use Belvedere\FormMaker\Contracts\Nodes\WithNodesContract;
-use Belvedere\FormMaker\Contracts\Rankings\HasRankingsContract;
-use Belvedere\FormMaker\Listeners\DeleteRelatedModels;
-use Belvedere\FormMaker\Traits\HasRankings;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
+use Belvedere\FormMaker\{
+    Contracts\Nodes\WithNodesContract,
+    Contracts\Rankings\HasRankingsContract,
+    Listeners\DeleteRelatedModels,
+    Traits\HasRankings
+};
+use Illuminate\Support\{
+    Collection,
+    Facades\DB
+};
 
 abstract class ModelWithNodes extends Model implements HasRankingsContract, WithNodesContract
 {

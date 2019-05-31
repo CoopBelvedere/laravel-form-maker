@@ -3,8 +3,10 @@
 namespace Belvedere\FormMaker\Models\HtmlAttributes;
 
 use Belvedere\FormMaker\Contracts\HtmlAttributes\HtmlAttributerContract;
-use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
 class HtmlAttributeServiceProvider extends ServiceProvider implements DeferrableProvider
 {

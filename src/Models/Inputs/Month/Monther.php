@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Month;
 
-use Belvedere\FormMaker\Contracts\Inputs\Month\MontherContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\Month\MontherContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope
+};
 
 class Monther extends Input implements MontherContract
 {

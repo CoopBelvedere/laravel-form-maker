@@ -2,11 +2,13 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Datalist;
 
-use Belvedere\FormMaker\Contracts\Inputs\Datalist\DatalisterContract;
-use Belvedere\FormMaker\Contracts\Nodes\HasOptionsContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
-use Belvedere\FormMaker\Traits\Nodes\HasOptions;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\Datalist\DatalisterContract,
+    Contracts\Nodes\HasOptionsContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope,
+    Traits\Nodes\HasOptions
+};
 
 class Datalister extends Input implements DatalisterContract, HasOptionsContract
 {

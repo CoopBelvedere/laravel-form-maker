@@ -2,21 +2,23 @@
 
 namespace Belvedere\FormMaker\Models\Inputs;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputContract;
-use Belvedere\FormMaker\Contracts\Nodes\HasSiblingsContract;
-use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
-use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
-use Belvedere\FormMaker\Listeners\{
-    AssignAttributes,
-    ValidateProperties
+use Belvedere\FormMaker\{
+    Contracts\Inputs\InputContract,
+    Contracts\Nodes\HasSiblingsContract,
+    Contracts\Resources\InputResourcerContract,
+    Contracts\Rules\HasRulesContract,
+    Listeners\AssignAttributes,
+    Listeners\ValidateProperties,
+    Models\Siblings\Sibling,
+    Models\ModelWithNodes,
+    Traits\Nodes\HasSiblings,
+    Traits\Rankings\InRanking,
+    Traits\Rules\HasRules,
 };
-use Belvedere\FormMaker\Models\Siblings\Sibling;
-use Belvedere\FormMaker\Models\ModelWithNodes;
-use Belvedere\FormMaker\Traits\Nodes\HasSiblings;
-use Belvedere\FormMaker\Traits\Rankings\InRanking;
-use Belvedere\FormMaker\Traits\Rules\HasRules;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\{
+    Database\Eloquent\Relations\MorphTo,
+    Http\Resources\Json\JsonResource
+};
 
 class Input extends ModelWithNodes implements HasSiblingsContract, HasRulesContract, InputContract
 {

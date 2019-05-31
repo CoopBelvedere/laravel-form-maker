@@ -3,8 +3,10 @@
 namespace Belvedere\FormMaker\Models\Rules;
 
 use Belvedere\FormMaker\Contracts\Rules\RulerContract;
-use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
 class RuleServiceProvider extends ServiceProvider implements DeferrableProvider
 {

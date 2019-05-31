@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\File;
 
-use Belvedere\FormMaker\Contracts\Inputs\File\FilerContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\File\FilerContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope
+};
 
 class Filer extends Input implements FilerContract
 {

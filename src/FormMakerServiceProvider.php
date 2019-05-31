@@ -2,8 +2,10 @@
 
 namespace Belvedere\FormMaker;
 
-use Illuminate\Http\Resources\Json\Resource;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Http\Resources\Json\Resource,
+    Support\ServiceProvider
+};
 
 class FormMakerServiceProvider extends ServiceProvider
 {

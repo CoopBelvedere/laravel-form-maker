@@ -3,10 +3,12 @@
 namespace Belvedere\FormMaker\Models\Rankings;
 
 use Belvedere\FormMaker\Contracts\Rankings\RankerContract;
-use Illuminate\Database\Eloquent\Model as Eloquent;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
+use Illuminate\{
+    Database\Eloquent\Model as Eloquent,
+    Database\Eloquent\Relations\MorphMany,
+    Support\Collection,
+    Support\Facades\Log
+};
 
 class Ranker extends Eloquent implements RankerContract
 {

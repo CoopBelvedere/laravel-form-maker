@@ -2,8 +2,10 @@
 
 namespace Belvedere\FormMaker\Contracts\Nodes;
 
-use Belvedere\FormMaker\Contracts\Rankings\HasRankingsContract;
-use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\{
+    Contracts\Rankings\HasRankingsContract,
+    Models\Model
+};
 
 interface WithNodesContract extends HasRankingsContract
 {

@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Image;
 
-use Belvedere\FormMaker\Contracts\Inputs\Image\ImagerContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\Image\ImagerContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope
+};
 
 class Imager extends Input implements ImagerContract
 {

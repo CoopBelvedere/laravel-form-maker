@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Time;
 
-use Belvedere\FormMaker\Contracts\Inputs\Time\TimerContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\Time\TimerContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope
+};
 
 class Timer extends Input implements TimerContract
 {

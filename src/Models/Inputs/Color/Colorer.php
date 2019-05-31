@@ -2,9 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Inputs\Color;
 
-use Belvedere\FormMaker\Contracts\Inputs\Color\ColorerContract;
-use Belvedere\FormMaker\Models\Inputs\Input;
-use Belvedere\FormMaker\Scopes\ModelScope;
+use Belvedere\FormMaker\{
+    Contracts\Inputs\Color\ColorerContract,
+    Models\Inputs\Input,
+    Scopes\ModelScope
+};
 
 class Colorer extends Input implements ColorerContract
 {

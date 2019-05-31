@@ -3,8 +3,10 @@
 namespace Belvedere\FormMaker\Models\Rankings;
 
 use Belvedere\FormMaker\Contracts\Rankings\RankerContract;
-use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
 class RankingServiceProvider extends ServiceProvider implements DeferrableProvider
 {
