@@ -2,6 +2,8 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Sibling\Label;
 
+use Belvedere\FormMaker\Contracts\Form\FormContract;
+use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class LabelResource extends JsonResource
@@ -11,14 +13,14 @@ class LabelResource extends JsonResource
      *
      * @var mixed
      */
-    protected $forId = false;
+    protected $forId;
 
     /**
      * The id of the form element with which the label is associated (its form owner).
      *
      * @var mixed
      */
-    protected $formId = false;
+    protected $formId;
 
     /**
      * Transform the resource into an array.
@@ -28,9 +30,7 @@ class LabelResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $this->setForId();
-
-        //$this->setFormId();
+        $this->setParentId();
 
         return [
             'id' => $this->id,
@@ -38,9 +38,9 @@ class LabelResource extends JsonResource
             $this->mergeWhen($this->forId, [
                 'for' => $this->forId,
             ]),
-//            $this->mergeWhen($this->formId, [
-//                'form' => $this->formId,
-//            ]),
+            $this->mergeWhen($this->formId, [
+                'form' => $this->formId,
+            ]),
             $this->mergeWhen($this->text, [
                 'text' => $this->text,
             ]),
@@ -53,32 +53,35 @@ class LabelResource extends JsonResource
     }
 
     /**
-     * Set the id of the labelable form-related element.
+     * Get the id of the parent model.
      *
-     * @return void
+     * @param string $attribute
+     * @return bool|string
      */
-    protected function setForId(): void
+    protected function getId(string $attribute)
     {
-        if (isset($this->html_attributes['for'])) {
-            $this->forId = $this->html_attributes['for'];
-
-        } else if (isset($this->parent->html_attributes['id'])) {
-            $this->forId = $this->parent->html_attributes['id'];
+        if (isset($this->html_attributes[$attribute])) {
+            return $this->html_attributes[$attribute];
         }
+
+        if (isset($this->parent->html_attributes['id'])) {
+            return $this->parent->html_attributes['id'];
+        }
+
+        return false;
     }
 
     /**
-     * Set the id of the form element with which the label is associated.
+     * Set the parent id attribute for the label.
      *
      * @return void
      */
-    protected function setFormId(): void
+    protected function setParentId(): void
     {
-        if (isset($this->html_attributes['form'])) {
-            $this->formId = $this->html_attributes['form'];
-
-        } else if (isset($this->parent->parent->html_attributes['id'])) {
-            $this->formId = $this->parent->parent->html_attributes['id'];
+        if ($this->parent instanceof InputContract) {
+            $this->forId = $this->getId('for');
+        } else if ($this->parent instanceof FormContract) {
+            $this->formId = $this->getId('form');
         }
     }
 }
