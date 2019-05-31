@@ -2,7 +2,11 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs;
 
-interface InputContract
+use Belvedere\FormMaker\Contracts\HtmlAttributes\HasHtmlAttributesContract;
+use Belvedere\FormMaker\Contracts\Nodes\HasSiblingsContract;
+use Belvedere\FormMaker\Contracts\Rules\HasRulesContract;
+
+interface InputContract extends HasHtmlAttributesContract, HasRulesContract, HasSiblingsContract
 {
     /**
      * Get the model who owns this input.

@@ -6,5 +6,5 @@ use Belvedere\FormMaker\Contracts\Inputs\InputContract;
 
 interface ImagerContract extends InputContract
 {
-
+    //
 }
