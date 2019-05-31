@@ -2,7 +2,10 @@
 
 namespace Belvedere\FormMaker\Contracts\Form;
 
-interface FormContract
+use Belvedere\FormMaker\Contracts\ModelContract;
+use Belvedere\FormMaker\Contracts\Nodes\HasInputsContract;
+
+interface FormContract extends HasInputsContract, ModelContract
 {
     /**
      * Specifies the form url action.

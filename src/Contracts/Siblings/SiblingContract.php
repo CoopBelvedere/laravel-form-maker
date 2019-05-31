@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Siblings;
 
-use Belvedere\FormMaker\Contracts\HtmlAttributes\HasHtmlAttributesContract;
+use Belvedere\FormMaker\Contracts\ModelContract;
 
-interface SiblingContract extends HasHtmlAttributesContract
+interface SiblingContract extends ModelContract
 {
     /**
      * Get the model who owns this sibling.
