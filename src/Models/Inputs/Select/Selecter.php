@@ -36,10 +36,7 @@ class Selecter extends Input implements HasOptionsContract, SelecterContract
         parent::__construct($attributes);
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
-            'autocomplete',
             'multiple',
-            'readonly',
-            'required',
             'size'
         ]);
     }

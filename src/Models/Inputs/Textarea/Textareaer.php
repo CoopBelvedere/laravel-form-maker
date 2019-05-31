@@ -32,10 +32,7 @@ class Textareaer extends Input implements TextareaerContract
         parent::__construct($attributes);
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
-            'autofocus',
             'cols',
-            'readonly',
-            'required',
             'rows',
             'spellcheck',
         ]);

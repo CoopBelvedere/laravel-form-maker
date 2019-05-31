@@ -34,8 +34,6 @@ class Weeker extends Input implements WeekerContract
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'max',
             'min',
-            'readonly',
-            'required',
             'step',
         ]);
     }

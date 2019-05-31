@@ -9,12 +9,12 @@ class HtmlAttributer implements HtmlAttributerContract
     /**
      * Indicates the types of files that the server accepts.
      *
-     * @param null|string $accepted
+     * @param string|null ...$accepted
      * @return array
      */
-    public function accept(?string $accepted): array
+    public function accept(?string ...$accepted): array
     {
-        return ['accept' => $accepted];
+        return ['accept' => sprintf('%s', implode(',', $accepted))];
     }
 
     /**
@@ -67,12 +67,12 @@ class HtmlAttributer implements HtmlAttributerContract
      * Specifies the charset used in the submitted form.
      * default: the page charset
      *
-     * @param string $charset
+     * @param string|null ...$charsets
      * @return array
      */
-    public function charset(?string $charset): array
+    public function charset(?string ...$charsets): array
     {
-        return ['accept-charset' => $charset];
+        return ['accept-charset' => sprintf('%s', implode(' ', $charsets))];
     }
 
     /**
@@ -87,12 +87,12 @@ class HtmlAttributer implements HtmlAttributerContract
     }
 
     /**
-     * Specifies the visible width of a text area.
+     * Specifies the visible width of a textarea.
      *
      * @param int $cols
      * @return array
      */
-    public function cols(?int $cols = 0): array
+    public function cols(?int $cols = 20): array
     {
         return ['cols' => $cols];
     }

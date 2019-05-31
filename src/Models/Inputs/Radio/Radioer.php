@@ -33,7 +33,6 @@ class Radioer extends Input implements RadioerContract
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'checked',
-            'required'
         ]);
     }
 }

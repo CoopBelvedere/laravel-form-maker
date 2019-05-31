@@ -32,14 +32,10 @@ class Texter extends Input implements TexterContract
         parent::__construct($attributes);
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
-            'autocomplete',
-            'autofocus',
             'maxlength',
             'minlength',
             'pattern',
             'placeholder',
-            'readonly',
-            'required',
             'size',
             'spellcheck',
         ]);

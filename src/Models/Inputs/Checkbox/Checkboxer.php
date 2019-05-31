@@ -33,7 +33,6 @@ class Checkboxer extends Input implements CheckboxerContract
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'checked',
-            'required',
         ]);
     }
 }

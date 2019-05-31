@@ -34,8 +34,6 @@ class Dater extends Input implements DaterContract
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'max',
             'min',
-            'readonly',
-            'required',
             'step',
         ]);
     }

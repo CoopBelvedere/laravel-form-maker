@@ -56,8 +56,13 @@ class Input extends ModelWithNodes implements HasSiblingsContract, HasRulesContr
         $this->table = config('form-maker.database.inputs_table', 'inputs');
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
+            'autocomplete',
+            'autofocus',
             'disabled',
+            'form',
             'name',
+            'readonly',
+            'required',
             'title',
             'value',
         ]);

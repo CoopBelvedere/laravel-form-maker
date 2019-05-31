@@ -35,7 +35,6 @@ class Filer extends Input implements FilerContract
             'accept',
             'capture',
             'multiple',
-            'required',
         ]);
     }
 }

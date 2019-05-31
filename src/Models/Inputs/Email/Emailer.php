@@ -32,14 +32,11 @@ class Emailer extends Input implements EmailerContract
         parent::__construct($attributes);
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
-            'autocomplete',
             'maxlength',
             'minlength',
             'multiple',
             'pattern',
             'placeholder',
-            'readonly',
-            'required',
             'size',
         ]);
     }

@@ -7,10 +7,10 @@ interface HtmlAttributerContract
     /**
      * Indicates the types of files that the server accepts.
      *
-     * @param null|string $accepted
+     * @param string|null ...$accepted
      * @return array
      */
-    public function accept(?string $accepted): array;
+    public function accept(?string ...$accepted): array;
 
     /**
      * Specifies the alt of the input field image element.
@@ -50,10 +50,10 @@ interface HtmlAttributerContract
      * Specifies the charset used in the submitted form.
      * default: the page charset
      *
-     * @param string $charset
+     * @param string|null ...$charsets
      * @return array
      */
-    public function charset(?string $charset): array;
+    public function charset(?string ...$charsets): array;
 
     /**
      * Pre-checks the control before the user interacts with it.
@@ -64,12 +64,12 @@ interface HtmlAttributerContract
     public function checked(?string $checked = 'checked'): array;
 
     /**
-     * Specifies the visible width of a text area.
+     * Specifies the visible width of a textarea.
      *
      * @param int $cols
      * @return array
      */
-    public function cols(?int $cols = 0): array;
+    public function cols(?int $cols = 20): array;
 
     /**
      * Specifies a data attribute for the html element.
@@ -98,12 +98,12 @@ interface HtmlAttributerContract
     public function enctype(?string $enctype): array;
 
     /**
-     * Specifies the form element with which the label is associated (its form owner).
+     * Specifies the form element with which the input is associated (that is, its form owner).
      *
-     * @param mixed $form
+     * @param string $form
      * @return array
      */
-    public function form($form): array;
+    public function form(string $form): array;
 
     /**
      * Specifies the height of the input field image element.

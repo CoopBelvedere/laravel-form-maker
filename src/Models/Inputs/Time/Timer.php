@@ -34,8 +34,6 @@ class Timer extends Input implements TimerContract
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'max',
             'min',
-            'readonly',
-            'required',
             'step',
         ]);
     }

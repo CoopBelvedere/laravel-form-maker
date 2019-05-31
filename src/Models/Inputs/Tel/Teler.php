@@ -32,13 +32,10 @@ class Teler extends Input implements TelerContract
         parent::__construct($attributes);
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
-            'autocomplete',
             'maxlength',
             'minlength',
             'pattern',
             'placeholder',
-            'readonly',
-            'required',
             'size',
         ]);
     }

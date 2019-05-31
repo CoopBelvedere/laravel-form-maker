@@ -43,8 +43,6 @@ class Optioner extends Input implements HasTextContract, OptionerContract
         parent::__construct($attributes);
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
-            'readonly',
-            'required',
             'selected',
         ]);
     }

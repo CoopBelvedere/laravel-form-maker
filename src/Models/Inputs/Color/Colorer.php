@@ -21,19 +21,4 @@ class Colorer extends Input implements ColorerContract
 
         static::addGlobalScope(new ModelScope('color'));
     }
-
-    /**
-     * Color constructor.
-     *
-     * @param array $attributes
-     */
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-
-        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
-            'autocomplete',
-            'required',
-        ]);
-    }
 }

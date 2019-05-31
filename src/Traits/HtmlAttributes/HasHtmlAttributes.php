@@ -23,9 +23,7 @@ trait HasHtmlAttributes
     public function removeHtmlAttributes(array $attributes): self
     {
         foreach ($attributes as $attribute) {
-            if ($this->isValidAttribute($attribute)) {
-                $this->html_attributes = $this->htmlAttributesProvider->$attribute(null);
-            }
+            $this->html_attributes = [$attribute => null];
         }
         return $this;
     }
@@ -66,13 +64,7 @@ trait HasHtmlAttributes
     {
         foreach ($attributes as $attribute => $arguments) {
             if ($this->isValidAttribute($attribute)) {
-                if (is_null($arguments)) {
-                    $this->html_attributes = $this->htmlAttributesProvider->$attribute(null);
-                } else if ($attribute === $arguments) {
-                    $this->html_attributes = $this->htmlAttributesProvider->$attribute();
-                } else {
-                    $this->html_attributes = $this->htmlAttributesProvider->$attribute(...Arr::wrap($arguments));
-                }
+                $this->html_attributes = $this->htmlAttributesProvider->$attribute(...Arr::wrap($arguments));
             }
         }
         return $this;

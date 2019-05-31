@@ -32,10 +32,8 @@ class Ranger extends Input implements RangerContract
         parent::__construct($attributes);
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
-            'autocomplete',
             'max',
             'min',
-            'required',
             'step',
         ]);
     }

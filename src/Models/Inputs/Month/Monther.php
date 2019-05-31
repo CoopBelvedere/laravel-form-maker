@@ -34,8 +34,6 @@ class Monther extends Input implements MontherContract
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'max',
             'min',
-            'readonly',
-            'required',
             'step',
         ]);
     }
