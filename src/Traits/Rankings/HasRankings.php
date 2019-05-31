@@ -27,7 +27,7 @@ trait HasRankings
             $this->createRanking($node);
         }
 
-        $this->rankings->firstWhere('node_type', $node->getTable())->add($node);
+        $this->getRanking($node->getTable())->add($node);
     }
 
     /**
@@ -47,6 +47,17 @@ trait HasRankings
         $this->rankings()->save($ranking);
 
         $this->load('rankings');
+    }
+
+    /**
+     * Get the ranking for a specific node type.
+     *
+     * @param string $nodeType
+     * @return RankerContract|null
+     */
+    public function getRanking(string $nodeType): ?RankerContract
+    {
+        return $this->rankings->firstWhere('node_type', $nodeType);
     }
 
     /**

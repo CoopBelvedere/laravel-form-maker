@@ -60,11 +60,11 @@ class LabelResource extends JsonResource
      */
     protected function getId(string $attribute)
     {
-        if (isset($this->html_attributes[$attribute])) {
+        if (is_array($this->html_attributes) && array_key_exists($attribute, $this->html_attributes)) {
             return $this->html_attributes[$attribute];
         }
 
-        if (isset($this->parent->html_attributes['id'])) {
+        if (is_array($this->parent->html_attributes) && array_key_exists('id', $this->parent->html_attributes)) {
             return $this->parent->html_attributes['id'];
         }
 
