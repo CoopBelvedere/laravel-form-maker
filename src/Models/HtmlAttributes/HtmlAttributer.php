@@ -133,17 +133,6 @@ class HtmlAttributer implements HtmlAttributerContract
     }
 
     /**
-     * Specifies the id of a labelable form-related element.
-     *
-     * @param mixed $for
-     * @return array
-     */
-    public function isFor($for): array
-    {
-        return ['for' => $for];
-    }
-
-    /**
      * Specifies the form element with which the label is associated (its form owner).
      *
      * @param mixed $form
@@ -187,6 +176,17 @@ class HtmlAttributer implements HtmlAttributerContract
         return ['class' => $class];
     }
 
+    /**
+     * Specifies the id of a labelable form-related element.
+     *
+     * @param mixed $for
+     * @return array
+     */
+    public function isFor($for): array
+    {
+        return ['for' => $for];
+    }
+    
     /**
      * Specifies the maximum value for an input field.
      *

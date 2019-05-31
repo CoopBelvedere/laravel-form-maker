@@ -98,14 +98,6 @@ interface HtmlAttributerContract
     public function enctype(?string $enctype): array;
 
     /**
-     * Specifies the id of a labelable form-related element.
-     *
-     * @param mixed $for
-     * @return array
-     */
-    public function isFor($for): array;
-
-    /**
      * Specifies the form element with which the label is associated (its form owner).
      *
      * @param mixed $form
@@ -136,6 +128,14 @@ interface HtmlAttributerContract
      * @return array
      */
     public function isClass(?string $class): array;
+
+    /**
+     * Specifies the id of a labelable form-related element.
+     *
+     * @param mixed $for
+     * @return array
+     */
+    public function isFor($for): array;
 
     /**
      * Specifies the maximum value for an input field.
