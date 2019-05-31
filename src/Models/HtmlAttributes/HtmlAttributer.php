@@ -186,7 +186,7 @@ class HtmlAttributer implements HtmlAttributerContract
     {
         return ['for' => $for];
     }
-    
+
     /**
      * Specifies the maximum value for an input field.
      *

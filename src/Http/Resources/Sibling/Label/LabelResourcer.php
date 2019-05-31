@@ -4,23 +4,24 @@ namespace Belvedere\FormMaker\Http\Resources\Sibling\Label;
 
 use Belvedere\FormMaker\Contracts\Form\FormContract;
 use Belvedere\FormMaker\Contracts\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Resources\LabelResourcerContract;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LabelResource extends JsonResource
+class LabelResourcer extends JsonResource implements LabelResourcerContract
 {
     /**
      * The id of the labelable form-related element.
      *
      * @var mixed
      */
-    protected $forId;
+    protected $forId = false;
 
     /**
      * The id of the form element with which the label is associated (its form owner).
      *
      * @var mixed
      */
-    protected $formId;
+    protected $formId = false;
 
     /**
      * Transform the resource into an array.

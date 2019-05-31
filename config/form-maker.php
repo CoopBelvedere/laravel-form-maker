@@ -80,6 +80,7 @@ return [
 
     'resources' => [
         'input' => \Belvedere\FormMaker\Http\Resources\Input\InputResourcer::class,
+        'label' => \Belvedere\FormMaker\Http\Resources\Sibling\Label\LabelResourcer::class,
         'sibling' => \Belvedere\FormMaker\Http\Resources\Sibling\SiblingResourcer::class,
     ],
 

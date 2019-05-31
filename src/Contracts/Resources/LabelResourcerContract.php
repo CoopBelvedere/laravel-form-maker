@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Contracts\Resources;
 
-interface SiblingResourcerContract extends ResourceContract
+interface LabelResourcerContract extends ResourceContract
 {
     //
 }

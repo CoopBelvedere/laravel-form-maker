@@ -3,9 +3,9 @@
 
 namespace Belvedere\FormMaker\Models\Siblings\Label;
 
+use Belvedere\FormMaker\Contracts\Resources\LabelResourcerContract;
 use Belvedere\FormMaker\Contracts\Siblings\Label\LabelerContract;
 use Belvedere\FormMaker\Contracts\Text\HasTextContract;
-use Belvedere\FormMaker\Http\Resources\Sibling\Label\LabelResource;
 use Belvedere\FormMaker\Models\Siblings\Sibling;
 use Belvedere\FormMaker\Scopes\ModelScope;
 use Belvedere\FormMaker\Traits\Text\HasText;
@@ -49,6 +49,6 @@ class Labeler extends Sibling implements HasTextContract, LabelerContract
      */
     public function toApi(): JsonResource
     {
-        return new LabelResource($this);
+        return resolve(LabelResourcerContract::class, ['label' => $this]);
     }
 }
