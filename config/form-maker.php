@@ -54,6 +54,7 @@ return [
 
         'siblings' => [
             'label' => \Belvedere\FormMaker\Models\Siblings\Label\Labeler::class,
+            'paragraph' => \Belvedere\FormMaker\Models\Siblings\Paragraph\Paragrapher::class,
         ],
     ],
 

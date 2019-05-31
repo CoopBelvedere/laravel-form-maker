@@ -26,4 +26,20 @@ interface HasSiblingsContract extends WithNodesContract
      * @throws \Exception
      */
     public function siblings(?string $type = null): Collection;
+
+    /**
+     * Add label sibling for the model.
+     *
+     * @param array $attributes
+     * @return self
+     */
+    public function withLabel(array $attributes);
+
+    /**
+     * Add paragraph sibling for the model.
+     *
+     * @param array $attributes
+     * @return self
+     */
+    public function withParagraph(array $attributes);
 }

@@ -38,17 +38,39 @@ trait HasSiblings
      *
      * @param array $attributes
      * @return self
-     * @throws \Exception
      */
     public function withLabel(array $attributes): self
     {
-        $label = $this->add('label')->withHtmlAttributes($attributes);
+        return $this->withSibling('label', $attributes);
+    }
 
-        if (array_key_exists('text', $attributes) && method_exists($label, 'withText')) {
-            $label->withText($attributes['text']);
+    /**
+     * Add paragraph sibling for the model.
+     *
+     * @param array $attributes
+     * @return self
+     */
+    public function withParagraph(array $attributes): self
+    {
+        return $this->withSibling('paragraph', $attributes);
+    }
+
+    /**
+     * Add a sibling for the model.
+     *
+     * @param string $sibling
+     * @param array $attributes
+     * @return self
+     */
+    protected function withSibling(string $sibling, array $attributes): self
+    {
+        $node = $this->add($sibling)->withHtmlAttributes($attributes);
+
+        if (array_key_exists('text', $attributes) && method_exists($node, 'withText')) {
+            $node->withText($attributes['text']);
         }
 
-        $label->save();
+        $node->save();
 
         return $this;
     }

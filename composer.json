@@ -1,6 +1,6 @@
 {
     "name": "coopbelvedere/laravel-form-maker",
-    "description": "Modular api for creating forms in Laravel",
+    "description": "Modular api for user generated forms in Laravel",
     "keywords": ["laravel", "form maker", "form builder", "form generator"],
     "type": "library",
     "support": {
@@ -53,7 +53,8 @@
                 "Belvedere\\FormMaker\\Models\\Inputs\\Time\\TimeServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Inputs\\Url\\UrlServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Inputs\\Week\\WeekServiceProvider",
-                "Belvedere\\FormMaker\\Models\\Siblings\\Label\\LabelServiceProvider"
+                "Belvedere\\FormMaker\\Models\\Siblings\\Label\\LabelServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Siblings\\Paragraph\\ParagraphServiceProvider"
             ]
         }
     }
