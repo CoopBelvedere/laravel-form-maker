@@ -42,6 +42,7 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
             'charset',
             'enctype',
             'name',
+            'novalidate',
             'target',
         ]);
 

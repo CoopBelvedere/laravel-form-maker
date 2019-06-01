@@ -27,7 +27,7 @@ interface HtmlAttributerContract
      * @param string $autocomplete
      * @return array
      */
-    public function autocomplete(?string $autocomplete = 'on'): array;
+    public function autocomplete(?string $autocomplete): array;
 
     /**
      * Specifies that the input field should automatically get focus when the page loads.
@@ -35,7 +35,7 @@ interface HtmlAttributerContract
      * @param string $autofocus
      * @return array
      */
-    public function autofocus(?string $autofocus = 'autofocus'): array;
+    public function autofocus(?string $autofocus): array;
 
     /**
      * Indicates that capture of media directly from the device's sensors
@@ -44,7 +44,7 @@ interface HtmlAttributerContract
      * @param string $capture
      * @return array
      */
-    public function capture(?string $capture = 'capture'): array;
+    public function capture(?string $capture): array;
 
     /**
      * Specifies the charset used in the submitted form.
@@ -61,7 +61,7 @@ interface HtmlAttributerContract
      * @param string $checked
      * @return array
      */
-    public function checked(?string $checked = 'checked'): array;
+    public function checked(?string $checked): array;
 
     /**
      * Specifies the visible width of a textarea.
@@ -69,7 +69,7 @@ interface HtmlAttributerContract
      * @param int $cols
      * @return array
      */
-    public function cols(?int $cols = 20): array;
+    public function cols(?int $cols): array;
 
     /**
      * Specifies a data attribute for the html element.
@@ -78,7 +78,7 @@ interface HtmlAttributerContract
      * @param mixed $value
      * @return array
      */
-    public function data(string $data, $value = null): array;
+    public function data(string $data, $value): array;
 
     /**
      * Specifies that the input field is disabled.
@@ -86,7 +86,7 @@ interface HtmlAttributerContract
      * @param string $disabled
      * @return array
      */
-    public function disabled(?string $disabled = 'disabled'): array;
+    public function disabled(?string $disabled): array;
 
     /**
      * Specifies the encoding of the submitted data.
@@ -111,7 +111,7 @@ interface HtmlAttributerContract
      * @param int $height
      * @return array
      */
-    public function height(?int $height = 0): array;
+    public function height(?int $height): array;
 
     /**
      * Specifies an id attribute for the html element.
@@ -143,7 +143,7 @@ interface HtmlAttributerContract
      * @param mixed $max
      * @return array
      */
-    public function max($max = null): array;
+    public function max($max): array;
 
     /**
      * Specifies the maximum allowed length for the input field.
@@ -159,7 +159,7 @@ interface HtmlAttributerContract
      * @param mixed $min
      * @return array
      */
-    public function min($min = null): array;
+    public function min($min): array;
 
     /**
      * Specifies the minimum allowed length for the input field.
@@ -175,7 +175,7 @@ interface HtmlAttributerContract
      * @param string $multiple
      * @return array
      */
-    public function multiple(?string $multiple = 'multiple'): array;
+    public function multiple(?string $multiple): array;
 
     /**
      * Specifies a name used to identify the form or the input.
@@ -191,7 +191,7 @@ interface HtmlAttributerContract
      * @param string $novalidate
      * @return array
      */
-    public function novalidate(?string $novalidate = 'novalidate'): array;
+    public function novalidate(?string $novalidate): array;
 
     /**
      * Specifies a regular expression that the input field value is checked against.
@@ -216,7 +216,7 @@ interface HtmlAttributerContract
      * @param string $readonly
      * @return array
      */
-    public function readonly(?string $readonly = 'readonly'): array;
+    public function readonly(?string $readonly): array;
 
     /**
      * Specifies that an input field must be filled out before submitting the form.
@@ -224,7 +224,7 @@ interface HtmlAttributerContract
      * @param string $required
      * @return array
      */
-    public function required(?string $required = 'required'): array;
+    public function required(?string $required): array;
 
     /**
      * Specifies a role attribute for the html element.
@@ -240,7 +240,7 @@ interface HtmlAttributerContract
      * @param int $rows
      * @return array
      */
-    public function rows(?int $rows = 0): array;
+    public function rows(?int $rows): array;
 
     /**
      * Specifies the selected attribute to the option.
@@ -248,7 +248,7 @@ interface HtmlAttributerContract
      * @param string $selected
      * @return array
      */
-    public function selected(?string $selected = 'selected'): array;
+    public function selected(?string $selected): array;
 
     /**
      * Specifies the size (in characters) for the input field.
@@ -257,7 +257,7 @@ interface HtmlAttributerContract
      * @param int $size
      * @return array
      */
-    public function size(?int $size = 20): array;
+    public function size(?int $size): array;
 
     /**
      * Specifies whether the input field is to have its spelling and grammar
@@ -266,7 +266,7 @@ interface HtmlAttributerContract
      * @param bool $spellcheck
      * @return array
      */
-    public function spellcheck(?bool $spellcheck = true): array;
+    public function spellcheck(?bool $spellcheck): array;
 
     /**
      * Specifies the src of the input field image element.
@@ -284,7 +284,7 @@ interface HtmlAttributerContract
      * @param $step
      * @return array
      */
-    public function step($step = null): array;
+    public function step($step): array;
 
     /**
      * Specifies the target of the address in the action attribute.
@@ -293,7 +293,7 @@ interface HtmlAttributerContract
      * @param string $blank
      * @return array
      */
-    public function target(?string $blank = '_blank'): array;
+    public function target(?string $blank): array;
 
     /**
      * Add a description to help the user.
@@ -317,5 +317,5 @@ interface HtmlAttributerContract
      * @param int $width
      * @return array
      */
-    public function width(?int $width = 0): array;
+    public function width(?int $width): array;
 }

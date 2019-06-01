@@ -35,7 +35,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $autocomplete
      * @return array
      */
-    public function autocomplete(?string $autocomplete = 'on'): array
+    public function autocomplete(?string $autocomplete): array
     {
         return ['autocomplete' => $autocomplete];
     }
@@ -46,7 +46,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $autofocus
      * @return array
      */
-    public function autofocus(?string $autofocus = 'autofocus'): array
+    public function autofocus(?string $autofocus): array
     {
         return ['autofocus' => $autofocus];
     }
@@ -58,7 +58,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $capture
      * @return array
      */
-    public function capture(?string $capture = 'capture'): array
+    public function capture(?string $capture): array
     {
         return ['capture' => $capture];
     }
@@ -81,7 +81,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $checked
      * @return array
      */
-    public function checked(?string $checked = 'checked'): array
+    public function checked(?string $checked): array
     {
         return ['checked' => $checked];
     }
@@ -92,7 +92,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param int $cols
      * @return array
      */
-    public function cols(?int $cols = 20): array
+    public function cols(?int $cols): array
     {
         return ['cols' => $cols];
     }
@@ -104,7 +104,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param mixed $value
      * @return array
      */
-    public function data(string $data, $value = null): array
+    public function data(string $data, $value): array
     {
         return [$data => $value];
     }
@@ -115,7 +115,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $disabled
      * @return array
      */
-    public function disabled(?string $disabled = 'disabled'): array
+    public function disabled(?string $disabled): array
     {
         return ['disabled' => $disabled];
     }
@@ -149,7 +149,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param int $height
      * @return array
      */
-    public function height(?int $height = 0): array
+    public function height(?int $height): array
     {
         return ['height' => $height];
     }
@@ -193,7 +193,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param mixed $max
      * @return array
      */
-    public function max($max = null): array
+    public function max($max): array
     {
         return ['max' => $max];
     }
@@ -215,7 +215,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param mixed $min
      * @return array
      */
-    public function min($min = null): array
+    public function min($min): array
     {
         return ['min' => $min];
     }
@@ -237,7 +237,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $multiple
      * @return array
      */
-    public function multiple(?string $multiple = 'multiple'): array
+    public function multiple(?string $multiple): array
     {
         return ['multiple' => $multiple];
     }
@@ -259,7 +259,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $novalidate
      * @return array
      */
-    public function novalidate(?string $novalidate = 'novalidate'): array
+    public function novalidate(?string $novalidate): array
     {
         return ['novalidate' => $novalidate];
     }
@@ -293,7 +293,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $readonly
      * @return array
      */
-    public function readonly(?string $readonly = 'readonly'): array
+    public function readonly(?string $readonly): array
     {
         return ['readonly' => $readonly];
     }
@@ -304,7 +304,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $required
      * @return array
      */
-    public function required(?string $required = 'required'): array
+    public function required(?string $required): array
     {
         return ['required' => $required];
     }
@@ -326,7 +326,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param int $rows
      * @return array
      */
-    public function rows(?int $rows = 0): array
+    public function rows(?int $rows): array
     {
         return ['rows' => $rows];
     }
@@ -337,7 +337,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $selected
      * @return array
      */
-    public function selected(?string $selected = 'selected'): array
+    public function selected(?string $selected): array
     {
         return ['selected' => $selected];
     }
@@ -349,7 +349,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param int $size
      * @return array
      */
-    public function size(?int $size = 20): array
+    public function size(?int $size): array
     {
         return ['size' => $size];
     }
@@ -361,7 +361,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param bool $spellcheck
      * @return array
      */
-    public function spellcheck(?bool $spellcheck = true): array
+    public function spellcheck(?bool $spellcheck): array
     {
         return ['spellcheck' => $spellcheck];
     }
@@ -385,7 +385,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param $step
      * @return array
      */
-    public function step($step = null): array
+    public function step($step): array
     {
         return ['step' => $step];
     }
@@ -397,7 +397,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param string $blank
      * @return array
      */
-    public function target(?string $blank = '_blank'): array
+    public function target(?string $blank): array
     {
         return ['target' => $blank];
     }
@@ -430,7 +430,7 @@ class HtmlAttributer implements HtmlAttributerContract
      * @param int $width
      * @return array
      */
-    public function width(?int $width = 0): array
+    public function width(?int $width): array
     {
         return ['width' => $width];
     }
