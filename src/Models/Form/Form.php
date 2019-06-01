@@ -40,7 +40,9 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
             'charset',
+            'enctype',
             'name',
+            'target',
         ]);
 
         $this->dispatchesEvents = array_merge($this->dispatchesEvents, [
