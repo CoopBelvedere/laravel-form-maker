@@ -87,6 +87,17 @@ class HtmlAttributer implements HtmlAttributerContract
     }
 
     /**
+     * Specifies a class attribute for the html element.
+     *
+     * @param string $class
+     * @return array
+     */
+    public function className(?string $class): array
+    {
+        return ['class' => $class];
+    }
+
+    /**
      * Specifies the visible width of a textarea.
      *
      * @param int $cols
@@ -155,6 +166,17 @@ class HtmlAttributer implements HtmlAttributerContract
     }
 
     /**
+     * Specifies the id of a labelable form-related element.
+     *
+     * @param mixed $for
+     * @return array
+     */
+    public function htmlFor($for): array
+    {
+        return ['for' => $for];
+    }
+
+    /**
      * Specifies an id attribute for the html element.
      *
      * @param mixed $id
@@ -163,28 +185,6 @@ class HtmlAttributer implements HtmlAttributerContract
     public function id($id = null): array
     {
         return ['id' => $id];
-    }
-
-    /**
-     * Specifies a class attribute for the html element.
-     *
-     * @param string $class
-     * @return array
-     */
-    public function isClass(?string $class): array
-    {
-        return ['class' => $class];
-    }
-
-    /**
-     * Specifies the id of a labelable form-related element.
-     *
-     * @param mixed $for
-     * @return array
-     */
-    public function isFor($for): array
-    {
-        return ['for' => $for];
     }
 
     /**
