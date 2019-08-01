@@ -64,6 +64,14 @@ interface HtmlAttributerContract
     public function checked(?string $checked): array;
 
     /**
+     * Specifies a class attribute for the html element.
+     *
+     * @param string $class
+     * @return array
+     */
+    public function className(?string $class): array;
+
+    /**
      * Specifies the visible width of a textarea.
      *
      * @param int $cols
@@ -114,28 +122,20 @@ interface HtmlAttributerContract
     public function height(?int $height): array;
 
     /**
+     * Specifies the id of a labelable form-related element.
+     *
+     * @param mixed $for
+     * @return array
+     */
+    public function htmlFor($for): array;
+
+    /**
      * Specifies an id attribute for the html element.
      *
      * @param mixed $id
      * @return array
      */
     public function id($id = null): array;
-
-    /**
-     * Specifies a class attribute for the html element.
-     *
-     * @param string $class
-     * @return array
-     */
-    public function isClass(?string $class): array;
-
-    /**
-     * Specifies the id of a labelable form-related element.
-     *
-     * @param mixed $for
-     * @return array
-     */
-    public function isFor($for): array;
 
     /**
      * Specifies the maximum value for an input field.

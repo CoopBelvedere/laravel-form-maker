@@ -63,7 +63,9 @@ trait HasHtmlAttributes
     public function withHtmlAttributes(array $attributes): self
     {
         foreach ($attributes as $attribute => $arguments) {
-            if ($this->isValidAttribute($attribute)) {
+            if (is_null($arguments)) {
+                $this->html_attributes = [$attribute => null];
+            } else if ($this->isValidAttribute($attribute)) {
                 $this->html_attributes = $this->htmlAttributesProvider->$attribute(...Arr::wrap($arguments));
             }
         }

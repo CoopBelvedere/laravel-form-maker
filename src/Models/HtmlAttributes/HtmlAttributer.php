@@ -363,7 +363,11 @@ class HtmlAttributer implements HtmlAttributerContract
      */
     public function spellcheck(?bool $spellcheck): array
     {
-        return ['spellcheck' => $spellcheck];
+        if ($spellcheck) {
+            return ['spellcheck' => 'true'];
+        }
+
+        return ['spellcheck' => 'false'];
     }
 
     /**

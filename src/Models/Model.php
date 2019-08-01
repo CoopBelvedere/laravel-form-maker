@@ -25,7 +25,7 @@ class Model extends Eloquent implements HasHtmlAttributesContract
      * @var array
      */
     protected $htmlAttributesAvailable = [
-        'class',
+        'className',
         'data',
         'id',
         'role',
