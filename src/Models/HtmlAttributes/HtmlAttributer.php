@@ -3,6 +3,7 @@
 namespace Belvedere\FormMaker\Models\HtmlAttributes;
 
 use Belvedere\FormMaker\Contracts\HtmlAttributes\HtmlAttributerContract;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class HtmlAttributer implements HtmlAttributerContract
@@ -109,6 +110,6 @@ class HtmlAttributer implements HtmlAttributerContract
      */
     public function getHtmlAttributes(): array
     {
-        return array_merge(...$this->htmlAttributes);
+        return array_merge([], ...$this->htmlAttributes);
     }
 }

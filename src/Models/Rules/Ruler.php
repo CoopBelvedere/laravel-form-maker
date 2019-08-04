@@ -118,6 +118,6 @@ class Ruler implements RulerContract
      */
     public function getRules(): array
     {
-        return array_merge(...$this->rules);
+        return array_merge([], ...$this->rules);
     }
 }
