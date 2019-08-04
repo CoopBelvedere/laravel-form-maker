@@ -3,7 +3,6 @@
 namespace Belvedere\FormMaker\Traits\HtmlAttributes;
 
 use Belvedere\FormMaker\Contracts\HtmlAttributes\HtmlAttributerContract;
-use Illuminate\Support\Str;
 
 trait HasHtmlAttributes
 {

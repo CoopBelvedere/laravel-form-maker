@@ -20,6 +20,7 @@ class HtmlAttributer implements HtmlAttributerContract
         'checked' => 'checked',
         'class' => '%s',
         'cols' => '%d',
+        'data' => '%s',
         'disabled' => 'disabled',
         'enctype' => '%s',
         'for' => '%s',

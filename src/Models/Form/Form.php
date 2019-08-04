@@ -58,10 +58,10 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
     /**
      * Specifies the form url action.
      *
-     * @param string $action
+     * @param string|null $action
      * @return self
      */
-    public function action(string $action): FormContract
+    public function action(?string $action): FormContract
     {
         $this->html_attributes = ['action' => $action];
 
@@ -83,10 +83,10 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
     /**
      * Specifies the form http method.
      *
-     * @param string $method
+     * @param string|null $method
      * @return self
      */
-    public function method(string $method): FormContract
+    public function method(?string $method): FormContract
     {
         $this->html_attributes = ['method' => $method];
 
