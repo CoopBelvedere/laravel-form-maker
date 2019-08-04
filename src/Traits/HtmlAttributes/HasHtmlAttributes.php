@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Traits\HtmlAttributes;
 
 use Belvedere\FormMaker\Contracts\HtmlAttributes\HtmlAttributerContract;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 trait HasHtmlAttributes
 {
@@ -15,17 +15,46 @@ trait HasHtmlAttributes
     protected $htmlAttributesProvider;
 
     /**
+     * Check if the attribute is valid for the model.
+     *
+     * @param string $attribute
+     * @return bool
+     */
+    protected function isValidAttribute(string $attribute): bool
+    {
+        return in_array($attribute, $this->htmlAttributesAvailable);
+    }
+
+    /**
      * Mass removal of html attributes to a model.
      *
      * @param array $attributes
-     * @return self
+     * @return HasHtmlAttributes
      */
     public function removeHtmlAttributes(array $attributes): self
     {
-        foreach ($attributes as $attribute) {
-            $this->html_attributes = [$attribute => null];
-        }
+        $this->setHtmlAttributes(array_fill_keys($attributes, null));
+
         return $this;
+    }
+
+    /**
+     * Append the html attributes in the existing list of attributes.
+     *
+     * @param array $attributes
+     * @return void
+     */
+    protected function setHtmlAttributes(array $attributes): void
+    {
+        foreach ($attributes as $attribute => $value) {
+            if (is_null($value) || $this->isValidAttribute($attribute)) {
+                $this->htmlAttributesProvider->$attribute = $value;
+            }
+        }
+
+        $this->html_attributes = $this->htmlAttributesProvider->getHtmlAttributes();
+
+        $this->htmlAttributesProvider->clearHtmlAttributes();
     }
 
     /**
@@ -58,29 +87,12 @@ trait HasHtmlAttributes
      * Mass assign html attributes to a model.
      *
      * @param array $attributes
-     * @return self
+     * @return HasHtmlAttributes
      */
     public function withHtmlAttributes(array $attributes): self
     {
-        foreach ($attributes as $attribute => $arguments) {
-            if (is_null($arguments)) {
-                $this->html_attributes = [$attribute => null];
-            } else if ($this->isValidAttribute($attribute)) {
-                $this->html_attributes = $this->htmlAttributesProvider->$attribute(...Arr::wrap($arguments));
-            }
-        }
-        return $this;
-    }
+        $this->setHtmlAttributes($attributes);
 
-    /**
-     * Check if the attribute is valid for the model.
-     *
-     * @param string $attribute
-     * @return bool
-     */
-    protected function isValidAttribute(string $attribute): bool
-    {
-        return in_array($attribute, $this->htmlAttributesAvailable)
-            && method_exists($this->htmlAttributesProvider, $attribute);
+        return $this;
     }
 }

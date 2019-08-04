@@ -39,7 +39,7 @@ class Labeler extends Sibling implements HasTextContract, LabelerContract
         parent::__construct($attributes);
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
-            'htmlFor',
+            'for',
             'form',
         ]);
     }

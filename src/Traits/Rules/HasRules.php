@@ -3,7 +3,6 @@
 namespace Belvedere\FormMaker\Traits\Rules;
 
 use Belvedere\FormMaker\Contracts\Rules\RulerContract;
-use Illuminate\Support\Arr;
 
 trait HasRules
 {
@@ -15,6 +14,17 @@ trait HasRules
     protected $rulesProvider;
 
     /**
+     * Check if the rule exist.
+     *
+     * @param string $rule
+     * @return bool
+     */
+    protected function isValidRule(string $rule): bool
+    {
+        return method_exists($this->rulesProvider, $rule);
+    }
+
+    /**
      * Mass removal of validation rules from an input.
      *
      * @param array $rules
@@ -22,12 +32,26 @@ trait HasRules
      */
     public function removeRules(array $rules): self
     {
-        foreach ($rules as $rule) {
-            if ($this->isValidRule($rule)) {
-                $this->rules = $this->rulesProvider->$rule(null);
-            }
-        }
+        $this->setRules(array_fill_keys($rules, null));
+
         return $this;
+    }
+
+    /**
+     * Append the rules in the existing list of validations.
+     *
+     * @param array $rules
+     * @return void
+     */
+    protected function setRules(array $rules): void
+    {
+        foreach ($rules as $rule => $value) {
+            $this->rulesProvider->$rule = $value;
+        }
+
+        $this->rules = $this->rulesProvider->getRules();
+
+        $this->rulesProvider->clearRules();
     }
 
     /**
@@ -64,28 +88,8 @@ trait HasRules
      */
     public function withRules(array $rules): self
     {
-        foreach ($rules as $rule => $arguments) {
-            if ($this->isValidRule($rule)) {
-                if (is_null($arguments)) {
-                    $this->rules = $this->rulesProvider->$rule(null);
-                } else if ($rule === $arguments) {
-                    $this->rules = $this->rulesProvider->$rule();
-                } else {
-                    $this->rules = $this->rulesProvider->$rule(...Arr::wrap($arguments));
-                }
-            }
-        }
-        return $this;
-    }
+        $this->setRules($rules);
 
-    /**
-     * Check if the rule exist.
-     *
-     * @param string $rule
-     * @return bool
-     */
-    protected function isValidRule(string $rule): bool
-    {
-        return method_exists($this->rulesProvider, $rule);
+        return $this;
     }
 }

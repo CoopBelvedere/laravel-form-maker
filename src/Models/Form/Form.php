@@ -39,7 +39,7 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
         $this->table = config('form-maker.database.forms_table', 'forms');
 
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
-            'charset',
+            'accept-charset',
             'enctype',
             'name',
             'novalidate',
