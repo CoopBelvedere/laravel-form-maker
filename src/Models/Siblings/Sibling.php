@@ -5,7 +5,6 @@ namespace Belvedere\FormMaker\Models\Siblings;
 use Belvedere\FormMaker\{
     Contracts\Siblings\SiblingContract,
     Contracts\Resources\SiblingResourcerContract,
-    Listeners\ValidateProperties,
     Models\Model,
     Traits\Rankings\InRanking
 };
@@ -17,15 +16,6 @@ use Illuminate\{
 class Sibling extends Model implements SiblingContract
 {
     use InRanking;
-
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'saving' => ValidateProperties::class,
-    ];
 
     /**
      * Sibling constructor.

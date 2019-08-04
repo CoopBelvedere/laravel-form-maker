@@ -12,11 +12,4 @@ interface ModelContract extends HasHtmlAttributesContract
      * @return array
      */
     public function getHtmlAttributesAssigned(): array;
-
-    /**
-     * Return the list of additional validation to be applied on the model attributes on update.
-     *
-     * @return array
-     */
-    public function getHtmlAttributesRules(): array;
 }

@@ -8,7 +8,6 @@ use Belvedere\FormMaker\{
     Contracts\Resources\InputResourcerContract,
     Contracts\Rules\HasRulesContract,
     Listeners\AssignAttributes,
-    Listeners\ValidateProperties,
     Models\Siblings\Sibling,
     Models\ModelWithNodes,
     Traits\Nodes\HasSiblings,
@@ -69,7 +68,6 @@ class Input extends ModelWithNodes implements HasSiblingsContract, HasRulesContr
 
         $this->dispatchesEvents = array_merge($this->dispatchesEvents, [
             'creating' => AssignAttributes::class,
-            'updating' => ValidateProperties::class,
         ]);
 
         $this->setHtmlAttributesProvider();

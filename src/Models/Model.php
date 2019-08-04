@@ -32,13 +32,6 @@ class Model extends Eloquent implements HasHtmlAttributesContract
     ];
 
     /**
-     * Additional validation to be applied on the model attributes on update.
-     *
-     * @var array
-     */
-    protected $htmlAttributesRules = [];
-
-    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -55,15 +48,5 @@ class Model extends Eloquent implements HasHtmlAttributesContract
     public function getHtmlAttributesAssigned(): array
     {
         return $this->htmlAttributesAssigned;
-    }
-
-    /**
-     * Return the list of additional validation to be applied on the model attributes on update.
-     *
-     * @return array
-     */
-    public function getHtmlAttributesRules(): array
-    {
-        return $this->htmlAttributesRules;
     }
 }

@@ -6,7 +6,6 @@ use Belvedere\FormMaker\{
     Contracts\Form\FormContract,
     Contracts\Nodes\HasInputsContract,
     Http\Resources\Form\FormResource,
-    Listeners\ValidateProperties,
     Models\Inputs\Input,
     Models\ModelWithNodes,
     Traits\Nodes\HasInputs
@@ -44,10 +43,6 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
             'name',
             'novalidate',
             'target',
-        ]);
-
-        $this->dispatchesEvents = array_merge($this->dispatchesEvents, [
-            'saving' => ValidateProperties::class,
         ]);
 
         $this->setHtmlAttributesProvider();
