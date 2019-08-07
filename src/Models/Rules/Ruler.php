@@ -18,7 +18,7 @@ class Ruler implements RulerContract
         'alpha' => 'alpha',
         'alpha_dash' => 'alpha_dash',
         'alpha_num' => 'alpha_num',
-        'iarray' => 'array',
+        'array' => 'array',
         'bail' => 'bail',
         'before' => 'before:%s',
         'before_or_equal' => 'before_or_equal:%s',
@@ -55,9 +55,11 @@ class Ruler implements RulerContract
         'mimes' => 'mimes:%s',
         'min' => 'min:%d',
         'not_in' => 'not_in:%s',
+        'not_regex' => 'not_regex:%s',
         'nullable' => 'nullable',
         'numeric' => 'numeric',
         'present' => 'present',
+        'regex' => 'regex:%s',
         'required' => 'required',
         'required_if' => 'required_if:%s',
         'required_unless' => 'required_unless:%s',
@@ -67,10 +69,13 @@ class Ruler implements RulerContract
         'required_without_all' => 'required_without_all:%s',
         'same' => 'same:%s',
         'size' => 'size:%d',
+        'sometimes' => 'sometimes',
+        'starts_with' => 'starts_with:%s',
         'string' => 'string',
         'timezone' => 'timezone',
         'unique' => 'unique:%s',
         'url' => 'url',
+        'uuid' => 'uuid'
     ];
 
     /**
