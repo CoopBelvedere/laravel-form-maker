@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Siblings\Paragraph;
 
 use Belvedere\FormMaker\Contracts\Siblings\Paragraph\ParagrapherContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class ParagraphServiceProvider extends ServiceProvider
+class ParagraphServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class ParagraphServiceProvider extends ServiceProvider
             }
             return $paragrapher;
         });
+    }
 
-        $this->app->alias(ParagrapherContract::class, 'form-maker.paragraph');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [ParagrapherContract::class];
     }
 }

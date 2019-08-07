@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Radio;
 
 use Belvedere\FormMaker\Contracts\Inputs\Radio\RadioerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class RadioServiceProvider extends ServiceProvider
+class RadioServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class RadioServiceProvider extends ServiceProvider
             }
             return $radioer;
         });
+    }
 
-        $this->app->alias(RadioerContract::class, 'form-maker.radio');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [RadioerContract::class];
     }
 }

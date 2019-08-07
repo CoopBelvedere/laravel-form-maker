@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Image;
 
 use Belvedere\FormMaker\Contracts\Inputs\Image\ImagerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class ImageServiceProvider extends ServiceProvider
+class ImageServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class ImageServiceProvider extends ServiceProvider
             }
             return $imager;
         });
+    }
 
-        $this->app->alias(ImagerContract::class, 'form-maker.image');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [ImagerContract::class];
     }
 }

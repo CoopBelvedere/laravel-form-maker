@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Date;
 
 use Belvedere\FormMaker\Contracts\Inputs\Date\DaterContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class DateServiceProvider extends ServiceProvider
+class DateServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class DateServiceProvider extends ServiceProvider
             }
             return $dater;
         });
+    }
 
-        $this->app->alias(DaterContract::class, 'form-maker.date');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [DaterContract::class];
     }
 }

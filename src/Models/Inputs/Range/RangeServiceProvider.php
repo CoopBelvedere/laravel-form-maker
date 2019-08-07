@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Range;
 
 use Belvedere\FormMaker\Contracts\Inputs\Range\RangerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class RangeServiceProvider extends ServiceProvider
+class RangeServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class RangeServiceProvider extends ServiceProvider
             }
             return $ranger;
         });
+    }
 
-        $this->app->alias(RangerContract::class, 'form-maker.range');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [RangerContract::class];
     }
 }

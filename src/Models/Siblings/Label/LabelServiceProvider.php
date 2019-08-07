@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Siblings\Label;
 
 use Belvedere\FormMaker\Contracts\Siblings\Label\LabelerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class LabelServiceProvider extends ServiceProvider
+class LabelServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class LabelServiceProvider extends ServiceProvider
             }
             return $labeler;
         });
+    }
 
-        $this->app->alias(LabelerContract::class, 'form-maker.label');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [LabelerContract::class];
     }
 }

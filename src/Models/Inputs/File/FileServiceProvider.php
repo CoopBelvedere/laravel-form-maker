@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\File;
 
 use Belvedere\FormMaker\Contracts\Inputs\File\FilerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class FileServiceProvider extends ServiceProvider
+class FileServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class FileServiceProvider extends ServiceProvider
             }
             return $filer;
         });
+    }
 
-        $this->app->alias(FilerContract::class, 'form-maker.file');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [FilerContract::class];
     }
 }

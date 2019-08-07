@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Url;
 
 use Belvedere\FormMaker\Contracts\Inputs\Url\UrlerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class UrlServiceProvider extends ServiceProvider
+class UrlServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class UrlServiceProvider extends ServiceProvider
             }
             return $urler;
         });
+    }
 
-        $this->app->alias(UrlerContract::class, 'form-maker.url');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [UrlerContract::class];
     }
 }

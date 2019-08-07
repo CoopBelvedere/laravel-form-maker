@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Textarea;
 
 use Belvedere\FormMaker\Contracts\Inputs\Textarea\TextareaerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class TextareaServiceProvider extends ServiceProvider
+class TextareaServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class TextareaServiceProvider extends ServiceProvider
             }
             return $textareaer;
         });
+    }
 
-        $this->app->alias(TextareaerContract::class, 'form-maker.textarea');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [TextareaerContract::class];
     }
 }

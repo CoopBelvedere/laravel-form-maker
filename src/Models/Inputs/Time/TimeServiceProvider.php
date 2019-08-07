@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Time;
 
 use Belvedere\FormMaker\Contracts\Inputs\Time\TimerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class TimeServiceProvider extends ServiceProvider
+class TimeServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class TimeServiceProvider extends ServiceProvider
             }
             return $timer;
         });
+    }
 
-        $this->app->alias(TimerContract::class, 'form-maker.time');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [TimerContract::class];
     }
 }

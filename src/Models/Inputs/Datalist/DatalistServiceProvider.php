@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Datalist;
 
 use Belvedere\FormMaker\Contracts\Inputs\Datalist\DatalisterContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider,
+};
 
-class DatalistServiceProvider extends ServiceProvider
+class DatalistServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class DatalistServiceProvider extends ServiceProvider
             }
             return $datalister;
         });
+    }
 
-        $this->app->alias(DatalisterContract::class, 'form-maker.datalist');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [DatalisterContract::class];
     }
 }

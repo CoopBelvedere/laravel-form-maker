@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Number;
 
 use Belvedere\FormMaker\Contracts\Inputs\Number\NumberContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class NumberServiceProvider extends ServiceProvider
+class NumberServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class NumberServiceProvider extends ServiceProvider
             }
             return $number;
         });
+    }
 
-        $this->app->alias(NumberContract::class, 'form-maker.number');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [NumberContract::class];
     }
 }

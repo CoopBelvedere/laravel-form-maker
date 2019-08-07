@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Option;
 
 use Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class OptionServiceProvider extends ServiceProvider
+class OptionServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class OptionServiceProvider extends ServiceProvider
             }
             return $optioner;
         });
+    }
 
-        $this->app->alias(OptionerContract::class, 'form-maker.option');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [OptionerContract::class];
     }
 }

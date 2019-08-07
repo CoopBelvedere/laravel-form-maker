@@ -18,6 +18,37 @@ abstract class ModelWithNodes extends Model implements HasRankingsContract, With
     use HasRankings;
 
     /**
+     * Mapping of the nodes name and their contract.
+     *
+     * @var array
+     */
+    const CONTRACTS = [
+        'checkbox' => \Belvedere\FormMaker\Contracts\Inputs\Checkbox\CheckboxerContract::class,
+        'color' => \Belvedere\FormMaker\Contracts\Inputs\Color\ColorerContract::class,
+        'datalist' => \Belvedere\FormMaker\Contracts\Inputs\Datalist\DatalisterContract::class,
+        'date' => \Belvedere\FormMaker\Contracts\Inputs\Date\DaterContract::class,
+        'email' => \Belvedere\FormMaker\Contracts\Inputs\Email\EmailerContract::class,
+        'file' => \Belvedere\FormMaker\Contracts\Inputs\File\FilerContract::class,
+        'image' => \Belvedere\FormMaker\Contracts\Inputs\Image\ImagerContract::class,
+        'label' => \Belvedere\FormMaker\Contracts\Siblings\Label\LabelerContract::class,
+        'month' => \Belvedere\FormMaker\Contracts\Inputs\Month\MontherContract::class,
+        'number' => \Belvedere\FormMaker\Contracts\Inputs\Number\NumberContract::class,
+        'option' => \Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract::class,
+        'paragraph' => \Belvedere\FormMaker\Contracts\Siblings\Paragraph\ParagrapherContract::class,
+        'password' => \Belvedere\FormMaker\Contracts\Inputs\Password\PassworderContract::class,
+        'radio' => \Belvedere\FormMaker\Contracts\Inputs\Radio\RadioerContract::class,
+        'range' => \Belvedere\FormMaker\Contracts\Inputs\Range\RangerContract::class,
+        'search' => \Belvedere\FormMaker\Contracts\Inputs\Search\SearcherContract::class,
+        'select' => \Belvedere\FormMaker\Contracts\Inputs\Select\SelecterContract::class,
+        'tel' => \Belvedere\FormMaker\Contracts\Inputs\Tel\TelerContract::class,
+        'text' => \Belvedere\FormMaker\Contracts\Inputs\Text\TexterContract::class,
+        'textarea' => \Belvedere\FormMaker\Contracts\Inputs\Textarea\TextareaerContract::class,
+        'time' => \Belvedere\FormMaker\Contracts\Inputs\Time\TimerContract::class,
+        'url' => \Belvedere\FormMaker\Contracts\Inputs\Url\UrlerContract::class,
+        'week' => \Belvedere\FormMaker\Contracts\Inputs\Week\WeekerContract::class,
+    ];
+
+    /**
      * The event map for the model.
      *
      * @var array
@@ -183,6 +214,10 @@ abstract class ModelWithNodes extends Model implements HasRankingsContract, With
      */
     protected function resolve(string $node): Model
     {
+        if (array_key_exists($node, self::CONTRACTS)) {
+            return resolve(self::CONTRACTS[$node]);
+        }
+
         return resolve(sprintf('form-maker.%s', $node));
     }
 }

@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Week;
 
 use Belvedere\FormMaker\Contracts\Inputs\Week\WeekerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class WeekServiceProvider extends ServiceProvider
+class WeekServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class WeekServiceProvider extends ServiceProvider
             }
             return $weeker;
         });
+    }
 
-        $this->app->alias(WeekerContract::class, 'form-maker.week');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [WeekerContract::class];
     }
 }

@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Month;
 
 use Belvedere\FormMaker\Contracts\Inputs\Month\MontherContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class MonthServiceProvider extends ServiceProvider
+class MonthServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class MonthServiceProvider extends ServiceProvider
             }
             return $monther;
         });
+    }
 
-        $this->app->alias(MontherContract::class, 'form-maker.month');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [MontherContract::class];
     }
 }

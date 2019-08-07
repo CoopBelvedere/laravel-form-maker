@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Color;
 
 use Belvedere\FormMaker\Contracts\Inputs\Color\ColorerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class ColorServiceProvider extends ServiceProvider
+class ColorServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class ColorServiceProvider extends ServiceProvider
             }
             return $colorer;
         });
+    }
 
-        $this->app->alias(ColorerContract::class, 'form-maker.color');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [ColorerContract::class];
     }
 }

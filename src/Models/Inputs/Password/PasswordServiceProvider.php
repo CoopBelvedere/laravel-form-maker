@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Password;
 
 use Belvedere\FormMaker\Contracts\Inputs\Password\PassworderContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class PasswordServiceProvider extends ServiceProvider
+class PasswordServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class PasswordServiceProvider extends ServiceProvider
             }
             return $passworder;
         });
+    }
 
-        $this->app->alias(PassworderContract::class, 'form-maker.password');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [PassworderContract::class];
     }
 }

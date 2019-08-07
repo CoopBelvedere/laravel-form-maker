@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Email;
 
 use Belvedere\FormMaker\Contracts\Inputs\Email\EmailerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class EmailServiceProvider extends ServiceProvider
+class EmailServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class EmailServiceProvider extends ServiceProvider
             }
             return $emailer;
         });
+    }
 
-        $this->app->alias(EmailerContract::class, 'form-maker.email');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [EmailerContract::class];
     }
 }

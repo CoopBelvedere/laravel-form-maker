@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Checkbox;
 
 use Belvedere\FormMaker\Contracts\Inputs\Checkbox\CheckboxerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class CheckboxServiceProvider extends ServiceProvider
+class CheckboxServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class CheckboxServiceProvider extends ServiceProvider
             }
             return $checkboxer;
         });
+    }
 
-        $this->app->alias(CheckboxerContract::class, 'form-maker.checkbox');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [CheckboxerContract::class];
     }
 }

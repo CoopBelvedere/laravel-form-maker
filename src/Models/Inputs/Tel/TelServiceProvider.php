@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Tel;
 
 use Belvedere\FormMaker\Contracts\Inputs\Tel\TelerContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class TelServiceProvider extends ServiceProvider
+class TelServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class TelServiceProvider extends ServiceProvider
             }
             return $teler;
         });
+    }
 
-        $this->app->alias(TelerContract::class, 'form-maker.tel');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [TelerContract::class];
     }
 }

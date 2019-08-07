@@ -3,9 +3,12 @@
 namespace Belvedere\FormMaker\Models\Inputs\Search;
 
 use Belvedere\FormMaker\Contracts\Inputs\Search\SearcherContract;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
-class SearchServiceProvider extends ServiceProvider
+class SearchServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Register the service provider.
@@ -21,7 +24,15 @@ class SearchServiceProvider extends ServiceProvider
             }
             return $searcher;
         });
+    }
 
-        $this->app->alias(SearcherContract::class, 'form-maker.search');
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [SearcherContract::class];
     }
 }
