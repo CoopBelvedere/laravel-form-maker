@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Models\Inputs\Date;
+namespace Belvedere\FormMaker\Models\Nodes\Inputs\Date;
 
 use Belvedere\FormMaker\Contracts\Inputs\Date\DaterContract;
 use Illuminate\{
