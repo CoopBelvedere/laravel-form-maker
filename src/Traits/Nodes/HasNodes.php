@@ -83,7 +83,9 @@ trait HasNodes
      */
     public function getNodes(string $table, ?string $type = null): Collection
     {
-        $nodes = $this->with('nodable')->get();
+        $nodes = $this->getRelations();
+        // pass the relations in with
+        // regroup them into node family
 
         dd($nodes);
 //        if (is_null($type)) {
