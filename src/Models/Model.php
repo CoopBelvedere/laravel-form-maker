@@ -4,20 +4,14 @@ namespace Belvedere\FormMaker\Models;
 
 use Belvedere\FormMaker\{
     Contracts\HtmlAttributes\HasHtmlAttributesContract,
+    Contracts\ModelContract,
     Traits\HtmlAttributes\HasHtmlAttributes
 };
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Model extends Eloquent implements HasHtmlAttributesContract
+class Model extends Eloquent implements HasHtmlAttributesContract, ModelContract
 {
     use HasHtmlAttributes;
-
-    /**
-     * The default html attributes automatically assigned on creation.
-     *
-     * @var array
-     */
-    protected $htmlAttributesAssigned = [];
 
     /**
      * The list of html attributes available for the model.
@@ -41,12 +35,25 @@ class Model extends Eloquent implements HasHtmlAttributesContract
     ];
 
     /**
-     * Return the list of the default html attributes automatically assigned on creation.
+     * Model constructor.
      *
-     * @return array
+     * @param array $attributes
      */
-    public function getHtmlAttributesAssigned(): array
+    public function __construct(array $attributes = [])
     {
-        return $this->htmlAttributesAssigned;
+        parent::__construct($attributes);
+
+        $this->setHtmlAttributesProvider();
+    }
+
+    /**
+     * Set the available html attributes on the model.
+     *
+     * @param array $attributes
+     * @return void
+     */
+    public function setHtmlAttributesAvailable(array $attributes): void
+    {
+        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, $attributes);
     }
 }

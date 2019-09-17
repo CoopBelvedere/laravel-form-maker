@@ -13,9 +13,8 @@ return [
 
     'database' => [
         'forms_table' => 'forms',
-        'inputs_table' => 'inputs',
+        'form_nodes_table' => 'form_nodes',
         'rankings_table' => 'rankings',
-        'siblings_table' => 'siblings',
     ],
 
     /*
@@ -29,32 +28,32 @@ return [
 
     'nodes' => [
         'inputs' => [
-            'checkbox' => \Belvedere\FormMaker\Models\Inputs\Checkbox\Checkboxer::class,
-            'color' => \Belvedere\FormMaker\Models\Inputs\Color\Colorer::class,
-            'datalist' => \Belvedere\FormMaker\Models\Inputs\Datalist\Datalister::class,
-            'date' => \Belvedere\FormMaker\Models\Inputs\Date\Dater::class,
-            'email' => \Belvedere\FormMaker\Models\Inputs\Email\Emailer::class,
-            'file' => \Belvedere\FormMaker\Models\Inputs\File\Filer::class,
-            'image' => \Belvedere\FormMaker\Models\Inputs\Image\Imager::class,
-            'month' => \Belvedere\FormMaker\Models\Inputs\Month\Monther::class,
-            'number' => \Belvedere\FormMaker\Models\Inputs\Number\Number::class,
-            'option' => \Belvedere\FormMaker\Models\Inputs\Option\Optioner::class,
-            'password' => \Belvedere\FormMaker\Models\Inputs\Password\Passworder::class,
-            'radio' => \Belvedere\FormMaker\Models\Inputs\Radio\Radioer::class,
-            'range' => \Belvedere\FormMaker\Models\Inputs\Range\Ranger::class,
-            'search' => \Belvedere\FormMaker\Models\Inputs\Search\Searcher::class,
-            'select' => \Belvedere\FormMaker\Models\Inputs\Select\Selecter::class,
-            'tel' => \Belvedere\FormMaker\Models\Inputs\Tel\Teler::class,
-            'text' => \Belvedere\FormMaker\Models\Inputs\Text\Texter::class,
-            'textarea' => \Belvedere\FormMaker\Models\Inputs\Textarea\Textareaer::class,
-            'time' => \Belvedere\FormMaker\Models\Inputs\Time\Timer::class,
-            'url' => \Belvedere\FormMaker\Models\Inputs\Url\Urler::class,
-            'week' => \Belvedere\FormMaker\Models\Inputs\Week\Weeker::class,
+            'checkbox' => \Belvedere\FormMaker\Models\Nodes\Inputs\Checkbox\Checkboxer::class,
+            'color' => \Belvedere\FormMaker\Models\Nodes\Inputs\Color\Colorer::class,
+            'datalist' => \Belvedere\FormMaker\Models\Nodes\Inputs\Datalist\Datalister::class,
+            'date' => \Belvedere\FormMaker\Models\Nodes\Inputs\Date\Dater::class,
+            'email' => \Belvedere\FormMaker\Models\Nodes\Inputs\Email\Emailer::class,
+            'file' => \Belvedere\FormMaker\Models\Nodes\Inputs\File\Filer::class,
+            'image' => \Belvedere\FormMaker\Models\Nodes\Inputs\Image\Imager::class,
+            'month' => \Belvedere\FormMaker\Models\Nodes\Inputs\Month\Monther::class,
+            'number' => \Belvedere\FormMaker\Models\Nodes\Inputs\Number\Number::class,
+            'option' => \Belvedere\FormMaker\Models\Nodes\Inputs\Option\Optioner::class,
+            'password' => \Belvedere\FormMaker\Models\Nodes\Inputs\Password\Passworder::class,
+            'radio' => \Belvedere\FormMaker\Models\Nodes\Inputs\Radio\Radioer::class,
+            'range' => \Belvedere\FormMaker\Models\Nodes\Inputs\Range\Ranger::class,
+            'search' => \Belvedere\FormMaker\Models\Nodes\Inputs\Search\Searcher::class,
+            'select' => \Belvedere\FormMaker\Models\Nodes\Inputs\Select\Selecter::class,
+            'tel' => \Belvedere\FormMaker\Models\Nodes\Inputs\Tel\Teler::class,
+            'text' => \Belvedere\FormMaker\Models\Nodes\Inputs\Text\Texter::class,
+            'textarea' => \Belvedere\FormMaker\Models\Nodes\Inputs\Textarea\Textareaer::class,
+            'time' => \Belvedere\FormMaker\Models\Nodes\Inputs\Time\Timer::class,
+            'url' => \Belvedere\FormMaker\Models\Nodes\Inputs\Url\Urler::class,
+            'week' => \Belvedere\FormMaker\Models\Nodes\Inputs\Week\Weeker::class,
         ],
 
         'siblings' => [
-            'label' => \Belvedere\FormMaker\Models\Siblings\Label\Labeler::class,
-            'paragraph' => \Belvedere\FormMaker\Models\Siblings\Paragraph\Paragrapher::class,
+            'label' => \Belvedere\FormMaker\Models\Nodes\Siblings\Label\Labeler::class,
+            'paragraph' => \Belvedere\FormMaker\Models\Nodes\Siblings\Paragraph\Paragrapher::class,
         ],
     ],
 
@@ -79,10 +78,10 @@ return [
      */
 
     'resources' => [
-        'datalist' => \Belvedere\FormMaker\Http\Resources\Input\Datalist\DatalistResourcer::class,
-        'input' => \Belvedere\FormMaker\Http\Resources\Input\InputResourcer::class,
-        'label' => \Belvedere\FormMaker\Http\Resources\Sibling\Label\LabelResourcer::class,
-        'sibling' => \Belvedere\FormMaker\Http\Resources\Sibling\SiblingResourcer::class,
+        'datalist' => \Belvedere\FormMaker\Http\Resources\Nodes\Inputs\Datalist\DatalistResourcer::class,
+        'input' => \Belvedere\FormMaker\Http\Resources\Nodes\Inputs\InputResourcer::class,
+        'label' => \Belvedere\FormMaker\Http\Resources\Nodes\Siblings\Label\LabelResourcer::class,
+        'sibling' => \Belvedere\FormMaker\Http\Resources\Nodes\Siblings\SiblingResourcer::class,
     ],
 
     /*

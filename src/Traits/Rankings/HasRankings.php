@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Traits;
+namespace Belvedere\FormMaker\Traits\Rankings;
 
 use Belvedere\FormMaker\{
     Contracts\Rankings\RankerContract,

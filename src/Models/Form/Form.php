@@ -3,18 +3,21 @@
 namespace Belvedere\FormMaker\Models\Form;
 
 use Belvedere\FormMaker\{
-    Contracts\Form\FormContract,
-    Contracts\Nodes\HasInputsContract,
     Http\Resources\Form\FormResource,
-    Models\Inputs\Input,
-    Models\ModelWithNodes,
-    Traits\Nodes\HasInputs
+    Models\Model
 };
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Belvedere\FormMaker\Contracts\{
+    Form\FormContract,
+    Traits\HasNodesContract,
+};
+use Belvedere\FormMaker\Traits\{
+    Rankings\HasRankings,
+    Nodes\HasNodes
+};
 
-class Form extends ModelWithNodes implements HasInputsContract, FormContract
+class Form extends Model implements HasNodesContract, FormContract
 {
-    use HasInputs;
+    use HasNodes, HasRankings;
 
     /**
      * The attributes that are mass assignable.
@@ -37,15 +40,13 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
 
         $this->table = config('form-maker.database.forms_table', 'forms');
 
-        $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, [
+        $this->setHtmlAttributesAttribute([
             'accept-charset',
             'enctype',
             'name',
             'novalidate',
             'target',
         ]);
-
-        $this->setHtmlAttributesProvider();
 
         $this->setRankingProvider();
     }
@@ -64,18 +65,6 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
     }
 
     /**
-     * Get the node with the specified key.
-     *
-     * @param string $nodeKey
-     * @return \Belvedere\FormMaker\Models\Inputs\Input|null
-     * @throws \Exception
-     */
-    protected function getNode(string $nodeKey): ?Input
-    {
-        return $this->inputs()->firstWhere('html_attributes.name', $nodeKey);
-    }
-
-    /**
      * Specifies the form http method.
      *
      * @param string|null $method
@@ -86,18 +75,6 @@ class Form extends ModelWithNodes implements HasInputsContract, FormContract
         $this->html_attributes = ['method' => $method];
 
         return $this;
-    }
-
-    /**
-     * Get the form nodes query builder.
-     *
-     * @param string $node
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     * @throws \Exception
-     */
-    protected function nodesQueryBuilder($node): MorphMany
-    {
-        return $this->morphMany($this->resolve($node), 'inputable');
     }
 
     /**
