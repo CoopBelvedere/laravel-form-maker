@@ -34,7 +34,7 @@
                 "Belvedere\\FormMaker\\Models\\Rankings\\RankingServiceProvider",
                 "Belvedere\\FormMaker\\Models\\HtmlAttributes\\HtmlAttributeServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Rules\\RuleServiceProvider",
-                "Belvedere\\FormMaker\\Models\\Inputs\\Checkbox\\CheckboxServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Checkbox\\CheckboxServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Color\\ColorServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Datalist\\DatalistServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Date\\DateServiceProvider",
