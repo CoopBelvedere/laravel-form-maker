@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Contracts\Rankings;
 
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Collection;
 
 interface RankerContract
@@ -37,9 +38,9 @@ interface RankerContract
      * Get the model eloquent relation to the ranking.
      *
      * @param mixed $rankable
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function getEloquentRelation($rankable);
+    public function getEloquentRelation($rankable): MorphOne;
 
     /**
      * Check that the element is in the ranking.

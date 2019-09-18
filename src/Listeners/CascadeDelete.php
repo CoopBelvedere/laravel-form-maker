@@ -6,7 +6,7 @@ namespace Belvedere\FormMaker\Listeners;
 use Belvedere\FormMaker\Models\Model;
 use Illuminate\Support\Collection;
 
-class DeleteRelatedModels
+class CascadeDelete
 {
     /**
      * The model with assigned properties.

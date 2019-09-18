@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Contracts\Traits;
+namespace Belvedere\FormMaker\Contracts\Nodes;
 
 use Belvedere\FormMaker\Contracts\Rankings\HasRankingsContract;
 use Belvedere\FormMaker\Models\Nodes\Node;
@@ -13,7 +13,7 @@ interface HasNodesContract extends HasRankingsContract
      *
      * @param string $type
      * @param string|null $name
-     * @return \Belvedere\FormMaker\Models\Model
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
      * @throws \Exception
      */
     public function add(string $type, ?string $name = null): Node;
@@ -21,13 +21,13 @@ interface HasNodesContract extends HasRankingsContract
     /**
      * Add a node after another node.
      *
-     * @param string $afterNodeKey
+     * @param mixed $afterNodeId
      * @param string $type
      * @param string|null $name
-     * @return \Belvedere\FormMaker\Models\Model
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
      * @throws \Exception
      */
-    public function addAfter(string $afterNodeKey, string $type, ?string $name = null): Node;
+    public function addAfter($afterNodeId, string $type, ?string $name = null): Node;
 
     /**
      * Add a node at a specific rank in the ranking.
@@ -35,7 +35,7 @@ interface HasNodesContract extends HasRankingsContract
      * @param int $rank
      * @param string $type
      * @param string|null $name
-     * @return \Belvedere\FormMaker\Models\Model
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
      * @throws \Exception
      */
     public function addAtRank(int $rank, string $type, ?string $name = null): Node;
@@ -43,21 +43,21 @@ interface HasNodesContract extends HasRankingsContract
     /**
      * Add a node before another node.
      *
-     * @param string $beforeNodeKey
+     * @param mixed $beforeNodeId
      * @param string $type
      * @param string|null $name
-     * @return \Belvedere\FormMaker\Models\Model
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
      * @throws \Exception
      */
-    public function addBefore(string $beforeNodeKey, string $type, ?string $name = null): Node;
+    public function addBefore($beforeNodeId, string $type, ?string $name = null): Node;
 
     /**
      * Get the node with the specified key.
      *
-     * @param string $nodeKey
+     * @param mixed $id
      * @return mixed
      */
-    public function getNode(string $nodeKey): Node;
+    public function getNode($id): Node;
 
     /**
      * Get the model nodes filtered by type or not and sorted by their position in the ranking.

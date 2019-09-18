@@ -6,6 +6,7 @@ use Belvedere\FormMaker\{
     Contracts\Rankings\RankerContract,
     Models\Model
 };
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasRankings
 {
@@ -25,11 +26,11 @@ trait HasRankings
      */
     protected function addInRanking(Model $node): void
     {
-        if ($this->rankings->isEmpty()) {
+        if (is_null($this->ranking)) {
             $this->createRanking($node);
         }
 
-        $this->getRanking($node->getTable())->add($node);
+        $this->ranking->add($node);
     }
 
     /**
@@ -42,32 +43,19 @@ trait HasRankings
     {
         $ranking = resolve(RankerContract::class);
 
-        $ranking->node_type = $node->getTable();
-
         $ranking->ranks = [];
 
-        $this->rankings()->save($ranking);
+        $this->ranking()->save($ranking);
 
         $this->load('rankings');
     }
 
     /**
-     * Get the ranking for a specific node type.
-     *
-     * @param string $nodeType
-     * @return RankerContract|null
-     */
-    public function getRanking(string $nodeType): ?RankerContract
-    {
-        return $this->rankings->firstWhere('node_type', $nodeType);
-    }
-
-    /**
      * Get the model rankings.
      *
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function rankings()
+    public function ranking(): MorphOne
     {
         return $this->rankingProvider->getEloquentRelation($this);
     }

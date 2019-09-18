@@ -3,12 +3,11 @@
 namespace Belvedere\FormMaker\Models\Rankings;
 
 use Belvedere\FormMaker\Contracts\Rankings\RankerContract;
-use Illuminate\{
-    Database\Eloquent\Model as Eloquent,
+use Illuminate\{Database\Eloquent\Model as Eloquent,
     Database\Eloquent\Relations\MorphMany,
+    Database\Eloquent\Relations\MorphOne,
     Support\Collection,
-    Support\Facades\Log
-};
+    Support\Facades\Log};
 
 class Ranker extends Eloquent implements RankerContract
 {
@@ -147,11 +146,11 @@ class Ranker extends Eloquent implements RankerContract
      * Get the model eloquent relation to the ranking.
      *
      * @param mixed $rankable
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function getEloquentRelation($rankable): MorphMany
+    public function getEloquentRelation($rankable): MorphOne
     {
-        return $rankable->morphMany($this, 'rankable');
+        return $rankable->morphOne($this, 'rankable');
     }
 
     /**

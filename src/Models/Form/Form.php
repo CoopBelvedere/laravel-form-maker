@@ -3,16 +3,12 @@
 namespace Belvedere\FormMaker\Models\Form;
 
 use Belvedere\FormMaker\{
+    Contracts\Form\FormContract,
+    Contracts\Nodes\HasNodesContract,
     Http\Resources\Form\FormResource,
-    Models\Model
-};
-use Belvedere\FormMaker\Contracts\{
-    Form\FormContract,
-    Traits\HasNodesContract,
-};
-use Belvedere\FormMaker\Traits\{
-    Rankings\HasRankings,
-    Nodes\HasNodes
+    Models\Model,
+    Traits\Nodes\HasNodes,
+    Traits\Rankings\HasRankings
 };
 
 class Form extends Model implements HasNodesContract, FormContract

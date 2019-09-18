@@ -21,6 +21,7 @@ class CreateFormMakerTables extends Migration
         Schema::create(config('form-maker.database.form_nodes_table', 'form_nodes'), function (Blueprint $table) {
             $table->increments('id');
             $table->morphs('nodable');
+            $table->string('component');
             $table->string('type');
             $table->json('html_attributes')->nullable();
             $table->json('rules')->nullable();
@@ -30,7 +31,6 @@ class CreateFormMakerTables extends Migration
 
         Schema::create(config('form-maker.database.rankings_table', 'rankings'), function (Blueprint $table) {
             $table->increments('id');
-            $table->string('node_type');
             $table->morphs('rankable');
             $table->json('ranks');
             $table->timestamps();

@@ -2,15 +2,17 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs;
 
-use Belvedere\FormMaker\{Contracts\Inputs\InputContract,
+use Belvedere\FormMaker\{
+    Contracts\Inputs\InputContract,
     Contracts\Resources\InputResourcerContract,
-    Contracts\Traits\HasNodesContract,
+    Contracts\Nodes\HasNodesContract,
     Listeners\AssignAttributes,
     Listeners\RemoveFromRanking,
     Models\Nodes\Node,
     Traits\Nodes\HasNodes,
     Traits\Rankings\HasRankings,
-    Traits\Rules\HasRules};
+    Traits\Rules\HasRules
+};
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Input extends Node implements HasNodesContract, InputContract

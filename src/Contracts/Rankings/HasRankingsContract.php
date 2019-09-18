@@ -2,22 +2,16 @@
 
 namespace Belvedere\FormMaker\Contracts\Rankings;
 
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+
 interface HasRankingsContract
 {
     /**
-     * Get the ranking for a specific node type.
-     *
-     * @param string $nodeType
-     * @return RankerContract|null
-     */
-    public function getRanking(string $nodeType): ?RankerContract;
-
-    /**
      * Get the model rankings.
      *
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function rankings();
+    public function ranking(): MorphOne;
 
     /**
      * Set the ranking provider used by the model.
