@@ -31,7 +31,7 @@ class Urler extends Input implements UrlerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAttribute([
+        $this->addAvailableAttributes([
             'maxlength',
             'minlength',
             'pattern',

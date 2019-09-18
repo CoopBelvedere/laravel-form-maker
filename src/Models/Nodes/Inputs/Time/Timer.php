@@ -31,7 +31,7 @@ class Timer extends Input implements TimerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAttribute([
+        $this->addAvailableAttributes([
             'max',
             'min',
             'step',

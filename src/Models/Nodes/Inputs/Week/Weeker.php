@@ -31,7 +31,7 @@ class Weeker extends Input implements WeekerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAttribute([
+        $this->addAvailableAttributes([
             'max',
             'min',
             'step',

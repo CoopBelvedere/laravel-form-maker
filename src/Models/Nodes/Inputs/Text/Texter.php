@@ -31,7 +31,7 @@ class Texter extends Input implements TexterContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAttribute([
+        $this->addAvailableAttributes([
             'maxlength',
             'minlength',
             'pattern',

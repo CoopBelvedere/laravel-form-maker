@@ -33,7 +33,7 @@ class Labeler extends Sibling implements LabelerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAttribute([
+        $this->addAvailableAttributes([
             'for',
             'form',
         ]);

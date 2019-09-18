@@ -31,7 +31,7 @@ class Textareaer extends Input implements TextareaerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAttribute([
+        $this->addAvailableAttributes([
             'cols',
             'rows',
             'spellcheck',
