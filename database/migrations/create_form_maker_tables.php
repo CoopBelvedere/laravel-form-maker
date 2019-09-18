@@ -31,7 +31,7 @@ class CreateFormMakerTables extends Migration
         Schema::create(config('form-maker.database.rankings_table', 'rankings'), function (Blueprint $table) {
             $table->increments('id');
             $table->morphs('rankable');
-            $table->json('ranks')->default([]);
+            $table->json('ranks');
             $table->timestamps();
         });
     }

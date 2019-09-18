@@ -12,6 +12,15 @@ use Illuminate\{Database\Eloquent\Model as Eloquent,
 class Ranker extends Eloquent implements RankerContract
 {
     /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'ranks' => [],
+    ];
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
