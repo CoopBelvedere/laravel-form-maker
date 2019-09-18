@@ -12,60 +12,55 @@ interface HasNodesContract extends HasRankingsContract
      * Add a node to the parent model.
      *
      * @param string $type
-     * @param string|null $name
      * @return \Belvedere\FormMaker\Models\Nodes\Node
      * @throws \Exception
      */
-    public function add(string $type, ?string $name = null): Node;
+    public function add(string $type): Node;
 
     /**
      * Add a node after another node.
      *
-     * @param mixed $afterNodeId
+     * @param mixed $afterNodeKey
      * @param string $type
-     * @param string|null $name
      * @return \Belvedere\FormMaker\Models\Nodes\Node
      * @throws \Exception
      */
-    public function addAfter($afterNodeId, string $type, ?string $name = null): Node;
+    public function addAfter($afterNodeKey, string $type): Node;
 
     /**
      * Add a node at a specific rank in the ranking.
      *
      * @param int $rank
      * @param string $type
-     * @param string|null $name
      * @return \Belvedere\FormMaker\Models\Nodes\Node
      * @throws \Exception
      */
-    public function addAtRank(int $rank, string $type, ?string $name = null): Node;
+    public function addAtRank(int $rank, string $type): Node;
 
     /**
      * Add a node before another node.
      *
-     * @param mixed $beforeNodeId
+     * @param mixed $beforeNodeKey
      * @param string $type
-     * @param string|null $name
      * @return \Belvedere\FormMaker\Models\Nodes\Node
      * @throws \Exception
      */
-    public function addBefore($beforeNodeId, string $type, ?string $name = null): Node;
+    public function addBefore($beforeNodeKey, string $type): Node;
 
     /**
-     * Get the node with the specified key.
+     * Get the node with the specified id.
      *
      * @param mixed $id
-     * @return mixed
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
      */
-    public function getNode($id): Node;
+    public function node($key): Node;
 
     /**
-     * Get the model nodes filtered by type or not and sorted by their position in the ranking.
+     * Get the nodes filtered by type or not and sorted by their position in the ranking.
      *
-     * @param string $table
      * @param string|null $type
      * @return \Illuminate\Support\Collection
      * @throws \Exception
      */
-    public function getNodes(string $table, ?string $type = null): Collection;
+    public function nodes(?string $type = null): Collection;
 }

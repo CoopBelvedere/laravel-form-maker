@@ -2,8 +2,11 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
-use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
-use Belvedere\FormMaker\Models\Nodes\Node;
+use Belvedere\FormMaker\{
+    Contracts\Repositories\NodeRepositoryContract,
+    Models\Nodes\Node
+};
+use Illuminate\Support\Collection;
 
 trait HasNodes
 {
@@ -23,5 +26,96 @@ trait HasNodes
         $this->addInRanking($node);
 
         return $node;
+    }
+
+    /**
+     * Add a node after another node.
+     *
+     * @param mixed $afterNodeKey
+     * @param string $type
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     * @throws \Exception
+     */
+    public function addAfter($afterNodeKey, string $type): Node
+    {
+        $node = $this->add($type);
+
+        $afterNode = $this->node($afterNodeKey);
+
+        if ($afterNode) {
+            // $this->ranking->move($node)->after($afterNode);
+        }
+
+        return $node;
+    }
+
+    /**
+     * Add a node at a specific rank in the ranking.
+     *
+     * @param int $rank
+     * @param string $type
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     * @throws \Exception
+     */
+    public function addAtRank(int $rank, string $type): Node
+    {
+        $node = $this->add($type);
+
+        $this->ranking->move($node)->toRank($rank);
+
+        return $node;
+    }
+
+    /**
+     * Add a node before another node.
+     *
+     * @param mixed $beforeNodeKey
+     * @param string $type
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     * @throws \Exception
+     */
+    public function addBefore($beforeNodeKey, string $type): Node
+    {
+        $node = $this->add($type);
+
+        $beforeNode = $this->node($beforeNodeKey);
+
+        if ($beforeNode) {
+            // $this->ranking->move($node)->before($beforeNode);
+        }
+
+        return $node;
+    }
+
+    /**
+     * Get the node with the specified id.
+     *
+     * @param mixed $id
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     */
+    public function node($key): Node
+    {
+        // $nodeRepository = resolve(NodeRepositoryContract::class);
+
+        // $nodeRepository->find($this, $key, ['id', 'name', 'value']);
+
+        return new Node();
+    }
+
+    /**
+     * Get the nodes filtered by type or not and sorted by their position in the ranking.
+     *
+     * @param string|null $type
+     * @return \Illuminate\Support\Collection
+     * @throws \Exception
+     */
+    public function nodes(?string $type = null): Collection
+    {
+        $nodes = $this->getRelations();
+        // pass the relations in with
+        // regroup them into node family
+        dd($nodes);
+
+        return collect([]);
     }
 }

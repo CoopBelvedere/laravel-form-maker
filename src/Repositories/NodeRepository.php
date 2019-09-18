@@ -3,6 +3,7 @@
 namespace Belvedere\FormMaker\Repositories;
 
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
+use Illuminate\Support\Collection;
 use Belvedere\FormMaker\Models\{
     Model,
     Nodes\Node
@@ -43,22 +44,18 @@ class NodeRepository implements NodeRepositoryContract
         'paragraph' => \Belvedere\FormMaker\Contracts\Siblings\Paragraph\ParagrapherContract::class,
     ];
 
-    public function all()
+    /**
+     * Get the model nodes filtered by type or not and sorted by their position in the ranking.
+     *
+     * @param \Belvedere\FormMaker\Models\Model $parent
+     * @param string|null $type
+     * @return \Illuminate\Support\Collection
+     * @throws \Exception
+     */
+    public function all(Model $parent, ?string $type = null): Collection
     {
-        $nodes = $this->getRelations();
-        // pass the relations in with
-        // regroup them into node family
-
-        dd($nodes);
-//        if (is_null($type)) {
-//            $nodes = $this->nodesQueryBuilder($type)->get();
-//        }
-//
-//        if ($nodes->isEmpty()) {
-//            return $nodes;
-//        }
-//
-//        return $this->getRanking($table)->sortByRank($nodes);
+        // TODO
+        return collect([]);
     }
 
     /**
@@ -85,9 +82,10 @@ class NodeRepository implements NodeRepositoryContract
      *
      * @param \Belvedere\FormMaker\Models\Model $model
      * @param mixed $key
+     * @param array $columns
      * @return \Belvedere\FormMaker\Models\Nodes\Node
      */
-    public function find(Model $model, $key, $columns = ['*']): Node
+    public function find(Model $model, $key, array $columns): Node
     {
         return new Node();
     }
