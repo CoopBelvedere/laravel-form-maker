@@ -31,7 +31,7 @@ class Passworder extends Input implements PassworderContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'maxlength',
             'minlength',
             'pattern',

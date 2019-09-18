@@ -31,7 +31,7 @@ class Radioer extends Input implements RadioerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'checked',
         ]);
     }

@@ -42,7 +42,7 @@ class Optioner extends Input implements HasTextContract, OptionerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'selected',
         ]);
     }

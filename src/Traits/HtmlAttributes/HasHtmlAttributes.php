@@ -32,18 +32,18 @@ trait HasHtmlAttributes
      */
     public function removeHtmlAttributes(array $attributes): self
     {
-        $this->setHtmlAttributes(array_fill_keys($attributes, null));
+        $this->updateHtmlAttributes(array_fill_keys($attributes, null));
 
         return $this;
     }
 
     /**
-     * Append the html attributes in the existing list of attributes.
+     * Update the existing list of attributes.
      *
      * @param array $attributes
      * @return void
      */
-    protected function setHtmlAttributes(array $attributes): void
+    protected function updateHtmlAttributes(array $attributes): void
     {
         foreach ($attributes as $attribute => $value) {
             if (is_null($value) || $this->isValidAttribute($attribute)) {
@@ -90,7 +90,7 @@ trait HasHtmlAttributes
      */
     public function withHtmlAttributes(array $attributes): self
     {
-        $this->setHtmlAttributes($attributes);
+        $this->updateHtmlAttributes($attributes);
 
         return $this;
     }

@@ -12,5 +12,5 @@ interface ModelContract extends HasHtmlAttributesContract
      * @param array $attributes
      * @return void
      */
-    public function setHtmlAttributesAvailable(array $attributes): void;
+    public function addAvailableAttributes(array $attributes): void;
 }

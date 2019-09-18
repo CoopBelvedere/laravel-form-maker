@@ -31,7 +31,7 @@ class Number extends Input implements NumberContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'max',
             'min',
             'step',

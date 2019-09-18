@@ -35,7 +35,7 @@ class Selecter extends Input implements HasOptionsContract, SelecterContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'multiple',
             'size'
         ]);

@@ -31,7 +31,7 @@ class Checkboxer extends Input implements CheckboxerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'checked',
         ]);
     }

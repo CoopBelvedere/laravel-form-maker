@@ -31,7 +31,7 @@ class Monther extends Input implements MontherContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'max',
             'min',
             'step',

@@ -30,7 +30,7 @@ class Dater extends Input implements DaterContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'max',
             'min',
             'step',

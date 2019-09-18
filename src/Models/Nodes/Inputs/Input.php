@@ -58,7 +58,7 @@ class Input extends Node implements HasNodesContract, InputContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'autocomplete',
             'autofocus',
             'disabled',

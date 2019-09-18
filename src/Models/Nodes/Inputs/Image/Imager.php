@@ -31,7 +31,7 @@ class Imager extends Input implements ImagerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'alt',
             'height',
             'readonly',

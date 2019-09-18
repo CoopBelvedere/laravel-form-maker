@@ -31,7 +31,7 @@ class Filer extends Input implements FilerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'accept',
             'capture',
             'multiple',

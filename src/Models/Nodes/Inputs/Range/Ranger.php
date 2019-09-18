@@ -31,7 +31,7 @@ class Ranger extends Input implements RangerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'max',
             'min',
             'step',

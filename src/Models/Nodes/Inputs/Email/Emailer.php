@@ -31,7 +31,7 @@ class Emailer extends Input implements EmailerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'maxlength',
             'minlength',
             'multiple',

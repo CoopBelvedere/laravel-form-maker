@@ -36,7 +36,7 @@ class Form extends Model implements HasNodesContract, FormContract
 
         $this->table = config('form-maker.database.forms_table', 'forms');
 
-        $this->setHtmlAttributesAttribute([
+        $this->addAvailableAttributes([
             'accept-charset',
             'enctype',
             'name',

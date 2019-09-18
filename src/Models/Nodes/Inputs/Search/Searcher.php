@@ -31,7 +31,7 @@ class Searcher extends Input implements SearcherContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'maxlength',
             'minlength',
             'pattern',

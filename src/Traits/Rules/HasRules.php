@@ -32,18 +32,18 @@ trait HasRules
      */
     public function removeRules(array $rules): self
     {
-        $this->setRules(array_fill_keys($rules, null));
+        $this->updateRules(array_fill_keys($rules, null));
 
         return $this;
     }
 
     /**
-     * Append the rules in the existing list of validations.
+     * Update the existing list of validations.
      *
      * @param array $rules
      * @return void
      */
-    protected function setRules(array $rules): void
+    protected function updateRules(array $rules): void
     {
         foreach ($rules as $rule => $value) {
             $this->rulesProvider->$rule = $value;
@@ -88,7 +88,7 @@ trait HasRules
      */
     public function withRules(array $rules): self
     {
-        $this->setRules($rules);
+        $this->updateRules($rules);
 
         return $this;
     }

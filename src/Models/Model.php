@@ -52,7 +52,7 @@ class Model extends Eloquent implements HasHtmlAttributesContract, ModelContract
      * @param array $attributes
      * @return void
      */
-    public function setHtmlAttributesAvailable(array $attributes): void
+    public function addAvailableAttributes(array $attributes): void
     {
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, $attributes);
     }

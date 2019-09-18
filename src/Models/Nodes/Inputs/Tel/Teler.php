@@ -31,7 +31,7 @@ class Teler extends Input implements TelerContract
     {
         parent::__construct($attributes);
 
-        $this->setHtmlAttributesAvailable([
+        $this->addAvailableAttributes([
             'maxlength',
             'minlength',
             'pattern',
