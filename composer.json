@@ -55,7 +55,8 @@
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Url\\UrlServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Week\\WeekServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Siblings\\Label\\LabelServiceProvider",
-                "Belvedere\\FormMaker\\Models\\Nodes\\Siblings\\Paragraph\\ParagraphServiceProvider"
+                "Belvedere\\FormMaker\\Models\\Nodes\\Siblings\\Paragraph\\ParagraphServiceProvider",
+                "Belvedere\\FormMaker\\Repositories\\NodeRepositoryServiceProvider"
             ]
         }
     }

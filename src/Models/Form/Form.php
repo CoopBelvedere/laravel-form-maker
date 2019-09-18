@@ -7,13 +7,13 @@ use Belvedere\FormMaker\{
     Http\Resources\Form\FormResource,
     Listeners\CascadeDelete,
     Models\Model,
-    Traits\Nodes\HasInputs,
+    Traits\Nodes\HasNodes,
     Traits\Rankings\HasRankings
 };
 
 class Form extends Model implements FormContract
 {
-    use HasInputs, HasRankings;
+    use HasNodes, HasRankings;
 
     /**
      * The event map for the model.

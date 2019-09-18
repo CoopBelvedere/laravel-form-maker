@@ -2,10 +2,10 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
+use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Belvedere\FormMaker\Models\Nodes\Node;
-use Belvedere\FormMaker\Repositories\NodeRepository;
 
-trait HasInputs
+trait HasNodes
 {
     /**
      * Add a node to the parent model.
@@ -14,12 +14,11 @@ trait HasInputs
      * @return \Belvedere\FormMaker\Models\Nodes\Node
      * @throws \Exception
      */
-    public function addInput(string $type): Node
+    public function add(string $type): Node
     {
-        // TODO: add a validation to make sure type is for input component
-        $repository = new NodeRepository();
+        $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        $node = $repository->create($this, $type);
+        $node = $nodeRepository->create($this, $type);
 
         $this->addInRanking($node);
 

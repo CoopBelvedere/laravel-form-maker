@@ -2,12 +2,13 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
+use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Belvedere\FormMaker\Models\{
     Model,
     Nodes\Node
 };
 
-class NodeRepository
+class NodeRepository implements NodeRepositoryContract
 {
     /**
      * The list of the nodes available.

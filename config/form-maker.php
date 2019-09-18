@@ -70,6 +70,19 @@ return [
 
     /*
      |--------------------------------------------------------------------------
+     | Repositories
+     |--------------------------------------------------------------------------
+     |
+     | The different repositories used by the models.
+     | You may swap any of the default implementations with your own.
+     */
+
+    'repositories' => [
+        'node_repository' => \Belvedere\FormMaker\Repositories\NodeRepository::class,
+    ],
+
+    /*
+     |--------------------------------------------------------------------------
      | API Resources
      |--------------------------------------------------------------------------
      |

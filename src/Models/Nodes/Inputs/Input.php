@@ -9,6 +9,7 @@ use Belvedere\FormMaker\{
     Listeners\CascadeDelete,
     Listeners\RemoveFromRanking,
     Models\Nodes\Node,
+    Traits\Nodes\HasSiblings,
     Traits\Rankings\HasRankings,
     Traits\Rules\HasRules
 };
@@ -16,7 +17,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class Input extends Node implements InputContract
 {
-    use HasRankings, HasRules;
+    use HasRankings, HasRules, HasSiblings;
 
     /**
      * The event map for the model.
