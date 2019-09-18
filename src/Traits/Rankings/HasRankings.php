@@ -4,7 +4,7 @@ namespace Belvedere\FormMaker\Traits\Rankings;
 
 use Belvedere\FormMaker\{
     Contracts\Rankings\RankerContract,
-    Models\Model
+    Models\Nodes\Node
 };
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
@@ -20,14 +20,14 @@ trait HasRankings
     /**
      * Add a node in the ranking
      *
-     * @param \Belvedere\FormMaker\Models\Model $node
+     * @param  \Belvedere\FormMaker\Models\Nodes\Node $node
      * @return void
      * @throws \Exception
      */
-    protected function addInRanking(Model $node): void
+    protected function addInRanking(Node $node): void
     {
         if (is_null($this->ranking)) {
-            $this->createRanking($node);
+            $this->createRanking();
         }
 
         $this->ranking->add($node);
@@ -36,10 +36,9 @@ trait HasRankings
     /**
      * Create a ranking
      *
-     * @param \Belvedere\FormMaker\Models\Model $node
      * @return void
      */
-    protected function createRanking(Model $node): void
+    protected function createRanking(): void
     {
         $ranking = resolve(RankerContract::class);
 
