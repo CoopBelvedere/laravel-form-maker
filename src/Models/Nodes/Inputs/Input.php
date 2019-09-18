@@ -5,19 +5,18 @@ namespace Belvedere\FormMaker\Models\Nodes\Inputs;
 use Belvedere\FormMaker\{
     Contracts\Inputs\InputContract,
     Contracts\Resources\InputResourcerContract,
-    Contracts\Nodes\HasNodesContract,
     Listeners\AssignAttributes,
+    Listeners\CascadeDelete,
     Listeners\RemoveFromRanking,
     Models\Nodes\Node,
-    Traits\Nodes\HasNodes,
     Traits\Rankings\HasRankings,
     Traits\Rules\HasRules
 };
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Input extends Node implements HasNodesContract, InputContract
+class Input extends Node implements InputContract
 {
-    use HasNodes, HasRankings, HasRules;
+    use HasRankings, HasRules;
 
     /**
      * The event map for the model.
@@ -26,6 +25,7 @@ class Input extends Node implements HasNodesContract, InputContract
      */
     protected $dispatchesEvents = [
         'creating' => AssignAttributes::class,
+        'deleting' => CascadeDelete::class,
         'deleted' => RemoveFromRanking::class,
     ];
 

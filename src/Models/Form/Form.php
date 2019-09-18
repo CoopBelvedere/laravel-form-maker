@@ -4,16 +4,25 @@ namespace Belvedere\FormMaker\Models\Form;
 
 use Belvedere\FormMaker\{
     Contracts\Form\FormContract,
-    Contracts\Nodes\HasNodesContract,
     Http\Resources\Form\FormResource,
+    Listeners\CascadeDelete,
     Models\Model,
-    Traits\Nodes\HasNodes,
+    Traits\Nodes\HasInputs,
     Traits\Rankings\HasRankings
 };
 
-class Form extends Model implements HasNodesContract, FormContract
+class Form extends Model implements FormContract
 {
-    use HasNodes, HasRankings;
+    use HasInputs, HasRankings;
+
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'deleting' => CascadeDelete::class,
+    ];
 
     /**
      * The attributes that are mass assignable.

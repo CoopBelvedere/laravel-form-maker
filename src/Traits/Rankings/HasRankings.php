@@ -27,26 +27,11 @@ trait HasRankings
     protected function addInRanking(Node $node): void
     {
         if (is_null($this->ranking)) {
-            $this->createRanking();
+            $this->ranking()->save(resolve(RankerContract::class));
+            $this->load('ranking');
         }
 
         $this->ranking->add($node);
-    }
-
-    /**
-     * Create a ranking
-     *
-     * @return void
-     */
-    protected function createRanking(): void
-    {
-        $ranking = resolve(RankerContract::class);
-
-        $ranking->ranks = [];
-
-        $this->ranking()->save($ranking);
-
-        $this->load('ranking');
     }
 
     /**

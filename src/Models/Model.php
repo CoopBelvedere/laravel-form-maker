@@ -60,9 +60,9 @@ class Model extends Eloquent implements HasHtmlAttributesContract, ModelContract
     /**
      * Save the model and return itself.
      *
-     * @return \Belvedere\FormMaker\Models\Model
+     * @return self
      */
-    public function saveAndFirst(): Model
+    public function saveAndFirst(): self
     {
         $this->save();
 
