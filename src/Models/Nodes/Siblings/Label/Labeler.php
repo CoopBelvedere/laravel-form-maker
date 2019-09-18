@@ -1,22 +1,17 @@
 <?php
 
-
 namespace Belvedere\FormMaker\Models\Nodes\Siblings\Label;
 
 use Belvedere\FormMaker\{
     Contracts\Resources\LabelResourcerContract,
     Contracts\Siblings\Label\LabelerContract,
-    Contracts\Text\HasTextContract,
     Models\Nodes\Siblings\Sibling,
     Scopes\NodeScope,
-    Traits\Text\HasText
 };
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Labeler extends Sibling implements HasTextContract, LabelerContract
+class Labeler extends Sibling implements LabelerContract
 {
-    use HasText;
-
     /**
      * Apply the type scope.
      *

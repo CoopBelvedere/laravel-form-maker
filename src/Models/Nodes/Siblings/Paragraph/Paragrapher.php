@@ -4,16 +4,12 @@ namespace Belvedere\FormMaker\Models\Nodes\Siblings\Paragraph;
 
 use Belvedere\FormMaker\{
     Contracts\Siblings\Paragraph\ParagrapherContract,
-    Contracts\Text\HasTextContract,
     Models\Nodes\Siblings\Sibling,
     Scopes\NodeScope,
-    Traits\Text\HasText
 };
 
-class Paragrapher extends Sibling implements HasTextContract, ParagrapherContract
+class Paragrapher extends Sibling implements ParagrapherContract
 {
-    use HasText;
-
     /**
      * Apply the type scope.
      *

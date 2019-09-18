@@ -5,13 +5,17 @@ namespace Belvedere\FormMaker\Models\Nodes\Siblings;
 use Belvedere\FormMaker\{
     Contracts\Resources\SiblingResourcerContract,
     Contracts\Siblings\SiblingContract,
+    Contracts\Text\HasTextContract,
     Listeners\RemoveFromRanking,
-    Models\Nodes\Node
+    Models\Nodes\Node,
+    Traits\Text\HasText
 };
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Sibling extends Node implements SiblingContract
+class Sibling extends Node implements HasTextContract, SiblingContract
 {
+    use HasText;
+
     /**
      * The event map for the model.
      *
