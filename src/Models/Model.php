@@ -56,4 +56,16 @@ class Model extends Eloquent implements HasHtmlAttributesContract, ModelContract
     {
         $this->htmlAttributesAvailable = array_merge($this->htmlAttributesAvailable, $attributes);
     }
+
+    /**
+     * Save the model and return itself.
+     *
+     * @return \Belvedere\FormMaker\Models\Model
+     */
+    public function saveAndFirst(): Model
+    {
+        $this->save();
+
+        return $this;
+    }
 }
