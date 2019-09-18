@@ -47,7 +47,7 @@ trait HasRankings
 
         $this->ranking()->save($ranking);
 
-        $this->load('rankings');
+        $this->load('ranking');
     }
 
     /**

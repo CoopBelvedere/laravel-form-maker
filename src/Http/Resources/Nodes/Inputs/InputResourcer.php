@@ -4,7 +4,7 @@ namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs;
 
 use Belvedere\FormMaker\{
     Contracts\Resources\InputResourcerContract,
-    Http\Resources\Sibling\SiblingCollection
+    Http\Resources\Nodes\Siblings\SiblingCollection
 };
 use Illuminate\Http\Resources\Json\JsonResource;
 

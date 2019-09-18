@@ -2,8 +2,10 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs\Datalist;
 
-use Belvedere\FormMaker\Contracts\Resources\DatalistResourcerContract;
-use Belvedere\FormMaker\Http\Resources\Input\InputCollection;
+use Belvedere\FormMaker\{
+    Contracts\Resources\DatalistResourcerContract,
+    Http\Resources\Nodes\Inputs\InputCollection
+};
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class DatalistResourcer extends JsonResource implements DatalistResourcerContract
