@@ -12,15 +12,6 @@ use Illuminate\{Database\Eloquent\Model as Eloquent,
 class Ranker extends Eloquent implements RankerContract
 {
     /**
-     * The model's default values for attributes.
-     *
-     * @var array
-     */
-    protected $attributes = [
-        'ranks' => [],
-    ];
-
-    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -46,6 +37,8 @@ class Ranker extends Eloquent implements RankerContract
         parent::__construct($attributes);
 
         $this->table = config('form-maker.database.rankings_table', 'rankings');
+
+        $this->ranks = []; // set default value
     }
 
     /**
