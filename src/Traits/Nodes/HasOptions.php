@@ -20,23 +20,32 @@ trait HasOptions
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
         $option = $nodeRepository->create($this, 'option')
-            ->withHtmlAttributes($attributes)
-            ->saveAndFirst();
+            ->withHtmlAttributes($attributes);
+
+        if (array_key_exists('text', $attributes)) {
+            $option->withText($attributes['text']);
+        }
 
         $this->addInRanking($option);
 
-        return $option;
+        return $option->saveAndFirst();
     }
 
     /**
      * Add options for the input.
      *
      * @param array ...$options
-     * @return self
-     * @throws \Exception
+     * @return array
      */
-    public function addOptions(array ...$options): self
+    public function addOptions(array ...$options): array
     {
-        dd($options);
+        $nodes = [];
+
+        foreach ($options as $optionAttributes)
+        {
+            $nodes[] = $this->addOption($optionAttributes);
+        }
+
+        return $nodes;
     }
 }

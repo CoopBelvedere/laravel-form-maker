@@ -2,9 +2,12 @@
 
 namespace Belvedere\FormMaker\Contracts\Inputs\Option;
 
-use Belvedere\FormMaker\Contracts\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\{
+    Inputs\InputContract,
+    Text\HasTextContract
+};
 
-interface OptionerContract extends InputContract
+interface OptionerContract extends HasTextContract, InputContract
 {
     //
 }
