@@ -43,7 +43,7 @@ trait HasNodes
         $afterNode = $this->node($afterNodeKey);
 
         if ($afterNode) {
-            // $this->ranking->move($node)->after($afterNode);
+            $this->ranking->move($node)->after($afterNode);
         }
 
         return $node;
@@ -81,7 +81,7 @@ trait HasNodes
         $beforeNode = $this->node($beforeNodeKey);
 
         if ($beforeNode) {
-            // $this->ranking->move($node)->before($beforeNode);
+            $this->ranking->move($node)->before($beforeNode);
         }
 
         return $node;

@@ -21,11 +21,11 @@ class Ranker extends Eloquent implements RankerContract
     ];
 
     /**
-     * The current element id to reorder.
+     * The current node id to reorder.
      *
      * @var mixed
      */
-    protected $elementId;
+    protected $nodeId;
 
     /**
      * Ranker constructor.
@@ -56,20 +56,20 @@ class Ranker extends Eloquent implements RankerContract
     // ==============================================================
 
     /**
-     * Add an element in the rankings.
-     * Return the rank of the new element.
+     * Add an node in the rankings.
+     * Return the rank of the new node.
      *
-     * @param mixed $element
+     * @param mixed $node
      * @return int
      * @throws \Exception
      */
-    public function add($element): int
+    public function add($node): int
     {
-        $rank = $this->rank($element);
+        $rank = $this->rank($node);
 
         if ($rank === -1) {
             $ranks = $this->ranks;
-            $ranks[] = $this->getElementId($element);
+            $ranks[] = $this->getNodeId($node);
             $this->commit($ranks);
 
             return count($ranks);
@@ -79,24 +79,60 @@ class Ranker extends Eloquent implements RankerContract
     }
 
     /**
-     * Move the element first in the ranking.
+     * Move the node after another node in the ranking.
+     * 
+     * @param mixed $afterNode
+     * @return int
+     * @throws \Exception
+     */
+    public function after($afterNode): int 
+    {
+        $rank = $this->rank($afterNode);
+
+        if ($rank > -1) {
+            $rank = $this->toRank($rank + 1);
+        }
+
+        return $rank;
+    }
+
+    /**
+     * Move the node first in the ranking.
      *
      * @return int
      * @throws \Exception
      */
     public function ahead(): int
     {
-        if ($this->hasElementId()) {
-            if ($this->elementId !== head($this->ranks)) {
+        if ($this->hasNodeId()) {
+            if ($this->nodeId !== head($this->ranks)) {
                 $ranks = $this->ranks;
-                $ranks = array_diff($ranks, [$this->elementId]);
-                $this->commit(array_merge([$this->elementId], $ranks));
+                $ranks = array_diff($ranks, [$this->nodeId]);
+                $this->commit(array_merge([$this->nodeId], $ranks));
             }
 
             return 1;
         }
     }
 
+    /**
+     * Move the node before another node in the ranking.
+     *
+     * @param mixed $beforeNode
+     * @return int
+     * @throws \Exception
+     */
+    public function before($beforeNode): int
+    {
+        $rank = $this->rank($beforeNode);
+
+        if ($rank > -1) {
+            $rank = $this->toRank($rank - 1);
+        }
+
+        return $rank;
+    }
+    
     /**
      * Save the ranks list in the ranking.
      *
@@ -111,37 +147,22 @@ class Ranker extends Eloquent implements RankerContract
     }
 
     /**
-     * Move the element one rank down.
-     * Return the new rank of the downgraded element.
+     * Move the node one rank down.
+     * Return the new rank of the downgraded node.
      *
      * @return int
      * @throws \Exception
      */
     public function down(): int
     {
-        if ($this->hasElementId()) {
-            if ($this->elementId !== last($this->ranks)) {
-                $key = array_search($this->elementId, $this->ranks);
-                return $this->toggle($this->elementId, $this->ranks[$key + 1]);
+        if ($this->hasNodeId()) {
+            if ($this->nodeId !== last($this->ranks)) {
+                $key = array_search($this->nodeId, $this->ranks);
+                return $this->toggle($this->nodeId, $this->ranks[$key + 1]);
             }
 
             return count($this->ranks);
         }
-    }
-
-    /**
-     * Get the ranking primary key from the element.
-     *
-     * @param mixed $element
-     * @return mixed
-     */
-    protected function getElementId($element)
-    {
-        if (is_object($element) && method_exists($element, 'getKey')) {
-            return $element->getKey();
-        }
-
-        return $element;
     }
 
     /**
@@ -156,47 +177,62 @@ class Ranker extends Eloquent implements RankerContract
     }
 
     /**
-     * Check that the elementId attribute is set.
+     * Get the ranking primary key from the node.
+     *
+     * @param mixed $node
+     * @return mixed
+     */
+    protected function getNodeId($node)
+    {
+        if (is_object($node) && method_exists($node, 'getKey')) {
+            return $node->getKey();
+        }
+
+        return $node;
+    }
+
+    /**
+     * Check that the nodeId attribute is set.
      *
      * @return bool
      * @throws \Exception
      */
-    protected function hasElementId(): bool
+    protected function hasNodeId(): bool
     {
-        if ($this->elementId) {
+        if ($this->nodeId) {
             return true;
         }
 
-        throw new \Exception('You must set the element with the move method before using this function. See documentation.');
+        throw new \Exception('You must set the node with the move method before using this function. See documentation.');
     }
 
     /**
-     * Check that the element is in the ranking.
+     * Check that the node is in the ranking.
      *
-     * @param mixed $element
+     * @param mixed $node
      * @return bool
      */
-    public function inRanking($element): bool
+    public function inRanking($node): bool
     {
-        $elementId = $this->getElementId($element);
+        $elementId = $this->getNodeId($node);
 
         return in_array($elementId, $this->ranks);
     }
 
     /**
-     * Move the element last in the ranking.
-     * Return the rank of the last element.
+     * Move the node last in the ranking.
+     * Return the rank of the last node.
      *
      * @return int
      * @throws \Exception
      */
     public function last(): int
     {
-        if ($this->hasElementId()) {
-            if ($this->elementId !== last($this->ranks)) {
+        if ($this->hasNodeId()) {
+            if ($this->nodeId !== last($this->ranks)) {
                 $ranks = $this->ranks;
-                $ranks = array_diff($ranks, [$this->elementId]);
-                $this->commit(array_merge($ranks, [$this->elementId]));
+                $ranks = array_diff($ranks, [$this->nodeId]);
+                $this->commit(array_merge($ranks, [$this->nodeId]));
             }
 
             return count($this->ranks);
@@ -204,26 +240,26 @@ class Ranker extends Eloquent implements RankerContract
     }
 
     /**
-     * Set the element id that is to reorder.
+     * Set the node id that is to reorder.
      *
-     * @param  mixed $element
+     * @param  mixed $node
      * @return self
      * @throws \Exception
      */
-    public function move($element): RankerContract
+    public function move($node): RankerContract
     {
-        if ($this->inRanking($element)) {
-            $this->setElementId($element);
+        if ($this->inRanking($node)) {
+            $this->setNodeId($node);
 
             return $this;
         }
 
-        throw new \Exception('The element is not in the rankings.');
+        throw new \Exception('The node is not in the rankings.');
     }
 
     /**
-     * Move the element to a specific index.
-     * Return the new index of the element.
+     * Move the node to a specific index.
+     * Return the new index of the node.
      *
      * @param  int $index
      * @return int
@@ -231,10 +267,10 @@ class Ranker extends Eloquent implements RankerContract
      */
     protected function moveTo(int $index): int
     {
-        if ($this->hasElementId()) {
+        if ($this->hasNodeId()) {
             $ranks = $this->ranks;
-            $ranks = array_diff($ranks, [$this->elementId]);
-            array_splice($ranks, $index, 0, $this->elementId);
+            $ranks = array_diff($ranks, [$this->nodeId]);
+            array_splice($ranks, $index, 0, $this->nodeId);
             $this->commit($ranks);
 
             return $index;
@@ -242,15 +278,15 @@ class Ranker extends Eloquent implements RankerContract
     }
 
     /**
-     * Return the rank of the element in the ranking.
+     * Return the rank of the node in the ranking.
      *
-     * @param  mixed $element
+     * @param  mixed $node
      * @return int
      */
-    public function rank($element): int
+    public function rank($node): int
     {
-        if ($this->inRanking($element)) {
-            return array_search($this->getElementId($element), $this->ranks) + 1;
+        if ($this->inRanking($node)) {
+            return array_search($this->getNodeId($node), $this->ranks) + 1;
         }
 
         return -1;
@@ -259,16 +295,16 @@ class Ranker extends Eloquent implements RankerContract
     /**
      * Remove an item in the ranking.
      *
-     * @param  mixed $element
+     * @param  mixed $node
      * @return bool
      */
-    public function remove($element): bool
+    public function remove($node): bool
     {
-        if ($this->inRanking($element)) {
+        if ($this->inRanking($node)) {
             $ranks = $this->ranks;
             $this->commit(
                 array_values(
-                    array_diff($ranks, [$this->getElementId($element)])
+                    array_diff($ranks, [$this->getNodeId($node)])
                 )
             );
         }
@@ -289,17 +325,17 @@ class Ranker extends Eloquent implements RankerContract
     }
 
     /**
-     * Set the element id that is to reorder.
+     * Set the node id that is to reorder.
      *
-     * @param mixed $element
+     * @param mixed $node
      * @return void
      * @throws \Exception
      */
-    protected function setElementId($element): void
+    protected function setNodeId($node): void
     {
-        $elementId = $this->getElementId($element);
+        $elementId = $this->getNodeId($node);
 
-        $this->elementId = $elementId;
+        $this->nodeId = $elementId;
     }
 
     /**
@@ -317,17 +353,17 @@ class Ranker extends Eloquent implements RankerContract
     /**
      * Order the list according to the items position in the ranking.
      *
-     * @param Collection $elements
+     * @param Collection $nodes
      * @return Collection
      */
-    public function sortByRank(Collection $elements): Collection
+    public function sortByRank(Collection $nodes): Collection
     {
-        if (count($elements) === count($this->ranks)) {
-            $sortedList = array_pad([], count($elements), false);
+        if (count($nodes) === count($this->ranks)) {
+            $sortedList = array_pad([], count($nodes), false);
 
-            foreach ($elements as $element)
+            foreach ($nodes as $node)
             {
-                $sortedList[array_search($this->getElementId($element), $this->ranks)] = $element;
+                $sortedList[array_search($this->getNodeId($node), $this->ranks)] = $node;
             }
 
             return collect($sortedList);
@@ -335,36 +371,36 @@ class Ranker extends Eloquent implements RankerContract
 
         Log::warning('The number of items in the collection and the number of ids stored in ranking don\'t match for ranking id : ' . $this->getKey());
 
-        return $elements;
+        return $nodes;
     }
 
     /**
-     * Toggle two elements in the ranking.
-     * Return the new rank of the first element.
+     * Toggle two nodes in the ranking.
+     * Return the new rank of the first node.
      *
-     * @param  \Illuminate\Database\Eloquent\Model $firstElement
-     * @param  \Illuminate\Database\Eloquent\Model $lastElement
+     * @param  \Illuminate\Database\Eloquent\Model $firstNode
+     * @param  \Illuminate\Database\Eloquent\Model $lastNode
      * @return int
      */
-    public function toggle($firstElement, $lastElement): int
+    public function toggle($firstNode, $lastNode): int
     {
-        $firstElement = $this->getElementId($firstElement);
-        $lastElement = $this->getElementId($lastElement);
+        $firstNode = $this->getNodeId($firstNode);
+        $lastNode = $this->getNodeId($lastNode);
 
-        if ($firstElement !== $lastElement && $this->inRanking($firstElement) && $this->inRanking($lastElement)) {
-            $firstKey = array_search($firstElement, $this->ranks);
-            $lastKey = array_search($lastElement, $this->ranks);
+        if ($firstNode !== $lastNode && $this->inRanking($firstNode) && $this->inRanking($lastNode)) {
+            $firstKey = array_search($firstNode, $this->ranks);
+            $lastKey = array_search($lastNode, $this->ranks);
             $ranks = $this->ranks;
             [$ranks[$firstKey], $ranks[$lastKey]] = [$ranks[$lastKey], $ranks[$firstKey]];
             $this->commit($ranks);
         }
 
-        return $this->rank($firstElement);
+        return $this->rank($firstNode);
     }
 
     /**
-     * Move the element to a specific index.
-     * Return the new index of the element.
+     * Move the node to a specific index.
+     * Return the new index of the node.
      *
      * @param  int $index
      * @return int
@@ -384,8 +420,8 @@ class Ranker extends Eloquent implements RankerContract
     }
 
     /**
-     * Move the element to a specific rank.
-     * Return the new rank of the element.
+     * Move the node to a specific rank.
+     * Return the new rank of the node.
      *
      * @param  int $rank
      * @return int
@@ -407,18 +443,18 @@ class Ranker extends Eloquent implements RankerContract
     }
 
     /**
-     * Move the element one rank up.
-     * Return the rank of the upgraded element.
+     * Move the node one rank up.
+     * Return the rank of the upgraded node.
      *
      * @return int
      * @throws \Exception
      */
     public function up(): int
     {
-        if ($this->hasElementId()) {
-            if ($this->rank($this->elementId) > 1) {
-                $key = array_search($this->elementId, $this->ranks);
-                return $this->toggle($this->elementId, $this->ranks[$key - 1]);
+        if ($this->hasNodeId()) {
+            if ($this->rank($this->nodeId) > 1) {
+                $key = array_search($this->nodeId, $this->ranks);
+                return $this->toggle($this->nodeId, $this->ranks[$key - 1]);
             }
 
             return 1;

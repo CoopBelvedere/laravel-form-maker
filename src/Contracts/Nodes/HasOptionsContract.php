@@ -2,9 +2,12 @@
 
 namespace Belvedere\FormMaker\Contracts\Nodes;
 
-use Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract;
+use Belvedere\FormMaker\Contracts\{
+    Inputs\Option\OptionerContract,
+    Rankings\HasRankingsContract
+};
 
-interface HasOptionsContract
+interface HasOptionsContract extends HasRankingsContract
 {
     /**
      * Add an option for the input.

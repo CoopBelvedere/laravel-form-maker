@@ -2,23 +2,34 @@
 
 namespace Belvedere\FormMaker\Contracts\Rankings;
 
-use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Support\Collection;
+use Illuminate\{
+    Database\Eloquent\Relations\MorphOne,
+    Support\Collection
+};
 
 interface RankerContract
 {
     /**
-     * Add an element in the rankings.
-     * Return the rank of the new element.
+     * Add an node in the rankings.
+     * Return the rank of the new node.
      *
-     * @param mixed $element
+     * @param mixed $node
      * @return int
      * @throws \Exception
      */
-    public function add($element): int;
+    public function add($node): int;
 
     /**
-     * Move the element first in the ranking.
+     * Move the node after another node in the ranking.
+     *
+     * @param mixed $afterNode
+     * @return int
+     * @throws \Exception
+     */
+    public function after($afterNode): int;
+
+    /**
+     * Move the node first in the ranking.
      *
      * @return int
      * @throws \Exception
@@ -26,8 +37,17 @@ interface RankerContract
     public function ahead(): int;
 
     /**
-     * Move the element one rank down.
-     * Return the new rank of the downgraded element.
+     * Move the node before another node in the ranking.
+     *
+     * @param mixed $beforeNode
+     * @return int
+     * @throws \Exception
+     */
+    public function before($beforeNode): int;
+
+    /**
+     * Move the node one rank down.
+     * Return the new rank of the downgraded node.
      *
      * @return int
      * @throws \Exception
@@ -43,16 +63,16 @@ interface RankerContract
     public function getEloquentRelation($rankable): MorphOne;
 
     /**
-     * Check that the element is in the ranking.
+     * Check that the node is in the ranking.
      *
-     * @param mixed $element
+     * @param mixed $node
      * @return bool
      */
-    public function inRanking($element): bool;
+    public function inRanking($node): bool;
 
     /**
-     * Move the element last in the ranking.
-     * Return the rank of the last element.
+     * Move the node last in the ranking.
+     * Return the rank of the last node.
      *
      * @return int
      * @throws \Exception
@@ -60,29 +80,29 @@ interface RankerContract
     public function last(): int;
 
     /**
-     * Set the element id that is to reorder.
+     * Set the node id that is to reorder.
      *
-     * @param  mixed $element
+     * @param  mixed $node
      * @return self
      * @throws \Exception
      */
-    public function move($element): RankerContract;
+    public function move($node): RankerContract;
 
     /**
-     * Return the rank of the element in the ranking.
+     * Return the rank of the node in the ranking.
      *
-     * @param  mixed $element
+     * @param  mixed $node
      * @return int
      */
-    public function rank($element): int;
+    public function rank($node): int;
 
     /**
      * Remove an item in the ranking.
      *
-     * @param  mixed $element
+     * @param  mixed $node
      * @return bool
      */
-    public function remove($element): bool;
+    public function remove($node): bool;
 
     /**
      * Reverse the ranks in the ranking.
@@ -101,24 +121,24 @@ interface RankerContract
     /**
      * Order the list according to the items position in the ranking.
      *
-     * @param Collection $elements
+     * @param Collection $nodes
      * @return Collection
      */
-    public function sortByRank(Collection $elements): Collection;
+    public function sortByRank(Collection $nodes): Collection;
 
     /**
-     * Toggle two elements in the ranking.
-     * Return the new rank of the first element.
+     * Toggle two nodes in the ranking.
+     * Return the new rank of the first node.
      *
-     * @param  mixed $firstElement
-     * @param  mixed $lastElement
+     * @param  \Illuminate\Database\Eloquent\Model $firstNode
+     * @param  \Illuminate\Database\Eloquent\Model $lastNode
      * @return int
      */
-    public function toggle($firstElement, $lastElement): int;
+    public function toggle($firstNode, $lastNode): int;
 
     /**
-     * Move the element to a specific index.
-     * Return the new index of the element.
+     * Move the node to a specific index.
+     * Return the new index of the node.
      *
      * @param  int $index
      * @return int
@@ -127,8 +147,8 @@ interface RankerContract
     public function toIndex(int $index): int;
 
     /**
-     * Move the element to a specific rank.
-     * Return the new rank of the element.
+     * Move the node to a specific rank.
+     * Return the new rank of the node.
      *
      * @param  int $rank
      * @return int
@@ -137,8 +157,8 @@ interface RankerContract
     public function toRank(int $rank): int;
 
     /**
-     * Move the element one rank up.
-     * Return the rank of the upgraded element.
+     * Move the node one rank up.
+     * Return the rank of the upgraded node.
      *
      * @return int
      * @throws \Exception
