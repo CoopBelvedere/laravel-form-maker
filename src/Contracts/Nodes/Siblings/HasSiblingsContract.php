@@ -11,7 +11,7 @@ interface HasSiblingsContract
      *
      * @param string $type
      * @param string|null $text
-     * @return \Belvedere\FormMaker\Models\Nodes\Siblings\Sibling
+     * @return \Belvedere\FormMaker\Models\Nodes\Siblings\Sibling|null
      */
-    public function addSibling(string $type, ?string $text = null): Sibling;
+    public function addSibling(string $type, ?string $text = null): ?Sibling;
 }

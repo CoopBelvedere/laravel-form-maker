@@ -14,11 +14,14 @@ trait HasSiblings
      *
      * @param string $type
      * @param string|null $text
-     * @return \Belvedere\FormMaker\Models\Nodes\Siblings\Sibling
+     * @return \Belvedere\FormMaker\Models\Nodes\Siblings\Sibling|null
      */
-    public function addSibling(string $type, ?string $text = null): Sibling
+    public function addSibling(string $type, ?string $text = null): ?Sibling
     {
-        // TODO: add a validation to make sure type is for sibling component
+        if (!array_key_exists($type, config('form-maker.nodes.siblings'))) {
+            return null;
+        }
+
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
         $sibling = $nodeRepository->create($this, $type);
