@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Traits\Nodes;
 
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
-use Belvedere\FormMaker\Models\Nodes\Node;
+use Belvedere\FormMaker\Models\Nodes\Siblings\Sibling;
 
 trait HasSiblings
 {
@@ -11,18 +11,22 @@ trait HasSiblings
      * Add a node to the parent model.
      *
      * @param string $type
-     * @return \Belvedere\FormMaker\Models\Nodes\Node
-     * @throws \Exception
+     * @param string|null $text
+     * @return \Belvedere\FormMaker\Models\Nodes\Siblings\Sibling
      */
-    public function addSibling(string $type): Node
+    public function addSibling(string $type, ?string $text = null): Sibling
     {
         // TODO: add a validation to make sure type is for sibling component
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        $node = $nodeRepository->create($this, $type);
+        $sibling = $nodeRepository->create($this, $type);
 
-        $this->addInRanking($node);
+        if ($text) {
+            $sibling->withText($text)->save();
+        }
 
-        return $node;
+        $this->addInRanking($sibling);
+
+        return $sibling;
     }
 }

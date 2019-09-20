@@ -2,9 +2,12 @@
 
 namespace Belvedere\FormMaker\Contracts\Siblings;
 
-use Belvedere\FormMaker\Contracts\Nodes\NodeContract;
+use Belvedere\FormMaker\Contracts\{
+    Nodes\NodeContract,
+    Text\HasTextContract
+};
 
-interface SiblingContract extends NodeContract
+interface SiblingContract extends HasTextContract, NodeContract
 {
     /**
      * Transform the input to JSON.

@@ -4,10 +4,11 @@ namespace Belvedere\FormMaker\Contracts\Inputs;
 
 use Belvedere\FormMaker\Contracts\{
     Nodes\NodeContract,
+    Nodes\Siblings\HasSiblingsContract,
     Rules\HasRulesContract
 };
 
-interface InputContract extends HasRulesContract, NodeContract
+interface InputContract extends HasRulesContract, HasSiblingsContract, NodeContract
 {
     /**
      * Return the list of the default html attributes automatically assigned on creation.
