@@ -4,13 +4,12 @@ namespace Belvedere\FormMaker\Models\Nodes\Inputs\Select;
 
 use Belvedere\FormMaker\{
     Contracts\Inputs\Select\SelecterContract,
-    Contracts\Nodes\HasOptionsContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope,
     Traits\Nodes\HasOptions
 };
 
-class Selecter extends Input implements HasOptionsContract, SelecterContract
+class Selecter extends Input implements SelecterContract
 {
     use HasOptions;
 

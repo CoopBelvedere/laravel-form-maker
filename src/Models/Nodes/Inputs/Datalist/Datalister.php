@@ -12,7 +12,7 @@ use Belvedere\FormMaker\{
 };
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Datalister extends Input implements DatalisterContract, HasOptionsContract
+class Datalister extends Input implements DatalisterContract
 {
     use HasOptions;
 

@@ -2,8 +2,10 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
-use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
-use Belvedere\FormMaker\Models\Nodes\Siblings\Sibling;
+use Belvedere\FormMaker\{
+    Contracts\Repositories\NodeRepositoryContract,
+    Models\Nodes\Siblings\Sibling
+};
 
 trait HasSiblings
 {
