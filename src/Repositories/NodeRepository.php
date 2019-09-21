@@ -53,12 +53,25 @@ class NodeRepository implements NodeRepositoryContract
      * @param \Belvedere\FormMaker\Models\Model $parent
      * @param string|null $type
      * @return \Illuminate\Support\Collection
-     * @throws \Exception
      */
     public function all(Model $parent, ?string $type = null): Collection
     {
-        // TODO
-        return collect([]);
+        DB::listen(function ($query) {
+            dump($query->sql);
+        });
+
+        $query = DB::table(config('form-maker.database.form_nodes_table'))
+            ->where('nodable_type', $parent->getMorphClass())
+            ->where('nodable_id', $parent->getKey())
+            ->groupBy('type');
+
+        if ($type === 'inputs' || $type === 'siblings') {
+            $query->where('type', $type);
+        } else if ($type) {
+            $query->where('type', $type);
+        }
+
+        return $query->get();
     }
 
     /**
@@ -67,7 +80,6 @@ class NodeRepository implements NodeRepositoryContract
      * @param \Belvedere\FormMaker\Models\Model $parent
      * @param string $type
      * @return \Belvedere\FormMaker\Models\Nodes\Node
-     * @throws \Exception
      */
     public function create(Model $parent, string $type): Node
     {
@@ -83,16 +95,16 @@ class NodeRepository implements NodeRepositoryContract
     /**
      * Get the node with the specified id.
      *
-     * @param \Belvedere\FormMaker\Models\Model $model
+     * @param \Belvedere\FormMaker\Models\Model $parent
      * @param mixed $nodeKey
      * @param array $columns
      * @return \Belvedere\FormMaker\Models\Nodes\Node|null
      */
-    public function find(Model $model, $nodeKey, array $columns): ?Node
+    public function find(Model $parent, $nodeKey, array $columns): ?Node
     {
         $query = DB::table(config('form-maker.database.form_nodes_table'))
-            ->where('nodable_type', $model->getMorphClass())
-            ->where('nodable_id', $model->getKey());
+            ->where('nodable_type', $parent->getMorphClass())
+            ->where('nodable_id', $parent->getKey());
 
         if (count($columns) > 0) {
             $query->where(function ($query) use ($columns, $nodeKey) {

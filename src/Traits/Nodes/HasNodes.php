@@ -109,11 +109,8 @@ trait HasNodes
      */
     public function nodes(?string $type = null): Collection
     {
-        $nodes = $this->getRelations();
-        // pass the relations in with
-        // regroup them into node family
-        dd($nodes);
+        $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        return collect([]);
+        return $nodeRepository->find($this);
     }
 }
