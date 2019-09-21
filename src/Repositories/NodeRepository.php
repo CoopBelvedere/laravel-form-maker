@@ -2,12 +2,14 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
-use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
-use Belvedere\FormMaker\Models\{
-    Model,
-    Nodes\Node
+use Belvedere\FormMaker\{
+    Contracts\Repositories\NodeRepositoryContract,
+    Models\Model,
+    Models\Nodes\Node
+};
+use Illuminate\Support\{
+    Collection,
+    Facades\DB
 };
 
 class NodeRepository implements NodeRepositoryContract
