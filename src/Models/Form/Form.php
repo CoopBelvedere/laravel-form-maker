@@ -71,6 +71,26 @@ class Form extends Model implements FormContract, HasNodesContract
     }
 
     /**
+     * Disable all inputs.
+     *
+     * @return void
+     */
+    public function disabled(): void
+    {
+        $this->setInputsUsability('disabled');
+    }
+
+    /**
+     * Enable all inputs.
+     *
+     * @return void
+     */
+    public function enabled(): void
+    {
+        $this->setInputsUsability();
+    }
+
+    /**
      * Specifies the form http method.
      *
      * @param string|null $method
@@ -97,6 +117,18 @@ class Form extends Model implements FormContract, HasNodesContract
             }
             return [];
         })->all();
+    }
+
+    /**
+     * Set whether the inputs are disabled or not.
+     *
+     * @param string|null $disabled
+     */
+    protected function setInputsUsability(?string $disabled = null): void
+    {
+        foreach ($this->nodes('inputs') as $input) {
+            $input->withHtmlAttributes(['disabled' => $disabled])->save();
+        }
     }
 
     /**

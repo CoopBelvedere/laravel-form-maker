@@ -15,6 +15,20 @@ interface FormContract extends ModelContract
     public function action(string $action): FormContract;
 
     /**
+     * Disable all inputs.
+     *
+     * @return void
+     */
+    public function disabled(): void;
+
+    /**
+     * Enable all inputs.
+     *
+     * @return void
+     */
+    public function enabled(): void;
+
+    /**
      * Specifies the form http method.
      *
      * @param string $method
