@@ -91,7 +91,7 @@ class Form extends Model implements FormContract, HasNodesContract
      */
     public function rules(): array
     {
-        return $this->inputs()->mapWithKeys(function ($input) {
+        return $this->nodes('inputs')->mapWithKeys(function ($input) {
             if ($input->rules) {
                 return [$input->html_attributes['name'] => implode('|', $input->rules)];
             }
