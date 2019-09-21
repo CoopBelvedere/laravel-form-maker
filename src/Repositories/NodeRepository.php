@@ -106,11 +106,9 @@ class NodeRepository implements NodeRepositoryContract
             });
         }
 
-        $node = $query->first(['id', 'type']);
+        $node = $query->first();
 
-        return (is_null($node)) ? $node : $model->morphMany($this->resolve($node->type), 'nodable')
-            ->where('id', $node->id)
-            ->first();
+        return (is_null($node)) ? $node : $this->resolve($node->type)::hydrate([$node])[0];
     }
 
     /**
