@@ -116,8 +116,6 @@ trait HasNodes
             return $nodes;
         }
 
-        dd($this->ranking->sortByRank($nodes)->values()->all());
-
         return $this->ranking->sortByRank($nodes);
     }
 }
