@@ -6,7 +6,7 @@ use Belvedere\FormMaker\{
     Contracts\Rankings\HasRankingsContract,
     Models\Nodes\Node
 };
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 
 interface HasNodesContract extends HasRankingsContract
 {
@@ -61,8 +61,8 @@ interface HasNodesContract extends HasRankingsContract
      * Get the nodes filtered by type or not and sorted by their position in the ranking.
      *
      * @param string|null $type
-     * @return \Illuminate\Support\Collection
+     * @return \Illuminate\Support\LazyCollection
      * @throws \Exception
      */
-    public function nodes(?string $type = null): Collection;
+    public function nodes(?string $type = null): LazyCollection;
 }

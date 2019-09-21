@@ -8,8 +8,8 @@ use Belvedere\FormMaker\{
     Models\Nodes\Node
 };
 use Illuminate\Support\{
-    Collection,
-    Facades\DB
+    Facades\DB,
+    LazyCollection
 };
 
 class NodeRepository implements NodeRepositoryContract
@@ -48,30 +48,28 @@ class NodeRepository implements NodeRepositoryContract
     ];
 
     /**
-     * Get the model nodes filtered by type or not and sorted by their position in the ranking.
+     * Get the model nodes filtered by type or not.
      *
      * @param \Belvedere\FormMaker\Models\Model $parent
      * @param string|null $type
-     * @return \Illuminate\Support\Collection
+     * @return \Illuminate\Support\LazyCollection
      */
-    public function all(Model $parent, ?string $type = null): Collection
+    public function all(Model $parent, ?string $type = null): LazyCollection
     {
-        DB::listen(function ($query) {
-            dump($query->sql);
-        });
-
         $query = DB::table(config('form-maker.database.form_nodes_table'))
             ->where('nodable_type', $parent->getMorphClass())
             ->where('nodable_id', $parent->getKey())
-            ->groupBy('type');
+            ->orderBy('type');
 
         if ($type === 'inputs' || $type === 'siblings') {
-            $query->where('type', $type);
+            $query->whereIn('type', array_keys(config('form-maker.nodes')[$type]));
         } else if ($type) {
             $query->where('type', $type);
         }
 
-        return $query->get();
+        return $query->cursor()->groupBy('type')->map(function ($nodes, $key) {
+            return $this->resolve($nodes[0]->type)::hydrate($nodes->toArray());
+        })->flatten(1);
     }
 
     /**
