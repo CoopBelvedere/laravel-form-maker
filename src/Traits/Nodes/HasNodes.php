@@ -90,7 +90,7 @@ trait HasNodes
     /**
      * Get the node with the specified id.
      *
-     * @param mixed $id
+     * @param mixed $key
      * @return \Belvedere\FormMaker\Models\Nodes\Node|null
      */
     public function node($key): ?Node
@@ -105,12 +105,19 @@ trait HasNodes
      *
      * @param string|null $type
      * @return \Illuminate\Support\LazyCollection
-     * @throws \Exception
      */
     public function nodes(?string $type = null): LazyCollection
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        return $nodeRepository->find($this);
+        $nodes = $nodeRepository->all($this, $type);
+
+        if ($nodes->isEmpty()) {
+            return $nodes;
+        }
+
+        dd($this->ranking->sortByRank($nodes)->values()->all());
+
+        return $this->ranking->sortByRank($nodes);
     }
 }

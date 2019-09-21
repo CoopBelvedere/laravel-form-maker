@@ -3,11 +3,10 @@
 namespace Belvedere\FormMaker\Models\Rankings;
 
 use Belvedere\FormMaker\Contracts\Rankings\RankerContract;
-use Illuminate\{Database\Eloquent\Model as Eloquent,
-    Database\Eloquent\Relations\MorphMany,
+use Illuminate\{
+    Database\Eloquent\Model as Eloquent,
     Database\Eloquent\Relations\MorphOne,
-    Support\Collection,
-    Support\Facades\Log};
+};
 
 class Ranker extends Eloquent implements RankerContract
 {
@@ -351,27 +350,16 @@ class Ranker extends Eloquent implements RankerContract
     }
 
     /**
-     * Order the list according to the items position in the ranking.
+     * Order the list according to the nodes position in the ranking.
      *
-     * @param Collection $nodes
-     * @return Collection
+     * @param \Illuminate\Support\Collection|\Illuminate\Support\LazyCollection $nodes
+     * @return \Illuminate\Support\Collection|\Illuminate\Support\LazyCollection
      */
-    public function sortByRank(Collection $nodes): Collection
+    public function sortByRank($nodes)
     {
-        if (count($nodes) === count($this->ranks)) {
-            $sortedList = array_pad([], count($nodes), false);
-
-            foreach ($nodes as $node)
-            {
-                $sortedList[array_search($this->getNodeId($node), $this->ranks)] = $node;
-            }
-
-            return collect($sortedList);
-        }
-
-        Log::warning('The number of items in the collection and the number of ids stored in ranking don\'t match for ranking id : ' . $this->getKey());
-
-        return $nodes;
+        return $nodes->sortBy(function ($node, $key) {
+            return $this->rank($node);
+        });
     }
 
     /**

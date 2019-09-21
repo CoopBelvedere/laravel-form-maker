@@ -52,7 +52,7 @@ interface HasNodesContract extends HasRankingsContract
     /**
      * Get the node with the specified id.
      *
-     * @param mixed $id
+     * @param mixed $key
      * @return \Belvedere\FormMaker\Models\Nodes\Node|null
      */
     public function node($key): ?Node;
@@ -62,7 +62,6 @@ interface HasNodesContract extends HasRankingsContract
      *
      * @param string|null $type
      * @return \Illuminate\Support\LazyCollection
-     * @throws \Exception
      */
     public function nodes(?string $type = null): LazyCollection;
 }
