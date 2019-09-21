@@ -53,9 +53,9 @@ interface HasNodesContract extends HasRankingsContract
      * Get the node with the specified id.
      *
      * @param mixed $id
-     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     * @return \Belvedere\FormMaker\Models\Nodes\Node|null
      */
-    public function node($key): Node;
+    public function node($key): ?Node;
 
     /**
      * Get the nodes filtered by type or not and sorted by their position in the ranking.

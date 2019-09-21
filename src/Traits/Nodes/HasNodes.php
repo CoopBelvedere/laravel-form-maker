@@ -91,15 +91,13 @@ trait HasNodes
      * Get the node with the specified id.
      *
      * @param mixed $id
-     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     * @return \Belvedere\FormMaker\Models\Nodes\Node|null
      */
-    public function node($key): Node
+    public function node($key): ?Node
     {
-        // $nodeRepository = resolve(NodeRepositoryContract::class);
+        $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        // $nodeRepository->find($this, $key, ['id', 'name', 'value']);
-
-        return new Node();
+        return $nodeRepository->find($this, $key, ['id', 'name', 'value']);
     }
 
     /**

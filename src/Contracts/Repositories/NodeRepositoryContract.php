@@ -34,9 +34,9 @@ interface NodeRepositoryContract
      * Get the node with the specified key.
      *
      * @param \Belvedere\FormMaker\Models\Model $model
-     * @param mixed $key
+     * @param mixed $nodeKey
      * @param array $columns
-     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     * @return \Belvedere\FormMaker\Models\Nodes\Node|null
      */
-    public function find(Model $model, $key, array $columns): Node;
+    public function find(Model $model, $nodeKey, array $columns): ?Node;
 }

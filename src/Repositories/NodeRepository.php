@@ -4,6 +4,7 @@ namespace Belvedere\FormMaker\Repositories;
 
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Belvedere\FormMaker\Models\{
     Model,
     Nodes\Node
@@ -81,13 +82,33 @@ class NodeRepository implements NodeRepositoryContract
      * Get the node with the specified id.
      *
      * @param \Belvedere\FormMaker\Models\Model $model
-     * @param mixed $key
+     * @param mixed $nodeKey
      * @param array $columns
-     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     * @return \Belvedere\FormMaker\Models\Nodes\Node|null
      */
-    public function find(Model $model, $key, array $columns): Node
+    public function find(Model $model, $nodeKey, array $columns): ?Node
     {
-        return new Node();
+        $query = DB::table(config('form-maker.database.form_nodes_table'))
+            ->where('nodable_type', $model->getMorphClass())
+            ->where('nodable_id', $model->getKey());
+
+        if (count($columns) > 0) {
+            $query->where(function ($query) use ($columns, $nodeKey) {
+                foreach ($columns as $key => $column) {
+                    if ($key === 0) {
+                        $query->where(sprintf('html_attributes->%s', $column), $nodeKey);
+                    } else {
+                        $query->orWhere(sprintf('html_attributes->%s', $column), $nodeKey);
+                    }
+                }
+            });
+        }
+
+        $node = $query->first(['id', 'type']);
+
+        return (is_null($node)) ? $node : $model->morphMany($this->resolve($node->type), 'nodable')
+            ->where('id', $node->id)
+            ->first();
     }
 
     /**
