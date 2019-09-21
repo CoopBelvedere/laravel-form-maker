@@ -6,6 +6,7 @@ use Belvedere\FormMaker\Contracts\{
     Inputs\Option\OptionerContract,
     Repositories\NodeRepositoryContract
 };
+use Illuminate\Support\LazyCollection;
 
 trait HasOptions
 {
@@ -13,7 +14,7 @@ trait HasOptions
      * Add a node to the parent model.
      *
      * @param array $attributes
-     * @return \Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract $option
+     * @return \Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract
      */
     public function addOption(array $attributes): OptionerContract
     {
@@ -47,5 +48,38 @@ trait HasOptions
         }
 
         return $nodes;
+    }
+
+    /**
+     * Get the option with the specified key.
+     *
+     * @param mixed $key
+     * @return \Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract|null
+     */
+    public function option($key): ?OptionerContract
+    {
+        $nodeRepository = resolve(NodeRepositoryContract::class);
+
+        $option = $nodeRepository->find($this, $key, ['id', 'value']);
+
+        return ($option->type === 'option') ? $option : null;
+    }
+
+    /**
+     * Get the options sorted by their position in the ranking.
+     *
+     * @return \Illuminate\Support\LazyCollection
+     */
+    public function options(): LazyCollection
+    {
+        $nodeRepository = resolve(NodeRepositoryContract::class);
+
+        $options = $nodeRepository->all($this, 'option');
+
+        if ($options->isEmpty()) {
+            return $options;
+        }
+
+        return $this->ranking->sortByRank($options);
     }
 }

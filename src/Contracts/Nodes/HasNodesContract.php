@@ -50,7 +50,7 @@ interface HasNodesContract extends HasRankingsContract
     public function addBefore($beforeNodeKey, string $type): Node;
 
     /**
-     * Get the node with the specified id.
+     * Get the node with the specified key.
      *
      * @param mixed $key
      * @return \Belvedere\FormMaker\Models\Nodes\Node|null

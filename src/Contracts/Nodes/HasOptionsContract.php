@@ -6,6 +6,7 @@ use Belvedere\FormMaker\Contracts\{
     Inputs\Option\OptionerContract,
     Rankings\HasRankingsContract
 };
+use Illuminate\Support\LazyCollection;
 
 interface HasOptionsContract extends HasRankingsContract
 {
@@ -24,4 +25,19 @@ interface HasOptionsContract extends HasRankingsContract
      * @return array
      */
     public function addOptions(array ...$options): array;
+
+    /**
+     * Get the option with the specified key.
+     *
+     * @param mixed $key
+     * @return \Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract|null
+     */
+    public function option($key): ?OptionerContract;
+
+    /**
+     * Get the options sorted by their position in the ranking.
+     *
+     * @return \Illuminate\Support\LazyCollection
+     */
+    public function options(): LazyCollection;
 }
