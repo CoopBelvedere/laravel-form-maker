@@ -20,6 +20,8 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
     {
         $options = new NodeCollection($this->options() ?? collect([]));
 
+        $inputListId = uniqid('list_');
+
         return [
             'id' => $this->getKey(),
             'type' => $this->type,
@@ -27,8 +29,11 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
                 'html_attributes' => $this->html_attributes,
             ]),
             'input' => [
-                'id' => sprintf('input_%s', $this->id),
-                'name' => $this->name,
+                'type' => 'list',
+                'html_attributes' => array_merge($this->html_attributes, [
+                    'id' => $inputListId,
+                    'list' => $this->html_attributes['id']
+                ]),
             ],
             $this->mergeWhen($options->count() > 0, [
                 'options' => $options,
