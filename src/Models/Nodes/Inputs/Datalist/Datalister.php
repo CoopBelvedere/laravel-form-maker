@@ -4,7 +4,6 @@ namespace Belvedere\FormMaker\Models\Nodes\Inputs\Datalist;
 
 use Belvedere\FormMaker\{
     Contracts\Inputs\Datalist\DatalisterContract,
-    Contracts\Nodes\HasOptionsContract,
     Contracts\Resources\DatalistResourcerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope,

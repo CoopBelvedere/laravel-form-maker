@@ -19,16 +19,16 @@ class FormResource extends JsonResource
 
         return [
             'id' => $this->id,
+            'name' => $this->name,
             $this->mergeWhen($this->description, [
                 'description' => $this->description,
-            ]),
-            $this->mergeWhen($nodes->collection->isNotEmpty(), [
-                'nodes' => $nodes,
             ]),
             $this->mergeWhen($this->html_attributes, [
                 'html_attributes' => $this->html_attributes,
             ]),
-            'name' => $this->name,
+            $this->mergeWhen($nodes->count() > 0, [
+                'nodes' => $nodes,
+            ]),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

@@ -4,7 +4,7 @@ namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs;
 
 use Belvedere\FormMaker\{
     Contracts\Resources\InputResourcerContract,
-    Http\Resources\Nodes\Siblings\SiblingCollection
+    Http\Resources\Nodes\NodeCollection
 };
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,13 +18,11 @@ class InputResourcer extends JsonResource implements InputResourcerContract
      */
     public function toArray($request): array
     {
-        if ($inputs = method_exists($this->resource, 'inputs')) {
-            $inputs = new NodeCollection($this->inputs());
-        } else if ($options = method_exists($this->resource, 'options')) {
-            $options = new NodeCollection($this->options()->get());
+        if ($options = method_exists($this->resource, 'options')) {
+            $options = new NodeCollection($this->options());
         }
 
-        $siblings = new SiblingCollection($this->siblings());
+        $siblings = new NodeCollection($this->siblings());
 
         return [
             'id' => $this->id,
@@ -35,13 +33,10 @@ class InputResourcer extends JsonResource implements InputResourcerContract
             $this->mergeWhen($this->html_attributes, [
                 'html_attributes' => $this->html_attributes,
             ]),
-            $this->mergeWhen($inputs && $inputs->collection->isNotEmpty(), [
-                'inputs' => $inputs,
-            ]),
-            $this->mergeWhen($options && $options->collection->isNotEmpty(), [
+            $this->mergeWhen($options && $options->count() > 0, [
                 'options' => $options,
             ]),
-            $this->mergeWhen($siblings->collection->isNotEmpty(), [
+            $this->mergeWhen($siblings->count() > 0, [
                 'siblings' => $siblings,
             ]),
             'created_at' => $this->created_at,
