@@ -67,16 +67,16 @@ trait HasOptions
     /**
      * Get the options sorted by their position in the ranking.
      *
-     * @return \Illuminate\Support\LazyCollection|null
+     * @return \Illuminate\Support\LazyCollection
      */
-    public function options(): ?LazyCollection
+    public function options(): LazyCollection
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
         $options = $nodeRepository->all($this, 'option');
 
         if ($options->isEmpty()) {
-            return null;
+            return $options;
         }
 
         return $this->ranking->sortByRank($options);

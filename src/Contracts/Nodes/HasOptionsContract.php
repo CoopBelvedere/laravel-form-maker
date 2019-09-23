@@ -37,7 +37,7 @@ interface HasOptionsContract extends HasRankingsContract
     /**
      * Get the options sorted by their position in the ranking.
      *
-     * @return \Illuminate\Support\LazyCollection|null
+     * @return \Illuminate\Support\LazyCollection
      */
-    public function options(): ?LazyCollection;
+    public function options(): LazyCollection;
 }

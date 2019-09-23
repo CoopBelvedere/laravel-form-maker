@@ -104,16 +104,16 @@ trait HasNodes
      * Get the nodes filtered by type or not and sorted by their position in the ranking.
      *
      * @param string|null $type
-     * @return \Illuminate\Support\LazyCollection|null
+     * @return \Illuminate\Support\LazyCollection
      */
-    public function nodes(?string $type = null): ?LazyCollection
+    public function nodes(?string $type = null): LazyCollection
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
         $nodes = $nodeRepository->all($this, $type);
 
         if ($nodes->isEmpty()) {
-            return null;
+            return $nodes;
         }
 
         return $this->ranking->sortByRank($nodes);
