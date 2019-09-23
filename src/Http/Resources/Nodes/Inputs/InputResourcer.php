@@ -25,7 +25,7 @@ class InputResourcer extends JsonResource implements InputResourcerContract
         $siblings = new NodeCollection($this->siblings() ?? collect([]));
 
         return [
-            'id' => $this->id,
+            'id' => $this->getKey(),
             'type' => $this->type,
             $this->mergeWhen($this->text, [
                 'text' => $this->text,

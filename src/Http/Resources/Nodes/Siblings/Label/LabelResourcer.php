@@ -36,7 +36,7 @@ class LabelResourcer extends JsonResource implements LabelResourcerContract
         $this->setParentId();
 
         return [
-            'id' => $this->id,
+            'id' => $this->getKey(),
             'type' => $this->type,
             $this->mergeWhen($this->forId, [
                 'for' => $this->forId,

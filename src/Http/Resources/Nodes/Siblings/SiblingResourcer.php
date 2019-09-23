@@ -16,7 +16,7 @@ class SiblingResourcer extends JsonResource implements SiblingResourcerContract
     public function toArray($request): array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->getKey(),
             'type' => $this->type,
             $this->mergeWhen($this->text, [
                 'text' => $this->text,

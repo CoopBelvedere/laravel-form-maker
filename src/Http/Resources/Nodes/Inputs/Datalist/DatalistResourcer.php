@@ -21,7 +21,7 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
         $options = new NodeCollection($this->options() ?? collect([]));
 
         return [
-            'id' => $this->id,
+            'id' => $this->getKey(),
             'type' => $this->type,
             $this->mergeWhen($this->html_attributes, [
                 'html_attributes' => $this->html_attributes,
