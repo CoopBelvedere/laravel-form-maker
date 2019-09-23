@@ -48,7 +48,7 @@ trait HasSiblings
 
         $sibling = $nodeRepository->find($this, $id, ['id']);
 
-        return array_key_exists($sibling->type, config('form-maker.nodes.siblings'))
+        return (!is_null($sibling) && array_key_exists($sibling->type, config('form-maker.nodes.siblings')))
             ? $sibling : null;
     }
 
@@ -56,16 +56,16 @@ trait HasSiblings
      * Get the siblings filtered by type or not and sorted by their position in the ranking.
      *
      * @param string|null $type
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\LazyCollection|null
      */
-    public function siblings(?string $type = null): LazyCollection
+    public function siblings(?string $type = null): ?LazyCollection
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
         $siblings = $nodeRepository->all($this, $type);
 
         if ($siblings->isEmpty()) {
-            return $siblings;
+            return null;
         }
 
         return $this->ranking->sortByRank($siblings);

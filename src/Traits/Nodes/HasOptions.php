@@ -42,8 +42,7 @@ trait HasOptions
     {
         $nodes = [];
 
-        foreach ($options as $optionAttributes)
-        {
+        foreach ($options as $optionAttributes) {
             $nodes[] = $this->addOption($optionAttributes);
         }
 
@@ -62,22 +61,22 @@ trait HasOptions
 
         $option = $nodeRepository->find($this, $key, ['id', 'value']);
 
-        return ($option->type === 'option') ? $option : null;
+        return (!is_null($option) && $option->type === 'option') ? $option : null;
     }
 
     /**
      * Get the options sorted by their position in the ranking.
      *
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\LazyCollection|null
      */
-    public function options(): LazyCollection
+    public function options(): ?LazyCollection
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
         $options = $nodeRepository->all($this, 'option');
 
         if ($options->isEmpty()) {
-            return $options;
+            return null;
         }
 
         return $this->ranking->sortByRank($options);

@@ -31,7 +31,7 @@ interface HasSiblingsContract extends HasRankingsContract
      * Get the siblings filtered by type or not and sorted by their position in the ranking.
      *
      * @param string|null $type
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\LazyCollection|null
      */
-    public function siblings(?string $type = null): LazyCollection;
+    public function siblings(?string $type = null): ?LazyCollection;
 }

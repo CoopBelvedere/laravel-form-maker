@@ -61,7 +61,7 @@ interface HasNodesContract extends HasRankingsContract
      * Get the nodes filtered by type or not and sorted by their position in the ranking.
      *
      * @param string|null $type
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\LazyCollection|null
      */
-    public function nodes(?string $type = null): LazyCollection;
+    public function nodes(?string $type = null): ?LazyCollection;
 }

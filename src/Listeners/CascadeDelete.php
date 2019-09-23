@@ -50,8 +50,7 @@ class CascadeDelete
     {
         $nodes = $this->getNodes();
 
-        foreach ($nodes as $node)
-        {
+        foreach ($nodes as $node) {
             $node->delete();
         }
     }
