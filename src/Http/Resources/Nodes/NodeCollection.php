@@ -1,10 +1,10 @@
 <?php
 
-namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs\Datalist;
+namespace Belvedere\FormMaker\Http\Resources\Nodes;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class DatalistCollection extends ResourceCollection
+class NodeCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -14,8 +14,8 @@ class DatalistCollection extends ResourceCollection
      */
     public function toArray($request): array
     {
-        return $this->collection->transform(function ($datalist) {
-            return $datalist->toApi();
+        return $this->collection->transform(function ($node) {
+            return $node->toApi();
         })->toArray();
     }
 }

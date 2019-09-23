@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Form;
 
-use Belvedere\FormMaker\Http\Resources\Nodes\Inputs\InputCollection;
+use Belvedere\FormMaker\Http\Resources\Nodes\NodeCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class FormResource extends JsonResource
@@ -15,15 +15,15 @@ class FormResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $inputs = new InputCollection($this->inputs());
+        $nodes = new NodeCollection($this->nodes());
 
         return [
             'id' => $this->id,
             $this->mergeWhen($this->description, [
                 'description' => $this->description,
             ]),
-            $this->mergeWhen($inputs->collection->isNotEmpty(), [
-                'inputs' => $inputs,
+            $this->mergeWhen($nodes->collection->isNotEmpty(), [
+                'nodes' => $nodes,
             ]),
             $this->mergeWhen($this->html_attributes, [
                 'html_attributes' => $this->html_attributes,

@@ -19,9 +19,9 @@ class InputResourcer extends JsonResource implements InputResourcerContract
     public function toArray($request): array
     {
         if ($inputs = method_exists($this->resource, 'inputs')) {
-            $inputs = new InputCollection($this->inputs());
+            $inputs = new NodeCollection($this->inputs());
         } else if ($options = method_exists($this->resource, 'options')) {
-            $options = new InputCollection($this->options()->get());
+            $options = new NodeCollection($this->options()->get());
         }
 
         $siblings = new SiblingCollection($this->siblings());

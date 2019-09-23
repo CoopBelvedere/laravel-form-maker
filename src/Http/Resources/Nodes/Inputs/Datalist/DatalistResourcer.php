@@ -4,7 +4,7 @@ namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs\Datalist;
 
 use Belvedere\FormMaker\{
     Contracts\Resources\DatalistResourcerContract,
-    Http\Resources\Nodes\Inputs\InputCollection
+    Http\Resources\Nodes\Inputs\NodeCollection
 };
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -18,7 +18,7 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
      */
     public function toArray($request): array
     {
-        $options = new InputCollection($this->options()->get());
+        $options = new NodeCollection($this->options()->get());
 
         return [
             'id' => $this->id,
