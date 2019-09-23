@@ -7,7 +7,6 @@ use Belvedere\FormMaker\{
     Contracts\Resources\InputResourcerContract,
     Listeners\AssignAttributes,
     Listeners\CascadeDelete,
-    Listeners\RemoveFromRanking,
     Models\Nodes\Node,
     Traits\Nodes\HasSiblings,
     Traits\Rankings\HasRankings,
@@ -18,17 +17,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class Input extends Node implements InputContract
 {
     use HasRankings, HasRules, HasSiblings;
-
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'creating' => AssignAttributes::class,
-        'deleting' => CascadeDelete::class,
-        'deleted' => RemoveFromRanking::class,
-    ];
 
     /**
      * The default attributes automatically assigned on creation.
@@ -58,6 +46,11 @@ class Input extends Node implements InputContract
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
+
+        $this->dispatchesEvents = array_merge($this->dispatchesEvents, [
+            'creating' => AssignAttributes::class,
+            'deleting' => CascadeDelete::class,
+        ]);
 
         $this->addAvailableAttributes([
             'autocomplete',

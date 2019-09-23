@@ -2,12 +2,24 @@
 
 namespace Belvedere\FormMaker\Models\Nodes;
 
-use Belvedere\FormMaker\Contracts\Nodes\NodeContract;
-use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\{
+    Contracts\Nodes\NodeContract,
+    Listeners\RemoveFromRanking,
+    Models\Model
+};
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Node extends Model implements NodeContract
 {
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'deleted' => RemoveFromRanking::class,
+    ];
+
     /**
      * Node constructor.
      *

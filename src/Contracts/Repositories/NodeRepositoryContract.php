@@ -29,6 +29,14 @@ interface NodeRepositoryContract
     public function create(Model $parent, string $type): Node;
 
     /**
+     * Delete all nodes of the parent model.
+     *
+     * @param \Belvedere\FormMaker\Models\Model $parent
+     * @return mixed
+     */
+    public function delete(Model $parent);
+
+    /**
      * Get the node with the specified key.
      *
      * @param \Belvedere\FormMaker\Models\Model $parent

@@ -91,6 +91,20 @@ class NodeRepository implements NodeRepositoryContract
     }
 
     /**
+     * Delete all nodes of the parent model.
+     *
+     * @param \Belvedere\FormMaker\Models\Model $parent
+     * @return mixed
+     */
+    public function delete(Model $parent)
+    {
+        return DB::table(config('form-maker.database.form_nodes_table'))
+            ->where('nodable_type', $parent->getMorphClass())
+            ->where('nodable_id', $parent->getKey())
+            ->delete();
+    }
+
+    /**
      * Get the node with the specified id.
      *
      * @param \Belvedere\FormMaker\Models\Model $parent

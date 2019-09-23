@@ -1,10 +1,9 @@
 <?php
 
-
 namespace Belvedere\FormMaker\Listeners;
 
+use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Belvedere\FormMaker\Models\Model;
-use Illuminate\Support\Collection;
 
 class CascadeDelete
 {
@@ -43,38 +42,13 @@ class CascadeDelete
     /**
      * Delete all the model nodes.
      *
-     * @param array $nodes
      * @return void
      */
     protected function deleteNodes(): void
     {
-        $nodes = $this->getNodes();
+        $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        foreach ($nodes as $node) {
-            $node->delete();
-        }
-    }
-
-    /**
-     * Get all the model nodes.
-     *
-     * @return \Illuminate\Support\Collection
-     */
-    protected function getNodes(): Collection
-    {
-        $nodes = collect([]);
-
-        if (method_exists($this->model, 'inputs')) {
-            $nodes = $this->model->inputs();
-        } else if (method_exists($this->model, 'options')) {
-            $nodes = $this->model->options()->get();
-        }
-
-        if (method_exists($this->model, 'siblings')) {
-            $nodes = $nodes->merge($this->model->siblings());
-        }
-
-        return $nodes;
+        $nodeRepository->delete($this->model);
     }
 
     /**
