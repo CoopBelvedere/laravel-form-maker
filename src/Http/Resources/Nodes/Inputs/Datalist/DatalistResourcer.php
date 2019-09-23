@@ -6,7 +6,10 @@ use Belvedere\FormMaker\{
     Contracts\Resources\DatalistResourcerContract,
     Http\Resources\Nodes\NodeCollection
 };
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\{
+    Http\Resources\Json\JsonResource,
+    Support\Collection
+};
 
 class DatalistResourcer extends JsonResource implements DatalistResourcerContract
 {
@@ -18,9 +21,9 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
      */
     public function toArray($request): array
     {
-        $options = new NodeCollection($this->options()->collect() ?? collect([]));
-
         $inputListId = uniqid('list_');
+        $options = new NodeCollection($this->options()->collect());
+        $siblings = new NodeCollection($this->setLabelsInList($inputListId));
 
         return [
             'id' => $this->getKey(),
@@ -40,8 +43,27 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
             $this->mergeWhen($options->count() > 0, [
                 'options' => $options,
             ]),
+            $this->mergeWhen($siblings->count() > 0, [
+                'siblings' => $siblings,
+            ]),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
+    }
+
+    /**
+     * Set the label id in the siblings list.
+     *
+     * @param string $inputId
+     * @return \Illuminate\Support\Collection
+     */
+    protected function setLabelsInList(string $inputId): Collection
+    {
+        return $this->siblings()->map(function ($node, $key) use ($inputId) {
+            if ($node->type === 'label') {
+                $node->withHtmlAttributes(['for' => $inputId]);
+            }
+            return $node;
+        })->collect();
     }
 }
