@@ -61,8 +61,8 @@ trait HasSiblings
     public function siblings(?string $type = null): LazyCollection
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
-
-        $siblings = $nodeRepository->all($this, $type);
+        
+        $siblings = $nodeRepository->all($this, 'siblings');
 
         if ($siblings->isEmpty()) {
             return $siblings;
