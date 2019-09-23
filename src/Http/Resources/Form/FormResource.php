@@ -15,8 +15,8 @@ class FormResource extends JsonResource
      */
     public function toArray($request): array
     {
-        $nodes = new NodeCollection($this->nodes() ?? collect([]));
-        
+        $nodes = new NodeCollection($this->nodes()->collect() ?? collect([]));
+
         return [
             'id' => $this->getKey(),
             'name' => $this->name,
