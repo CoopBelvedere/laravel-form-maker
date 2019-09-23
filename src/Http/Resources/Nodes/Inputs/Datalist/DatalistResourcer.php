@@ -18,7 +18,7 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
      */
     public function toArray($request): array
     {
-        $options = new NodeCollection($this->options());
+        $options = new NodeCollection($this->options() ?? collect([]));
 
         return [
             'id' => $this->id,
