@@ -31,7 +31,7 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
                     'id' => $this->html_attributes['id']
                 ],
             ]),
-            $this->mergeWhen($label, [
+            $this->mergeWhen(!is_null($label), [
                 'label' => $label,
             ]),
             'input' => [
