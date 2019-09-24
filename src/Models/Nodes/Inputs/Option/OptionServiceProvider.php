@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Option;
 
-use Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Time;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Time\TimerContract,
+    Contracts\Models\Nodes\Inputs\Time\TimerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

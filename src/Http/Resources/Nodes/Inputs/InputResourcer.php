@@ -3,8 +3,8 @@
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs;
 
 use Belvedere\FormMaker\{
-    Contracts\Resources\InputResourcerContract,
-    Contracts\Resources\LabelResourcerContract,
+    Contracts\Http\Resources\Nodes\Inputs\InputResourcerContract,
+    Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract,
     Http\Resources\Nodes\NodeCollection
 };
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -48,7 +48,7 @@ class InputResourcer extends JsonResource implements InputResourcerContract
     /**
      * Get the label api resource.
      *
-     * @return \Belvedere\FormMaker\Contracts\Resources\LabelResourcerContract|null
+     * @return \Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract|null
      */
     protected function getLabelResource(): ?LabelResourcerContract
     {

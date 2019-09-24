@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Number;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Number\NumberContract,
+    Contracts\Models\Nodes\Inputs\Number\NumberContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

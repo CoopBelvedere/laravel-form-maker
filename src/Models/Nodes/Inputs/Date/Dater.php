@@ -3,8 +3,9 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Date;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Date\DaterContract,
-    Models\Nodes\Inputs\Input, Scopes\NodeScope
+    Contracts\Models\Nodes\Inputs\Date\DaterContract,
+    Models\Nodes\Inputs\Input,
+    Scopes\NodeScope
 };
 
 class Dater extends Input implements DaterContract

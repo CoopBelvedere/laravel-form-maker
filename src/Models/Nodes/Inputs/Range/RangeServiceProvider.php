@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Range;
 
-use Belvedere\FormMaker\Contracts\Inputs\Range\RangerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Range\RangerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

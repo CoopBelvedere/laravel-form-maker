@@ -3,8 +3,10 @@
 namespace Belvedere\FormMaker\Repositories;
 
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
-use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Contracts\Support\DeferrableProvider,
+    Support\ServiceProvider
+};
 
 class NodeRepositoryServiceProvider extends ServiceProvider implements DeferrableProvider
 {

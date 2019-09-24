@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Image;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Image\ImagerContract,
+    Contracts\Models\Nodes\Inputs\Image\ImagerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

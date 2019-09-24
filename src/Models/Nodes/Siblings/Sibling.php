@@ -3,8 +3,8 @@
 namespace Belvedere\FormMaker\Models\Nodes\Siblings;
 
 use Belvedere\FormMaker\{
-    Contracts\Resources\SiblingResourcerContract,
-    Contracts\Siblings\SiblingContract,
+    Contracts\Http\Resources\Nodes\Siblings\SiblingResourcerContract,
+    Contracts\Models\Nodes\Siblings\SiblingContract,
     Models\Nodes\Node,
     Traits\Text\HasText
 };

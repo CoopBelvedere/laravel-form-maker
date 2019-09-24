@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Rankings;
 
-use Belvedere\FormMaker\Contracts\Rankings\RankerContract;
+use Belvedere\FormMaker\Contracts\Models\Rankings\RankerContract;
 use Illuminate\{
     Database\Eloquent\Model as Eloquent,
     Database\Eloquent\Relations\MorphOne,

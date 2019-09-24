@@ -3,10 +3,10 @@
 namespace Belvedere\FormMaker\Models\Nodes\Siblings\Label;
 
 use Belvedere\FormMaker\{
-    Contracts\Resources\LabelResourcerContract,
-    Contracts\Siblings\Label\LabelerContract,
+    Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract,
+    Contracts\Models\Nodes\Siblings\Label\LabelerContract,
     Models\Nodes\Siblings\Sibling,
-    Scopes\NodeScope,
+    Scopes\NodeScope
 };
 use Illuminate\Http\Resources\Json\JsonResource;
 

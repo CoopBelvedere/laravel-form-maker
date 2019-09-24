@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Radio;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Radio\RadioerContract,
+    Contracts\Models\Nodes\Inputs\Radio\RadioerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

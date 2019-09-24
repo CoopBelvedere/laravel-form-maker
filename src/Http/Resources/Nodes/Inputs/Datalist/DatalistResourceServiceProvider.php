@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs\Datalist;
 
-use Belvedere\FormMaker\Contracts\Resources\DatalistResourcerContract;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Inputs\DatalistResourcerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

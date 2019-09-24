@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Url;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Url\UrlerContract,
+    Contracts\Models\Nodes\Inputs\Url\UrlerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

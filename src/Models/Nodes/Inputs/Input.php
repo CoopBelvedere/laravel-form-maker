@@ -3,8 +3,8 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\InputContract,
-    Contracts\Resources\InputResourcerContract,
+    Contracts\Http\Resources\Nodes\Inputs\InputResourcerContract,
+    Contracts\Models\Nodes\Inputs\InputContract,
     Listeners\AssignAttributes,
     Listeners\CascadeDelete,
     Models\Nodes\Node,

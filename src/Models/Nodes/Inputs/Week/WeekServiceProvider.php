@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Week;
 
-use Belvedere\FormMaker\Contracts\Inputs\Week\WeekerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Week\WeekerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

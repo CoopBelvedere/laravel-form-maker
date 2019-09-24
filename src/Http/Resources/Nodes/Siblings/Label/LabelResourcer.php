@@ -3,9 +3,9 @@
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Siblings\Label;
 
 use Belvedere\FormMaker\Contracts\{
-    Form\FormContract,
-    Inputs\InputContract,
-    Resources\LabelResourcerContract
+    Http\Resources\Nodes\Siblings\LabelResourcerContract,
+    Models\Form\FormContract,
+    Models\Nodes\Inputs\InputContract
 };
 use Illuminate\Http\Resources\Json\JsonResource;
 

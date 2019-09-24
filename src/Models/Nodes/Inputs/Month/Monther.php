@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Month;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Month\MontherContract,
+    Contracts\Models\Nodes\Inputs\Month\MontherContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

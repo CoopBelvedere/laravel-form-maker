@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Month;
 
-use Belvedere\FormMaker\Contracts\Inputs\Month\MontherContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Month\MontherContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

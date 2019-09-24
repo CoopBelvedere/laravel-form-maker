@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Search;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Search\SearcherContract,
+    Contracts\Models\Nodes\Inputs\Search\SearcherContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

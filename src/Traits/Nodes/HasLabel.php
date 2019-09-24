@@ -3,8 +3,8 @@
 namespace Belvedere\FormMaker\Traits\Nodes;
 
 use Belvedere\FormMaker\{
-    Contracts\Repositories\NodeRepositoryContract,
-    Contracts\Siblings\Label\LabelerContract
+    Contracts\Models\Nodes\Siblings\Label\LabelerContract,
+    Contracts\Repositories\NodeRepositoryContract
 };
 
 trait HasLabel
@@ -13,7 +13,7 @@ trait HasLabel
      * Add a label to the parent model.
      *
      * @param string|null $text
-     * @return \Belvedere\FormMaker\Contracts\Siblings\Label\LabelerContract|null
+     * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract|null
      */
     public function addLabel(?string $text = null): ?LabelerContract
     {
@@ -31,7 +31,7 @@ trait HasLabel
     /**
      * Get the node label.
      *
-     * @return \Belvedere\FormMaker\Contracts\Siblings\Label\LabelerContract|null
+     * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract|null
      */
     public function label(): ?LabelerContract
     {

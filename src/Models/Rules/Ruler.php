@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Rules;
 
-use Belvedere\FormMaker\Contracts\Rules\RulerContract;
+use Belvedere\FormMaker\Contracts\Models\Rules\RulerContract;
 use Illuminate\Support\Str;
 
 class Ruler implements RulerContract

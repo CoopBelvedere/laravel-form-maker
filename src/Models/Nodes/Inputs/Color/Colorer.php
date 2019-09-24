@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Color;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Color\ColorerContract,
+    Contracts\Models\Nodes\Inputs\Color\ColorerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

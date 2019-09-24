@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Option;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Option\OptionerContract,
+    Contracts\Models\Nodes\Inputs\Option\OptionerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope,
     Traits\Text\HasText

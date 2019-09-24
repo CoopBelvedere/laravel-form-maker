@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Traits\Nodes;
 
 use Belvedere\FormMaker\Contracts\{
-    Inputs\Option\OptionerContract,
+    Models\Nodes\Inputs\Option\OptionerContract,
     Repositories\NodeRepositoryContract
 };
 use Illuminate\Support\LazyCollection;
@@ -14,7 +14,7 @@ trait HasOptions
      * Add a node to the parent model.
      *
      * @param array $attributes
-     * @return \Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract
+     * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract
      */
     public function addOption(array $attributes): OptionerContract
     {
@@ -52,7 +52,7 @@ trait HasOptions
      * Get the option with the specified key.
      *
      * @param mixed $key
-     * @return \Belvedere\FormMaker\Contracts\Inputs\Option\OptionerContract|null
+     * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract|null
      */
     public function option($key): ?OptionerContract
     {

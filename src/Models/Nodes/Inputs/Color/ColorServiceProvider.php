@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Color;
 
-use Belvedere\FormMaker\Contracts\Inputs\Color\ColorerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Color\ColorerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

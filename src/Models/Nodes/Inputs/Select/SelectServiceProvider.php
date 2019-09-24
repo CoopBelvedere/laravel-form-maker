@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Select;
 
-use Belvedere\FormMaker\Contracts\Inputs\Select\SelecterContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Select\SelecterContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

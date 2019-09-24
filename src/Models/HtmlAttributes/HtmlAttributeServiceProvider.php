@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\HtmlAttributes;
 
-use Belvedere\FormMaker\Contracts\HtmlAttributes\HtmlAttributerContract;
+use Belvedere\FormMaker\Contracts\Models\HtmlAttributes\HtmlAttributerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

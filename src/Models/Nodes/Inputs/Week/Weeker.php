@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Week;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Week\WeekerContract,
+    Contracts\Models\Nodes\Inputs\Week\WeekerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

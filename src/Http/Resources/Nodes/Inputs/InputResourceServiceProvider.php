@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs;
 
-use Belvedere\FormMaker\Contracts\Resources\InputResourcerContract;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Inputs\InputResourcerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

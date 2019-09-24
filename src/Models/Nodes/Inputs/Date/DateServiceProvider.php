@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Date;
 
-use Belvedere\FormMaker\Contracts\Inputs\Date\DaterContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Date\DaterContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

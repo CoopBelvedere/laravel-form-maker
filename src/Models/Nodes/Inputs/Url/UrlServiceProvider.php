@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Url;
 
-use Belvedere\FormMaker\Contracts\Inputs\Url\UrlerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Url\UrlerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

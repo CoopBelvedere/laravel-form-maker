@@ -3,8 +3,8 @@
 namespace Belvedere\FormMaker\Models;
 
 use Belvedere\FormMaker\{
-    Contracts\HtmlAttributes\HasHtmlAttributesContract,
-    Contracts\ModelContract,
+    Contracts\Models\ModelContract,
+    Contracts\Traits\HtmlAttributes\HasHtmlAttributesContract,
     Traits\HtmlAttributes\HasHtmlAttributes
 };
 use Illuminate\Database\Eloquent\Model as Eloquent;

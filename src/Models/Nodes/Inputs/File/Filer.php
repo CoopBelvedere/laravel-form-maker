@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\File;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\File\FilerContract,
+    Contracts\Models\Nodes\Inputs\File\FilerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

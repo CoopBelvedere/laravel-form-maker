@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Siblings\Label;
 
-use Belvedere\FormMaker\Contracts\Resources\LabelResourcerContract;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Time;
 
-use Belvedere\FormMaker\Contracts\Inputs\Time\TimerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Time\TimerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

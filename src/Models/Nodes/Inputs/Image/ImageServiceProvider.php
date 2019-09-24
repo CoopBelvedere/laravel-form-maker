@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Image;
 
-use Belvedere\FormMaker\Contracts\Inputs\Image\ImagerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Image\ImagerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

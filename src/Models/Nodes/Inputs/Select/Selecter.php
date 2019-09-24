@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Select;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Select\SelecterContract,
+    Contracts\Models\Nodes\Inputs\Select\SelecterContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope,
     Traits\Nodes\HasOptions

@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Traits\Rankings;
 
 use Belvedere\FormMaker\{
-    Contracts\Rankings\RankerContract,
+    Contracts\Models\Rankings\RankerContract,
     Models\Nodes\Node
 };
 use Illuminate\Database\Eloquent\Relations\MorphOne;

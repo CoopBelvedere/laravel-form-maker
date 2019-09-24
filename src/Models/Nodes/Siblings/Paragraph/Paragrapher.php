@@ -3,9 +3,9 @@
 namespace Belvedere\FormMaker\Models\Nodes\Siblings\Paragraph;
 
 use Belvedere\FormMaker\{
-    Contracts\Siblings\Paragraph\ParagrapherContract,
+    Contracts\Models\Nodes\Siblings\Paragraph\ParagrapherContract,
     Models\Nodes\Siblings\Sibling,
-    Scopes\NodeScope,
+    Scopes\NodeScope
 };
 
 class Paragrapher extends Sibling implements ParagrapherContract

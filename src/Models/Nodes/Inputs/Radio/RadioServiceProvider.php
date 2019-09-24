@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Radio;
 
-use Belvedere\FormMaker\Contracts\Inputs\Radio\RadioerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Radio\RadioerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

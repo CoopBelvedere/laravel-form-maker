@@ -3,8 +3,8 @@
 namespace Belvedere\FormMaker\Models\Form;
 
 use Belvedere\FormMaker\{
-    Contracts\Form\FormContract,
-    Contracts\Nodes\HasNodesContract,
+    Contracts\Models\Form\FormContract,
+    Contracts\Traits\Nodes\HasNodesContract,
     Http\Resources\Form\FormResource,
     Listeners\CascadeDelete,
     Models\Model,

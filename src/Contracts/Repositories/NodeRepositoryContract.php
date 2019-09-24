@@ -4,7 +4,7 @@ namespace Belvedere\FormMaker\Contracts\Repositories;
 
 use Belvedere\FormMaker\Models\{
     Model,
-    Nodes\Node,
+    Nodes\Node
 };
 use Illuminate\Support\LazyCollection;
 

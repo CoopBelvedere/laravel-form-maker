@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Datalist;
 
-use Belvedere\FormMaker\Contracts\Inputs\Datalist\DatalisterContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Datalist\DatalisterContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider,

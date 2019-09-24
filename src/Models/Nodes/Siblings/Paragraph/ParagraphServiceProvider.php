@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Siblings\Paragraph;
 
-use Belvedere\FormMaker\Contracts\Siblings\Paragraph\ParagrapherContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Paragraph\ParagrapherContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

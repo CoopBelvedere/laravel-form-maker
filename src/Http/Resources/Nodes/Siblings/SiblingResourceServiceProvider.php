@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Siblings;
 
-use Belvedere\FormMaker\Contracts\Resources\SiblingResourcerContract;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\SiblingResourcerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

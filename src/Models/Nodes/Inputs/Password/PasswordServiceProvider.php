@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Password;
 
-use Belvedere\FormMaker\Contracts\Inputs\Password\PassworderContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Password\PassworderContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

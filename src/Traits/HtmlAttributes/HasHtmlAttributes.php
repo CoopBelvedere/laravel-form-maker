@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Traits\HtmlAttributes;
 
-use Belvedere\FormMaker\Contracts\HtmlAttributes\HtmlAttributerContract;
+use Belvedere\FormMaker\Contracts\Models\HtmlAttributes\HtmlAttributerContract;
 
 trait HasHtmlAttributes
 {

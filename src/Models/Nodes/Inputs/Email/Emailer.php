@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Email;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Email\EmailerContract,
+    Contracts\Models\Nodes\Inputs\Email\EmailerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

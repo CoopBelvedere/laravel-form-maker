@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Range;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Range\RangerContract,
+    Contracts\Models\Nodes\Inputs\Range\RangerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

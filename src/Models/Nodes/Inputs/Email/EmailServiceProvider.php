@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Email;
 
-use Belvedere\FormMaker\Contracts\Inputs\Email\EmailerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Email\EmailerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

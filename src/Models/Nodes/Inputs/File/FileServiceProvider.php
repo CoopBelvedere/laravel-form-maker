@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\File;
 
-use Belvedere\FormMaker\Contracts\Inputs\File\FilerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\File\FilerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

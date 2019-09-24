@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes;
 
 use Belvedere\FormMaker\{
-    Contracts\Nodes\NodeContract,
+    Contracts\Models\Nodes\NodeContract,
     Listeners\RemoveFromRanking,
     Models\Model
 };

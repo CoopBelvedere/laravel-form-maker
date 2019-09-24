@@ -3,8 +3,8 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Datalist;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Datalist\DatalisterContract,
-    Contracts\Resources\DatalistResourcerContract,
+    Contracts\Http\Resources\Nodes\Inputs\DatalistResourcerContract,
+    Contracts\Models\Nodes\Inputs\Datalist\DatalisterContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope,
     Traits\Nodes\HasOptions

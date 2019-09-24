@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Tel;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Tel\TelerContract,
+    Contracts\Models\Nodes\Inputs\Tel\TelerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

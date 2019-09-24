@@ -3,8 +3,8 @@
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs\Datalist;
 
 use Belvedere\FormMaker\{
-    Contracts\Resources\DatalistResourcerContract,
-    Contracts\Resources\LabelResourcerContract,
+    Contracts\Http\Resources\Nodes\Inputs\DatalistResourcerContract,
+    Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract,
     Http\Resources\Nodes\NodeCollection
 };
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -53,7 +53,7 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
      * Get the label api resource.
      *
      * @param string $inputId
-     * @return \Belvedere\FormMaker\Contracts\Resources\LabelResourcerContract|null
+     * @return \Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract|null
      */
     protected function getLabelResource(string $inputId): ?LabelResourcerContract
     {

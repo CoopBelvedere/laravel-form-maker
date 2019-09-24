@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Search;
 
-use Belvedere\FormMaker\Contracts\Inputs\Search\SearcherContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Search\SearcherContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

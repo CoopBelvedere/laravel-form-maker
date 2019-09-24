@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Password;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Password\PassworderContract,
+    Contracts\Models\Nodes\Inputs\Password\PassworderContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };

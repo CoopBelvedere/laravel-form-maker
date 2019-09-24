@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Textarea;
 
-use Belvedere\FormMaker\Contracts\Inputs\Textarea\TextareaerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Textarea\TextareaerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

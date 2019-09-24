@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Traits\Rules;
 
-use Belvedere\FormMaker\Contracts\Rules\RulerContract;
+use Belvedere\FormMaker\Contracts\Models\Rules\RulerContract;
 
 trait HasRules
 {

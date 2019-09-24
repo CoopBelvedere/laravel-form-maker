@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Checkbox;
 
-use Belvedere\FormMaker\Contracts\Inputs\Checkbox\CheckboxerContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Checkbox\CheckboxerContract;
 use Illuminate\{
     Contracts\Support\DeferrableProvider,
     Support\ServiceProvider

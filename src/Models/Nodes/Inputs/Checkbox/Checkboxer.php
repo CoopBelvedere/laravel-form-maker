@@ -3,7 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Checkbox;
 
 use Belvedere\FormMaker\{
-    Contracts\Inputs\Checkbox\CheckboxerContract,
+    Contracts\Models\Nodes\Inputs\Checkbox\CheckboxerContract,
     Models\Nodes\Inputs\Input,
     Scopes\NodeScope
 };
