@@ -2,10 +2,9 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs;
 
-use Belvedere\FormMaker\{
-    Contracts\Resources\InputResourcerContract,
-    Http\Resources\Nodes\NodeCollection
-};
+use Belvedere\FormMaker\{Contracts\Resources\InputResourcerContract,
+    Contracts\Resources\LabelResourcerContract,
+    Http\Resources\Nodes\NodeCollection};
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class InputResourcer extends JsonResource implements InputResourcerContract
@@ -33,7 +32,7 @@ class InputResourcer extends JsonResource implements InputResourcerContract
             $this->mergeWhen($this->html_attributes, [
                 'html_attributes' => $this->html_attributes,
             ]),
-            $this->mergeWhen(!is_null($label), [
+            $this->mergeWhen($label, [
                 'label' => $label->toApi(),
             ]),
             $this->mergeWhen($options && $options->count() > 0, [
@@ -42,5 +41,22 @@ class InputResourcer extends JsonResource implements InputResourcerContract
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
+    }
+
+    /**
+     * Get the label api resource.
+     *
+     * @param string $inputId
+     * @return \Belvedere\FormMaker\Contracts\Resources\LabelResourcerContract|null
+     */
+    protected function getLabelResource(string $inputId): ?LabelResourcerContract
+    {
+        $label = $this->label();
+
+        if ($label) {
+            return $label->withHtmlAttributes(['for' => $inputId])->toApi();
+        }
+
+        return $label;
     }
 }

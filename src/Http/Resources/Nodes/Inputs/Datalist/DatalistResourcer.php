@@ -2,13 +2,12 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs\Datalist;
 
-use Belvedere\FormMaker\{Contracts\Resources\DatalistResourcerContract,
-    Contracts\Siblings\Label\LabelerContract,
-    Http\Resources\Nodes\NodeCollection};
-use Illuminate\{
-    Http\Resources\Json\JsonResource,
-    Support\Collection
+use Belvedere\FormMaker\{
+    Contracts\Resources\DatalistResourcerContract,
+    Contracts\Resources\LabelResourcerContract,
+    Http\Resources\Nodes\NodeCollection
 };
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class DatalistResourcer extends JsonResource implements DatalistResourcerContract
 {
@@ -22,8 +21,8 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
     {
         $inputId = uniqid('list_');
         $options = new NodeCollection($this->options()->collect());
-        $label = $this->label();
-        
+        $label = $this->getLabelResource($inputId);
+
         return [
             'id' => $this->getKey(),
             'type' => $this->type,
@@ -32,8 +31,8 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
                     'id' => $this->html_attributes['id']
                 ],
             ]),
-            $this->mergeWhen(!is_null($label), [
-                'label' => $label->withHtmlAttributes(['for' => $inputId])->toApi(),
+            $this->mergeWhen($label, [
+                'label' => $label,
             ]),
             'input' => [
                 'type' => 'list',
@@ -48,5 +47,22 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
+    }
+
+    /**
+     * Get the label api resource.
+     *
+     * @param string $inputId
+     * @return \Belvedere\FormMaker\Contracts\Resources\LabelResourcerContract|null
+     */
+    protected function getLabelResource(string $inputId): ?LabelResourcerContract
+    {
+        $label = $this->label();
+
+        if ($label) {
+            return $label->withHtmlAttributes(['for' => $inputId])->toApi();
+        }
+
+        return $label;
     }
 }
