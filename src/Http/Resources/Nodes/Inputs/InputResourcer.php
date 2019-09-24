@@ -33,7 +33,7 @@ class InputResourcer extends JsonResource implements InputResourcerContract
             $this->mergeWhen($this->html_attributes, [
                 'html_attributes' => $this->html_attributes,
             ]),
-            $this->mergeWhen($label, [
+            $this->mergeWhen(!is_null($label), [
                 'label' => $label->toApi(),
             ]),
             $this->mergeWhen($options && $options->count() > 0, [

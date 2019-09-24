@@ -23,7 +23,7 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
         $inputId = uniqid('list_');
         $options = new NodeCollection($this->options()->collect());
         $label = $this->label();
-
+        
         return [
             'id' => $this->getKey(),
             'type' => $this->type,
@@ -32,7 +32,7 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
                     'id' => $this->html_attributes['id']
                 ],
             ]),
-            $this->mergeWhen($label, [
+            $this->mergeWhen(!is_null($label), [
                 'label' => $label->withHtmlAttributes(['for' => $inputId])->toApi(),
             ]),
             'input' => [

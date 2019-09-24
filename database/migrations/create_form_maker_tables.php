@@ -22,9 +22,9 @@ class CreateFormMakerTables extends Migration
             $table->increments('id');
             $table->morphs('nodable');
             $table->string('type');
+            $table->string('text')->nullable();
             $table->json('html_attributes')->nullable();
             $table->json('rules')->nullable();
-            $table->string('text')->nullable();
             $table->timestamps();
         });
 
