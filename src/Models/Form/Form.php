@@ -4,7 +4,6 @@ namespace Belvedere\FormMaker\Models\Form;
 
 use Belvedere\FormMaker\{
     Contracts\Models\Form\FormContract,
-    Contracts\Traits\Nodes\HasNodesContract,
     Http\Resources\Form\FormResource,
     Listeners\CascadeDelete,
     Models\Model,
@@ -12,7 +11,7 @@ use Belvedere\FormMaker\{
     Traits\Rankings\HasRankings
 };
 
-class Form extends Model implements FormContract, HasNodesContract
+class Form extends Model implements FormContract
 {
     use HasNodes, HasRankings;
 
