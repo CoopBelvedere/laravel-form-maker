@@ -22,7 +22,7 @@ class InputResourcer extends JsonResource implements InputResourcerContract
             $options = new NodeCollection($this->options()->collect());
         }
 
-        $siblings = new NodeCollection($this->siblings()->collect());
+        $label = $this->label();
 
         return [
             'id' => $this->getKey(),
@@ -33,11 +33,11 @@ class InputResourcer extends JsonResource implements InputResourcerContract
             $this->mergeWhen($this->html_attributes, [
                 'html_attributes' => $this->html_attributes,
             ]),
+            $this->mergeWhen($label, [
+                'label' => $label->toApi(),
+            ]),
             $this->mergeWhen($options && $options->count() > 0, [
                 'options' => $options,
-            ]),
-            $this->mergeWhen($siblings->count() > 0, [
-                'siblings' => $siblings,
             ]),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

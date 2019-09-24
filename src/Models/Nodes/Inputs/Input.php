@@ -8,7 +8,7 @@ use Belvedere\FormMaker\{
     Listeners\AssignAttributes,
     Listeners\CascadeDelete,
     Models\Nodes\Node,
-    Traits\Nodes\HasSiblings,
+    Traits\Nodes\HasLabel,
     Traits\Rankings\HasRankings,
     Traits\Rules\HasRules
 };
@@ -16,7 +16,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class Input extends Node implements InputContract
 {
-    use HasRankings, HasRules, HasSiblings;
+    use HasLabel, HasRankings, HasRules;
 
     /**
      * The default attributes automatically assigned on creation.

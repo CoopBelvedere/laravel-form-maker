@@ -45,4 +45,13 @@ interface NodeRepositoryContract
      * @return \Belvedere\FormMaker\Models\Nodes\Node|null
      */
     public function find(Model $parent, $nodeKey, array $columns): ?Node;
+
+    /**
+     * Get the first node in list.
+     *
+     * @param \Belvedere\FormMaker\Models\Model $parent
+     * @param string|null $type
+     * @return \Belvedere\FormMaker\Models\Nodes\Node|null
+     */
+    public function first(Model $parent, ?string $type = null): ?Node;
 }
