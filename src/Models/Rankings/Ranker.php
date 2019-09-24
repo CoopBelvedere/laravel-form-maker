@@ -126,7 +126,7 @@ class Ranker extends Eloquent implements RankerContract
         $rank = $this->rank($beforeNode);
 
         if ($rank > -1) {
-            $rank = $this->toRank($rank - 1);
+            $rank = $this->toRank($rank);
         }
 
         return $rank;
