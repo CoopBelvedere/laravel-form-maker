@@ -20,8 +20,7 @@ trait HasOptions
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        $option = $nodeRepository->create($this, 'option')
-            ->withHtmlAttributes($attributes);
+        $option = $nodeRepository->create($this, 'option', $attributes);
 
         if (array_key_exists('text', $attributes)) {
             $option->withText($attributes['text']);

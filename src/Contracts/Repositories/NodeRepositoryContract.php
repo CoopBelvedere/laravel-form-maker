@@ -24,9 +24,10 @@ interface NodeRepositoryContract
      *
      * @param \Belvedere\FormMaker\Models\Model $parent
      * @param string $type
+     * @param array $attributes
      * @return \Belvedere\FormMaker\Models\Nodes\Node
      */
-    public function create(Model $parent, string $type): Node;
+    public function create(Model $parent, string $type, array $attributes = []): Node;
 
     /**
      * Delete all nodes of the parent model.
