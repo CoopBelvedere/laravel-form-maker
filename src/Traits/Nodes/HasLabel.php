@@ -12,18 +12,16 @@ trait HasLabel
     /**
      * Add a label to the parent model.
      *
-     * @param string|null $text
-     * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract|null
+     * @param string $text
+     * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract
      */
-    public function addLabel(?string $text = null): ?LabelerContract
+    public function addLabel(string $text): LabelerContract
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
         $label = $nodeRepository->create($this, 'label');
 
-        if ($text) {
-            $label->withText($text)->save();
-        }
+        $label->withText($text)->save();
 
         return $label;
     }

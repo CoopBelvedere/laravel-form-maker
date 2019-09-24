@@ -12,10 +12,10 @@ interface HasLabelContract extends HasRankingsContract
     /**
      * Add a label to the parent model.
      *
-     * @param string|null $text
-     * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract|null
+     * @param string $text
+     * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract
      */
-    public function addLabel(?string $text = null): ?LabelerContract;
+    public function addLabel(string $text): ?LabelerContract;
 
     /**
      * Get the node label.
