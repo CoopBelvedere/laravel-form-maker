@@ -1,10 +1,18 @@
 # Laravel Form Maker
 
-Simple package to generate laravel form easily.
+Simple modular backend api to provide user generated forms for your laravel projects easily.
 
 ## Installation
 
-To do.
+Requires php >=7.3.0 and laravel 6.0+
+
+```
+composer require Belvedere/laravel-form-maker
+
+php artisan vendor:publish --provider="Belvedere\FormMaker\FormMakerServiceProvider"
+```
+
+This is all there is to do.
 
 ## Documentation
 

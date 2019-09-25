@@ -1,9 +1,11 @@
 <?php
 
-namespace Chess\FormMaker;
+namespace Belvedere\FormMaker;
 
-use Illuminate\Http\Resources\Json\Resource;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Http\Resources\Json\Resource,
+    Support\ServiceProvider
+};
 
 class FormMakerServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,8 @@ class FormMakerServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishMigration();
+
+        $this->publishConfig();
 
         Resource::withoutWrapping();
     }
@@ -30,6 +34,18 @@ class FormMakerServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../database/migrations/create_form_maker_tables.php' => database_path('migrations/' . $timestamp . '_create_form_maker_tables.php'),
-        ], 'migrations');
+        ], 'form-maker-migrations');
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    protected function publishConfig()
+    {
+        $this->publishes([
+            __DIR__ . '/../config/form-maker.php' => config_path('form-maker.php'),
+        ]);
     }
 }

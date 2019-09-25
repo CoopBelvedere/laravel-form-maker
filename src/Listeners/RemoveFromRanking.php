@@ -1,6 +1,6 @@
 <?php
 
-namespace Chess\FormMaker\Listeners;
+namespace Belvedere\FormMaker\Listeners;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,8 +33,10 @@ class RemoveFromRanking
      */
     protected function handle(): void
     {
-        if ($inputable = $this->model->inputable) {
-            $inputable->rankings->remove($this->model->id);
+        $ranker = $this->model->parent;
+
+        if ($ranker) {
+            $ranker->ranking->remove($this->model);
         }
     }
 }

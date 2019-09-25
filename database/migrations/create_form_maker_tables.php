@@ -1,31 +1,34 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\{
+    Support\Facades\Schema,
+    Database\Schema\Blueprint,
+    Database\Migrations\Migration
+};
 
 class CreateFormMakerTables extends Migration
 {
     public function up()
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create(config('form-maker.database.forms_table', 'forms'), function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('name');
             $table->string('description')->nullable();
-            $table->json('html_properties')->nullable();
+            $table->json('html_attributes')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('inputs', function (Blueprint $table) {
+        Schema::create(config('form-maker.database.form_nodes_table', 'form_nodes'), function (Blueprint $table) {
             $table->increments('id');
-            $table->morphs('inputable');
+            $table->morphs('nodable');
             $table->string('type');
-            $table->json('html_properties')->nullable();
+            $table->string('text')->nullable();
+            $table->json('html_attributes')->nullable();
             $table->json('rules')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('rankings', function (Blueprint $table) {
+        Schema::create(config('form-maker.database.rankings_table', 'rankings'), function (Blueprint $table) {
             $table->increments('id');
             $table->morphs('rankable');
             $table->json('ranks');
@@ -35,8 +38,8 @@ class CreateFormMakerTables extends Migration
 
     public function down()
     {
-        Schema::drop('rankings');
-        Schema::drop('inputs');
-        Schema::drop('forms');
+        Schema::drop(config('form-maker.database.rankings_table', 'rankings'));
+        Schema::drop(config('form-maker.database.form_nodes_table', 'form_nodes'));
+        Schema::drop(config('form-maker.database.forms_table', 'forms'));
     }
 }
