@@ -16,7 +16,7 @@ class HtmlAttributer implements HtmlAttributerContract
         'alt' => '%s',
         'autocomplete' => '%s',
         'autofocus' => 'autofocus',
-        'capture' => 'capture',
+        'capture' => '%s',
         'checked' => 'checked',
         'class' => '%s',
         'cols' => '%d',
