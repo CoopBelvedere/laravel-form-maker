@@ -50,6 +50,7 @@
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Range\\RangeServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Search\\SearchServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Select\\SelectServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Tel\\TelServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Text\\TextServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Textarea\\TextareaServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Time\\TimeServiceProvider",
