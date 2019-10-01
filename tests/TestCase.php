@@ -14,6 +14,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
         return [
             'Belvedere\\FormMaker\\FormMakerServiceProvider',
             'Belvedere\\FormMaker\\Models\\HtmlAttributes\\HtmlAttributeServiceProvider',
+            'Belvedere\\FormMaker\\Models\\Rules\\RuleServiceProvider'
         ];
     }
 }
