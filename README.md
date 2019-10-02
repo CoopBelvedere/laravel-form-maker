@@ -4,7 +4,7 @@ Simple modular backend api to provide user generated forms for your laravel proj
 
 ## Installation
 
-Requires php >=7.3.0 and laravel 6.0+
+Requires php >=7.2.0 and laravel 6.0+
 
 ```
 composer require Belvedere/laravel-form-maker
