@@ -8,9 +8,12 @@
         "source": "https://github.com/CoopBelvedere/laravel-form-maker"
     },
     "require": {
-        "php": "^7.3",
+        "php": "^7.2",
         "ext-fileinfo": "*",
         "laravel/framework": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0"
     },
     "license": "MIT",
     "authors": [
@@ -23,6 +26,14 @@
         "psr-4": {
             "Belvedere\\FormMaker\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Belvedere\\FormMaker\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "extra": {
         "laravel": {

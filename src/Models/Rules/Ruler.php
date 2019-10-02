@@ -93,15 +93,12 @@ class Ruler implements RulerContract
         $rule = Str::snake($name);
 
         if (array_key_exists($rule, self::RULES_LIST)) {
-            switch ($value) {
-                case null:
-                    $this->rules[] = [$rule => null];
-                    break;
-                case is_array($value):
-                    $this->rules[] = [$rule => sprintf(self::RULES_LIST[$rule], implode(',', $value))];
-                    break;
-                default:
-                    $this->rules[] = [$rule => sprintf(self::RULES_LIST[$rule], $value)];
+            if (is_null($value)) {
+                $this->rules[] = [$rule => null];
+            } else if (is_array($value)) {
+                $this->rules[] = [$rule => sprintf(self::RULES_LIST[$rule], implode(',', $value))];
+            } else {
+                $this->rules[] = [$rule => sprintf(self::RULES_LIST[$rule], $value)];
             }
         }
     }
