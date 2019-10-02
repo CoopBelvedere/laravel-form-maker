@@ -56,7 +56,7 @@ class NodeRepository implements NodeRepositoryContract
      */
     public function all(Model $parent, ?string $type = null): LazyCollection
     {
-        $query = DB::table(config('form-maker.database.form_nodes_table'))
+        $query = DB::table(config('form-maker.database.form_nodes_table', 'form_nodes'))
             ->where('nodable_type', $parent->getMorphClass())
             ->where('nodable_id', $parent->getKey())
             ->orderBy('type');
@@ -103,7 +103,7 @@ class NodeRepository implements NodeRepositoryContract
      */
     public function delete(Model $parent)
     {
-        return DB::table(config('form-maker.database.form_nodes_table'))
+        return DB::table(config('form-maker.database.form_nodes_table', 'form_nodes'))
             ->where('nodable_type', $parent->getMorphClass())
             ->where('nodable_id', $parent->getKey())
             ->delete();
@@ -119,7 +119,7 @@ class NodeRepository implements NodeRepositoryContract
      */
     public function find(Model $parent, $nodeKey, array $columns): ?Node
     {
-        $query = DB::table(config('form-maker.database.form_nodes_table'))
+        $query = DB::table(config('form-maker.database.form_nodes_table', 'form_nodes'))
             ->where('nodable_type', $parent->getMorphClass())
             ->where('nodable_id', $parent->getKey());
 
@@ -149,7 +149,7 @@ class NodeRepository implements NodeRepositoryContract
      */
     public function first(Model $parent, ?string $type = null): ?Node
     {
-        $query = DB::table(config('form-maker.database.form_nodes_table'))
+        $query = DB::table(config('form-maker.database.form_nodes_table', 'form_nodes'))
             ->where('nodable_type', $parent->getMorphClass())
             ->where('nodable_id', $parent->getKey());
 

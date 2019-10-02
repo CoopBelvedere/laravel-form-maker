@@ -43,9 +43,7 @@
                 "Belvedere\\FormMaker\\Http\\Resources\\Nodes\\Inputs\\Datalist\\DatalistResourceServiceProvider",
                 "Belvedere\\FormMaker\\Http\\Resources\\Nodes\\Siblings\\SiblingResourceServiceProvider",
                 "Belvedere\\FormMaker\\Http\\Resources\\Nodes\\Siblings\\Label\\LabelResourceServiceProvider",
-                "Belvedere\\FormMaker\\Models\\Rankings\\RankingServiceProvider",
                 "Belvedere\\FormMaker\\Models\\HtmlAttributes\\HtmlAttributeServiceProvider",
-                "Belvedere\\FormMaker\\Models\\Rules\\RuleServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Checkbox\\CheckboxServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Color\\ColorServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Datalist\\DatalistServiceProvider",
@@ -69,6 +67,8 @@
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Week\\WeekServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Siblings\\Label\\LabelServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Siblings\\Paragraph\\ParagraphServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Rankings\\RankingServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Rules\\RuleServiceProvider",
                 "Belvedere\\FormMaker\\Repositories\\NodeRepositoryServiceProvider"
             ]
         }
