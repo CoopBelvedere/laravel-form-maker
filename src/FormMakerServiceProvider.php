@@ -30,10 +30,8 @@ class FormMakerServiceProvider extends ServiceProvider
      */
     protected function publishMigration(): void
     {
-        $timestamp = date('Y_m_d_His', time());
-
         $this->publishes([
-            __DIR__ . '/../database/migrations/create_form_maker_tables.php' => database_path('migrations/' . $timestamp . '_create_form_maker_tables.php'),
+            __DIR__ . '/../database/migrations/create_form_maker_tables.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_form_maker_tables.php'),
         ], 'form-maker-migrations');
     }
 

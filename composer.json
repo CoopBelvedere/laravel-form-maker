@@ -8,9 +8,12 @@
         "source": "https://github.com/CoopBelvedere/laravel-form-maker"
     },
     "require": {
-        "php": "^7.3",
+        "php": "^7.2",
         "ext-fileinfo": "*",
         "laravel/framework": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0"
     },
     "license": "MIT",
     "authors": [
@@ -24,6 +27,14 @@
             "Belvedere\\FormMaker\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Belvedere\\FormMaker\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -32,9 +43,7 @@
                 "Belvedere\\FormMaker\\Http\\Resources\\Nodes\\Inputs\\Datalist\\DatalistResourceServiceProvider",
                 "Belvedere\\FormMaker\\Http\\Resources\\Nodes\\Siblings\\SiblingResourceServiceProvider",
                 "Belvedere\\FormMaker\\Http\\Resources\\Nodes\\Siblings\\Label\\LabelResourceServiceProvider",
-                "Belvedere\\FormMaker\\Models\\Rankings\\RankingServiceProvider",
                 "Belvedere\\FormMaker\\Models\\HtmlAttributes\\HtmlAttributeServiceProvider",
-                "Belvedere\\FormMaker\\Models\\Rules\\RuleServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Checkbox\\CheckboxServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Color\\ColorServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Datalist\\DatalistServiceProvider",
@@ -58,6 +67,8 @@
                 "Belvedere\\FormMaker\\Models\\Nodes\\Inputs\\Week\\WeekServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Siblings\\Label\\LabelServiceProvider",
                 "Belvedere\\FormMaker\\Models\\Nodes\\Siblings\\Paragraph\\ParagraphServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Rankings\\RankingServiceProvider",
+                "Belvedere\\FormMaker\\Models\\Rules\\RuleServiceProvider",
                 "Belvedere\\FormMaker\\Repositories\\NodeRepositoryServiceProvider"
             ]
         }

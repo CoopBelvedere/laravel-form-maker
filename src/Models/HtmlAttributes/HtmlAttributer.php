@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 class HtmlAttributer implements HtmlAttributerContract
 {
     /**
+     * A list of all the different html attributes available.
+     *
      * @var array
      */
     const HTML_ATTRIBUTES_LIST = [
@@ -52,6 +54,8 @@ class HtmlAttributer implements HtmlAttributerContract
     ];
 
     /**
+     * A list of all set attributes.
+     *
      * @var array
      */
     protected $htmlAttributes = [];
@@ -70,25 +74,32 @@ class HtmlAttributer implements HtmlAttributerContract
         if (is_null($value)) {
             $this->htmlAttributes[] = [$htmlAttribute => null];
         } else if (array_key_exists($htmlAttribute, self::HTML_ATTRIBUTES_LIST)) {
-            switch ($value) {
-                case $htmlAttribute === 'data':
-                    list($dataKey, $dataValue) = $value;
-                    $this->htmlAttributes[] = [$dataKey => $dataValue];
-                    break;
-                case is_array($value):
-                    $this->htmlAttributes[] = [$htmlAttribute => sprintf(
-                        self::HTML_ATTRIBUTES_LIST[$htmlAttribute][0],
-                        implode( self::HTML_ATTRIBUTES_LIST[$htmlAttribute][1], $value)
-                    )];
-                    break;
-                case is_bool($value):
-                    $this->htmlAttributes[] = [$htmlAttribute => var_export($value, true)];
-                    break;
-                default:
-                    $this->htmlAttributes[] = [$htmlAttribute => sprintf(
-                        self::HTML_ATTRIBUTES_LIST[$htmlAttribute], $value
-                    )];
-            }
+            $this->addHtmlAttributeInList($htmlAttribute, $value);
+        }
+    }
+
+    /**
+     * Add the html attribute to the list.
+     *
+     * @param string $htmlAttribute
+     * @param $value
+     */
+    protected function addHtmlAttributeInList(string $htmlAttribute, $value): void
+    {
+        if ($htmlAttribute === 'data') {
+            list($dataKey, $dataValue) = $value;
+            $this->htmlAttributes[] = [$dataKey => $dataValue];
+        } else if (is_array($value)) {
+            $this->htmlAttributes[] = [$htmlAttribute => sprintf(
+                self::HTML_ATTRIBUTES_LIST[$htmlAttribute][0],
+                implode(self::HTML_ATTRIBUTES_LIST[$htmlAttribute][1], $value)
+            )];
+        } else if (is_bool($value)) {
+            $this->htmlAttributes[] = [$htmlAttribute => var_export($value, true)];
+        } else {
+            $this->htmlAttributes[] = [$htmlAttribute => sprintf(
+                self::HTML_ATTRIBUTES_LIST[$htmlAttribute], $value
+            )];
         }
     }
 
@@ -103,7 +114,7 @@ class HtmlAttributer implements HtmlAttributerContract
     }
 
     /**
-     * Get all the current htlm attributes.
+     * Get all the current html attributes.
      *
      * @return array
      */
