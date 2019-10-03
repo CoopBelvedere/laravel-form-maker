@@ -8,7 +8,7 @@
         "source": "https://github.com/CoopBelvedere/laravel-form-maker"
     },
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "ext-fileinfo": "*",
         "laravel/framework": "^6.0"
     },
