@@ -365,7 +365,7 @@ class Ranker extends Eloquent implements RankerContract
     {
         return $nodes->sortBy(function ($node, $key) {
             return $this->rank($node);
-        });
+        })->values();
     }
 
     /**
