@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Tests\Unit;
+namespace Belvedere\FormMaker\Tests\Unit\Models;
 
 use Belvedere\FormMaker\Contracts\Models\HtmlAttributes\HtmlAttributerContract;
 use Belvedere\FormMaker\Tests\TestCase;

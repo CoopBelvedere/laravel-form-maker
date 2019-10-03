@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Tests\Unit;
+namespace Belvedere\FormMaker\Tests\Unit\Models;
 
 use Belvedere\FormMaker\Http\Resources\Nodes\NodeCollection;
 use Belvedere\FormMaker\Models\Form\Form;

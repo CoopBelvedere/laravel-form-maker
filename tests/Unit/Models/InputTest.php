@@ -1,9 +1,10 @@
 <?php
 
-namespace Belvedere\FormMaker\Tests\Unit;
+namespace Belvedere\FormMaker\Tests\Unit\Models;
 
 use Belvedere\FormMaker\Listeners\AssignAttributes;
 use Belvedere\FormMaker\Listeners\CascadeDelete;
+use Belvedere\FormMaker\Listeners\RemoveFromRanking;
 use Belvedere\FormMaker\Models\Form\Form;
 use Belvedere\FormMaker\Models\Nodes\Inputs\Input;
 use Belvedere\FormMaker\Tests\TestCase;
@@ -47,6 +48,7 @@ class InputTest extends TestCase
         $input->delete();
 
         Event::assertDispatched(CascadeDelete::class);
+        Event::assertDispatched(RemoveFromRanking::class);
     }
 
     /** @test */
