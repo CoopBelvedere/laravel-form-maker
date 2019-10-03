@@ -10,7 +10,7 @@ interface HasHtmlAttributesContract
      * @param array $attributes
      * @return \Belvedere\FormMaker\Contracts\Traits\HtmlAttributes\HasHtmlAttributesContract
      */
-    public function removeHtmlAttributes(array $attributes): HasHtmlAttributesContract;
+    public function removeHtmlAttributes(array $attributes): self;
 
     /**
      * Set the model html attributes.
@@ -33,5 +33,5 @@ interface HasHtmlAttributesContract
      * @param array $attributes
      * @return \Belvedere\FormMaker\Contracts\Traits\HtmlAttributes\HasHtmlAttributesContract
      */
-    public function withHtmlAttributes(array $attributes): HasHtmlAttributesContract;
+    public function withHtmlAttributes(array $attributes): self;
 }
