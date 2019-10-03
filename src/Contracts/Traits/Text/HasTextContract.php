@@ -10,5 +10,5 @@ interface HasTextContract
      * @param string $text
      * @return \Belvedere\FormMaker\Contracts\Traits\Text\HasTextContract
      */
-    public function withText(string $text): HasTextContract;
+    public function withText(string $text): self;
 }

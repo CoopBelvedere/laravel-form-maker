@@ -10,7 +10,7 @@ interface HasRulesContract
      * @param array $rules
      * @return \Belvedere\FormMaker\Contracts\Traits\Rules\HasRulesContract
      */
-    public function removeRules(array $rules): HasRulesContract;
+    public function removeRules(array $rules): self;
 
     /**
      * Set the model rules.
@@ -33,5 +33,5 @@ interface HasRulesContract
      * @param array $rules
      * @return \Belvedere\FormMaker\Contracts\Traits\Rules\HasRulesContract
      */
-    public function withRules(array $rules): HasRulesContract;
+    public function withRules(array $rules): self;
 }

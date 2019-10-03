@@ -19,5 +19,5 @@ interface ModelContract extends HasHtmlAttributesContract
      *
      * @return \Belvedere\FormMaker\Contracts\Models\ModelContract
      */
-    public function saveAndFirst(): ModelContract;
+    public function saveAndFirst(): self;
 }
