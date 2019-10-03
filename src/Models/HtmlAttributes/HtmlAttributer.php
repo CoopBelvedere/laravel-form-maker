@@ -83,6 +83,7 @@ class HtmlAttributer implements HtmlAttributerContract
      *
      * @param string $htmlAttribute
      * @param $value
+     * @return void
      */
     protected function addHtmlAttributeInList(string $htmlAttribute, $value): void
     {

@@ -38,7 +38,7 @@ class FormMakerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function publishConfig()
+    protected function publishConfig(): void
     {
         $this->publishes([
             __DIR__.'/../config/form-maker.php' => config_path('form-maker.php'),

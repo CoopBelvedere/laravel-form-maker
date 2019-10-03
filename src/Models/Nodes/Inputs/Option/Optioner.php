@@ -12,7 +12,7 @@ class Optioner extends Input implements OptionerContract
     use HasText;
 
     /**
-     * The attributes automatically assigned on creation.
+     * The default attributes automatically assigned on creation.
      *
      * @var array
      */

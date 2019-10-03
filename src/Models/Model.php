@@ -57,9 +57,9 @@ class Model extends Eloquent implements ModelContract
     /**
      * Save the model and return itself.
      *
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Models\ModelContract
      */
-    public function saveAndFirst(): self
+    public function saveAndFirst(): ModelContract
     {
         $this->save();
 

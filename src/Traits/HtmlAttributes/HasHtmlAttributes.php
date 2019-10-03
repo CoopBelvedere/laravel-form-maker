@@ -3,6 +3,7 @@
 namespace Belvedere\FormMaker\Traits\HtmlAttributes;
 
 use Belvedere\FormMaker\Contracts\Models\HtmlAttributes\HtmlAttributerContract;
+use Belvedere\FormMaker\Contracts\Traits\HtmlAttributes\HasHtmlAttributesContract;
 
 trait HasHtmlAttributes
 {
@@ -28,9 +29,9 @@ trait HasHtmlAttributes
      * Mass removal of html attributes to a model.
      *
      * @param array $attributes
-     * @return HasHtmlAttributes
+     * @return \Belvedere\FormMaker\Contracts\Traits\HtmlAttributes\HasHtmlAttributesContract
      */
-    public function removeHtmlAttributes(array $attributes): self
+    public function removeHtmlAttributes(array $attributes): HasHtmlAttributesContract
     {
         $this->updateHtmlAttributes(array_fill_keys($attributes, null));
 
@@ -86,9 +87,9 @@ trait HasHtmlAttributes
      * Mass assign html attributes to a model.
      *
      * @param array $attributes
-     * @return HasHtmlAttributes
+     * @return \Belvedere\FormMaker\Contracts\Traits\HtmlAttributes\HasHtmlAttributesContract
      */
-    public function withHtmlAttributes(array $attributes): self
+    public function withHtmlAttributes(array $attributes): HasHtmlAttributesContract
     {
         $this->updateHtmlAttributes($attributes);
 

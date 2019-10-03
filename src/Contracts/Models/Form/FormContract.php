@@ -12,9 +12,9 @@ interface FormContract extends HasNodesContract, ModelContract
      * Specifies the form url action.
      *
      * @param string $action
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Models\Form\FormContract
      */
-    public function action(string $action): self;
+    public function action(string $action): FormContract;
 
     /**
      * Disable all inputs.
@@ -34,9 +34,9 @@ interface FormContract extends HasNodesContract, ModelContract
      * Specifies the form http method.
      *
      * @param string $method
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Models\Form\FormContract
      */
-    public function method(string $method): self;
+    public function method(string $method): FormContract;
 
     /**
      * Return the form inputs rules in a form request format.

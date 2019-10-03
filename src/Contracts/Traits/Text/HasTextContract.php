@@ -8,7 +8,7 @@ interface HasTextContract
      * Add a text value to the model.
      *
      * @param string $text
-     * @return mixed
+     * @return \Belvedere\FormMaker\Contracts\Traits\Text\HasTextContract
      */
-    public function withText(string $text);
+    public function withText(string $text): HasTextContract;
 }
