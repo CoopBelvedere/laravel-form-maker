@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class NodeRepositoryServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class NodeRepositoryServiceProvider extends ServiceProvider implements Deferrabl
             if (is_string($nodeRepository)) {
                 return new $nodeRepository();
             }
+
             return $nodeRepository;
         });
     }
@@ -36,4 +35,3 @@ class NodeRepositoryServiceProvider extends ServiceProvider implements Deferrabl
         return [NodeRepositoryContract::class];
     }
 }
-

@@ -2,12 +2,10 @@
 
 namespace Belvedere\FormMaker\Models\Nodes;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Nodes\NodeContract,
-    Listeners\RemoveFromRanking,
-    Models\Model
-};
+use Belvedere\FormMaker\Models\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Belvedere\FormMaker\Listeners\RemoveFromRanking;
+use Belvedere\FormMaker\Contracts\Models\Nodes\NodeContract;
 
 class Node extends Model implements NodeContract
 {

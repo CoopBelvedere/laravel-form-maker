@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Checkbox;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Nodes\Inputs\Checkbox\CheckboxerContract,
-    Models\Nodes\Inputs\Input,
-    Scopes\NodeScope
-};
+use Belvedere\FormMaker\Scopes\NodeScope;
+use Belvedere\FormMaker\Models\Nodes\Inputs\Input;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Checkbox\CheckboxerContract;
 
 class Checkboxer extends Input implements CheckboxerContract
 {

@@ -2,15 +2,15 @@
 
 namespace Belvedere\FormMaker\Listeners;
 
-use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 
 class CascadeDelete
 {
     /**
      * The model with assigned properties.
      *
-     * @var \Belvedere\FormMaker\Models\Model $model
+     * @var \Belvedere\FormMaker\Models\Model
      */
     protected $model;
 

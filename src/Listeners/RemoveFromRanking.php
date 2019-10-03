@@ -9,7 +9,7 @@ class RemoveFromRanking
     /**
      * The model with assigned properties.
      *
-     * @var \Illuminate\Database\Eloquent\Model $model
+     * @var \Illuminate\Database\Eloquent\Model
      */
     protected $model;
 

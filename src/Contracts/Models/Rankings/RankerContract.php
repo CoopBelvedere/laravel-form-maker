@@ -2,10 +2,8 @@
 
 namespace Belvedere\FormMaker\Contracts\Models\Rankings;
 
-use Illuminate\{
-    Database\Eloquent\Relations\MorphOne,
-    Support\Collection
-};
+use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 interface RankerContract
 {
@@ -86,7 +84,7 @@ interface RankerContract
      * @return self
      * @throws \Exception
      */
-    public function move($node): RankerContract;
+    public function move($node): self;
 
     /**
      * Return the rank of the node in the ranking.

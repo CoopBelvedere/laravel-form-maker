@@ -2,8 +2,8 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Siblings;
 
-use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\SiblingResourcerContract;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\SiblingResourcerContract;
 
 class SiblingResourcer extends JsonResource implements SiblingResourcerContract
 {

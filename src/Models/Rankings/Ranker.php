@@ -2,12 +2,10 @@
 
 namespace Belvedere\FormMaker\Models\Rankings;
 
+use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Belvedere\FormMaker\Contracts\Models\Rankings\RankerContract;
-use Illuminate\{
-    Database\Eloquent\Model as Eloquent,
-    Database\Eloquent\Relations\MorphOne,
-    Support\Collection
-};
 
 class Ranker extends Eloquent implements RankerContract
 {
@@ -80,12 +78,12 @@ class Ranker extends Eloquent implements RankerContract
 
     /**
      * Move the node after another node in the ranking.
-     * 
+     *
      * @param mixed $afterNode
      * @return int
      * @throws \Exception
      */
-    public function after($afterNode): int 
+    public function after($afterNode): int
     {
         $rank = $this->rank($afterNode);
 
@@ -138,7 +136,7 @@ class Ranker extends Eloquent implements RankerContract
 
         return $rank;
     }
-    
+
     /**
      * Save the ranks list in the ranking.
      *
@@ -164,6 +162,7 @@ class Ranker extends Eloquent implements RankerContract
         if ($this->hasNodeId()) {
             if ($this->nodeId !== last($this->ranks)) {
                 $key = array_search($this->nodeId, $this->ranks);
+
                 return $this->toggle($this->nodeId, $this->ranks[$key + 1]);
             }
 
@@ -449,6 +448,7 @@ class Ranker extends Eloquent implements RankerContract
         if ($this->hasNodeId()) {
             if ($this->rank($this->nodeId) > 1) {
                 $key = array_search($this->nodeId, $this->ranks);
+
                 return $this->toggle($this->nodeId, $this->ranks[$key - 1]);
             }
 

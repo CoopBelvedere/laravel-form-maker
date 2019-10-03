@@ -2,10 +2,8 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Nodes\Siblings\Label\LabelerContract,
-    Contracts\Repositories\NodeRepositoryContract
-};
+use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
 
 trait HasLabel
 {

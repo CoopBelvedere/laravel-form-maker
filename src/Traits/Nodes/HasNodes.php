@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
-use Belvedere\FormMaker\{
-    Contracts\Repositories\NodeRepositoryContract,
-    Models\Nodes\Node
-};
 use Illuminate\Support\Collection;
+use Belvedere\FormMaker\Models\Nodes\Node;
+use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 
 trait HasNodes
 {

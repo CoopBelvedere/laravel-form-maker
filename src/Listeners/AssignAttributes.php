@@ -9,7 +9,7 @@ class AssignAttributes
     /**
      * The model with assigned attributes.
      *
-     * @var \Illuminate\Database\Eloquent\Model $model
+     * @var \Illuminate\Database\Eloquent\Model
      */
     protected $model;
 
@@ -34,7 +34,7 @@ class AssignAttributes
     protected function handle(): void
     {
         foreach ($this->model->getHtmlAttributesAssigned() as $attribute) {
-            if (!isset($this->model->html_attributes[$attribute])) {
+            if (! isset($this->model->html_attributes[$attribute])) {
                 $this->setAttribute($attribute);
             }
         }

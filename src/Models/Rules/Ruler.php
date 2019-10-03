@@ -2,8 +2,8 @@
 
 namespace Belvedere\FormMaker\Models\Rules;
 
-use Belvedere\FormMaker\Contracts\Models\Rules\RulerContract;
 use Illuminate\Support\Str;
+use Belvedere\FormMaker\Contracts\Models\Rules\RulerContract;
 
 class Ruler implements RulerContract
 {
@@ -75,7 +75,7 @@ class Ruler implements RulerContract
         'timezone' => 'timezone',
         'unique' => 'unique:%s',
         'url' => 'url',
-        'uuid' => 'uuid'
+        'uuid' => 'uuid',
     ];
 
     /**
@@ -95,7 +95,7 @@ class Ruler implements RulerContract
         if (array_key_exists($rule, self::RULES_LIST)) {
             if (is_null($value)) {
                 $this->rules[] = [$rule => null];
-            } else if (is_array($value)) {
+            } elseif (is_array($value)) {
                 $this->rules[] = [$rule => sprintf(self::RULES_LIST[$rule], implode(',', $value))];
             } else {
                 $this->rules[] = [$rule => sprintf(self::RULES_LIST[$rule], $value)];

@@ -2,8 +2,8 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Form;
 
-use Belvedere\FormMaker\Http\Resources\Nodes\NodeCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Belvedere\FormMaker\Http\Resources\Nodes\NodeCollection;
 
 class FormResource extends JsonResource
 {

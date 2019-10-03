@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Siblings\Paragraph;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Nodes\Siblings\Paragraph\ParagrapherContract,
-    Models\Nodes\Siblings\Sibling,
-    Scopes\NodeScope
-};
+use Belvedere\FormMaker\Scopes\NodeScope;
+use Belvedere\FormMaker\Models\Nodes\Siblings\Sibling;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Paragraph\ParagrapherContract;
 
 class Paragrapher extends Sibling implements ParagrapherContract
 {

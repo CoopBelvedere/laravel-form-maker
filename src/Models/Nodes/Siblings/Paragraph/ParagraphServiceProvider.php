@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Siblings\Paragraph;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Paragraph\ParagrapherContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class ParagraphServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class ParagraphServiceProvider extends ServiceProvider implements DeferrableProv
             if (is_string($paragrapher)) {
                 return new $paragrapher();
             }
+
             return $paragrapher;
         });
     }

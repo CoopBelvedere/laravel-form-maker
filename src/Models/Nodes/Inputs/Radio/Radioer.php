@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Radio;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Nodes\Inputs\Radio\RadioerContract,
-    Models\Nodes\Inputs\Input,
-    Scopes\NodeScope
-};
+use Belvedere\FormMaker\Scopes\NodeScope;
+use Belvedere\FormMaker\Models\Nodes\Inputs\Input;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Radio\RadioerContract;
 
 class Radioer extends Input implements RadioerContract
 {

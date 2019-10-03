@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Number;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Nodes\Inputs\Number\NumberContract,
-    Models\Nodes\Inputs\Input,
-    Scopes\NodeScope
-};
+use Belvedere\FormMaker\Scopes\NodeScope;
+use Belvedere\FormMaker\Models\Nodes\Inputs\Input;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Number\NumberContract;
 
 class Number extends Input implements NumberContract
 {

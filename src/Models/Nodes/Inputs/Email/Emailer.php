@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Email;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Nodes\Inputs\Email\EmailerContract,
-    Models\Nodes\Inputs\Input,
-    Scopes\NodeScope
-};
+use Belvedere\FormMaker\Scopes\NodeScope;
+use Belvedere\FormMaker\Models\Nodes\Inputs\Input;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Email\EmailerContract;
 
 class Emailer extends Input implements EmailerContract
 {
