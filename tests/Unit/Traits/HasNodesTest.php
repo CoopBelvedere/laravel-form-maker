@@ -162,4 +162,29 @@ class HasNodesTest extends TestCase
             }
         }
     }
+
+    /** @test */
+    public function get_all_nodes_from_parent_model_filtered_by_type()
+    {
+        $this->form->add('text');
+        $this->form->add('text');
+        $this->form->add('paragraph');
+        $nodes = $this->form->nodes('text');
+
+        $this->assertEquals(2, $nodes->count());
+
+        foreach ($nodes as $key => $node) {
+            $this->assertEquals('text', $node->type);
+            $this->assertArrayHasKey('id', $node->html_attributes);
+            $this->assertArrayHasKey('name', $node->html_attributes);
+        }
+    }
+
+    /** @test */
+    public function get_all_nodes_from_parent_model_when_parent_doesnt_have_node()
+    {
+        $nodes = $this->form->nodes();
+
+        $this->assertEquals(true, $nodes->isEmpty());
+    }
 }
