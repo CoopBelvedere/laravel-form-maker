@@ -6,7 +6,7 @@ use Belvedere\FormMaker\Contracts\{
     Models\Nodes\Inputs\Option\OptionerContract,
     Repositories\NodeRepositoryContract
 };
-use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Collection;
 
 trait HasOptions
 {
@@ -66,9 +66,9 @@ trait HasOptions
     /**
      * Get the options sorted by their position in the ranking.
      *
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\Collection
      */
-    public function options(): LazyCollection
+    public function options(): Collection
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 

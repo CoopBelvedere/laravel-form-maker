@@ -6,7 +6,7 @@ use Belvedere\FormMaker\Models\{
     Model,
     Nodes\Node
 };
-use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Collection;
 
 interface NodeRepositoryContract
 {
@@ -15,9 +15,9 @@ interface NodeRepositoryContract
      *
      * @param \Belvedere\FormMaker\Models\Model $parent
      * @param string|null $type
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\Collection
      */
-    public function all(Model $parent, ?string $type = null): LazyCollection;
+    public function all(Model $parent, ?string $type = null): Collection;
 
     /**
      * Add a node to the parent model.
