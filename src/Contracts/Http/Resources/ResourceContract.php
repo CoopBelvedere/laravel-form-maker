@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Contracts\Http\Resources\Nodes;
+namespace Belvedere\FormMaker\Contracts\Http\Resources;
 
 interface ResourceContract
 {
