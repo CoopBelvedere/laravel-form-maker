@@ -248,7 +248,7 @@ class Ranker extends Eloquent implements RankerContract
      * Set the node id that is to reorder.
      *
      * @param  mixed $node
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Models\Rankings\RankerContract
      * @throws \Exception
      */
     public function move($node): RankerContract
@@ -372,8 +372,8 @@ class Ranker extends Eloquent implements RankerContract
      * Toggle two nodes in the ranking.
      * Return the new rank of the first node.
      *
-     * @param  \Illuminate\Database\Eloquent\Model $firstNode
-     * @param  \Illuminate\Database\Eloquent\Model $lastNode
+     * @param  mixed $firstNode
+     * @param  mixed $lastNode
      * @return int
      */
     public function toggle($firstNode, $lastNode): int

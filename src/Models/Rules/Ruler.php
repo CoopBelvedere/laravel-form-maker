@@ -8,6 +8,8 @@ use Belvedere\FormMaker\Contracts\Models\Rules\RulerContract;
 class Ruler implements RulerContract
 {
     /**
+     * A list of all the different rules available.
+     *
      * @var array
      */
     const RULES_LIST = [
@@ -79,13 +81,15 @@ class Ruler implements RulerContract
     ];
 
     /**
+     * A list of all set rules.
+     *
      * @var array
      */
     protected $rules = [];
 
     /**
      * @param string $name
-     * @param $value
+     * @param mixed $value
      * @return void
      */
     public function __set(string $name, $value): void

@@ -8,9 +8,9 @@ interface HasRulesContract
      * Mass removal of validation rules from an input.
      *
      * @param array $rules
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Traits\Rules\HasRulesContract
      */
-    public function removeRules(array $rules);
+    public function removeRules(array $rules): self;
 
     /**
      * Set the model rules.
@@ -31,7 +31,7 @@ interface HasRulesContract
      * Mass assign validation rules from an input.
      *
      * @param array $rules
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Traits\Rules\HasRulesContract
      */
-    public function withRules(array $rules);
+    public function withRules(array $rules): self;
 }

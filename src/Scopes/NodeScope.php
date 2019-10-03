@@ -16,11 +16,11 @@ class NodeScope implements Scope
     protected $type;
 
     /**
-     * The scope constructor.
+     * NodeScope constructor.
      *
-     * @var string
+     * @param string $type
      */
-    public function __construct($type)
+    public function __construct(string $type)
     {
         $this->type = $type;
     }

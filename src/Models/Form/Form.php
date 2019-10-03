@@ -58,7 +58,7 @@ class Form extends Model implements FormContract
      * Specifies the form url action.
      *
      * @param string|null $action
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Models\Form\FormContract
      */
     public function action(?string $action): FormContract
     {
@@ -91,7 +91,7 @@ class Form extends Model implements FormContract
      * Specifies the form http method.
      *
      * @param string|null $method
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Models\Form\FormContract
      */
     public function method(?string $method): FormContract
     {
@@ -121,6 +121,7 @@ class Form extends Model implements FormContract
      * Set whether the inputs are disabled or not.
      *
      * @param string|null $disabled
+     * @return void
      */
     protected function setInputsUsability(?string $disabled = null): void
     {

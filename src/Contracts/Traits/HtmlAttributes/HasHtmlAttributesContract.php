@@ -8,9 +8,9 @@ interface HasHtmlAttributesContract
      * Mass removal of html attributes to a model.
      *
      * @param array $attributes
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Traits\HtmlAttributes\HasHtmlAttributesContract
      */
-    public function removeHtmlAttributes(array $attributes);
+    public function removeHtmlAttributes(array $attributes): self;
 
     /**
      * Set the model html attributes.
@@ -31,7 +31,7 @@ interface HasHtmlAttributesContract
      * Mass assign html attributes to a model.
      *
      * @param array $attributes
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Traits\HtmlAttributes\HasHtmlAttributesContract
      */
-    public function withHtmlAttributes(array $attributes);
+    public function withHtmlAttributes(array $attributes): self;
 }

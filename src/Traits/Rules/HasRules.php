@@ -3,6 +3,7 @@
 namespace Belvedere\FormMaker\Traits\Rules;
 
 use Belvedere\FormMaker\Contracts\Models\Rules\RulerContract;
+use Belvedere\FormMaker\Contracts\Traits\Rules\HasRulesContract;
 
 trait HasRules
 {
@@ -28,9 +29,9 @@ trait HasRules
      * Mass removal of validation rules from an input.
      *
      * @param array $rules
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Traits\Rules\HasRulesContract
      */
-    public function removeRules(array $rules): self
+    public function removeRules(array $rules): HasRulesContract
     {
         $this->updateRules(array_fill_keys($rules, null));
 
@@ -84,9 +85,9 @@ trait HasRules
      * Mass assign validation rules to an input.
      *
      * @param array $rules
-     * @return self
+     * @return \Belvedere\FormMaker\Contracts\Traits\Rules\HasRulesContract
      */
-    public function withRules(array $rules): self
+    public function withRules(array $rules): HasRulesContract
     {
         $this->updateRules($rules);
 
