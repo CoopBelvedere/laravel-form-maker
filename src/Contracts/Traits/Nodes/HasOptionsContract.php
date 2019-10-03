@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Traits\Nodes;
 
-use Belvedere\FormMaker\Contracts\{
-    Models\Nodes\Inputs\Option\OptionerContract,
-    Traits\Rankings\HasRankingsContract
-};
 use Illuminate\Support\Collection;
+use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
 
 interface HasOptionsContract extends HasRankingsContract
 {

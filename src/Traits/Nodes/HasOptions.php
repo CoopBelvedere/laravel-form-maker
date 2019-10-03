@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
-use Belvedere\FormMaker\Contracts\{
-    Models\Nodes\Inputs\Option\OptionerContract,
-    Repositories\NodeRepositoryContract
-};
 use Illuminate\Support\Collection;
+use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
 
 trait HasOptions
 {
@@ -60,7 +58,7 @@ trait HasOptions
 
         $option = $nodeRepository->find($this, $key, ['id', 'value']);
 
-        return (!is_null($option) && $option->type === 'option') ? $option : null;
+        return (! is_null($option) && $option->type === 'option') ? $option : null;
     }
 
     /**

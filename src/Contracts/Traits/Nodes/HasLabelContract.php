@@ -2,10 +2,8 @@
 
 namespace Belvedere\FormMaker\Contracts\Traits\Nodes;
 
-use Belvedere\FormMaker\Contracts\{
-    Models\Nodes\Siblings\Label\LabelerContract,
-    Traits\Rankings\HasRankingsContract
-};
+use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
 
 interface HasLabelContract extends HasRankingsContract
 {

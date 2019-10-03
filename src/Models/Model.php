@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\ModelContract,
-    Traits\HtmlAttributes\HasHtmlAttributes
-};
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Belvedere\FormMaker\Contracts\Models\ModelContract;
+use Belvedere\FormMaker\Traits\HtmlAttributes\HasHtmlAttributes;
 
 class Model extends Eloquent implements ModelContract
 {

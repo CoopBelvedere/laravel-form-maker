@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Siblings;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\SiblingResourcerContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class SiblingResourceServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class SiblingResourceServiceProvider extends ServiceProvider implements Deferrab
             if (is_string($resource)) {
                 return new $resource($context['sibling']);
             }
+
             return $resource;
         });
     }

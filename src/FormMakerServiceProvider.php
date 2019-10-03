@@ -2,10 +2,8 @@
 
 namespace Belvedere\FormMaker;
 
-use Illuminate\{
-    Http\Resources\Json\Resource,
-    Support\ServiceProvider
-};
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Resources\Json\Resource;
 
 class FormMakerServiceProvider extends ServiceProvider
 {
@@ -24,14 +22,14 @@ class FormMakerServiceProvider extends ServiceProvider
     }
 
     /**
-     * Publish Form Maker migrations
+     * Publish Form Maker migrations.
      *
      * @return void
      */
     protected function publishMigration(): void
     {
         $this->publishes([
-            __DIR__ . '/../database/migrations/create_form_maker_tables.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_form_maker_tables.php'),
+            __DIR__.'/../database/migrations/create_form_maker_tables.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_form_maker_tables.php'),
         ], 'form-maker-migrations');
     }
 
@@ -43,7 +41,7 @@ class FormMakerServiceProvider extends ServiceProvider
     protected function publishConfig()
     {
         $this->publishes([
-            __DIR__ . '/../config/form-maker.php' => config_path('form-maker.php'),
+            __DIR__.'/../config/form-maker.php' => config_path('form-maker.php'),
         ]);
     }
 }

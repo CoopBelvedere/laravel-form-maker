@@ -2,12 +2,10 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Siblings\Label;
 
-use Belvedere\FormMaker\Contracts\{
-    Http\Resources\Nodes\Siblings\LabelResourcerContract,
-    Models\Form\FormContract,
-    Models\Nodes\Inputs\InputContract
-};
 use Illuminate\Http\Resources\Json\JsonResource;
+use Belvedere\FormMaker\Contracts\Models\Form\FormContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract;
 
 class LabelResourcer extends JsonResource implements LabelResourcerContract
 {
@@ -21,7 +19,7 @@ class LabelResourcer extends JsonResource implements LabelResourcerContract
     {
         if ($this->parent instanceof InputContract) {
             $attribute = 'for';
-        } else if ($this->parent instanceof FormContract) {
+        } elseif ($this->parent instanceof FormContract) {
             $attribute = 'form';
         }
 

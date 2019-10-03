@@ -2,13 +2,11 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Siblings\Label;
 
-use Belvedere\FormMaker\{
-    Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract,
-    Contracts\Models\Nodes\Siblings\Label\LabelerContract,
-    Models\Nodes\Siblings\Sibling,
-    Scopes\NodeScope
-};
+use Belvedere\FormMaker\Scopes\NodeScope;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Belvedere\FormMaker\Models\Nodes\Siblings\Sibling;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract;
 
 class Labeler extends Sibling implements LabelerContract
 {

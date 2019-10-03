@@ -2,12 +2,10 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Option;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Nodes\Inputs\Option\OptionerContract,
-    Models\Nodes\Inputs\Input,
-    Scopes\NodeScope,
-    Traits\Text\HasText
-};
+use Belvedere\FormMaker\Scopes\NodeScope;
+use Belvedere\FormMaker\Traits\Text\HasText;
+use Belvedere\FormMaker\Models\Nodes\Inputs\Input;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
 
 class Optioner extends Input implements OptionerContract
 {

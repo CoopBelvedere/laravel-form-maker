@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Datalist;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Datalist\DatalisterContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider,
-};
 
 class DatalistServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class DatalistServiceProvider extends ServiceProvider implements DeferrableProvi
             if (is_string($datalister)) {
                 return new $datalister();
             }
+
             return $datalister;
         });
     }

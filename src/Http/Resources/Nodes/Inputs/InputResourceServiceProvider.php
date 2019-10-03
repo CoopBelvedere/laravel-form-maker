@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Inputs\InputResourcerContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class InputResourceServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class InputResourceServiceProvider extends ServiceProvider implements Deferrable
             if (is_string($resource)) {
                 return new $resource($context['input']);
             }
+
             return $resource;
         });
     }

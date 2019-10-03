@@ -7,7 +7,7 @@ use Belvedere\FormMaker\Contracts\Models\HtmlAttributes\HtmlAttributerContract;
 trait HasHtmlAttributes
 {
     /**
-     * The current implementation of the HtmlAttributerContract
+     * The current implementation of the HtmlAttributerContract.
      *
      * @var mixed
      */
@@ -66,7 +66,7 @@ trait HasHtmlAttributes
     {
         if (isset($this->attributes['html_attributes'])) {
             $attributes = array_filter(array_merge($this->html_attributes, $attributes), function ($attribute) {
-                return !is_null($attribute);
+                return ! is_null($attribute);
             });
         }
         $this->attributes['html_attributes'] = json_encode($attributes);

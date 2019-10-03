@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Rules;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Models\Rules\RulerContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class RuleServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class RuleServiceProvider extends ServiceProvider implements DeferrableProvider
             if (is_string($ruler)) {
                 return new $ruler();
             }
+
             return $ruler;
         });
     }

@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Siblings\Label;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class LabelServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class LabelServiceProvider extends ServiceProvider implements DeferrableProvider
             if (is_string($labeler)) {
                 return new $labeler();
             }
+
             return $labeler;
         });
     }

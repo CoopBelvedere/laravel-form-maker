@@ -2,12 +2,10 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs;
 
-use Belvedere\FormMaker\{
-    Contracts\Http\Resources\Nodes\Inputs\InputResourcerContract,
-    Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract,
-    Http\Resources\Nodes\NodeCollection
-};
 use Illuminate\Http\Resources\Json\JsonResource;
+use Belvedere\FormMaker\Http\Resources\Nodes\NodeCollection;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Inputs\InputResourcerContract;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract;
 
 class InputResourcer extends JsonResource implements InputResourcerContract
 {
@@ -34,7 +32,7 @@ class InputResourcer extends JsonResource implements InputResourcerContract
             $this->mergeWhen($this->html_attributes, [
                 'html_attributes' => $this->html_attributes,
             ]),
-            $this->mergeWhen(!is_null($label), [
+            $this->mergeWhen(! is_null($label), [
                 'label' => $label,
             ]),
             $this->mergeWhen($options && $options->count() > 0, [

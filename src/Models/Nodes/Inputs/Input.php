@@ -2,17 +2,15 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs;
 
-use Belvedere\FormMaker\{
-    Contracts\Http\Resources\Nodes\Inputs\InputResourcerContract,
-    Contracts\Models\Nodes\Inputs\InputContract,
-    Listeners\AssignAttributes,
-    Listeners\CascadeDelete,
-    Models\Nodes\Node,
-    Traits\Nodes\HasLabel,
-    Traits\Rankings\HasRankings,
-    Traits\Rules\HasRules
-};
+use Belvedere\FormMaker\Models\Nodes\Node;
+use Belvedere\FormMaker\Traits\Nodes\HasLabel;
+use Belvedere\FormMaker\Traits\Rules\HasRules;
+use Belvedere\FormMaker\Listeners\CascadeDelete;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Belvedere\FormMaker\Listeners\AssignAttributes;
+use Belvedere\FormMaker\Traits\Rankings\HasRankings;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\InputContract;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Inputs\InputResourcerContract;
 
 class Input extends Node implements InputContract
 {
@@ -25,7 +23,7 @@ class Input extends Node implements InputContract
      */
     protected $htmlAttributesAssigned = [
         'id',
-        'name'
+        'name',
     ];
 
     /**
