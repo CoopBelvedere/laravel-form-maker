@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Url;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Url\UrlerContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class UrlServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class UrlServiceProvider extends ServiceProvider implements DeferrableProvider
             if (is_string($urler)) {
                 return new $urler();
             }
+
             return $urler;
         });
     }

@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Option;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class OptionServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class OptionServiceProvider extends ServiceProvider implements DeferrableProvide
             if (is_string($optioner)) {
                 return new $optioner();
             }
+
             return $optioner;
         });
     }

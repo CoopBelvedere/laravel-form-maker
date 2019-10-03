@@ -2,12 +2,10 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Inputs\Datalist;
 
-use Belvedere\FormMaker\{
-    Contracts\Http\Resources\Nodes\Inputs\DatalistResourcerContract,
-    Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract,
-    Http\Resources\Nodes\NodeCollection
-};
 use Illuminate\Http\Resources\Json\JsonResource;
+use Belvedere\FormMaker\Http\Resources\Nodes\NodeCollection;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract;
+use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Inputs\DatalistResourcerContract;
 
 class DatalistResourcer extends JsonResource implements DatalistResourcerContract
 {
@@ -28,17 +26,17 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
             'type' => $this->type,
             $this->mergeWhen($this->html_attributes, [
                 'html_attributes' => [
-                    'id' => $this->html_attributes['id']
+                    'id' => $this->html_attributes['id'],
                 ],
             ]),
-            $this->mergeWhen(!is_null($label), [
+            $this->mergeWhen(! is_null($label), [
                 'label' => $label,
             ]),
             'input' => [
                 'type' => 'list',
                 'html_attributes' => array_merge($this->html_attributes, [
                     'id' => $inputId,
-                    'list' => $this->html_attributes['id']
+                    'list' => $this->html_attributes['id'],
                 ]),
             ],
             $this->mergeWhen($options->count() > 0, [

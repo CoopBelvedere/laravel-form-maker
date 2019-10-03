@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Password;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Nodes\Inputs\Password\PassworderContract,
-    Models\Nodes\Inputs\Input,
-    Scopes\NodeScope
-};
+use Belvedere\FormMaker\Scopes\NodeScope;
+use Belvedere\FormMaker\Models\Nodes\Inputs\Input;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Password\PassworderContract;
 
 class Passworder extends Input implements PassworderContract
 {

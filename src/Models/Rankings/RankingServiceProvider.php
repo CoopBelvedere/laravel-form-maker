@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Rankings;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Models\Rankings\RankerContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class RankingServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class RankingServiceProvider extends ServiceProvider implements DeferrableProvid
             if (is_string($ranker)) {
                 return new $ranker();
             }
+
             return $ranker;
         });
     }

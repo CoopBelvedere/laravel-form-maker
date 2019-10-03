@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Tel;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Tel\TelerContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class TelServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class TelServiceProvider extends ServiceProvider implements DeferrableProvider
             if (is_string($teler)) {
                 return new $teler();
             }
+
             return $teler;
         });
     }

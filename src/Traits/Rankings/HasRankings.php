@@ -2,23 +2,21 @@
 
 namespace Belvedere\FormMaker\Traits\Rankings;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Rankings\RankerContract,
-    Models\Nodes\Node
-};
+use Belvedere\FormMaker\Models\Nodes\Node;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Belvedere\FormMaker\Contracts\Models\Rankings\RankerContract;
 
 trait HasRankings
 {
     /**
-     * The current implementation of the RankingContract
+     * The current implementation of the RankingContract.
      *
      * @var mixed
      */
     protected $rankingProvider;
 
     /**
-     * Add a node in the ranking
+     * Add a node in the ranking.
      *
      * @param  \Belvedere\FormMaker\Models\Nodes\Node $node
      * @return void

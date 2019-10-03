@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Scopes;
 
-use Illuminate\Database\Eloquent\{
-    Builder,
-    Model,
-    Scope
-};
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Database\Eloquent\Builder;
 
 class NodeScope implements Scope
 {
@@ -20,7 +18,7 @@ class NodeScope implements Scope
     /**
      * The scope constructor.
      *
-     * @var string $type
+     * @var string
      */
     public function __construct($type)
     {

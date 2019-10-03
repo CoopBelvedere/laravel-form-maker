@@ -64,7 +64,7 @@ trait HasRules
     {
         if (isset($this->attributes['rules'])) {
             $rules = array_filter(array_merge($this->rules, $rules), function ($rule) {
-                return !is_null($rule);
+                return ! is_null($rule);
             });
         }
         $this->attributes['rules'] = json_encode($rules);

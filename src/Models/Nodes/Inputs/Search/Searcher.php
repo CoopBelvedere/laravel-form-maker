@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Models\Nodes\Inputs\Search;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Nodes\Inputs\Search\SearcherContract,
-    Models\Nodes\Inputs\Input,
-    Scopes\NodeScope
-};
+use Belvedere\FormMaker\Scopes\NodeScope;
+use Belvedere\FormMaker\Models\Nodes\Inputs\Input;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Search\SearcherContract;
 
 class Searcher extends Input implements SearcherContract
 {

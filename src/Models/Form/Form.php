@@ -2,14 +2,12 @@
 
 namespace Belvedere\FormMaker\Models\Form;
 
-use Belvedere\FormMaker\{
-    Contracts\Models\Form\FormContract,
-    Http\Resources\Form\FormResource,
-    Listeners\CascadeDelete,
-    Models\Model,
-    Traits\Nodes\HasNodes,
-    Traits\Rankings\HasRankings
-};
+use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\Traits\Nodes\HasNodes;
+use Belvedere\FormMaker\Listeners\CascadeDelete;
+use Belvedere\FormMaker\Traits\Rankings\HasRankings;
+use Belvedere\FormMaker\Http\Resources\Form\FormResource;
+use Belvedere\FormMaker\Contracts\Models\Form\FormContract;
 
 class Form extends Model implements FormContract
 {
@@ -114,6 +112,7 @@ class Form extends Model implements FormContract
             if ($input->rules) {
                 return [$input->html_attributes['name'] => implode('|', $input->rules)];
             }
+
             return [];
         })->all();
     }

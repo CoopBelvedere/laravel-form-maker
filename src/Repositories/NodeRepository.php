@@ -2,15 +2,11 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
-use Belvedere\FormMaker\{
-    Contracts\Repositories\NodeRepositoryContract,
-    Models\Model,
-    Models\Nodes\Node
-};
-use Illuminate\Support\{
-    Collection,
-    Facades\DB
-};
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\Models\Nodes\Node;
+use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 
 class NodeRepository implements NodeRepositoryContract
 {
@@ -63,7 +59,7 @@ class NodeRepository implements NodeRepositoryContract
 
         if ($type === 'inputs' || $type === 'siblings') {
             $query->whereIn('type', array_keys(config('form-maker.nodes')[$type]));
-        } else if ($type) {
+        } elseif ($type) {
             $query->where('type', $type);
         }
 

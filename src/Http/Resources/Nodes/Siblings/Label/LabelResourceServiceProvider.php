@@ -2,11 +2,9 @@
 
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Siblings\Label;
 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract;
-use Illuminate\{
-    Contracts\Support\DeferrableProvider,
-    Support\ServiceProvider
-};
 
 class LabelResourceServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -22,6 +20,7 @@ class LabelResourceServiceProvider extends ServiceProvider implements Deferrable
             if (is_string($resource)) {
                 return new $resource($context['label']);
             }
+
             return $resource;
         });
     }

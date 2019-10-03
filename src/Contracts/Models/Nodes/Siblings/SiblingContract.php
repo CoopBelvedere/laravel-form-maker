@@ -2,10 +2,8 @@
 
 namespace Belvedere\FormMaker\Contracts\Models\Nodes\Siblings;
 
-use Belvedere\FormMaker\Contracts\{
-    Models\Nodes\NodeContract,
-    Traits\Text\HasTextContract
-};
+use Belvedere\FormMaker\Contracts\Models\Nodes\NodeContract;
+use Belvedere\FormMaker\Contracts\Traits\Text\HasTextContract;
 
 interface SiblingContract extends HasTextContract, NodeContract
 {

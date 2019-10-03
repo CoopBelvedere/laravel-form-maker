@@ -2,8 +2,8 @@
 
 namespace Belvedere\FormMaker\Models\HtmlAttributes;
 
-use Belvedere\FormMaker\Contracts\Models\HtmlAttributes\HtmlAttributerContract;
 use Illuminate\Support\Str;
+use Belvedere\FormMaker\Contracts\Models\HtmlAttributes\HtmlAttributerContract;
 
 class HtmlAttributer implements HtmlAttributerContract
 {
@@ -73,7 +73,7 @@ class HtmlAttributer implements HtmlAttributerContract
 
         if (is_null($value)) {
             $this->htmlAttributes[] = [$htmlAttribute => null];
-        } else if (array_key_exists($htmlAttribute, self::HTML_ATTRIBUTES_LIST)) {
+        } elseif (array_key_exists($htmlAttribute, self::HTML_ATTRIBUTES_LIST)) {
             $this->addHtmlAttributeInList($htmlAttribute, $value);
         }
     }
@@ -87,14 +87,14 @@ class HtmlAttributer implements HtmlAttributerContract
     protected function addHtmlAttributeInList(string $htmlAttribute, $value): void
     {
         if ($htmlAttribute === 'data') {
-            list($dataKey, $dataValue) = $value;
+            [$dataKey, $dataValue] = $value;
             $this->htmlAttributes[] = [$dataKey => $dataValue];
-        } else if (is_array($value)) {
+        } elseif (is_array($value)) {
             $this->htmlAttributes[] = [$htmlAttribute => sprintf(
                 self::HTML_ATTRIBUTES_LIST[$htmlAttribute][0],
                 implode(self::HTML_ATTRIBUTES_LIST[$htmlAttribute][1], $value)
             )];
-        } else if (is_bool($value)) {
+        } elseif (is_bool($value)) {
             $this->htmlAttributes[] = [$htmlAttribute => var_export($value, true)];
         } else {
             $this->htmlAttributes[] = [$htmlAttribute => sprintf(
