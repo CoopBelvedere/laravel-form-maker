@@ -1,6 +1,6 @@
 <?php
 
-namespace Belvedere\FormMaker\Tests\Unit;
+namespace Belvedere\FormMaker\Tests\Unit\Models;
 
 use Belvedere\FormMaker\Models\Rankings\Ranker;
 use Belvedere\FormMaker\Tests\TestCase;

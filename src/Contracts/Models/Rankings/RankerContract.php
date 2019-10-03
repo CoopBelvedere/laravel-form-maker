@@ -2,7 +2,10 @@
 
 namespace Belvedere\FormMaker\Contracts\Models\Rankings;
 
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\{
+    Database\Eloquent\Relations\MorphOne,
+    Support\Collection
+};
 
 interface RankerContract
 {
@@ -118,10 +121,10 @@ interface RankerContract
     /**
      * Order the list according to the items position in the ranking.
      *
-     * @param \Illuminate\Support\Collection|\Illuminate\Support\LazyCollection $nodes
-     * @return \Illuminate\Support\Collection|\Illuminate\Support\LazyCollection
+     * @param \Illuminate\Support\Collection $nodes
+     * @return \Illuminate\Support\Collection
      */
-    public function sortByRank($nodes);
+    public function sortByRank(Collection $nodes);
 
     /**
      * Toggle two nodes in the ranking.

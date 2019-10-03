@@ -6,7 +6,7 @@ use Belvedere\FormMaker\{
     Contracts\Repositories\NodeRepositoryContract,
     Models\Nodes\Node
 };
-use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Collection;
 
 trait HasNodes
 {
@@ -104,9 +104,9 @@ trait HasNodes
      * Get the nodes filtered by type or not and sorted by their position in the ranking.
      *
      * @param string|null $type
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\Collection
      */
-    public function nodes(?string $type = null): LazyCollection
+    public function nodes(?string $type = null): Collection
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
