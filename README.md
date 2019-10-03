@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/CoopBelvedere/laravel-form-maker.svg?branch=master)](https://travis-ci.org/CoopBelvedere/laravel-form-maker)
+
 # Laravel Form Maker
 
 Simple modular backend api to provide user generated forms for your laravel projects easily.
