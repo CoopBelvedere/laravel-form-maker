@@ -19,7 +19,9 @@ This is all there is to do.
 
 ## Documentation
 
-To do.
+The documentation can be found in the project's wiki section.
+
+[Documentation](https://github.com/CoopBelvedere/laravel-form-maker/wiki)
 
 ## Credits
 
