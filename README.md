@@ -10,7 +10,7 @@ Simple modular backend api to provide user generated forms for your laravel proj
 Requires php >=7.3.0 and laravel 6.0+
 
 ```
-composer require Belvedere/laravel-form-maker
+composer require coopbelvedere/laravel-form-maker
 
 php artisan vendor:publish --provider="Belvedere\FormMaker\FormMakerServiceProvider"
 ```
@@ -29,4 +29,4 @@ The documentation can be found in the project's wiki section.
 
 ## License
 
-laravel-form-maker is open-sourced software licensed under the [MIT license](https://github.com/pascalboucher/laravel-form-maker/blob/master/LICENSE.md)
+laravel-form-maker is open-sourced software licensed under the [MIT license](https://github.com/CoopBelvedere/laravel-form-maker/blob/master/LICENSE.md)
