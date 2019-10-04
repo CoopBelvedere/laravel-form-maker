@@ -5,9 +5,12 @@ namespace Belvedere\FormMaker\Models\Nodes\Inputs\Textarea;
 use Belvedere\FormMaker\Scopes\NodeScope;
 use Belvedere\FormMaker\Models\Nodes\Inputs\Input;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Textarea\TextareaerContract;
+use Belvedere\FormMaker\Traits\Text\HasText;
 
 class Textareaer extends Input implements TextareaerContract
 {
+    use HasText;
+
     /**
      * Apply the type scope.
      *
