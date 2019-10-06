@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
+use Illuminate\Support\LazyCollection;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
-use Illuminate\Support\LazyCollection;
 
 trait HasOptions
 {
