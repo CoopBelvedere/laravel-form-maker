@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
-use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 
@@ -102,9 +102,9 @@ trait HasNodes
      * Get the nodes filtered by type or not and sorted by their position in the ranking.
      *
      * @param string|null $type
-     * @return \Illuminate\Support\Collection
+     * @return \Illuminate\Support\LazyCollection
      */
-    public function nodes(?string $type = null): Collection
+    public function nodes(?string $type = null): LazyCollection
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 

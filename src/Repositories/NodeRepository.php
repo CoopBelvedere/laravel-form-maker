@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Belvedere\FormMaker\Models\Model;
+use Illuminate\Support\LazyCollection;
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 
@@ -48,9 +48,9 @@ class NodeRepository implements NodeRepositoryContract
      *
      * @param \Belvedere\FormMaker\Models\Model $parent
      * @param string|null $type
-     * @return \Illuminate\Support\Collection
+     * @return \Illuminate\Support\LazyCollection
      */
-    public function all(Model $parent, ?string $type = null): Collection
+    public function all(Model $parent, ?string $type = null): LazyCollection
     {
         $query = DB::table(config('form-maker.database.form_nodes_table', 'form_nodes'))
             ->where('nodable_type', $parent->getMorphClass())
@@ -63,7 +63,7 @@ class NodeRepository implements NodeRepositoryContract
             $query->where('type', $type);
         }
 
-        return $query->get()->groupBy('type')->map(function ($nodes, $key) {
+        return $query->cursor()->groupBy('type')->map(function ($nodes, $key) {
             return $this->resolve($nodes[0]->type)::hydrate($nodes->toArray());
         })->flatten(1);
     }
