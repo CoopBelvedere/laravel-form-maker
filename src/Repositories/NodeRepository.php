@@ -4,9 +4,9 @@ namespace Belvedere\FormMaker\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use Belvedere\FormMaker\Models\Model;
+use Illuminate\Support\LazyCollection;
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
-use Illuminate\Support\LazyCollection;
 
 class NodeRepository implements NodeRepositoryContract
 {

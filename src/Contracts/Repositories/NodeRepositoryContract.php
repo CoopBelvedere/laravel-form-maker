@@ -3,8 +3,8 @@
 namespace Belvedere\FormMaker\Contracts\Repositories;
 
 use Belvedere\FormMaker\Models\Model;
-use Belvedere\FormMaker\Models\Nodes\Node;
 use Illuminate\Support\LazyCollection;
+use Belvedere\FormMaker\Models\Nodes\Node;
 
 interface NodeRepositoryContract
 {

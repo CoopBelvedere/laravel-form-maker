@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
+use Illuminate\Support\LazyCollection;
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
-use Illuminate\Support\LazyCollection;
 
 trait HasNodes
 {

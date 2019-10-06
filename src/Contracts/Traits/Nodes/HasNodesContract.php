@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Traits\Nodes;
 
+use Illuminate\Support\LazyCollection;
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
-use Illuminate\Support\LazyCollection;
 
 interface HasNodesContract extends HasRankingsContract
 {
