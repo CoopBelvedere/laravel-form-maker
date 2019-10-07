@@ -16,7 +16,7 @@ interface HasLabelContract extends HasRankingsContract
     public function addLabel(string $text): LabelerContract;
 
     /**
-     * Get the node label.
+     * Get the label.
      *
      * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract|null
      */

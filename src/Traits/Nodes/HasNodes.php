@@ -19,7 +19,7 @@ trait HasNodes
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        $node = $nodeRepository->create($this, $type);
+        $node = $nodeRepository->getInstanceOf($this, $type);
 
         return $node;
     }
@@ -36,11 +36,9 @@ trait HasNodes
     {
         $node = $this->add($type);
 
-        $afterNode = $this->node($afterNodeKey);
+        $node->save();
 
-        if ($afterNode) {
-            $this->ranking->move($node)->after($afterNode);
-        }
+        $this->ranking->move($node)->after($afterNodeKey);
 
         return $node;
     }
@@ -56,6 +54,8 @@ trait HasNodes
     public function addAtRank(int $rank, string $type): Node
     {
         $node = $this->add($type);
+
+        $node->save();
 
         $this->ranking->move($node)->toRank($rank);
 
@@ -74,11 +74,9 @@ trait HasNodes
     {
         $node = $this->add($type);
 
-        $beforeNode = $this->node($beforeNodeKey);
+        $node->save();
 
-        if ($beforeNode) {
-            $this->ranking->move($node)->before($beforeNode);
-        }
+        $this->ranking->move($node)->before($beforeNodeKey);
 
         return $node;
     }

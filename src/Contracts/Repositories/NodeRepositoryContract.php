@@ -18,16 +18,6 @@ interface NodeRepositoryContract
     public function all(Model $parent, ?string $type = null): LazyCollection;
 
     /**
-     * Add a node to the parent model.
-     *
-     * @param \Belvedere\FormMaker\Models\Model $parent
-     * @param string $type
-     * @param array $attributes
-     * @return \Belvedere\FormMaker\Models\Nodes\Node
-     */
-    public function create(Model $parent, string $type, array $attributes = []): Node;
-
-    /**
      * Delete all nodes of the parent model.
      *
      * @param \Belvedere\FormMaker\Models\Model $parent
@@ -53,4 +43,13 @@ interface NodeRepositoryContract
      * @return \Belvedere\FormMaker\Models\Nodes\Node|null
      */
     public function first(Model $parent, ?string $type = null): ?Node;
+
+    /**
+     * Get a new instance of a node model.
+     *
+     * @param \Belvedere\FormMaker\Models\Model $parent
+     * @param string $type
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     */
+    public function getInstanceOf(Model $parent, string $type): Node;
 }

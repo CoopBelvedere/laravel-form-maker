@@ -70,31 +70,6 @@ class NodeRepository implements NodeRepositoryContract
     }
 
     /**
-     * Add a node to the parent model.
-     *
-     * @param \Belvedere\FormMaker\Models\Model $parent
-     * @param string $type
-     * @param array $attributes
-     * @return \Belvedere\FormMaker\Models\Nodes\Node
-     */
-    public function create(Model $parent, string $type, array $attributes = []): Node
-    {
-        $node = $this->resolve($type);
-
-        $this->hydrate([$node]);
-
-        $node->type = $type;
-
-        if (count($attributes) > 0) {
-            $node->withHtmlAttributes($attributes);
-        }
-
-        $parent->morphMany($node, 'nodable')->save($node);
-
-        return $node;
-    }
-
-    /**
      * Delete all nodes of the parent model.
      *
      * @param \Belvedere\FormMaker\Models\Model $parent

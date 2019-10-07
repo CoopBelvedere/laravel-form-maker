@@ -17,7 +17,7 @@ trait HasLabel
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        $label = $nodeRepository->create($this, 'label');
+        $label = $nodeRepository->getInstanceOf($this, 'label');
 
         $label->withText($text)->save();
 
@@ -25,7 +25,7 @@ trait HasLabel
     }
 
     /**
-     * Get the node label.
+     * Get the label.
      *
      * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract|null
      */
