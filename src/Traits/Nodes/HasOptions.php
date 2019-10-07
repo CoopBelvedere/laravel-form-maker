@@ -66,9 +66,7 @@ trait HasOptions
      */
     public function options(): LazyCollection
     {
-        $nodeRepository = resolve(NodeRepositoryContract::class);
-
-        $options = $nodeRepository->all($this, 'option');
+        $options = $this->morphMany(resolve(OptionerContract::class), 'nodable')->cursor();
 
         if ($options->isEmpty()) {
             return $options;
