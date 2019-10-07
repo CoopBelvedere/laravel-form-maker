@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
 
@@ -17,7 +18,7 @@ trait HasLabel
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        $label = $nodeRepository->create($this, 'label');
+        $label = $nodeRepository->getInstanceOf($this, 'label');
 
         $label->withText($text)->save();
 
@@ -25,16 +26,12 @@ trait HasLabel
     }
 
     /**
-     * Get the node label.
+     * Get the label.
      *
-     * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract|null
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function label(): ?LabelerContract
+    public function label(): MorphOne
     {
-        $nodeRepository = resolve(NodeRepositoryContract::class);
-
-        $label = $nodeRepository->first($this, 'label');
-
-        return is_null($label) ? null : $label;
+        return $this->morphOne(resolve(LabelerContract::class), 'nodable');
     }
 }

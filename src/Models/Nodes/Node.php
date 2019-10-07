@@ -3,6 +3,7 @@
 namespace Belvedere\FormMaker\Models\Nodes;
 
 use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\Listeners\AddNodeInRanking;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Belvedere\FormMaker\Listeners\RemoveFromRanking;
 use Belvedere\FormMaker\Contracts\Models\Nodes\NodeContract;
@@ -15,6 +16,7 @@ class Node extends Model implements NodeContract
      * @var array
      */
     protected $dispatchesEvents = [
+        'created' => AddNodeInRanking::class,
         'deleted' => RemoveFromRanking::class,
     ];
 
@@ -28,6 +30,17 @@ class Node extends Model implements NodeContract
         parent::__construct($attributes);
 
         $this->table = config('form-maker.database.form_nodes_table', 'form_nodes');
+    }
+
+    /**
+     * Set the node parent relation.
+     *
+     * @param mixed $parent
+     * @return void
+     */
+    public function setParentRelation($parent): void
+    {
+        $this->setRelation('parent', $parent);
     }
 
     // ELOQUENT RELATIONSHIPS

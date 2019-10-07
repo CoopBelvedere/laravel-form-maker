@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Belvedere\FormMaker\Models\Model;
 use Illuminate\Support\LazyCollection;
@@ -64,31 +65,8 @@ class NodeRepository implements NodeRepositoryContract
         }
 
         return $query->cursor()->groupBy('type')->map(function ($nodes, $key) {
-            return $this->resolve($nodes[0]->type)::hydrate($nodes->toArray());
+            return $this->hydrate($nodes->toArray());
         })->flatten(1);
-    }
-
-    /**
-     * Add a node to the parent model.
-     *
-     * @param \Belvedere\FormMaker\Models\Model $parent
-     * @param string $type
-     * @param array $attributes
-     * @return \Belvedere\FormMaker\Models\Nodes\Node
-     */
-    public function create(Model $parent, string $type, array $attributes = []): Node
-    {
-        $node = $this->resolve($type);
-
-        $node->type = $type;
-
-        if (count($attributes) > 0) {
-            $node->withHtmlAttributes($attributes);
-        }
-
-        $parent->morphMany($node, 'nodable')->save($node);
-
-        return $node;
     }
 
     /**
@@ -133,43 +111,57 @@ class NodeRepository implements NodeRepositoryContract
 
         $node = $query->first();
 
-        return (is_null($node)) ? $node : $this->resolve($node->type)::hydrate([$node])[0];
+        return (is_null($node)) ? $node : $this->hydrate([$node])[0];
     }
 
     /**
-     * Get the first node in list.
+     * Get a new instance of a node model.
      *
      * @param \Belvedere\FormMaker\Models\Model $parent
-     * @param string|null $type
-     * @return \Belvedere\FormMaker\Models\Nodes\Node|null
+     * @param string $type
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
      */
-    public function first(Model $parent, ?string $type = null): ?Node
+    public function getInstanceOf(Model $parent, string $type): Node
     {
-        $query = DB::table(config('form-maker.database.form_nodes_table', 'form_nodes'))
-            ->where('nodable_type', $parent->getMorphClass())
-            ->where('nodable_id', $parent->getKey());
+        $node = $this->resolve($type);
 
-        if (is_string($type)) {
-            $query->where('type', $type);
+        $node->type = $type;
+        $node->nodable_type = $parent->getMorphClass();
+        $node->nodable_id = $parent->getKey();
+        $node->setParentRelation($parent);
+
+        return $node;
+    }
+
+    /**
+     * Create a collection of nodes from plain arrays.
+     *
+     * @param array $nodes
+     * @return \Illuminate\Support\Collection
+     */
+    protected function hydrate(array $nodes): Collection
+    {
+        if (count($nodes) === 0 || is_null($nodes[0]->type)) {
+            return collect([]);
         }
 
-        $node = $query->first();
+        $type = $nodes[0]->type;
 
-        return (is_null($node)) ? $node : $this->resolve($node->type)::hydrate([$node])[0];
+        return $this->resolve($type)::hydrate($nodes);
     }
 
     /**
      * Resolve the node out of the service container.
      *
-     * @param string $node
+     * @param string $type
      * @return \Belvedere\FormMaker\Models\Nodes\Node
      */
-    protected function resolve(string $node): Node
+    protected function resolve(string $type): Node
     {
-        if (array_key_exists($node, self::NODES)) {
-            return resolve(self::NODES[$node]);
+        if (array_key_exists($type, self::NODES)) {
+            return resolve(self::NODES[$type]);
         }
 
-        return resolve(sprintf('form-maker.%s', $node));
+        return resolve(sprintf('form-maker.%s', $type));
     }
 }

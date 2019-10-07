@@ -69,9 +69,9 @@ class FormTest extends TestCase
     /** @test */
     public function api_response_with_no_html_attributes_and_nodes()
     {
-        $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('text');
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
         $apiResponse = $this->form->toApi()->toArray(null);
 
         $this->assertIsArray($apiResponse);
@@ -94,9 +94,9 @@ class FormTest extends TestCase
     public function api_response_with_html_attributes_and_nodes()
     {
         $this->form->withHtmlAttributes(['accept-charset' => ['utf8'], 'role' => 'form', 'id' => 'test'])->save();
-        $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('text');
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
         $apiResponse = $this->form->toApi()->toArray(null);
 
         $this->assertIsArray($apiResponse);
@@ -122,9 +122,9 @@ class FormTest extends TestCase
     /** @test */
     public function disable_all_inputs()
     {
-        $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('text');
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
         $this->form->disabled();
 
         foreach ($this->form->nodes('inputs') as $input) {
@@ -136,9 +136,9 @@ class FormTest extends TestCase
     /** @test */
     public function enable_all_inputs()
     {
-        $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('text');
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
         $this->form->enabled();
 
         foreach ($this->form->nodes('inputs') as $input) {
@@ -149,9 +149,9 @@ class FormTest extends TestCase
     /** @test */
     public function enable_all_inputs_after_they_have_been_disabled()
     {
-        $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('text');
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
         $this->form->disabled();
 
         foreach ($this->form->nodes('inputs') as $input) {

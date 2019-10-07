@@ -9,41 +9,39 @@ use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
 trait HasOptions
 {
     /**
-     * Add a node to the parent model.
+     * Add an option input to the parent model.
      *
-     * @param array $attributes
      * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract
      */
-    public function addOption(array $attributes): OptionerContract
+    public function addOption(): OptionerContract
     {
         $nodeRepository = resolve(NodeRepositoryContract::class);
 
-        $option = $nodeRepository->create($this, 'option', $attributes);
+        $option = $nodeRepository->getInstanceOf($this, 'option');
 
-        if (array_key_exists('text', $attributes)) {
-            $option->withText($attributes['text']);
-        }
-
-        $this->addInRanking($option);
-
-        return $option->saveAndFirst();
+        return $option;
     }
 
     /**
-     * Add options for the input.
+     * Add options to the parent model.
      *
      * @param array ...$options
      * @return array
      */
     public function addOptions(array ...$options): array
     {
-        $nodes = [];
+        return array_map(function ($attributes) {
+            $option = $this->addOption();
 
-        foreach ($options as $optionAttributes) {
-            $nodes[] = $this->addOption($optionAttributes);
-        }
+            if (count($attributes) > 0) {
+                $option->withHtmlAttributes($attributes);
+                if (array_key_exists('text', $attributes)) {
+                    $option->withText($attributes['text']);
+                }
+            }
 
-        return $nodes;
+            return $option->saveAndFirst();
+        }, $options);
     }
 
     /**
@@ -68,9 +66,7 @@ trait HasOptions
      */
     public function options(): LazyCollection
     {
-        $nodeRepository = resolve(NodeRepositoryContract::class);
-
-        $options = $nodeRepository->all($this, 'option');
+        $options = $this->morphMany(resolve(OptionerContract::class), 'nodable')->cursor();
 
         if ($options->isEmpty()) {
             return $options;

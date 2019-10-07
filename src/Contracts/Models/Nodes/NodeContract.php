@@ -12,4 +12,12 @@ interface NodeContract extends ModelContract
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function parent();
+
+    /**
+     * Set the node parent relation.
+     *
+     * @param mixed $parent
+     * @return void
+     */
+    public function setParentRelation($parent): void;
 }

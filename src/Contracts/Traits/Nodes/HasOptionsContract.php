@@ -9,15 +9,14 @@ use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
 interface HasOptionsContract extends HasRankingsContract
 {
     /**
-     * Add an option for the input.
+     * Add an option input to the parent model.
      *
-     * @param array $attributes
      * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract
      */
-    public function addOption(array $attributes): OptionerContract;
+    public function addOption(): OptionerContract;
 
     /**
-     * Add options for the input.
+     * Add options to the parent model.
      *
      * @param array ...$options
      * @return array
