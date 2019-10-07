@@ -4,6 +4,7 @@ namespace Belvedere\FormMaker\Contracts\Traits\Nodes;
 
 use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 interface HasLabelContract extends HasRankingsContract
 {
@@ -18,7 +19,7 @@ interface HasLabelContract extends HasRankingsContract
     /**
      * Get the label.
      *
-     * @return \Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract|null
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function label(): ?LabelerContract;
+    public function label(): MorphOne;
 }

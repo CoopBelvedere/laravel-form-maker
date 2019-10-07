@@ -113,29 +113,7 @@ class NodeRepository implements NodeRepositoryContract
 
         return (is_null($node)) ? $node : $this->hydrate([$node])[0];
     }
-
-    /**
-     * Get the first node in list.
-     *
-     * @param \Belvedere\FormMaker\Models\Model $parent
-     * @param string|null $type
-     * @return \Belvedere\FormMaker\Models\Nodes\Node|null
-     */
-    public function first(Model $parent, ?string $type = null): ?Node
-    {
-        $query = DB::table(config('form-maker.database.form_nodes_table', 'form_nodes'))
-            ->where('nodable_type', $parent->getMorphClass())
-            ->where('nodable_id', $parent->getKey());
-
-        if (is_string($type)) {
-            $query->where('type', $type);
-        }
-
-        $node = $query->first();
-
-        return (is_null($node)) ? $node : $this->hydrate([$node])[0];
-    }
-
+    
     /**
      * Get a new instance of a node model.
      *

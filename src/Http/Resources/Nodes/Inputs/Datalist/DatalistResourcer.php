@@ -55,12 +55,10 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
      */
     protected function getLabelResource(string $inputId): ?LabelResourcerContract
     {
-        $label = $this->label();
-
-        if ($label) {
-            return $label->withHtmlAttributes(['for' => $inputId])->toApi();
+        if ($this->label) {
+            return $this->label->withHtmlAttributes(['for' => $inputId])->toApi();
         }
 
-        return $label;
+        return $this->label;
     }
 }
