@@ -33,7 +33,7 @@ class InputTest extends TestCase
     {
         Event::fake();
 
-        $this->form->add('text');
+        $this->form->add('text')->save();
 
         Event::assertDispatched(AssignAttributes::class);
     }
@@ -43,7 +43,7 @@ class InputTest extends TestCase
     {
         Event::fake();
 
-        $input = $this->form->add('text');
+        $input = $this->form->add('text')->saveAndFirst();
 
         $input->delete();
 

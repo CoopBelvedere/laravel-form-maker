@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Tests\Unit\Traits;
 
-use Belvedere\FormMaker\Models\Nodes\Inputs\Select\Selecter;
+use Belvedere\FormMaker\Models\Form\Form;
 use Belvedere\FormMaker\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -16,17 +16,18 @@ class HasOptionsTest extends TestCase
     {
         parent::setUp();
 
-        $this->select = Selecter::forceCreate([
-            'nodable_type' => 'test',
-            'nodable_id' => 1,
-            'type' => 'select'
-        ]);
+        $form =  new Form();
+        $form->fill(['name' => 'test'])->save();
+        $this->select = $form->add('select')->saveAndFirst();
     }
 
     /** @test */
     public function add_option_input_to_a_parent_model()
     {
-        $option = $this->select->addOption(['title' => 'Cat', 'value' => 'cat', 'text' => 'Cat!']);
+        $option = $this->select->addOption()
+            ->withHtmlAttributes(['title' => 'Cat', 'value' => 'cat'])
+            ->withText('Cat!')
+            ->saveAndFirst();
 
         $this->assertEquals(true, $this->select->ranking->inRanking($option));
         $this->assertEquals('option', $option->type);

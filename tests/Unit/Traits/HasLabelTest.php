@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Tests\Unit\Traits;
 
-use Belvedere\FormMaker\Models\Nodes\Inputs\Text\Texter;
+use Belvedere\FormMaker\Models\Form\Form;
 use Belvedere\FormMaker\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -16,11 +16,10 @@ class HasLabelTest extends TestCase
     {
         parent::setUp();
 
-        $this->input = Texter::forceCreate([
-            'nodable_type' => 'test',
-            'nodable_id' => 1,
-            'type' => 'text'
-        ]);
+        $form =  new Form();
+        $form->fill(['name' => 'test'])->save();
+
+        $this->input = $form->add('text')->saveAndFirst();
     }
 
     /** @test */
@@ -36,7 +35,7 @@ class HasLabelTest extends TestCase
     public function get_label_sibling_from_a_parent_model()
     {
         $this->input->addLabel('Label');
-        $label = $this->input->label();
+        $label = $this->input->label;
 
         $this->assertEquals('label', $label->type);
         $this->assertEquals('Label', $label->text);
@@ -45,7 +44,7 @@ class HasLabelTest extends TestCase
     /** @test */
     public function get_label_sibling_from_a_parent_model_when_label_doesnt_exist()
     {
-        $label = $this->input->label();
+        $label = $this->input->label;
 
         $this->assertNull($label);
     }

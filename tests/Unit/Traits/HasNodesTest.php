@@ -10,6 +10,8 @@ class HasNodesTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected $form;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -23,7 +25,7 @@ class HasNodesTest extends TestCase
     /** @test */
     public function add_node_to_a_parent_model_when_node_is_input()
     {
-        $input = $this->form->add('text');
+        $input = $this->form->add('text')->saveAndFirst();
 
         $this->assertEquals(true, $this->form->ranking->inRanking($input));
         $this->assertEquals('text', $input->type);
@@ -44,9 +46,9 @@ class HasNodesTest extends TestCase
     /** @test */
     public function add_node_to_a_parent_model_after_an_existing_node()
     {
-        $afterInput = $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('text');
+        $afterInput = $this->form->add('text')->saveAndFirst();
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
         $afterInputRank = $this->form->ranking->rank($afterInput);
         $input = $this->form->addAfter($afterInput->html_attributes['id'], 'text');
         $inputRank = $this->form->ranking->rank($input);
@@ -60,9 +62,9 @@ class HasNodesTest extends TestCase
     /** @test */
     public function add_node_to_a_parent_model_before_an_existing_node()
     {
-        $beforeInput = $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('text');
+        $beforeInput = $this->form->add('text')->saveAndFirst();
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
         $beforeInputRank = $this->form->ranking->rank($beforeInput);
         $input = $this->form->addBefore($beforeInput->html_attributes['id'], 'text');
         $inputRank = $this->form->ranking->rank($input);
@@ -76,9 +78,9 @@ class HasNodesTest extends TestCase
     /** @test */
     public function add_node_to_a_parent_model_at_specific_rank()
     {
-        $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('text');
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
         $input = $this->form->addAtRank(2, 'text');
         $inputRank = $this->form->ranking->rank($input);
 
@@ -91,9 +93,9 @@ class HasNodesTest extends TestCase
     /** @test */
     public function get_node_by_html_attribute_id()
     {
-        $this->form->add('text');
+        $this->form->add('text')->save();
         $this->form->add('text')->withHtmlAttributes(['id' => 'test'])->save();
-        $this->form->add('paragraph');
+        $this->form->add('paragraph')->save();
         $node = $this->form->node('test');
 
         $this->assertEquals('text', $node->type);
@@ -105,9 +107,9 @@ class HasNodesTest extends TestCase
     /** @test */
     public function get_node_by_html_attribute_name()
     {
-        $this->form->add('text');
+        $this->form->add('text')->save();
         $this->form->add('text')->withHtmlAttributes(['name' => 'test'])->save();
-        $this->form->add('paragraph');
+        $this->form->add('paragraph')->save();
         $node = $this->form->node('test');
 
         $this->assertEquals('text', $node->type);
@@ -119,9 +121,9 @@ class HasNodesTest extends TestCase
     /** @test */
     public function get_node_by_html_attribute_value()
     {
-        $this->form->add('text');
+        $this->form->add('text')->save();
         $this->form->add('text')->withHtmlAttributes(['value' => 'test'])->save();
-        $this->form->add('paragraph');
+        $this->form->add('paragraph')->save();
         $node = $this->form->node('test');
 
         $this->assertEquals('text', $node->type);
@@ -134,9 +136,9 @@ class HasNodesTest extends TestCase
     /** @test */
     public function get_node_when_doesnt_exist()
     {
-        $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('paragraph');
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
+        $this->form->add('paragraph')->save();
         $node = $this->form->node('test');
 
         $this->assertNull($node);
@@ -145,9 +147,9 @@ class HasNodesTest extends TestCase
     /** @test */
     public function get_all_nodes_from_parent_model()
     {
-        $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('paragraph');
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
+        $this->form->add('paragraph')->save();
         $nodes = $this->form->nodes();
 
         $this->assertEquals(3, $nodes->count());
@@ -166,9 +168,9 @@ class HasNodesTest extends TestCase
     /** @test */
     public function get_all_nodes_from_parent_model_filtered_by_type()
     {
-        $this->form->add('text');
-        $this->form->add('text');
-        $this->form->add('paragraph');
+        $this->form->add('text')->save();
+        $this->form->add('text')->save();
+        $this->form->add('paragraph')->save();
         $nodes = $this->form->nodes('text');
 
         $this->assertEquals(2, $nodes->count());

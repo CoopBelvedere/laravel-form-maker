@@ -36,9 +36,12 @@ trait HasNodes
     {
         $node = $this->add($type);
 
-        $node->save();
+        $afterNode = $this->node($afterNodeKey);
 
-        $this->ranking->move($node)->after($afterNodeKey);
+        if ($afterNode) {
+            $node->save();
+            $this->ranking->move($node)->after($afterNode);
+        }
 
         return $node;
     }
@@ -74,9 +77,12 @@ trait HasNodes
     {
         $node = $this->add($type);
 
-        $node->save();
+        $beforeNode = $this->node($beforeNodeKey);
 
-        $this->ranking->move($node)->before($beforeNodeKey);
+        if ($beforeNode) {
+            $node->save();
+            $this->ranking->move($node)->before($beforeNode);
+        }
 
         return $node;
     }
