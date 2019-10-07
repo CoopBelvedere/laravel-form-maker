@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Listeners;
 
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\InputContract;
 use Belvedere\FormMaker\Models\Nodes\Node;
 
 class AddNodeInRanking
@@ -33,6 +34,10 @@ class AddNodeInRanking
      */
     protected function handle(): void
     {
+        if ($this->node->type === 'label' && $this->node->parent instanceof InputContract) {
+            return;
+        }
+
         $this->node->parent->addInRanking($this->node);
     }
 }
