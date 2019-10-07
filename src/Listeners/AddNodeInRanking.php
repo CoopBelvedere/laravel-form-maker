@@ -2,13 +2,13 @@
 
 namespace Belvedere\FormMaker\Listeners;
 
-use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\InputContract;
 use Belvedere\FormMaker\Models\Nodes\Node;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\InputContract;
 
 class AddNodeInRanking
 {
     /**
-     * The node to be added in ranking
+     * The node to be added in ranking.
      *
      * @var \Belvedere\FormMaker\Models\Nodes\Node
      */

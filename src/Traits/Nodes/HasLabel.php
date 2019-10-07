@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasLabel
 {

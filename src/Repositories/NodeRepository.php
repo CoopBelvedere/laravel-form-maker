@@ -113,7 +113,7 @@ class NodeRepository implements NodeRepositoryContract
 
         return (is_null($node)) ? $node : $this->hydrate([$node])[0];
     }
-    
+
     /**
      * Get a new instance of a node model.
      *

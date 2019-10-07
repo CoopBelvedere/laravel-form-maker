@@ -2,9 +2,9 @@
 
 namespace Belvedere\FormMaker\Contracts\Traits\Nodes;
 
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 interface HasLabelContract extends HasRankingsContract
 {

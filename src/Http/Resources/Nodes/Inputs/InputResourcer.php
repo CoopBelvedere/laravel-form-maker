@@ -52,6 +52,7 @@ class InputResourcer extends JsonResource implements InputResourcerContract
     {
         if ($this->label) {
             $this->label->setRelation('parent', $this->resource);
+
             return $this->label->toApi();
         }
 
