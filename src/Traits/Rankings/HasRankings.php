@@ -22,7 +22,7 @@ trait HasRankings
      * @return void
      * @throws \Exception
      */
-    protected function addInRanking(Node $node): void
+    public function addInRanking(Node $node): void
     {
         if (is_null($this->ranking)) {
             $this->ranking()->save(resolve(RankerContract::class));

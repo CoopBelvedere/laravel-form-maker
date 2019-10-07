@@ -16,7 +16,7 @@ class Node extends Model implements NodeContract
      * @var array
      */
     protected $dispatchesEvents = [
-        'creating' => AddNodeInRanking::class,
+        'created' => AddNodeInRanking::class,
         'deleted' => RemoveFromRanking::class,
     ];
 

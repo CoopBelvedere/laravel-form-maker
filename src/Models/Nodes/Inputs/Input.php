@@ -37,24 +37,6 @@ class Input extends Node implements InputContract
     ];
 
     /**
-     * Add the custom eloquent events listeners.
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($input) {
-            new AssignAttributes($input);
-        });
-
-        static::deleting(function ($input) {
-            new CascadeDelete($input);
-        });
-    }
-
-    /**
      * Input constructor.
      *
      * @param array $attributes
@@ -62,6 +44,11 @@ class Input extends Node implements InputContract
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
+
+        $this->dispatchesEvents = array_merge($this->dispatchesEvents, [
+            'creating' => AssignAttributes::class,
+            'deleting' => CascadeDelete::class,
+        ]);
 
         $this->addAvailableAttributes([
             'autocomplete',
