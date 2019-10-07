@@ -64,7 +64,7 @@ class NodeRepository implements NodeRepositoryContract
         }
 
         return $query->cursor()->groupBy('type')->map(function ($nodes, $key) {
-            return $this->resolve($nodes[0]->type)::hydrate($nodes->toArray());
+            return $this->hydrate($nodes->toArray());
         })->flatten(1);
     }
 
@@ -135,7 +135,7 @@ class NodeRepository implements NodeRepositoryContract
 
         $node = $query->first();
 
-        return (is_null($node)) ? $node : $this->resolve($node->type)::hydrate([$node])[0];
+        return (is_null($node)) ? $node : $this->hydrate([$node])[0];
     }
 
     /**
@@ -157,21 +157,42 @@ class NodeRepository implements NodeRepositoryContract
 
         $node = $query->first();
 
-        return (is_null($node)) ? $node : $this->resolve($node->type)::hydrate([$node])[0];
+        return (is_null($node)) ? $node : $this->hydrate([$node])[0];
     }
 
+    /**
+     * Get a new instance of a node model.
+     *
+     * @param \Belvedere\FormMaker\Models\Model $parent
+     * @param string $type
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     */
+    public function getInstanceOf(Model $parent, string $type): Node
+    {
+        $node = $this->resolve($type);
+
+        $node->type = $type;
+        $node->nodable_type = $parent->getMorphClass();
+        $node->nodable_id = $parent->getKey();
+
+        return $node;
+    }
+
+    /**
+     *
+     *
+     * @param array $nodes
+     * @return |null
+     */
     protected function hydrate(array $nodes)
     {
-        dd($nodes[0]->type);
-        if (count($nodes) === 0) {
+        if (count($nodes) === 0 || is_null($nodes[0]->type)) {
             return null;
         }
 
         $type = $nodes[0]->type;
-        // $this->resolve($nodes[0]->type)::hydrate($nodes->toArray())
-        // $this->resolve($node->type)::hydrate([$node])[0]
-        // $this->resolve($node->type)::hydrate([$node])[0]
-        return true;
+
+        dd($this->resolve($type)::hydrate($nodes));
     }
 
     /**
