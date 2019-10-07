@@ -2,8 +2,8 @@
 
 namespace Belvedere\FormMaker\Models\Nodes;
 
-use Belvedere\FormMaker\Listeners\AddNodeInRanking;
 use Belvedere\FormMaker\Models\Model;
+use Belvedere\FormMaker\Listeners\AddNodeInRanking;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Belvedere\FormMaker\Listeners\RemoveFromRanking;
 use Belvedere\FormMaker\Contracts\Models\Nodes\NodeContract;
