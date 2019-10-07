@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Nodes;
 
+use Belvedere\FormMaker\Listeners\AddNodeInRanking;
 use Belvedere\FormMaker\Models\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Belvedere\FormMaker\Listeners\RemoveFromRanking;
@@ -15,6 +16,7 @@ class Node extends Model implements NodeContract
      * @var array
      */
     protected $dispatchesEvents = [
+        'creating' => AddNodeInRanking::class,
         'deleted' => RemoveFromRanking::class,
     ];
 
