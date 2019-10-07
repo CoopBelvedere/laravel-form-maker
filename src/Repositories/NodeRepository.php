@@ -128,7 +128,7 @@ class NodeRepository implements NodeRepositoryContract
         $node->type = $type;
         $node->nodable_type = $parent->getMorphClass();
         $node->nodable_id = $parent->getKey();
-        $node->setRelation('parent', $parent);
+        $node->setParentRelation($parent);
 
         return $node;
     }

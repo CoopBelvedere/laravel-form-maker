@@ -32,6 +32,17 @@ class Node extends Model implements NodeContract
         $this->table = config('form-maker.database.form_nodes_table', 'form_nodes');
     }
 
+    /**
+     * Set the node parent relation.
+     *
+     * @param mixed $parent
+     * @return void
+     */
+    public function setParentRelation($parent): void
+    {
+        $this->setRelation('parent', $parent);
+    }
+
     // ELOQUENT RELATIONSHIPS
     // ==============================================================
 
