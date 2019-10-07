@@ -21,8 +21,6 @@ trait HasNodes
 
         $node = $nodeRepository->create($this, $type);
 
-        $this->addInRanking($node);
-
         return $node;
     }
 

@@ -80,6 +80,8 @@ class NodeRepository implements NodeRepositoryContract
     {
         $node = $this->resolve($type);
 
+        $this->hydrate([$node]);
+
         $node->type = $type;
 
         if (count($attributes) > 0) {
@@ -158,18 +160,32 @@ class NodeRepository implements NodeRepositoryContract
         return (is_null($node)) ? $node : $this->resolve($node->type)::hydrate([$node])[0];
     }
 
+    protected function hydrate(array $nodes)
+    {
+        dd($nodes[0]->type);
+        if (count($nodes) === 0) {
+            return null;
+        }
+
+        $type = $nodes[0]->type;
+        // $this->resolve($nodes[0]->type)::hydrate($nodes->toArray())
+        // $this->resolve($node->type)::hydrate([$node])[0]
+        // $this->resolve($node->type)::hydrate([$node])[0]
+        return true;
+    }
+
     /**
      * Resolve the node out of the service container.
      *
-     * @param string $node
+     * @param string $type
      * @return \Belvedere\FormMaker\Models\Nodes\Node
      */
-    protected function resolve(string $node): Node
+    protected function resolve(string $type): Node
     {
-        if (array_key_exists($node, self::NODES)) {
-            return resolve(self::NODES[$node]);
+        if (array_key_exists($type, self::NODES)) {
+            return resolve(self::NODES[$type]);
         }
 
-        return resolve(sprintf('form-maker.%s', $node));
+        return resolve(sprintf('form-maker.%s', $type));
     }
 }
