@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Belvedere\FormMaker\Models\Model;
 use Illuminate\Support\LazyCollection;
@@ -179,20 +180,20 @@ class NodeRepository implements NodeRepositoryContract
     }
 
     /**
-     *
+     * Create a collection of nodes from plain arrays.
      *
      * @param array $nodes
-     * @return |null
+     * @return \Illuminate\Support\Collection
      */
-    protected function hydrate(array $nodes)
+    protected function hydrate(array $nodes): Collection
     {
         if (count($nodes) === 0 || is_null($nodes[0]->type)) {
-            return null;
+            return collect([]);
         }
 
         $type = $nodes[0]->type;
 
-        dd($this->resolve($type)::hydrate($nodes));
+        return $this->resolve($type)::hydrate($nodes);
     }
 
     /**
