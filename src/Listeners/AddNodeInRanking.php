@@ -34,10 +34,10 @@ class AddNodeInRanking
      */
     protected function handle(): void
     {
-        if ($this->node->type === 'label' && $this->node->getRelation('parent') instanceof InputContract) {
+        if ($this->node->type === 'label' && $this->node->parent instanceof InputContract) {
             return;
         }
 
-        $this->node->getRelation('parent')->addInRanking($this->node);
+        $this->node->parent->addInRanking($this->node);
     }
 }
