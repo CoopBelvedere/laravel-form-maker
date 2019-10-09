@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
-use Illuminate\Support\Collection;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
 use Illuminate\Support\Facades\DB;
 use Belvedere\FormMaker\Models\Model;
 use Illuminate\Support\LazyCollection;
@@ -53,20 +53,31 @@ class NodeRepository implements NodeRepositoryContract
      */
     public function all(Model $parent, ?string $type = null): LazyCollection
     {
-        $query = DB::table(config('form-maker.database.form_nodes_table', 'form_nodes'))
-            ->where('nodable_type', $parent->getMorphClass())
-            ->where('nodable_id', $parent->getKey())
-            ->orderBy('type');
+        $nodesTable = config('form-maker.database.form_nodes_table', 'form_nodes');
+
+        $query = DB::table($nodesTable)
+            ->select(DB::raw(sprintf('%s.*, label.id as label_id, label.nodable_type as label_nodable_type, label.nodable_id as label_nodable_id, label.text as label_text, label.html_attributes as label_html_attributes, label.rules as label_rules, label.created_at as label_created_at, label.updated_at as label_updated_at', $nodesTable)))
+            ->leftJoin(DB::raw(sprintf('%s as label', $nodesTable)), function ($join) use ($nodesTable) {
+                $join->on(sprintf('%s.id', $nodesTable), '=', 'label.nodable_id')
+                    ->where('label.type', '=', 'label');
+            })
+            ->where(sprintf('%s.nodable_type', $nodesTable), $parent->getMorphClass())
+            ->where(sprintf('%s.nodable_id', $nodesTable), $parent->getKey())
+            ->orderBy(sprintf('%s.type', $nodesTable));
 
         if ($type === 'inputs' || $type === 'siblings') {
-            $query->whereIn('type', array_keys(config('form-maker.nodes')[$type]));
+            $query->whereIn(sprintf('%s.type', $nodesTable), array_keys(config('form-maker.nodes')[$type]));
         } elseif ($type) {
-            $query->where('type', $type);
+            $query->where(sprintf('%s.type', $nodesTable), $type);
         }
 
-        return $query->cursor()->groupBy('type')->map(function ($nodes, $key) {
-            return $this->hydrate($nodes->toArray());
-        })->flatten(1);
+        $query->get()->map(function ($node, $key) {
+            $label = $this->hydrateLabel($node);
+            $this->removeAttributes('label', $node);
+            $node = $this->hydrate($node);
+            $node->setRelation('label', $label);
+            dd($node);
+        });
     }
 
     /**
@@ -111,7 +122,7 @@ class NodeRepository implements NodeRepositoryContract
 
         $node = $query->first();
 
-        return (is_null($node)) ? $node : $this->hydrate([$node])[0];
+        return (is_null($node)) ? $node : $this->hydrate($node);
     }
 
     /**
@@ -134,20 +145,61 @@ class NodeRepository implements NodeRepositoryContract
     }
 
     /**
-     * Create a collection of nodes from plain arrays.
+     * Hydrate the label columns in the node object to a Label model.
      *
-     * @param array $nodes
-     * @return \Illuminate\Support\Collection
+     * @param object $node
+     * @return LabelerContract|null
      */
-    protected function hydrate(array $nodes): Collection
+    protected function hydrateLabel(object $node): ?LabelerContract
     {
-        if (count($nodes) === 0 || is_null($nodes[0]->type)) {
-            return collect([]);
+        if ($node->label_id) {
+            return $this->hydrate((object) [
+                'id' => $node->label_id,
+                'nodable_type' => $node->label_nodable_type,
+                'nodable_id' => $node->label_nodable_id,
+                'type' => 'label',
+                'text' => $node->label_text,
+                'html_attributes' => $node->label_html_attributes,
+                'rules' => $node->label_rules,
+                'created_at' => $node->label_created_at,
+                'updated_at' => $node->label_updated_at,
+            ]);
         }
 
-        $type = $nodes[0]->type;
+        return null;
+    }
 
-        return $this->resolve($type)::hydrate($nodes);
+    /**
+     * Create a laravel model from stdClass object.
+     *
+     * @param object $node
+     * @return \Belvedere\FormMaker\Models\Nodes\Node
+     */
+    protected function hydrate(object $node): ?Node
+    {
+        if (is_null($node->type)) {
+            return null;
+        }
+
+        $type = $node->type;
+
+        return $this->resolve($type)::hydrate([$node])->shift();
+    }
+
+    /**
+     * Remove attributes that start with a given prefix.
+     *
+     * @param string $prefix
+     * @param object $node
+     * @return void
+     */
+    protected function removeAttributes(string $prefix, object &$node): void
+    {
+        foreach ($node as $key => $value) {
+            if (substr($key, 0, strlen($prefix)) === $prefix) {
+                unset($node->$key);
+            }
+        }
     }
 
     /**
