@@ -1,4 +1,4 @@
-[![Latest Version on Packagist](https://img.shields.io/badge/packagist-v1.1.1-blue)](https://packagist.org/packages/coopbelvedere/laravel-form-maker)
+[![Latest Version on Packagist](https://img.shields.io/badge/packagist-v1.1.2-blue)](https://packagist.org/packages/coopbelvedere/laravel-form-maker)
 [![Build Status](https://travis-ci.org/CoopBelvedere/laravel-form-maker.svg?branch=master)](https://travis-ci.org/CoopBelvedere/laravel-form-maker)
 [![StyleCI](https://github.styleci.io/repos/156127313/shield?branch=master)](https://github.styleci.io/repos/156127313)
 
