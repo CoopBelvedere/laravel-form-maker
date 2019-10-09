@@ -3,6 +3,7 @@
 namespace Belvedere\FormMaker\Contracts\Models\Rankings;
 
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Support\Enumerable;
 
 interface RankerContract
 {
@@ -116,12 +117,12 @@ interface RankerContract
     public function shuffle(): void;
 
     /**
-     * Order the list according to the items position in the ranking.
+     * Order the list according to the nodes position in the ranking.
      *
-     * @param \Illuminate\Support\LazyCollection|\Illuminate\Support\Collection $nodes
-     * @return mixed
+     * @param \Illuminate\Support\Enumerable $nodes
+     * @return \Illuminate\Support\Enumerable
      */
-    public function sortByRank($nodes);
+    public function sortByRank(Enumerable $nodes): Enumerable
 
     /**
      * Toggle two nodes in the ranking.

@@ -3,9 +3,9 @@
 namespace Belvedere\FormMaker\Repositories;
 
 use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Belvedere\FormMaker\Models\Model;
-use Illuminate\Support\LazyCollection;
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 
@@ -49,9 +49,9 @@ class NodeRepository implements NodeRepositoryContract
      *
      * @param \Belvedere\FormMaker\Models\Model $parent
      * @param string|null $type
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\Collection
      */
-    public function all(Model $parent, ?string $type = null): LazyCollection
+    public function all(Model $parent, ?string $type = null): Collection
     {
         $nodesTable = config('form-maker.database.form_nodes_table', 'form_nodes');
 
@@ -63,7 +63,7 @@ class NodeRepository implements NodeRepositoryContract
             })
             ->where(sprintf('%s.nodable_type', $nodesTable), $parent->getMorphClass())
             ->where(sprintf('%s.nodable_id', $nodesTable), $parent->getKey())
-            ->orderBy(sprintf('%s.type', $nodesTable));
+            ->whereNotNull(sprintf('%s.nodable_id', $nodesTable));
 
         if ($type === 'inputs' || $type === 'siblings') {
             $query->whereIn(sprintf('%s.type', $nodesTable), array_keys(config('form-maker.nodes')[$type]));
@@ -71,7 +71,7 @@ class NodeRepository implements NodeRepositoryContract
             $query->where(sprintf('%s.type', $nodesTable), $type);
         }
 
-        return $query->cursor()->map(function ($node, $key) {
+        return $query->get()->map(function ($node, $key) {
             $label = $this->hydrateLabel($node);
             $this->removeAttributes('label', $node);
             $node = $this->hydrate($node);
