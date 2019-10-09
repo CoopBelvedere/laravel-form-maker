@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Belvedere\FormMaker\Models\Model;
@@ -53,32 +54,42 @@ class NodeRepository implements NodeRepositoryContract
      */
     public function all(Model $parent, ?string $type = null): Collection
     {
-        $nodesTable = config('form-maker.database.form_nodes_table', 'form_nodes');
+        $table = config('form-maker.database.form_nodes_table', 'form_nodes');
 
-        $query = DB::table($nodesTable)
-            ->select(DB::raw(sprintf('%s.*, label.id as label_id, label.nodable_type as label_nodable_type, label.nodable_id as label_nodable_id, label.text as label_text, label.html_attributes as label_html_attributes, label.rules as label_rules, label.created_at as label_created_at, label.updated_at as label_updated_at', $nodesTable)))
-            ->leftJoin(DB::raw(sprintf('%s as label', $nodesTable)), function ($join) use ($nodesTable) {
-                $join->on(sprintf('%s.id', $nodesTable), '=', 'label.nodable_id')
-                    ->where('label.type', '=', 'label');
-            })
-            ->where(sprintf('%s.nodable_type', $nodesTable), $parent->getMorphClass())
-            ->where(sprintf('%s.nodable_id', $nodesTable), $parent->getKey())
-            ->whereNotNull(sprintf('%s.nodable_id', $nodesTable));
+        $query = $this->getSelectQuery($table, $parent);
 
         if ($type === 'inputs' || $type === 'siblings') {
-            $query->whereIn(sprintf('%s.type', $nodesTable), array_keys(config('form-maker.nodes')[$type]));
+            $query->whereIn(sprintf('%s.type', $table), array_keys(config('form-maker.nodes')[$type]));
         } elseif ($type) {
-            $query->where(sprintf('%s.type', $nodesTable), $type);
+            $query->where(sprintf('%s.type', $table), $type);
         }
 
         return $query->get()->map(function ($node, $key) {
-            $label = $this->hydrateLabel($node);
-            $this->removeAttributes('label', $node);
-            $node = $this->hydrate($node);
-            $node->setRelation('label', $label);
-
-            return $node;
+            return $this->buildNodeModel($node);
         });
+    }
+
+    /**
+     * Build a node model with label eager loaded.
+     *
+     * @param object|null $node
+     * @return Node|null
+     */
+    protected function buildNodeModel(?object $node): ?Node
+    {
+        if (is_null($node)) {
+            return null;
+        }
+
+        $label = $this->hydrateLabel($node);
+        $this->removeAttributes('label', $node);
+        $node = $this->hydrate($node);
+
+        if ($label) {
+            $node->setRelation('label', $label);
+        }
+
+        return $node;
     }
 
     /**
@@ -90,6 +101,7 @@ class NodeRepository implements NodeRepositoryContract
     public function delete(Model $parent)
     {
         return DB::table(config('form-maker.database.form_nodes_table', 'form_nodes'))
+            ->whereNotNull('nodable_id')
             ->where('nodable_type', $parent->getMorphClass())
             ->where('nodable_id', $parent->getKey())
             ->delete();
@@ -105,25 +117,23 @@ class NodeRepository implements NodeRepositoryContract
      */
     public function find(Model $parent, $nodeKey, array $columns): ?Node
     {
-        $query = DB::table(config('form-maker.database.form_nodes_table', 'form_nodes'))
-            ->where('nodable_type', $parent->getMorphClass())
-            ->where('nodable_id', $parent->getKey());
+        $table = config('form-maker.database.form_nodes_table', 'form_nodes');
+
+        $query = $this->getSelectQuery($table, $parent);
 
         if (count($columns) > 0) {
-            $query->where(function ($query) use ($columns, $nodeKey) {
+            $query->where(function ($query) use ($table, $columns, $nodeKey) {
                 foreach ($columns as $key => $column) {
                     if ($key === 0) {
-                        $query->where(sprintf('html_attributes->%s', $column), $nodeKey);
+                        $query->where(sprintf('%s.html_attributes->%s', $table, $column), $nodeKey);
                     } else {
-                        $query->orWhere(sprintf('html_attributes->%s', $column), $nodeKey);
+                        $query->orWhere(sprintf('%s.html_attributes->%s', $table, $column), $nodeKey);
                     }
                 }
             });
         }
 
-        $node = $query->first();
-
-        return (is_null($node)) ? $node : $this->hydrate($node);
+        return $this->buildNodeModel($query->first());
     }
 
     /**
@@ -143,6 +153,26 @@ class NodeRepository implements NodeRepositoryContract
         $node->setParentRelation($parent);
 
         return $node;
+    }
+
+    /**
+     * Get the query builder for select statements.
+     *
+     * @param string $table
+     * @param Model $parent
+     * @return \Illuminate\Database\Query\Builder
+     */
+    protected function getSelectQuery(string $table, Model $parent): Builder
+    {
+        return DB::table($table)
+            ->select(DB::raw(sprintf('%s.*, label.id as label_id, label.nodable_type as label_nodable_type, label.nodable_id as label_nodable_id, label.text as label_text, label.html_attributes as label_html_attributes, label.rules as label_rules, label.created_at as label_created_at, label.updated_at as label_updated_at', $table)))
+            ->leftJoin(DB::raw(sprintf('%s as label', $table)), function ($join) use ($table) {
+                $join->on(sprintf('%s.id', $table), '=', 'label.nodable_id')
+                    ->where('label.type', '=', 'label');
+            })
+            ->whereNotNull(sprintf('%s.nodable_id', $table))
+            ->where(sprintf('%s.nodable_type', $table), $parent->getMorphClass())
+            ->where(sprintf('%s.nodable_id', $table), $parent->getKey());
     }
 
     /**
