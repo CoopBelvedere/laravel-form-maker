@@ -76,6 +76,7 @@ class NodeRepository implements NodeRepositoryContract
             $this->removeAttributes('label', $node);
             $node = $this->hydrate($node);
             $node->setRelation('label', $label);
+            return $node;
         });
     }
 
