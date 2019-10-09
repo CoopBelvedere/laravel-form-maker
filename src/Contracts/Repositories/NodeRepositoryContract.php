@@ -2,8 +2,8 @@
 
 namespace Belvedere\FormMaker\Contracts\Repositories;
 
-use Belvedere\FormMaker\Models\Model;
 use Illuminate\Support\Collection;
+use Belvedere\FormMaker\Models\Model;
 use Belvedere\FormMaker\Models\Nodes\Node;
 
 interface NodeRepositoryContract

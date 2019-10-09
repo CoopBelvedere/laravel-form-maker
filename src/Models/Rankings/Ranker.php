@@ -2,10 +2,10 @@
 
 namespace Belvedere\FormMaker\Models\Rankings;
 
+use Illuminate\Support\Enumerable;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Belvedere\FormMaker\Contracts\Models\Rankings\RankerContract;
-use Illuminate\Support\Enumerable;
 
 class Ranker extends Eloquent implements RankerContract
 {

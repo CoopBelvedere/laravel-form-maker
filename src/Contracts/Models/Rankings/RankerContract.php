@@ -2,8 +2,8 @@
 
 namespace Belvedere\FormMaker\Contracts\Models\Rankings;
 
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Enumerable;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 interface RankerContract
 {
