@@ -71,12 +71,11 @@ class NodeRepository implements NodeRepositoryContract
             $query->where(sprintf('%s.type', $nodesTable), $type);
         }
 
-        $query->get()->map(function ($node, $key) {
+        return $query->cursor()->map(function ($node, $key) {
             $label = $this->hydrateLabel($node);
             $this->removeAttributes('label', $node);
             $node = $this->hydrate($node);
             $node->setRelation('label', $label);
-            dd($node);
         });
     }
 
