@@ -26,6 +26,7 @@ class CreateFormMakerTables extends Migration
             $table->json('html_attributes')->nullable();
             $table->json('rules')->nullable();
             $table->timestamps();
+            $table->index(['nodable_id', 'type']);
         });
 
         Schema::create(config('form-maker.database.rankings_table', 'rankings'), function (Blueprint $table) {

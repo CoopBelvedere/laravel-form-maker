@@ -25,7 +25,7 @@ trait HasRankings
     public function addInRanking(Node $node): void
     {
         if (is_null($this->ranking)) {
-            $this->ranking()->save(resolve(RankerContract::class));
+            $this->ranking()->save($this->rankingProvider);
             $this->load('ranking');
         }
 
