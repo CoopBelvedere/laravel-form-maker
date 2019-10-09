@@ -15,17 +15,6 @@ trait HasRules
     protected $rulesProvider;
 
     /**
-     * Check if the rule exist.
-     *
-     * @param string $rule
-     * @return bool
-     */
-    protected function isValidRule(string $rule): bool
-    {
-        return method_exists($this->rulesProvider, $rule);
-    }
-
-    /**
      * Mass removal of validation rules from an input.
      *
      * @param array $rules

@@ -2,8 +2,8 @@
 
 namespace Belvedere\FormMaker\Contracts\Repositories;
 
+use Illuminate\Support\Collection;
 use Belvedere\FormMaker\Models\Model;
-use Illuminate\Support\LazyCollection;
 use Belvedere\FormMaker\Models\Nodes\Node;
 
 interface NodeRepositoryContract
@@ -13,9 +13,9 @@ interface NodeRepositoryContract
      *
      * @param \Belvedere\FormMaker\Models\Model $parent
      * @param string|null $type
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\Collection
      */
-    public function all(Model $parent, ?string $type = null): LazyCollection;
+    public function all(Model $parent, ?string $type = null): Collection;
 
     /**
      * Delete all nodes of the parent model.

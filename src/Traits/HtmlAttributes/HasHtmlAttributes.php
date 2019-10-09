@@ -15,12 +15,12 @@ trait HasHtmlAttributes
     protected $htmlAttributesProvider;
 
     /**
-     * Check if the attribute is valid for the model.
+     * Check if the attribute is available for the model.
      *
      * @param string $attribute
      * @return bool
      */
-    protected function isValidAttribute(string $attribute): bool
+    protected function attributeIsAvailable(string $attribute): bool
     {
         return in_array($attribute, $this->htmlAttributesAvailable);
     }
@@ -47,7 +47,7 @@ trait HasHtmlAttributes
     protected function updateHtmlAttributes(array $attributes): void
     {
         foreach ($attributes as $attribute => $value) {
-            if (is_null($value) || $this->isValidAttribute($attribute)) {
+            if (is_null($value) || $this->attributeIsAvailable($attribute)) {
                 $this->htmlAttributesProvider->$attribute = $value;
             }
         }

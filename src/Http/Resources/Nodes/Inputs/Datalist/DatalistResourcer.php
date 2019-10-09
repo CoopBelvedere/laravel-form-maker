@@ -18,7 +18,7 @@ class DatalistResourcer extends JsonResource implements DatalistResourcerContrac
     public function toArray($request): array
     {
         $inputId = uniqid('list_');
-        $options = new NodeCollection($this->options()->collect());
+        $options = new NodeCollection($this->options());
         $label = $this->getLabelResource($inputId);
 
         return [

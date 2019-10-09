@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Contracts\Traits\Nodes;
 
-use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Collection;
 use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
 
@@ -34,7 +34,7 @@ interface HasOptionsContract extends HasRankingsContract
     /**
      * Get the options sorted by their position in the ranking.
      *
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\Collection
      */
-    public function options(): LazyCollection;
+    public function options(): Collection;
 }

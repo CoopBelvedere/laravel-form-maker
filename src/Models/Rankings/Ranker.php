@@ -2,6 +2,7 @@
 
 namespace Belvedere\FormMaker\Models\Rankings;
 
+use Illuminate\Support\Enumerable;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Belvedere\FormMaker\Contracts\Models\Rankings\RankerContract;
@@ -357,10 +358,10 @@ class Ranker extends Eloquent implements RankerContract
     /**
      * Order the list according to the nodes position in the ranking.
      *
-     * @param \Illuminate\Support\LazyCollection|\Illuminate\Support\Collection $nodes
-     * @return mixed
+     * @param \Illuminate\Support\Enumerable $nodes
+     * @return \Illuminate\Support\Enumerable
      */
-    public function sortByRank($nodes)
+    public function sortByRank(Enumerable $nodes): Enumerable
     {
         return $nodes->sortBy(function ($node, $key) {
             return $this->rank($node);

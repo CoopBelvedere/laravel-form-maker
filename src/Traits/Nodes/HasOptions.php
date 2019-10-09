@@ -2,7 +2,7 @@
 
 namespace Belvedere\FormMaker\Traits\Nodes;
 
-use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Collection;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
 
@@ -62,11 +62,11 @@ trait HasOptions
     /**
      * Get the options sorted by their position in the ranking.
      *
-     * @return \Illuminate\Support\LazyCollection
+     * @return \Illuminate\Support\Collection
      */
-    public function options(): LazyCollection
+    public function options(): Collection
     {
-        $options = $this->morphMany(resolve(OptionerContract::class), 'nodable')->cursor();
+        $options = $this->morphMany(resolve(OptionerContract::class), 'nodable')->get();
 
         if ($options->isEmpty()) {
             return $options;
