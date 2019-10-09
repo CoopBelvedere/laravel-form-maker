@@ -2,12 +2,12 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
-use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Belvedere\FormMaker\Models\Model;
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
+use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
 
 class NodeRepository implements NodeRepositoryContract
 {
@@ -76,6 +76,7 @@ class NodeRepository implements NodeRepositoryContract
             $this->removeAttributes('label', $node);
             $node = $this->hydrate($node);
             $node->setRelation('label', $label);
+
             return $node;
         });
     }
