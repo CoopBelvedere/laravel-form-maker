@@ -122,7 +122,7 @@ interface RankerContract
      * @param \Illuminate\Support\Enumerable $nodes
      * @return \Illuminate\Support\Enumerable
      */
-    public function sortByRank(Enumerable $nodes): Enumerable
+    public function sortByRank(Enumerable $nodes): Enumerable;
 
     /**
      * Toggle two nodes in the ranking.
