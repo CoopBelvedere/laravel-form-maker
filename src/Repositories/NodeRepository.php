@@ -2,10 +2,10 @@
 
 namespace Belvedere\FormMaker\Repositories;
 
-use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Belvedere\FormMaker\Models\Model;
+use Illuminate\Database\Query\Builder;
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
