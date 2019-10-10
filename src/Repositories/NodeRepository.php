@@ -72,22 +72,15 @@ class NodeRepository implements NodeRepositoryContract
     /**
      * Build a node model with label eager loaded.
      *
-     * @param object|null $node
-     * @return Node|null
+     * @param object $node
+     * @return Node
      */
-    protected function buildNodeModel(?object $node): ?Node
+    protected function buildNodeModel(object $node): Node
     {
-        if (is_null($node)) {
-            return null;
-        }
-
         $label = $this->hydrateLabel($node);
         $this->removeAttributes('label', $node);
         $node = $this->hydrate($node);
-
-        if ($label) {
-            $node->setRelation('label', $label);
-        }
+        $node->setRelation('label', $label);
 
         return $node;
     }
@@ -133,7 +126,9 @@ class NodeRepository implements NodeRepositoryContract
             });
         }
 
-        return $this->buildNodeModel($query->first());
+        $node = $query->first();
+
+        return is_null($node) ? null : $this->buildNodeModel($node);
     }
 
     /**
