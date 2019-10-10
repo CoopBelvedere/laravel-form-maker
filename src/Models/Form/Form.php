@@ -92,7 +92,7 @@ class Form extends Model implements FormContract
 
     /**
      * Get the labelable attribute name.
-     * for or form
+     * for or form.
      *
      * @return string
      */
