@@ -3,7 +3,6 @@
 namespace Belvedere\FormMaker\Traits\Nodes;
 
 use Illuminate\Support\Collection;
-use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
 
 trait HasOptions
@@ -15,9 +14,7 @@ trait HasOptions
      */
     public function addOption(): OptionerContract
     {
-        $nodeRepository = resolve(NodeRepositoryContract::class);
-
-        $option = $nodeRepository->getInstanceOf($this, 'option');
+        $option = $this->nodeRepositoryProvider->getInstanceOf($this, 'option');
 
         return $option;
     }
@@ -52,9 +49,7 @@ trait HasOptions
      */
     public function option($key): ?OptionerContract
     {
-        $nodeRepository = resolve(NodeRepositoryContract::class);
-
-        $option = $nodeRepository->find($this, $key, ['id', 'value']);
+        $option = $this->nodeRepositoryProvider->find($this, $key, ['id', 'value']);
 
         return (! is_null($option) && $option->type === 'option') ? $option : null;
     }

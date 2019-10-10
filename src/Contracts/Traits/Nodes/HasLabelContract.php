@@ -2,11 +2,12 @@
 
 namespace Belvedere\FormMaker\Contracts\Traits\Nodes;
 
+use Belvedere\FormMaker\Contracts\Traits\Repositories\HasNodeRepositoryContract;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
 
-interface HasLabelContract extends HasRankingsContract, LabelableContract
+interface HasLabelContract extends HasNodeRepositoryContract, HasRankingsContract, LabelableContract
 {
     /**
      * Add a label to the parent model.

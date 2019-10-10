@@ -4,6 +4,7 @@ namespace Belvedere\FormMaker\Models\Nodes\Inputs;
 
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Traits\Nodes\HasLabel;
+use Belvedere\FormMaker\Traits\Repositories\HasNodeRepository;
 use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Belvedere\FormMaker\Listeners\CascadeDelete;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -14,7 +15,7 @@ use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Inputs\InputResourcerCont
 
 class Input extends Node implements InputContract
 {
-    use HasLabel, HasRankings, HasRules;
+    use HasLabel, HasNodeRepository, HasRankings, HasRules;
 
     /**
      * The default attributes automatically assigned on creation.
@@ -61,6 +62,8 @@ class Input extends Node implements InputContract
             'title',
             'value',
         ]);
+
+        $this->setNodeRepositoryProvider();
 
         $this->setRankingProvider();
 
