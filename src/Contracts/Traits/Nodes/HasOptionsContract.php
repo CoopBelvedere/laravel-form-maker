@@ -5,8 +5,9 @@ namespace Belvedere\FormMaker\Contracts\Traits\Nodes;
 use Illuminate\Support\Collection;
 use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
+use Belvedere\FormMaker\Contracts\Traits\Repositories\HasNodeRepositoryContract;
 
-interface HasOptionsContract extends HasRankingsContract
+interface HasOptionsContract extends HasNodeRepositoryContract, HasRankingsContract, LabelableContract
 {
     /**
      * Add an option input to the parent model.

@@ -4,7 +4,6 @@ namespace Belvedere\FormMaker\Traits\Nodes;
 
 use Illuminate\Support\Collection;
 use Belvedere\FormMaker\Models\Nodes\Node;
-use Belvedere\FormMaker\Contracts\Repositories\NodeRepositoryContract;
 
 trait HasNodes
 {
@@ -17,9 +16,7 @@ trait HasNodes
      */
     public function add(string $type): Node
     {
-        $nodeRepository = resolve(NodeRepositoryContract::class);
-
-        $node = $nodeRepository->getInstanceOf($this, $type);
+        $node = $this->nodeRepositoryProvider->getInstanceOf($this, $type);
 
         return $node;
     }
@@ -95,9 +92,7 @@ trait HasNodes
      */
     public function node($key): ?Node
     {
-        $nodeRepository = resolve(NodeRepositoryContract::class);
-
-        return $nodeRepository->find($this, $key, ['id', 'name', 'value']);
+        return $this->nodeRepositoryProvider->find($this, $key, ['id', 'name', 'value']);
     }
 
     /**
@@ -108,9 +103,7 @@ trait HasNodes
      */
     public function nodes(?string $type = null): Collection
     {
-        $nodeRepository = resolve(NodeRepositoryContract::class);
-
-        $nodes = $nodeRepository->all($this, $type);
+        $nodes = $this->nodeRepositoryProvider->all($this, $type);
 
         if ($nodes->isEmpty()) {
             return $nodes;

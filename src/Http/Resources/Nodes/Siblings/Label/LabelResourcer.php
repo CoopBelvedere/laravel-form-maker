@@ -3,8 +3,6 @@
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Siblings\Label;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Belvedere\FormMaker\Contracts\Models\Form\FormContract;
-use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\InputContract;
 use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract;
 
 class LabelResourcer extends JsonResource implements LabelResourcerContract
@@ -17,13 +15,7 @@ class LabelResourcer extends JsonResource implements LabelResourcerContract
      */
     public function toArray($request): array
     {
-        if ($this->parent instanceof InputContract) {
-            $attribute = 'for';
-        } elseif ($this->parent instanceof FormContract) {
-            $attribute = 'form';
-        }
-
-        $this->setForId($attribute);
+        $this->setForId();
 
         return [
             'id' => $this->getKey(),
@@ -42,11 +34,12 @@ class LabelResourcer extends JsonResource implements LabelResourcerContract
     /**
      * Get the id of the parent model.
      *
-     * @param string $attribute
      * @return void
      */
-    protected function setForId(string $attribute): void
+    protected function setForId(): void
     {
+        $attribute = $this->parent->getLabelableAttributeName();
+
         if (is_array($this->html_attributes) && array_key_exists($attribute, $this->html_attributes)) {
             return;
         }

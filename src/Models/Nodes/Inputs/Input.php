@@ -9,12 +9,13 @@ use Belvedere\FormMaker\Listeners\CascadeDelete;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Belvedere\FormMaker\Listeners\AssignAttributes;
 use Belvedere\FormMaker\Traits\Rankings\HasRankings;
+use Belvedere\FormMaker\Traits\Repositories\HasNodeRepository;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\InputContract;
 use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Inputs\InputResourcerContract;
 
 class Input extends Node implements InputContract
 {
-    use HasLabel, HasRankings, HasRules;
+    use HasLabel, HasNodeRepository, HasRankings, HasRules;
 
     /**
      * The default attributes automatically assigned on creation.
@@ -62,6 +63,8 @@ class Input extends Node implements InputContract
             'value',
         ]);
 
+        $this->setNodeRepositoryProvider();
+
         $this->setRankingProvider();
 
         $this->setRulesProvider();
@@ -75,6 +78,17 @@ class Input extends Node implements InputContract
     public function getHtmlAttributesAssigned(): array
     {
         return $this->htmlAttributesAssigned;
+    }
+
+    /**
+     * Get the labelable attribute name.
+     * for or form.
+     *
+     * @return string
+     */
+    public function getLabelableAttributeName(): string
+    {
+        return 'for';
     }
 
     /**

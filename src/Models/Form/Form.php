@@ -8,10 +8,11 @@ use Belvedere\FormMaker\Listeners\CascadeDelete;
 use Belvedere\FormMaker\Traits\Rankings\HasRankings;
 use Belvedere\FormMaker\Http\Resources\Form\FormResource;
 use Belvedere\FormMaker\Contracts\Models\Form\FormContract;
+use Belvedere\FormMaker\Traits\Repositories\HasNodeRepository;
 
 class Form extends Model implements FormContract
 {
-    use HasNodes, HasRankings;
+    use HasNodes, HasNodeRepository, HasRankings;
 
     /**
      * The event map for the model.
@@ -51,6 +52,8 @@ class Form extends Model implements FormContract
             'target',
         ]);
 
+        $this->setNodeRepositoryProvider();
+
         $this->setRankingProvider();
     }
 
@@ -85,6 +88,17 @@ class Form extends Model implements FormContract
     public function enabled(): void
     {
         $this->setInputsUsability();
+    }
+
+    /**
+     * Get the labelable attribute name.
+     * for or form.
+     *
+     * @return string
+     */
+    public function getLabelableAttributeName(): string
+    {
+        return 'form';
     }
 
     /**
