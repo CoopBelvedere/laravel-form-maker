@@ -15,6 +15,10 @@ trait HasLabel
      */
     public function addLabel(string $text): LabelerContract
     {
+        if ($this->relationLoaded('label')) {
+            $this->unsetRelation('label');
+        }
+
         $label = $this->nodeRepositoryProvider->getInstanceOf($this, 'label');
 
         $label->withText($text)->save();
