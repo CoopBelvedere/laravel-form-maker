@@ -4,12 +4,12 @@ namespace Belvedere\FormMaker\Models\Nodes\Inputs;
 
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Traits\Nodes\HasLabel;
-use Belvedere\FormMaker\Traits\Repositories\HasNodeRepository;
 use Belvedere\FormMaker\Traits\Rules\HasRules;
 use Belvedere\FormMaker\Listeners\CascadeDelete;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Belvedere\FormMaker\Listeners\AssignAttributes;
 use Belvedere\FormMaker\Traits\Rankings\HasRankings;
+use Belvedere\FormMaker\Traits\Repositories\HasNodeRepository;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\InputContract;
 use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Inputs\InputResourcerContract;
 
