@@ -168,7 +168,8 @@ class NodeRepository implements NodeRepositoryContract
             ->select(DB::raw(sprintf('%s.*, label.id as label_id, label.nodable_type as label_nodable_type, label.nodable_id as label_nodable_id, label.text as label_text, label.html_attributes as label_html_attributes, label.rules as label_rules, label.created_at as label_created_at, label.updated_at as label_updated_at', $table)))
             ->leftJoin(DB::raw(sprintf('%s as label', $table)), function ($join) use ($table) {
                 $join->on(sprintf('%s.id', $table), '=', 'label.nodable_id')
-                    ->where('label.type', '=', 'label');
+                    ->where('label.type', '=', 'label')
+                    ->whereColumn(sprintf('%s.nodable_type', $table), '!=', 'label.nodable_type');
             })
             ->whereNotNull(sprintf('%s.nodable_id', $table))
             ->where(sprintf('%s.nodable_type', $table), $parent->getMorphClass())
