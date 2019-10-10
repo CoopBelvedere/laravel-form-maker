@@ -3,8 +3,6 @@
 namespace Belvedere\FormMaker\Http\Resources\Nodes\Siblings\Label;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Belvedere\FormMaker\Contracts\Models\Form\FormContract;
-use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\InputContract;
 use Belvedere\FormMaker\Contracts\Http\Resources\Nodes\Siblings\LabelResourcerContract;
 
 class LabelResourcer extends JsonResource implements LabelResourcerContract

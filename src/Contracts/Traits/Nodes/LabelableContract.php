@@ -6,7 +6,7 @@ interface LabelableContract
 {
     /**
      * Get the labelable attribute name.
-     * for or form
+     * for or form.
      *
      * @return string
      */
