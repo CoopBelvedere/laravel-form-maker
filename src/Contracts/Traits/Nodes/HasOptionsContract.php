@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Inputs\Option\OptionerContract;
 
-interface HasOptionsContract extends HasRankingsContract
+interface HasOptionsContract extends HasRankingsContract, LabelableContract
 {
     /**
      * Add an option input to the parent model.

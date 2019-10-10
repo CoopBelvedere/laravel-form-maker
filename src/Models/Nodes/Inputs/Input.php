@@ -78,6 +78,17 @@ class Input extends Node implements InputContract
     }
 
     /**
+     * Get the labelable attribute name.
+     * for or form
+     *
+     * @return string
+     */
+    public function getLabelableAttributeName(): string
+    {
+        return 'for';
+    }
+
+    /**
      * Transform the input to JSON.
      *
      * @return \Illuminate\Http\Resources\Json\JsonResource

@@ -88,6 +88,17 @@ class Form extends Model implements FormContract
     }
 
     /**
+     * Get the labelable attribute name.
+     * for or form
+     *
+     * @return string
+     */
+    public function getLabelableAttributeName(): string
+    {
+        return 'form';
+    }
+
+    /**
      * Specifies the form http method.
      *
      * @param string|null $method

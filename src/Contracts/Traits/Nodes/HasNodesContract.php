@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 use Belvedere\FormMaker\Models\Nodes\Node;
 use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
 
-interface HasNodesContract extends HasRankingsContract
+interface HasNodesContract extends HasRankingsContract, LabelableContract
 {
     /**
      * Add a node to the parent model.

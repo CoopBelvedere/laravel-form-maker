@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Belvedere\FormMaker\Contracts\Traits\Rankings\HasRankingsContract;
 use Belvedere\FormMaker\Contracts\Models\Nodes\Siblings\Label\LabelerContract;
 
-interface HasLabelContract extends HasRankingsContract
+interface HasLabelContract extends HasRankingsContract, LabelableContract
 {
     /**
      * Add a label to the parent model.
