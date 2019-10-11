@@ -4,7 +4,7 @@
 
 # Laravel Form Maker
 
-Simple modular backend api to provide user generated forms for your laravel projects easily.
+Modular api to provide user generated forms to your laravel projects easily.
 
 ## Installation
 
